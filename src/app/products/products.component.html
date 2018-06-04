@@ -52,7 +52,7 @@
                     <label class="product-label ">SORT BY:</label>
                   </div>
 
-                  <div class="col-md-2 col-sm-4 col-xs-12 align" style="margin-top: 5px">
+                  <div class="col-md-1 col-sm-4 col-xs-12 align" style="margin-top: 5px">
                     <button class="sort-btn " type="button"(click)="Renewable()">
                       RENEWABLE
                       <i class="fa fa-sort-down down-icon"></i>
@@ -62,7 +62,7 @@
                   </div>
 
 
-                  <div class="col-md-2 col-sm-4 col-xs-12 align" style="margin-top: 5px">
+                  <div class="col-md-1 col-sm-4 col-xs-12 align" style="margin-top: 5px">
                     <button class="sort-btn " type="button" (click)="Price()">
                       Price KW/h
                       <i class="fa fa-sort-down down-icon"></i>
@@ -71,15 +71,31 @@
 
                   </div>
 
-                  <div class="col-md-2 col-sm-4 col-xs-12 align space-b" style="margin-top: 5px">
+                  <div class="col-md-1 col-sm-4 col-xs-12 align space-b" style="margin-top: 5px">
                     <button class="sort-btn " type="button" (click)="company()">
                       Company
                       <i class="fa fa-sort-down down-icon"></i>
 
                     </button>
                   </div>
-                  <button (click)="onPrint()">Print</button>
-                  
+                  <div class="col-lg-4 paginations">
+                    <a><i class="	fa fa-chevron-left"></i></a>
+                    <a>1</a>
+                    <a>2</a>
+                    <a>3</a>
+                    <a>4</a>
+                    <a>5</a>
+                    ....
+                    <a><i class="	fa fa-chevron-right"></i></a>
+                  </div>
+                  <div class="col-md-2 col-sm-4 col-xs-12 space-b" style="margin-top: 2px">
+                    <button class="Compare" (click)="Comapreproduct()">Compare</button>
+                    
+                    <button class="print" (click)="onPrint()">
+                      <i class="fa fa-print"></i>
+                    </button>
+                    
+                  </div>
                   <!-- <a target="_blank"   onclick="window.print();" class="print-grid-temp" title="Print plan results">
                     <img alt="print" src="/Content/images/printer.png" width="16" height="16"></a> -->
                 </div>
@@ -153,27 +169,33 @@
         </div> -->
       </div>
 
-<button (click)="Comapreproduct()">Compare</button>
+
 
       <div class="custom card" *ngFor="let data of sg['products']; let i = index">
         <div class="row">
 
-          <div class="col-sm-12" style="padding: 0px 10px 20px 10px;">
+          <div class="col-sm-12" style="padding: 0px 10px 4px 10px;">
             <div class="card-header card-header-text position-abs cards-itme" data-background-color="rose">
               <!-- {{data.id}}  -->
               <h4 class="card-title">{{data.title}} </h4>
 
             </div>
-            <input type="checkbox" name="comp"  #comp (change)="checked(data.id,i)">{{data.id}}
+            <!-- <input type="checkbox" name="comp"  #comp (change)="checked(data.id,i)">{{data.id}} -->
             <div class="card-content" style="padding: 0px;">
              
               <div class="col-md-3  col-sm-6 col-xs-12 plan-detail text-center logo-div">
+                <div class="check-box">
+                  <input type="checkbox" name="comp"  #comp (change)="checked(data.id,i)">{{data.id}}
+                </div>
                   <!-- <input type="checkbox" value="{{data.id}}" name="comp"  > -->
                 <a href="{{data.profileurl}}" target="_blank" class="display-b margin-top">
 
                   <img src="{{data.profile_logo}}" alt="{{data.title}}" style="width: 90%;
-                  height: 103px;" />
+                  height: 85px;" />
                 </a>
+                <img src="{{data.rating_logo}}" alt="{{data.title}}" class="rating-stars" />
+                
+
 
 
 
@@ -380,7 +402,7 @@
                 </p>
              
                 <!-- (click)="openDialog(data.id)" -->
-                <button class="btn btn-rose" style="display:block; margin: 0 auto;">
+                <button class="btn btn-rose signup-btn" style="display:block; margin: 0 auto; background: #323131 !important;">
                   <a style="color:white" href="{{data.profileurl}}" target="_blank">Signup </a>
                   <!-- <i class="material-icons">bubble_chart</i> -->
                 </button>
