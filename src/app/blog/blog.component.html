@@ -1,0 +1,69 @@
+<!-- <div class="container" >
+<div class="blog-bar">
+  <div class="blog-inner">
+    <h1>BLOG</h1>
+    <div class="card" >
+      <a routerLink="/blog1" style="cursor: pointer" class="font-main font-weight-normal color-additional">
+        <img src="/assets/img/Texas-Electricity-Companies.jpg">
+      </a>
+      <div class="detail">
+        <h2>Become Energy Efficient with these 4 Smart Hacks</h2>
+        <p>Who couldn’t use a little extra cash?In this economy, people are seen saving a buck or two wherever possible.All those small savings add up over time and come handy when faced with a nasty electric bill! </p>
+        <a routerLink="/blog1">Read More</a>
+      </div>
+    </div>
+  </div>
+</div>
+</div> -->
+
+
+
+<!-- <section class="pw-solutions">
+  <div class="container-fluid">
+      <h3 class="text-center choiecegenie-offers wow fadeInLeft"> BLOG </h3>
+    <div class="row">
+    <ul class="card-box" *ngFor="let item of data;let i=index">
+      <li class="col-lg-3 col-md-3 col-sm-6 col-xs-6"  routerLink="/blog1/{{item.heading1}}">
+        <div class="holder icons wow  fadeInRight cg-offers">
+          <a routerLink="/blog1/{{item.heading1}}" style="cursor: pointer" class="font-main font-weight-normal color-additional">
+            <img src="{{item.Ch_image}}">
+          </a>
+          <div class="detail">
+            <h3>{{item.heading1}}</h3>
+            <div class="txt-holder">
+              <p>{{item.content1 | slice:0:100}}...</p>
+            </div>
+            <a target="" class="element element_2 read_more" routerLink="/blog1/{{item.heading1}}">
+            <button class="btn btn-rose" style="text-align:center">
+           Read more
+          </button>
+        </a>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+  </div>
+</section> -->
+
+    
+<app-loader></app-loader>
+
+<div class="container-fluid" style="padding: 14px 100px">
+  <h3 class="text-center choiecegenie-offers wow fadeInLeft"> BLOG </h3>
+<div class="row">
+  <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 margin-b" *ngFor="let data of data;let i=index">
+    <div class="layer-content">
+      <div>
+        <img src="https://storage.choicegenie.com/images/{{data.Ch_image}}" alt="ChoiceGenie">
+      </div>
+      <div class="blog-layout-content">
+        <h2>{{data.heading1}}</h2>
+        <p>{{data.content1 | slice:0:106}}..</p>
+        <a  routerLink="/blog/{{data.heading1}}">
+        <button class="btn btn-rose" type="submit">Read more..</button></a>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

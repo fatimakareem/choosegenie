@@ -1,0 +1,49 @@
+<!-- <div class="wrapper" [ngClass]="status ? 'sidebarActive' : ''">
+    <app-header class="inner"></app-header>
+    <div class="main-panel ps">
+        <div class="navbar-minimize sidebarToggle" (click)="navbarClass()">
+            <button class="btn btn-round btn-white btn-fill btn-just-icon" id="minimizeSidebar">
+            <i class="material-icons visible-on-sidebar-regular">more_vert</i>
+            <i class="material-icons visible-on-sidebar-mini">view_list</i>
+            <div class="ripple-container"></div></button>
+            <strong>Sidebar</strong>
+        </div>
+        <div class="sidebar custom">
+            <a routerLink="/" class="logo">
+                <img src="../../assets/img/logofinal.gif" alt="PlugExp" />
+            </a>
+            <div class="clearfix"></div>
+            <app-user-sidebar></app-user-sidebar>
+            
+        </div>
+        <router-outlet></router-outlet>
+        <div *ngIf="!isMap()">
+            <app-footer-cmp></app-footer-cmp>
+        </div>
+    </div>
+</div> -->
+<div class="wrapper" [ngClass]="status ? 'sidebarActive' : ''">
+    <app-header ></app-header>
+  <!-- <app-header class="inner"></app-header> -->
+    <div class="main-panel ps" style="overflow-y: hidden;">
+        <div class="navbar-minimize sidebarToggle" (click)="navbarClass()">
+            <button class="btn btn-round btn-white btn-fill btn-just-icon" id="minimizeSidebar">
+            <i class="material-icons visible-on-sidebar-regular">more_vert</i>
+            <i class="material-icons visible-on-sidebar-mini">view_list</i>
+            <div class="ripple-container"></div></button>
+            <strong>Sidebar</strong>
+        </div>
+        <div class="sidebar custom top-margin">
+            <!-- <a routerLink="/" class="logo">
+                <img src="../../assets/img/logofinal.gif" alt="PlugExp" style="width: 100%; padding: 0px" />
+            </a>
+            <div class="clearfix"></div> -->
+            <app-user-sidebar></app-user-sidebar>
+
+        </div>
+        <router-outlet></router-outlet>
+        <div *ngIf="!isMap()">
+            <app-footer-cmp></app-footer-cmp>
+        </div>
+    </div>
+</div>

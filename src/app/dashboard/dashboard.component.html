@@ -1,0 +1,651 @@
+<!-- <h5>Items per Page</h5>
+        <mat-form-field >
+        <mat-select  (ngModelChange)="check($event)" [(ngModel)]="items"  >
+          <mat-option value="5" style="font-size: 20px">5</mat-option>
+          <mat-option value="10" style="font-size: 20px">10 </mat-option>
+          <mat-option value="20" style="font-size: 20px">20 </mat-option>
+        </mat-select>
+        </mat-form-field> -->
+
+
+
+
+<!-- <div class="container-fluid"> -->
+
+
+
+<!-- </div> -->
+<!-- <mat-paginator [length]="100" [pageSize]="20" [pageSizeOptions]="[5, 10, 25, 100]" (change)="_changePageSize($event.value)">
+            </mat-paginator> -->
+            <div class="products-area" *ngIf="prod_loaded">
+              <!--<div class="page-title">-->
+                <!--<span>Product Search</span>-->
+              <!--</div>-->
+              <div class="card" *ngFor="let data of allItems; let i = index">
+                <div class="row">
+            
+                  <div class="col-sm-12">
+                    <div class="card-header card-header-text padding-btm" data-background-color="rose">
+            
+                      <h4 class="card-title" style="padding: 0px;">{{data.title}} </h4>
+            
+                    </div>
+            
+                    <div class="card-content">
+            
+                      <div class="col-md-3  col-sm-3 col-xs-5 plan-detail text-center display">
+                        <a href="{{data.profileurl}}" target="_blank" class="margin-top">
+            
+                          <img src="{{data.profile_logo}}" alt="{{data.title}}" />
+                        </a>
+            
+            
+                        <!-- <div class="stars">
+            
+                          <img src="{{data.rating_logo}}" />
+                        </div> -->
+                        <!-- <input type="checkbox"value="{{data.id}}"name="id"[(ngModel)]=id>{{data.id}} -->
+                        <!-- <br> <star-rating-comp [size]="'large'" [starType]="'svg'" [rating]="" [(ngModel)]="rating"></star-rating-comp>  -->
+                        <!-- <mat-checkbox name="deleteid"[(ngModel)]=deleteid value="{{data.id}}">{{data.deleteid}}</mat-checkbox> -->
+                        <!-- <input [(ngModel)]="data.id.checked" type="checkbox"value="{{data.id}}">{{data.id}} -->
+            
+                        <!-- {{data.id}} <input type="checkbox" IsChecked="{{data.id}}" name="id"> -->
+                        <!-- <label>{{data.id}}</label>
+                                    <button type="submit" class="btn btn-rose" (click)="deletedata()">Delete</button> -->
+            
+                        <!-- <input type="text" [(ngModel)]="data.id" value="{{data.id}}" name="{{data.id}}"/>{{data.id}} -->
+            
+            
+            
+                        <div class="modal fade" id="myModal3" role="dialog">
+                          <div class="modal-dialog">
+            
+                            <!-- Modal content-->
+                            <div class="modal-content popupmodel">
+                              <!-- <div class="modal-header">
+            
+            
+                                          </div> -->
+                              <div class="modal-body" style="font-size: 18px;
+                                          background: #ffffff;
+                                          padding: 20px;
+                                          margin: 15px;
+                                          position: relative;">
+                                <div class="popup-close-button" data-dismiss="modal">X</div>
+                                <div class="row">
+                                  <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 " style="border-bottom: 1px #4f4f4f solid;">
+                                    <p class=" modal-v2__main-heading"> {{data.title}}</p>
+            
+                                  </div>
+                                  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" style="border-bottom: 1px #4f4f4f solid;">
+                                    <div class="popup-image">
+                                      <a href="{{data.profileurl}}" target="_blank" class="display-b margin-top">
+                                        <img src="{{data.profile_logo}}" />
+                                      </a>
+                                    </div>
+                                  </div>
+                                  <div>
+                                    <h4 class="modal-title" style="text-align: center;
+                                                color: red;
+                                                font-size: 30px;">Confirmation Alert</h4>
+                                    <p>Do you want to Inactive this Product?</p>
+                                  </div>
+            
+                                </div>
+                              </div>
+                              <div class="modal-footer">
+                                  <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+            
+            
+                                      <input matInput placeholder="Title" readonly name="title" value="{{title}}" [hidden]="true" required #updatedtitle/>
+            
+                                     <input matInput placeholder="Profile url" readonly name="profileurl" value="{{profileurl}}" [hidden]="true" #updatedprofileurl/>
+            
+            
+                                        <input matInput placeholder="Status" readonly name="active" [value]="status" [hidden]="true"  #upactive/>
+            
+            
+                                      <input matInput placeholder="Profile Logo" readonly name="profile_logo" [hidden]="true" value="{{profile_logo}}" #updatedprofile_logo />
+            
+            
+                                      <input matInput placeholder="Rating_logo" [hidden]="true" readonly name="rating_logo" value="{{rating_logo}}" #updatedrating_logo />
+            
+            
+                                      <input matInput placeholder="Plan_Information" name="plan_information" [hidden]="true" value="{{plan_information}}" #updatedplan_information
+                                      />
+            
+            
+                                      <input matInput placeholder="price 500 kwh" name="price_500_kwh" value="{{price_500_kwh}}" [hidden]="true" #updatedprice500kwh/>
+            
+            
+                                      <input matInput placeholder="price 1000 kwh" name="price_1000_kwh" value="{{price_1000_kwh}}" [hidden]="true" #updatedprice1000kwh/>
+            
+            
+                                      <input matInput placeholder="price 2000 kwh" name="price_2000_kwh" value="{{price_2000_kwh}}" [hidden]="true" #updatedprice2000kwh/>
+            
+            
+                                      <input matInput placeholder="Cancelation Fee" readonly name="cancelation_fee" value="{{cancelation_fee}}" #updatedcancelation_fee/>
+            
+                                      <input matInput placeholder="Fact Sheet" readonly name="fact_sheet" value="{{fact_sheet}}" [hidden]="true" #updatedfact_sheet/>
+            
+            
+                                      <input matInput placeholder="Term of Service" readonly name="terms_of_service" [hidden]="true" value="{{terms_of_service}}" #updatedterms_of_service
+                                      />
+            
+                                      <input matInput placeholder="Phone No" name="phone" readonly [hidden]="true" value="{{phone}}" #updatedphone/>
+            
+            
+                                      <input matInput placeholder="Sign Up" name="sign_up" readonly [hidden]="true" value="{{sign_up}}" #updatedsign_up />
+            
+            
+                                <!-- <input matInput placeholder="status" [formControl]="signupForm.controls['status']" required [value]="status" [(ngModel)]="model.status" hidden="true"> -->
+                                <div class=" text-center">
+                                    <button type="submit" class="btn btn-rose" (click)="activeClick(updatedtitle.value,updatedsign_up.value,updatedphone.value,updatedterms_of_service.value,updatedfact_sheet.value,updatedcancelation_fee.value,updatedprice500kwh.value,updatedprice1000kwh.value,updatedprice2000kwh.value,updatedplan_information.value,updatedrating_logo.value,updatedprofile_logo.value,updatedprofileurl.value,upactive.value)"
+                                      data-dismiss="modal">Inactive</button>
+            
+                                    <button type="button" class="btn btn-rose" data-dismiss="modal">Cancel</button>
+                                    <!-- <button class="btn btn-rose btn-wd btn-lg" type="submit" (click)="onSubmit()" >Search</button> -->
+                                  </div>
+                              </form>
+            
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+            
+                      <div class="col-md-3 col-sm-5 col-xs-5 rate" style="text-align:center">
+                        <h3 style=" text-align: center">
+                          <b> Price Detail</b>
+                        </h3>
+            
+                        <!-- <div class="holder white"> -->
+                        <!--class="product-price"-->
+                        <div style="text-align:center;">
+                          price_500_kwh
+                          <b class="price-style"> {{data.price_500_kwh}}</b>
+            
+                        </div>
+                        <div class="add-price grid-element">
+                          <div class="unit">price_1000_kwh
+                            <span class="price-style"> {{data.price_1000_kwh}} </span>
+                          </div>
+                          <div class="unit">price_2000_kwh
+                            <span class="price-style"> {{data.price_2000_kwh}} </span>
+                          </div>
+            
+                        </div>
+                        <a>
+                          <label class="view-plan-details" (click)="btnshowClick(data.id,data.title,data.sign_up,data.phone,data.terms_of_service,data.fact_sheet,data.cancelation_fee,data.price_1000_kwh,data.price_500_kwh,data.price_2000_kwh,data.plan_information,data.rating_logo,data.profile_logo,data.profileurl)"
+                            data-toggle="modal" data-target="#myModal4">Plan Information</label>
+                        </a>
+            
+            
+            
+                      </div>
+            
+                      <div class="col-md-3 col-sm-6 col-xs-12 rate plan-detail margin-up" style="text-align:center">
+                        <h3 style=" text-align: center; margin-top: 20px !important;">
+                          <b>Plan Details</b>
+                        </h3>
+            
+                        <!-- <div class="holder white"> -->
+                        <!--class="product-price"-->
+                        <div style="text-align:center; padding-top:10px;">
+            
+            
+                          <p *ngFor="let item of data.plan_information" class="items-detail" style="line-height: 8px;">
+                            {{item}}
+                          </p>
+            
+                        </div>
+            
+            
+                      </div>
+            
+            
+            
+                      <div class="modal fade" id="myModal2" role="dialog">
+                        <div class="modal-dialog">
+                          <!-- Modal content-->
+                          <div class="modal-content popupmodel">
+                            <div class="modal-header">
+            
+            
+                            </div>
+                            <div class="modal-body" style="font-size: 18px;
+                                        background: #ffffff;
+                                        padding: 20px;
+                                        margin: 15px;
+                                        position: relative;">
+                              <div class="popup-close-button" data-dismiss="modal">X</div>
+                              <div class="row">
+                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 " style="border-bottom: 1px #4f4f4f solid;">
+                                  <p class=" modal-v2__main-heading"> {{data.title}}</p>
+            
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" style="border-bottom: 1px #4f4f4f solid;">
+                                  <div class="popup-image">
+                                    <a href="{{data.profileurl}}" target="_blank" class="display-b margin-top">
+                                      <img src="{{data.profile_logo}}" />
+                                    </a>
+                                  </div>
+                                </div>
+                                <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+            
+                                  <!-- <div class="card-header text-center" data-background-color="rose"style="text-align:center; padding-top:10px;">
+                                              <h4 class="card-title">Edit Your product</h4>
+            
+            
+                                            </div> -->
+            
+                                  <div class="col-md-6 col-sm-6">
+                                    <div class="input-group">
+            
+            
+            
+            
+                                      <mat-form-field>
+                                        <input matInput placeholder="Title" readonly name="title" value="{{title}}" required #updatedtitle/>
+            
+                                      </mat-form-field>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-6 col-sm-6">
+                                    <div class="input-group" hidden=true>
+            
+            
+            
+                                      <!-- <input class="form-control" type="text" > -->
+                                      <mat-form-field>
+                                        <input matInput placeholder="Profile url" readonly name="profileurl" value="{{profileurl}}" #updatedprofileurl/>
+            
+                                      </mat-form-field>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-6 col-sm-6">
+                                      <div class="input-group" hidden=true>
+            
+            
+            
+                                        <!-- <input class="form-control" type="text" > -->
+                                        <mat-form-field>
+                                          <input matInput placeholder="Status" readonly name="active" value="{{active}}" #upactive/>
+            
+                                        </mat-form-field>
+                                      </div>
+                                    </div>
+                                  <div class="col-md-6 col-sm-6">
+                                    <div class="input-group" hidden=true>
+            
+            
+            
+                                      <!-- <input class="form-control" type="text" > -->
+                                      <mat-form-field>
+                                        <input matInput placeholder="Profile Logo" readonly name="profile_logo" value="{{profile_logo}}" #updatedprofile_logo />
+            
+                                      </mat-form-field>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-6 col-sm-6">
+                                    <div class="input-group" hidden=true>
+            
+            
+            
+                                      <!-- <input class="form-control" type="text" > -->
+                                      <mat-form-field>
+                                        <input matInput placeholder="Rating_logo" readonly name="rating_logo" value="{{rating_logo}}" #updatedrating_logo />
+            
+                                      </mat-form-field>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-6 col-sm-6">
+                                    <div class="input-group">
+            
+            
+            
+                                      <!-- <input class="form-control" type="text" > -->
+                                      <mat-form-field>
+                                        <input matInput placeholder="Plan_Information" name="plan_information" value="{{plan_information}}" #updatedplan_information
+                                        />
+            
+                                      </mat-form-field>
+                                    </div>
+                                  </div>
+            
+                                  <div class="col-md-6 col-sm-6">
+                                    <div class="input-group">
+            
+            
+            
+                                      <!-- <input class="form-control" type="text" > -->
+                                      <mat-form-field>
+                                        <input matInput placeholder="price 500 kwh" name="price_500_kwh" value="{{price_500_kwh}}" #updatedprice500kwh/>
+            
+                                      </mat-form-field>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-6 col-sm-6">
+                                    <div class="input-group">
+            
+            
+            
+                                      <!-- <input class="form-control" type="text" > -->
+                                      <mat-form-field>
+                                        <input matInput placeholder="price 1000 kwh" name="price_1000_kwh" value="{{price_1000_kwh}}" #updatedprice1000kwh/>
+            
+                                      </mat-form-field>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-6 col-sm-6">
+                                    <div class="input-group">
+            
+            
+            
+                                      <!-- <input class="form-control" type="text" > -->
+                                      <mat-form-field>
+                                        <input matInput placeholder="price 2000 kwh" name="price_2000_kwh" value="{{price_2000_kwh}}" #updatedprice2000kwh/>
+            
+                                      </mat-form-field>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-6 col-sm-6">
+                                    <div class="input-group" hidden=true>
+            
+            
+                                      <!-- <input class="form-control" type="text" > -->
+                                      <mat-form-field>
+                                        <input matInput placeholder="Cancelation Fee" readonly name="cancelation_fee" value="{{cancelation_fee}}" #updatedcancelation_fee/>
+            
+                                      </mat-form-field>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-6 col-sm-6">
+                                    <div class="input-group" hidden=true>
+            
+            
+                                      <!-- <input class="form-control" type="text" > -->
+                                      <mat-form-field>
+                                        <input matInput placeholder="Fact Sheet" readonly name="fact_sheet" value="{{fact_sheet}}" #updatedfact_sheet/>
+            
+                                      </mat-form-field>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-6 col-sm-6">
+                                    <div class="input-group" hidden=true>
+            
+            
+                                      <!-- <input class="form-control" type="text" > -->
+                                      <mat-form-field>
+                                        <input matInput placeholder="Term of Service" readonly name="terms_of_service" value="{{terms_of_service}}" #updatedterms_of_service
+                                        />
+            
+                                      </mat-form-field>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-6 col-sm-6">
+                                    <div class="input-group" hidden=true>
+            
+            
+                                      <!-- <input class="form-control" type="text" > -->
+                                      <mat-form-field>
+                                        <input matInput placeholder="Phone No" name="phone" readonly value="{{phone}}" #updatedphone/>
+            
+                                      </mat-form-field>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-6 col-sm-6">
+                                    <div class="input-group" hidden=true>
+            
+            
+                                      <!-- <input class="form-control" type="text" > -->
+                                      <mat-form-field>
+                                        <input matInput placeholder="Sign Up" name="sign_up" readonly value="{{sign_up}}" #updatedsign_up />
+            
+                                      </mat-form-field>
+                                    </div>
+                                  </div>
+                                  <!-- <div class="col-md-6 col-sm-6">
+                                              <div class="input-group"> -->
+            
+            
+                                  <!-- <input class="form-control" type="text" > -->
+                                  <!-- <mat-form-field>
+                                              <input matInput placeholder="Zipcode" name="data.zipcode" class="form-control" value="{{data.zipcode}}" #zipcode />
+            
+                                            </mat-form-field>
+                                          </div>
+                                        </div> -->
+                                  <!-- </div> -->
+                                  <div class=" text-center">
+                                    <button type="submit" class="btn btn-rose" (click)="editClick(updatedtitle.value,updatedsign_up.value,updatedphone.value,updatedterms_of_service.value,updatedfact_sheet.value,updatedcancelation_fee.value,updatedprice500kwh.value,updatedprice1000kwh.value,updatedprice2000kwh.value,updatedplan_information.value,updatedrating_logo.value,updatedprofile_logo.value,updatedprofileurl.value)"
+                                      data-dismiss="modal">Update</button>
+            
+                                    <button type="button" class="btn btn-rose" data-dismiss="modal">Cancel</button>
+                                    <!-- <button class="btn btn-rose btn-wd btn-lg" type="submit" (click)="onSubmit()" >Search</button> -->
+                                  </div>
+                                  <!-- </div> -->
+                                </form>
+                              </div>
+                            </div>
+                            <div style="display:inline-block; text-align:center;">
+                              <a href="{{data.sign_up}}" target="_blank">
+                                <button class="btn btn-rose">Order Online</button>
+                              </a>
+                              <div style="display:inline-block; padding:24px;">
+                                <span style="font-size:24px; font-weight:600px">OR CALL
+                                  <b> {{data.phone}} </b>
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+            
+                      <!-- </div> -->
+                      <!-- <small>{{data.display_uom}}</small> -->
+                      <!-- <br /> -->
+            
+                      <!-- <small><b>$69.99 </b></small> -->
+            
+                      <br>
+                      <div class="col-md-3 col-sm-3 col-xs-7 term">
+                        <div class="text-center">
+            
+                            <button style="padding:center;
+                            font-size: 29px;
+                            color: red;
+                            " class="fa fa-edit" type="submit" value="Edit" type="submit" (click)="btnEditClick(data.id,data.title,data.sign_up,data.phone,data.terms_of_service,data.fact_sheet,data.cancelation_fee,data.price_1000_kwh,data.price_500_kwh,data.price_2000_kwh,data.plan_information,data.rating_logo,data.profile_logo,data.profileurl,data.active)"
+                  data-toggle="modal" data-target="#myModal2">
+            
+                </button>
+                          <button style="padding:center;
+                                      font-size: 29px;
+                                      color: red;
+                                      "  type="submit"type="submit" (click)="btnactiveClick(data.id,data.title,data.sign_up,data.phone,data.terms_of_service,data.fact_sheet,data.cancelation_fee,data.price_1000_kwh,data.price_500_kwh,data.price_2000_kwh,data.plan_information,data.rating_logo,data.profile_logo,data.profileurl)"
+                            data-toggle="modal" data-target="#myModal3"><i class="fa fa-check"></i>
+            
+                          </button>
+                        </div>
+                        <h3 class="text-center">
+                          <b> Call now</b>
+                        </h3>
+                        <h3 class="text-center font" >{{data.phone}}</h3>
+                        <!-- (click)="openDialog(data.id)" -->
+                        <div class="text-center">
+                          <button class="btn btn-rose button-social">
+                            <a style="color:white;text-align: center;" href="{{data.profileurl}}" target="_blank">Signup </a>
+                            <i class="material-icons">bubble_chart</i>
+                          </button>
+            
+                        </div>
+                      </div>
+                      <!-- <div class="col-md-3 col-sm-3 col-xs-7 term top-margin-25">
+                          (click)="signUp(data.product_id)"
+            
+            
+            
+                          </div> -->
+            
+                    </div>
+                  </div>
+                </div>
+                <div class="modal fade" id="myModal4" role="dialog">
+                  <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content popupmodel">
+            
+                      <div class="modal-body" style="font-size: 18px;
+                                    background: #ffffff;
+                                    padding: 20px;
+                                    margin: 15px;
+                                    position: relative;">
+                        <div class="popup-close-button" data-dismiss="modal">X</div>
+                        <div class="row">
+                          <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 " style="border-bottom: 1px #4f4f4f solid;">
+                            <p class=" modal-v2__main-heading"> {{title}}</p>
+            
+                          </div>
+                          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" style="border-bottom: 1px #4f4f4f solid;">
+                            <div class="popup-image">
+                              <a href="{{profileurl}}" target="_blank" class="display-b margin-top">
+                                <img src="{{profile_logo}}" />
+                              </a>
+                            </div>
+                          </div>
+                          <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                            <div class="plan-information__heading">Price Rate</div>
+                            <table>
+                              <tbody>
+                                <tr class="plan-information__row">
+                                  <td class="plan-information__cell">price_1000_kwh</td>
+                                  <td class="plan-information__cell plan-information__cell--last ">{{price_1000_kwh}}</td>
+                                </tr>
+                                <tr class="plan-information__row">
+                                  <td class="plan-information__cell">price_500_kwh</td>
+                                  <td class="plan-information__cell plan-information__cell--last ">{{price_500_kwh}}</td>
+                                </tr>
+                                <tr class="plan-information__row">
+                                  <td class="plan-information__cell">price_2000_kwh</td>
+                                  <td class="plan-information__cell plan-information__cell--last ">{{price_2000_kwh}}</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                            <table>
+                              <tbody>
+            
+            
+                                <tr class="plan-information__row plan-information__row--last">
+                                  <td class="plan-information__cell">Documents</td>
+                                  <td class="plan-information__cell plan-information__cell--last">
+                                    <a style="color:rgba(0,0,0, 0.87)" href="{{fact_sheet}}" target="_blank">
+                                      <i style="color:#25B7D3" class="material-icons">picture_as_pdf</i>
+                                      <a>Fact Sheet</a>
+                                      <br>
+                                    </a>
+                                    <a style="color:rgba(0,0,0, 0.87)" href="{{terms_of_service}}" target="_blank">
+                                      <i style="color:#25B7D3" class="material-icons">picture_as_pdf</i>
+                                      Terms of service
+                                    </a>
+            
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                            <div class="plan-description">
+                              <div class="plan-description__heading">Cancelation Fee</div>
+                              <div class="plan-description__content">
+            
+                                <h4 *ngIf="data.cancelation_fee;else no_data_temp2">
+                                  &nbsp;&nbsp;&nbsp;&nbsp; {{cancelation_fee.split(' ',3000)[2]}}
+                                </h4>
+            
+                                <ng-template #no_data_temp2>
+            
+                                  <!-- <img src="../../assets/img/no_Record.png" style="width: 250px;height:200px" > -->
+                                  <h4>&nbsp;&nbsp;&nbsp;&nbsp; ---</h4>
+                                </ng-template>
+                                <!-- <p class="ng-binding">A great low rate with guaranteed price protection for 1 full year. Exclusive online offer available to new customers.</p> -->
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+                            <div class="plan-description">
+                              <div class="plan-description__heading">Plan Information</div>
+                              <div class="plan-description__content">
+                                <ul>
+                                  <li *ngFor="let data of plan_information">{{data}}</li>
+                                </ul>
+            
+            
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+            
+                      <div style="display:inline-block; text-align:center;">
+                        <a href="{{sign_up}}" target="_blank">
+                          <button class="btn btn-rose">Order Online</button>
+                        </a>
+                        <div style="display:inline-block; padding:24px;">
+                          <span style="font-size:24px; font-weight:600px">OR CALL
+                            <b> {{phone}} </b>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            
+            
+            
+            
+                </div>
+              </div>
+              <span>
+                <ng-template #no_data_templ>
+            
+                  <!-- <img src="../../assets/img/no_Record.png" style="width: 250px;height:200px" > -->
+                  <h1 style="height:1000px;width:1000px;padding:200px">
+            
+                    <!-- <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;No Record Found</b> -->
+                  </h1>
+                </ng-template>
+              </span>
+            
+            
+            
+            
+              <!-- <div>
+                                  <div> -->
+            
+              <div class="text-center">
+                <!-- <h1>Angular 2 - Pagination Example with logic like Google</h1> -->
+                <div class="products-area" *ngIf="prod_loaded">
+                  <ng-container class="card" *ngFor="let data of sg['products']; let i = index">
+                    <!-- items being paged -->
+                    <div *ngIf="i<1">
+                      <div *ngFor="let item of pagedItems">{{item.name}}</div>
+            
+                      <!-- pager -->
+                      <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+                        <li [ngClass]="{hide:pager.currentPage === 1}">
+                          <a (click)="setPage(1)" class="btn btn-rose">First</a>
+                        </li>
+                        <li [ngClass]="{hide:pager.currentPage === 1}">
+                          <a (click)="setPage(data.title.trim(),pager.currentPage - 1)" class="btn btn-rose">Previous</a>
+                        </li>
+                        <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+                          <a (click)="setPage(data.title.trim(),page)" class="btn btn-rose">{{page}}</a>
+                        </li>
+                        <li [ngClass]="{hide:pager.currentPage === pager.totalPages}">
+                          <a (click)="setPage(data.title.trim(),pager.currentPage + 1)" class="btn btn-rose" type="Next">Next</a>
+                        </li>
+                        <li [ngClass]="{hide:pager.currentPage === pager.totalPages}">
+                          <a (click)="setPage(data.title.trim(),pager.totalPages)" class="btn btn-rose" type="Last">Last</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </ng-container>
+                </div>
+              </div>

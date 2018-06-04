@@ -1,0 +1,190 @@
+<div class="container-fluid header-bar">
+  <div class="container">
+    <div class="row title-bar">
+      <div class="col-lg-12">
+        <h2>{{pro.title}}</h2>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3 col-md-3"></div>
+    <div class="col-lg-6 col-md-6 col-sm-12 rating-main">
+      <h1>Rating &amp; Reviews</h1>
+      <div class="rating-box" *ngIf="score<50">
+        <h2>Choice Genie Product Score</h2>
+        <round-progress
+                      [current]="score"
+                      [max]="100"
+                      [color]="'#ca260f'"
+                      [background]="'#eaeaea'"
+                      [radius]="100"
+                      [stroke]="20"
+                      [semicircle]="false"
+                      [rounded]="false"
+                      [clockwise]="true"
+                      [responsive]="false"
+                      [duration]="800"
+                      [animation]="'easeOutCubic'"
+                      [animationDelay]="5"
+                      style="margin: auto;">
+  
+                    </round-progress>
+                    <div style="position: relative; bottom: 112px;font-size:25px;">{{score}} %</div>
+        <h4>Total Reviews:{{totalrev}}</h4>
+        <h4>Average Reviews:{{ave}}</h4>
+      </div>
+      <div class="rating-box" *ngIf="score>50">
+          <h2>Choice Genie Product Score</h2>
+          <round-progress
+                        [current]="score"
+                        [max]="100"
+                        [color]="'#59c000'"
+                        [background]="'#eaeaea'"
+                        [radius]="100"
+                        [stroke]="20"
+                        [semicircle]="false"
+                        [rounded]="false"
+                        [clockwise]="true"
+                        [responsive]="false"
+                        [duration]="800"
+                        [animation]="'easeOutCubic'"
+                        [animationDelay]="5"
+                        style="margin: auto;">
+    
+                      </round-progress>
+                      <div style="position: relative; bottom: 112px;font-size:25px;">{{score}} %</div>
+          <h4>Total Reviews:{{totalrev}}</h4>
+          <h4>Average Reviews:{{ave}}</h4>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-3"></div>
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3 col-md-3"></div>
+    <div class="col-lg-6 col-md-6 col-sm-12 signup-box">
+      <h2>SIGN UP TODAY TO ENJOY:</h2>
+      <div class="plan-info-box">
+        <p class="items-detail" *ngFor="let item of plan">
+          {{item}}
+        </p>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-3"></div>
+  </div>
+</div>
+
+
+<div class="container-fluid logo-bar">
+  <div class="container logo-inner">
+    <img src="{{pro.profile_logo}}" alt="{{pro.title}}" />
+  </div>
+</div>
+<div class="container-fluid comments-box">
+  <h1>Reviews</h1>
+  <div class="review-content" *ngFor="let item of rev" class="product-review">
+    <h3>{{item.username}}</h3>
+    <div class="rating-star">
+      <div class="rating" *ngIf="item.rate==5.00">
+        <p>
+          <i class="fa fa-star" style="color:#f2b01e"></i>
+          <i class="fa fa-star" style="color:#f2b01e"></i>
+          <i class="fa fa-star" style="color:#f2b01e"></i>
+          <i class="fa fa-star" style="color:#f2b01e"></i>
+          <i class="fa fa-star" style="color:#f2b01e"></i>
+        </p>
+      </div>
+      <div class="rating" *ngIf="item.rate==4.5">
+        <p>
+          <i class="fa fa-star" style="color:#f2b01e"></i>
+          <i class="fa fa-star" style="color:#f2b01e"></i>
+          <i class="fa fa-star" style="color:#f2b01e"></i>
+          <i class="fa fa-star" style="color:#f2b01e"></i>
+          <i class="fa fa-star-half-o" style="color:#f2b01e"></i>
+        </p>
+      </div>
+      <div class="rating" *ngIf="item.rate==4.00">
+        <p>
+          <i class="fa fa-star" style="color:#f2b01e"></i>
+          <i class="fa fa-star" style="color:#f2b01e"></i>
+          <i class="fa fa-star" style="color:#f2b01e"></i>
+          <i class="fa fa-star" style="color:#f2b01e"></i>
+          <i class="fa fa-star-o" style="color:#f2b01e"></i>
+        </p>
+      </div>
+      <div class="rating" *ngIf="item.rate==3.5">
+        <p>
+          <i class="fa fa-star" style="color:#f2b01e"></i>
+          <i class="fa fa-star" style="color:#f2b01e"></i>
+          <i class="fa fa-star" style="color:#f2b01e"></i>
+          <i class="fa fa-star-half-o" style="color:#f2b01e"></i>
+          <i class="fa fa-star-o" style="color:#f2b01e"></i>
+        </p>
+      </div>
+      <div class="rating" *ngIf="item.rate==3.00">
+        <p>
+          <i class="fa fa-star" style="color:#f2b01e"></i>
+          <i class="fa fa-star" style="color:#f2b01e"></i>
+          <i class="fa fa-star" style="color:#f2b01e"></i>
+          <i class="fa fa-star-o" style="color:#f2b01e"></i>
+          <i class="fa fa-star-o" style="color:#f2b01e"></i>
+        </p>
+      </div>
+      <div class="rating" *ngIf="item.rate==2.5">
+        <p>
+          <i class="fa fa-star" style="color:#f2b01e"></i>
+          <i class="fa fa-star" style="color:#f2b01e"></i>
+          <i class="fa fa-star-half-o" style="color:#f2b01e"></i>
+          <i class="fa fa-star-o" style="color:#f2b01e"></i>
+          <i class="fa fa-star-o" style="color:#f2b01e"></i>
+        </p>
+      </div>
+      <div class="rating" *ngIf="item.rate==2.00">
+        <p>
+          <i class="fa fa-star" style="color:#f2b01e"></i>
+          <i class="fa fa-star" style="color:#f2b01e"></i>
+          <i class="fa fa-star-o" style="color:#f2b01e"></i>
+          <i class="fa fa-star-o" style="color:#f2b01e"></i>
+          <i class="fa fa-star-o" style="color:#f2b01e"></i>
+        </p>
+      </div>
+      <div class="rating" *ngIf="item.rate==1.5">
+        <p>
+          <i class="fa fa-star" style="color:#f2b01e"></i>
+          <i class="fa fa-star-half-o" style="color:#f2b01e"></i>
+          <i class="fa fa-star-o" style="color:#f2b01e"></i>
+          <i class="fa fa-star-o" style="color:#f2b01e"></i>
+          <i class="fa fa-star-o" style="color:#f2b01e"></i>
+        </p>
+      </div>
+      <div class="rating" *ngIf="item.rate==1.00">
+        <p>
+          <i class="fa fa-star" style="color:#f2b01e"></i>
+          <i class="fa fa-star-o" style="color:#f2b01e"></i>
+          <i class="fa fa-star-o" style="color:#f2b01e"></i>
+          <i class="fa fa-star-o" style="color:#f2b01e"></i>
+          <i class="fa fa-star-o" style="color:#f2b01e"></i>
+        </p>
+      </div>
+      <div class="rating" *ngIf="item.rate==0.5">
+        <p>
+          <i class="fa fa-star-half-o" style="color:#f2b01e"></i>
+          <i class="fa fa-star-o" style="color:#f2b01e"></i>
+          <i class="fa fa-star-o" style="color:#f2b01e"></i>
+          <i class="fa fa-star-o" style="color:#f2b01e"></i>
+          <i class="fa fa-star-o" style="color:#f2b01e"></i>
+        </p>
+      </div>
+
+    </div>
+    <p>{{item.comment}}</p>
+    <hr>
+  </div>
+
+</div>

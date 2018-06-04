@@ -1,0 +1,35 @@
+<!--<div class="wrapper">-->
+  <!--<div class="sidebar" data-active-color="white" data-background-color="black" data-image="../assets/img/sidebar-1.jpg">-->
+      <!--<app-supersiderbar></app-supersiderbar>-->
+      <!--&lt;!&ndash; <app-supersiderbar-cmp></app-supersiderbar-cmp> &ndash;&gt;-->
+      <!--<div class="sidebar-background" style="background-image: url(assets/img/sidebar-1.jpg)"></div>-->
+  <!--</div>-->
+  <!--<div class="main-panel">-->
+      <!--<app-navbar-cmp></app-navbar-cmp>-->
+      <!--<router-outlet></router-outlet>-->
+      <!--<div *ngIf="!isMap()">-->
+          <!--<app-footer-cmp></app-footer-cmp>-->
+      <!--</div>-->
+  <!--</div>-->
+<!--</div>-->
+
+<div class="navbar-fixed"> <app-navbar-cmp></app-navbar-cmp></div>
+<div class="wrapper" style="overflow: hidden ; padding-top: 70px;">
+  <div class="container-fluid" >
+    <div class="row">
+      <div class="super-sidebar-main">
+        <app-supersiderbar></app-supersiderbar>
+      </div>
+        <div class="" style="width: 20%"></div>
+      <div class="" style="width: 80%;padding: 0px 20px;">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+    
+  </div>
+  <div class="dashboard-footer" style="float: right; width:79%">
+
+    <app-footer-cmp></app-footer-cmp>
+
+  </div>
+
