@@ -1381,7 +1381,9 @@ app-residential-dialog2 .forgot-pass {
 .card .card-title {
   font-size: 22px;
   line-height: 26px;
-  font-weight: 500; }
+  font-weight: 500;
+  margin-bottom: 0px !important; 
+}
 
 input.mat-input-element,
 input.mat-input-element::-webkit-input-placeholder {
@@ -4827,19 +4829,23 @@ text-align: center;
   display: flex;
 }
 .product-label{
-  font-size: 17px;
+  font-size: 14px;
     font-weight: 500;
     /* padding-top: 25px; */
     color: #6b6b6b;
     /* text-align: right; */
+    margin-top: 2px;
 }
 .sort-btn{
   background: none;
     border: none;
     /* margin: 0px 40px; */
-    font-size: 17px;
+    font-size: 14px;
     font-weight: bold;
     margin: 0px;
+}
+.sort-btn:focus{
+  color: #c00;
 }
 .icon-bar{
   margin-top: 25px;
@@ -4898,11 +4904,46 @@ text-align: center;
   justify-content: center; */
 }
 .logo-div a img{
-  margin-top: 37px !important;
+  margin-top: 3px !important;
 }
 .pagination li a{
   z-index: 0 !important;
 }
+.print{
+  float: right;
+  margin-right: 10px;
+  background: #323131;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+.Compare{
+  float: right;
+  background: #323131;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+.check-box{
+  float: left;
+  margin-top: 15px;
+}
+.rating-stars{
+  width: 58% !important;
+}
+.signup-btn{
+  box-shadow: 1px 1px 8px 2px #ccc !important;
+}
+.paginations{
+  padding-top: 5px;
+}
+.paginations a{
+  margin-right: 10px;
+}
+
+
 /* End Products */
 
 /* Start user Sidebar */
@@ -4911,7 +4952,7 @@ text-align: center;
   margin-top: 6px;
 }
 .custom-style{
-  width: 55%;
+  width: 52%;
   height: 36px;
   margin: 0 auto !important;
   border: 1px solid rgb(188, 188, 188);
@@ -4919,8 +4960,10 @@ text-align: center;
   margin-bottom: 20px !important;
 }
 .zip-input{
-  font-size: 47px !important;
+  font-size: 30px !important;
   height: 34px !important;
+  font-weight: bold !important;
+  text-align: center;
 }
 hr{
   margin: 0px !important;
