@@ -86,11 +86,11 @@
     <img src="{{pro.profile_logo}}" alt="{{pro.title}}" />
   </div>
 </div>
-<div class="container-fluid comments-box">
+<div class="container-fluid comments-box" *ngIf="rev">
   <h1>Reviews</h1>
   <div class="review-content" *ngFor="let item of rev" class="product-review">
     <h3>{{item.username}}</h3>
-    <div class="rating-star">
+    <div class="rating-star" >
       <div class="rating" *ngIf="item.rate==5.00">
         <p>
           <i class="fa fa-star" style="color:#f2b01e"></i>
@@ -186,5 +186,10 @@
     <p>{{item.comment}}</p>
     <hr>
   </div>
-
+ <div *ngIf="rev==0">
+   
+    <img _ngcontent-c5="" src="../../assets/img/review.gif" style="width: 550px; height: 400px;">
+     
+  </div>
 </div>
+

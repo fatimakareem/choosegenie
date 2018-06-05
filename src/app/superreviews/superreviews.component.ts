@@ -48,7 +48,7 @@ export class SuperreviewsComponent implements OnInit {
   }
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    this.http.get('http://192.168.30.193:9000/choice/getallreviewssuperdashboard/'+'?page=' + page, { headers: headers })
+    this.http.get(Config.api +'getallreviewssuperdashboard/'+'?page=' + page, { headers: headers })
     .subscribe(Res => {
     this.rev=Res.json()['Results'];
     console.log(this.rev)
