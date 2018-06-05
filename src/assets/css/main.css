@@ -4961,7 +4961,9 @@ text-align: center;
 .paginations a{
   margin-right: 10px;
 }
-
+.pagination{
+  margin: 0px !important;
+}
 
 /* End Products */
 
