@@ -33,7 +33,7 @@ export class SuperreviewsComponent implements OnInit {
   private allItems: any[];
   pager: any = {};
   home: any = {};
- 
+  pagedItems;
   page: any[];
   rev:any=[];
   id;
