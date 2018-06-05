@@ -235,21 +235,24 @@
                 </mat-form-field>
               </div>
             </div>
-
-
-          </div>
-
-
-          <blackgeeks-recaptcha></blackgeeks-recaptcha>
-          <div class="form-footer text-right">
-
-            <div class="form-group">
-
-              <button class="btn btn-lrg btn-rose btn-fill btn-wd" style="width:50%; border-radius:50px;font-size:24px !important;" type="submit"
-                (click)="signupuserdata() ">Register</button>
+            <div class="col-lg-6 recaptcha-box">
+              <blackgeeks-recaptcha></blackgeeks-recaptcha>
             </div>
 
+            <div class="col-lg-6 form-footer text-right">
+
+              <div class="form-group">
+  
+                <button class="btn btn-lrg btn-rose btn-fill btn-wd" style="width:100%; border-radius:50px;font-size:24px !important;" type="submit"
+                  (click)="signupuserdata() ">Register</button>
+              </div>
+  
+            </div>
           </div>
+
+
+          
+          
         </div>
       </form>
     </div>
