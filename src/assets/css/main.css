@@ -26,11 +26,14 @@
   list-style: none;
  }
 .margin{
-  margin-top: -30px !important;
+  margin-top: -9px !important;
 }
 .padding{
   padding-right: 81px;
   padding-left: 40px;
+}
+.recaptcha-box{
+  margin-top: -20px;
 }
 
 app-my-app:after,
@@ -4721,6 +4724,7 @@ section#boody{
     line-height: 19px;
     width: 98%;
     float: right;
+    margin-top: -6px;
 }
 .price-style {
   display: block;
@@ -4883,7 +4887,7 @@ text-align: center;
   z-index: 1;
 }
 .margin-up{
-  margin-top: -20px !important;
+  margin-top: -6px !important;
 }
 .display{
   display: flex;
@@ -4898,7 +4902,7 @@ text-align: center;
 }
 .logo-div{
   height: 139px;
-  margin-top: -20px;
+  margin-top: -6px;
   /* display: flex;
   align-items: center;
   justify-content: center; */
@@ -4912,7 +4916,7 @@ text-align: center;
 .print{
   float: right;
   margin-right: 10px;
-  background: #323131;
+  background: #444;
   color: #fff;
   border: none;
   padding: 5px 10px;
@@ -4920,21 +4924,36 @@ text-align: center;
 }
 .Compare{
   float: right;
-  background: #323131;
+  background: #444;
   color: #fff;
   border: none;
   padding: 5px 10px;
   border-radius: 4px;
 }
+.Compare:hover{
+  background: #c00;
+}
+.print:hover{
+  background: #c00;
+}
 .check-box{
   float: left;
   margin-top: 15px;
+}
+.check-box input{
+  width: 17px;
+    height: 17px;
 }
 .rating-stars{
   width: 58% !important;
 }
 .signup-btn{
   box-shadow: 1px 1px 8px 2px #ccc !important;
+  transition: 0.5s;
+  background: #444 !important;
+}
+.signup-btn:hover{
+  background: #cc0000 !important;
 }
 .paginations{
   padding-top: 5px;
@@ -5047,6 +5066,12 @@ background: linear-gradient(to bottom, #eaeaea 0%,#c6c6c6 50%,#999a9b 100%); /* 
 }
 .sidebar-serch-btn i{
   font-size: 30px !important;
+}
+.sidebar-user .btn{
+  width: 88%;
+  background: #444 !important;
+  box-shadow: none !important;
+  transition: 1s;
 }
 /* End user Siderbar */
 
@@ -5395,6 +5420,16 @@ background: linear-gradient(to bottom, #eaeaea 0%,#c6c6c6 50%,#999a9b 100%); /* 
   .plan-detail{
     margin-bottom: 20px;
   }
+  .product-page-bar{
+    display: inline-block;
+  }
+  .paginations{
+    float: left;
+    width: auto !important;
+  }
+  .float-r{
+    float: right !important;
+  }
 }
 @media (max-width: 425px) {
   /* Small devices (425px and down) */
@@ -5490,6 +5525,16 @@ background: linear-gradient(to bottom, #eaeaea 0%,#c6c6c6 50%,#999a9b 100%); /* 
   .plan-detail{
     border-right: none !important;
   }
+  
+}
+@media (max-width: 426px) {
+  .plan-detail{
+    height: auto !important;
+  }
+  .card img {
+    display: block;
+    margin: 0 auto;
+}
 }
 @media (max-width: 991px) {
   /* Large devices (992px and down) */
@@ -5583,7 +5628,12 @@ background: linear-gradient(to bottom, #eaeaea 0%,#c6c6c6 50%,#999a9b 100%); /* 
     font-size: 15px;
     font-weight: 500;
   }
-
+  .up-margin{
+    margin-top: 30px !important;
+  }
+  .padding{
+    padding: 0 0 0 5px !important;
+  }
 }
  /* text-align: center; */
 hr{
