@@ -16,8 +16,7 @@
 
       <div class="carousel-inner">
         <div class="item active af-color">
-          <label class="search-bg__title animated fadeInDown">Shop with a ROAR: ChoiceGenie is The Next Generation Energy Comparative Shopping Engine – A Super Fast, Super Easy
-            Time n’ Money Saving Experience!</label>
+          <label class="search-bg__title animated fadeInDown">SHOP with a ROAR! ChoiceGenie is The Next Generation Energy Comparative Shopping Engine. A Super Fast, Super Easy, Time & Money Saving Experience.</label>
           <img src="../../assets/img/1.jpg" alt="" />
         </div>
 
@@ -55,11 +54,12 @@
               <div class="col-md-6 col-sm-6 col-xs-6 compare-input">
                 <div class="form-group label-floating ">
                   <mat-form-field>
-                    <input matInput placeholder="Zip Code" [formControl]="zip_code" [(ngModel)]=zipCode #zipcode1 name="zipCode" (focusout)="Checkzipcode(zipcode1.value)"  />
+                    <input matInput placeholder="Zip Code" [formControl]="zip_code" [(ngModel)]=zipCode #zipcode1 name="zipCode" (focusout)="Checkzipcode(zipcode1.value)"
+                    />
                     <mat-error *ngIf="zip_code.hasError('pattern')">
                       Numbers Only
                     </mat-error>
-                    
+
                   </mat-form-field>
                   <!-- <div *ngIf="zipcodeexist" class="alert alert-danger">
                     {{zipcodeexist}}

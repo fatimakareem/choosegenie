@@ -1385,7 +1385,7 @@ app-residential-dialog2 .forgot-pass {
   font-size: 22px;
   line-height: 26px;
   font-weight: 500;
-  margin-bottom: 0px !important; 
+  margin-bottom: 0px !important;
 }
 
 input.mat-input-element,
@@ -2808,6 +2808,7 @@ section {
 
 mat-form-field.mat-form-field{
   width: 100% !important;
+  margin-top: 15px;
 }
 .mat-input-underline > .mat-input-ripple{
   background-color: #3f51b5;
@@ -3166,7 +3167,7 @@ li.pinterest:hover {
 
 /* header css fixed start*/
 .navbar-nav > li > a {
-  font-size:19px !important;
+  font-size:19px;
 }
 .nav-home ul li :hover {
   color: #e53935;
@@ -3977,6 +3978,7 @@ nav#mainnav li a {
   text-decoration: none;
   letter-spacing: 0.5px;
   transition: 0.5s;
+  font-size: 16px;
 }
 
 aside#sidebar h4 {
@@ -4696,6 +4698,11 @@ section#boody{
   width: 100%;
   max-width: 100%;
 }
+.admin-heding h2{
+  margin: 5px 0px 0px 0px;
+  color: #fff;
+  font-size: 31px;
+}
 .sidebar-profile-img{
   width: 55%;
   height: 55%;
@@ -4703,14 +4710,14 @@ section#boody{
   border-radius: 100%;
   background: #ffffff;
   box-shadow: 0px 0px 18px #cc0000;
-
+  /*margin-top: 25px !important;*/
 }
 .sidebar-profile-img >a >img{
   width: 90%;
   margin: 36% 5%;
 }
 #mainnav >ul >li >input{
-  font-size: 30px;
+  font-size: 25px;
   font-weight: 400;
   text-align: center;
   padding: 5% 0%;
@@ -4833,18 +4840,18 @@ text-align: center;
   display: flex;
 }
 .product-label{
-  font-size: 14px;
+  font-size: 12px;
     font-weight: 500;
     /* padding-top: 25px; */
     color: #6b6b6b;
     /* text-align: right; */
-    margin-top: 2px;
+    margin-top: 4px;
 }
 .sort-btn{
   background: none;
     border: none;
     /* margin: 0px 40px; */
-    font-size: 14px;
+    font-size: 12px;
     font-weight: bold;
     margin: 0px;
 }
@@ -4912,6 +4919,9 @@ text-align: center;
 }
 .pagination li a{
   z-index: 0 !important;
+}
+.pagination > .active > a, .pagination > .active > a:focus, .pagination > .active > a:hover, .pagination > .active > span, .pagination > .active > span:focus, .pagination > .active > span:hover{
+  background: #CC0000 !important;
 }
 .print{
   float: right;
@@ -5073,6 +5083,15 @@ background: linear-gradient(to bottom, #eaeaea 0%,#c6c6c6 50%,#999a9b 100%); /* 
   box-shadow: none !important;
   transition: 1s;
 }
+
+.mat-option.mat-selected:hover {
+  background-color: #c00 !important;
+}
+
+
+
+
+
 /* End user Siderbar */
 
 /*Start Super Sidebar*/
@@ -5525,7 +5544,13 @@ background: linear-gradient(to bottom, #eaeaea 0%,#c6c6c6 50%,#999a9b 100%); /* 
   .plan-detail{
     border-right: none !important;
   }
-  
+  .btn-slider-left {
+    top: 37% !important;
+  }
+  .btn-slider-right {
+    top: 37% !important;
+  }
+
 }
 @media (max-width: 426px) {
   .plan-detail{
@@ -5556,7 +5581,7 @@ background: linear-gradient(to bottom, #eaeaea 0%,#c6c6c6 50%,#999a9b 100%); /* 
   .position{
     position: relative !important;
   }
-  
+
 }
 @media (max-width: 1024px) {
   /* Large devices (992px and down) */
@@ -5567,7 +5592,7 @@ background: linear-gradient(to bottom, #eaeaea 0%,#c6c6c6 50%,#999a9b 100%); /* 
 
   } */
   .slick-slide img{
-    width: 100%;
+    width: 98%;
   }
   .search-bg__title{
     font-size: 23px;
@@ -5576,7 +5601,7 @@ background: linear-gradient(to bottom, #eaeaea 0%,#c6c6c6 50%,#999a9b 100%); /* 
     height: 380px;
   }
   .form-zip{
-    margin-top: 80px !important;
+    margin-top: 39px !important;
   }
   #main-bg-slider .item img{
     height: 380px;
@@ -5629,7 +5654,7 @@ background: linear-gradient(to bottom, #eaeaea 0%,#c6c6c6 50%,#999a9b 100%); /* 
     font-weight: 500;
   }
   .up-margin{
-    margin-top: 30px !important;
+    margin-top: 35px !important;
   }
   .padding{
     padding: 0 0 0 5px !important;
@@ -5704,16 +5729,25 @@ background: linear-gradient(to bottom, #eaeaea 0%,#c6c6c6 50%,#999a9b 100%); /* 
   }
 
   .navbar-nav > li > a {
-    font-size: 17px !important;
+    font-size: 17px;
   }
 }
   @media only screen and (max-width : 1082px) {
     .navbar-nav > li > a {
-      font-size: 11px !important;
+      font-size: 12px !important;
     }
-
+    .search-size {
+      font-size: 15px;
+    }
+    .material-icons{
+      font-size: 15px;
+    }
   }
-
+@media only screen and (max-width : 1367px) {
+  .navbar-nav > li > a {
+    font-size: 17px;
+  }
+}
 @media only screen and (max-width : 768px) {
 
   .animated {
@@ -5748,6 +5782,16 @@ background: linear-gradient(to bottom, #eaeaea 0%,#c6c6c6 50%,#999a9b 100%); /* 
     animation: none !important;
 
   }
-
+  .margintop{
+    margin-top: 120px !important;
+  }
+  .btn-slider-left{
+    top: 31%;
+    left: -1.5%;
+  }
+  .btn-slider-right{
+    top: 31%;
+    right: -1.5%;
+  }
 }
 

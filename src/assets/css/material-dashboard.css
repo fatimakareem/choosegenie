@@ -3785,7 +3785,7 @@
      left: 0; }
 
  .ct-purple {
-   stroke: #9c27b0 !important; }
+   stroke: #c00 !important; }
 
  .ct-azure {
    stroke: #00bcd4 !important; }
@@ -3846,7 +3846,7 @@
    background: white; }
 
  .mat-option.mat-selected:not(.mat-option-multiple) {
-   background-color: #9c27b0 !important;
+   background-color: #c00 !important;
    color: #FFFFFF !important; }
 
  .mat-option {
@@ -3857,7 +3857,7 @@
    .mat-option:hover {
      -webkit-box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(156, 39, 176, 0.4);
      box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(156, 39, 176, 0.4);
-     background: #9c27b0 !important;
+     background: #c00 !important;
      color: #FFFFFF !important; }
    .mat-option:focus {
      color: rgba(0, 0, 0, 0.87) !important;
@@ -3865,7 +3865,7 @@
      .mat-option:focus .mat-option-pseudo-checkbox:after {
        color: #FFFFFF; }
      .mat-option:focus:hover {
-       background-color: #9c27b0 !important;
+       background-color: #c00 !important;
        color: #FFFFFF !important; }
    .mat-option.mat-selected .mat-option-pseudo-checkbox {
      background: transparent; }
@@ -3874,7 +3874,7 @@
    .mat-option.mat-selected:focus {
      background: transparent !important; }
    .mat-option.mat-selected:hover {
-     background-color: #9c27b0 !important;
+     background-color: #c00 !important;
      color: #FFFFFF !important; }
      .mat-option.mat-selected:hover .mat-option-pseudo-checkbox:after {
        color: #FFFFFF; }

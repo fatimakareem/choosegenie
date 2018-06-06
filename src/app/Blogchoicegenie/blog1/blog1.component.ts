@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import { HttpClient, HttpResponse, HttpHeaders } from "@angular/common/http";
 import { Headers, Http, Response } from '@angular/http';
+import {HttpService} from '../../serv/http-service';
+// import {HttpService} from '/serv/http-service';
 
 @Component({
   selector: 'app-blog1',
@@ -11,7 +13,7 @@ import { Headers, Http, Response } from '@angular/http';
 })
 export class Blog1Component implements OnInit {
 data:any=[];
-  constructor(private route: ActivatedRoute,private http: Http) { }
+  constructor(private route: ActivatedRoute,private http: HttpService) { }
   private Sub: Subscription;
 public heading1;
   ngOnInit() {
