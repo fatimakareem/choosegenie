@@ -53,7 +53,7 @@
                   </div>
 
                   <div class="col-lg-1 col-md-2 col-sm-4 col-xs-12 align padding" style="margin-top: 5px">
-                    <button class="sort-btn " type="button"(click)="Renewable()">
+                    <button class="sort-btn " type="button" (click)="Renewable()">
                       RENEWABLE
                       <i class="fa fa-sort-down down-icon"></i>
 
@@ -78,35 +78,69 @@
 
                     </button>
                   </div>
-                
+
                   <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
-                      <li [ngClass]="{hide:pager.currentPage === 1}">
-                          <a (click)="setPage(1)"class="view-plan-details"><i class="fa fa-angle-double-left"></i></a>
-                        </li>
-                      <li [ngClass]="{hide:pager.currentPage === 1}">
-                    <a (click)="setPage(pager.currentPage - 1)" class="view-plan-details"><i class="fa fa-angle-left"></i></a></li>
-                    
+                    <li [ngClass]="{hide:pager.currentPage === 1}">
+                      <a (click)="setPage(1)" class="view-plan-details">
+                        <i class="fa fa-angle-double-left"></i>
+                      </a>
+                    </li>
+                    <li [ngClass]="{hide:pager.currentPage === 1}">
+                      <a (click)="setPage(pager.currentPage - 1)" class="view-plan-details">
+                        <i class="fa fa-angle-left"></i>
+                      </a>
+                    </li>
+
                     <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
-                        <a (click)="setPage(page)" class="view-plan-details">{{page}}</a>
-                      </li>
-                    
+                      <a (click)="setPage(page)" class="view-plan-details">{{page}}</a>
+                    </li>
+
                     <li [ngClass]="{hide:pager.currentPage === pager.totalPages}">
-                    <a  (click)="setPage(pager.currentPage + 1)"class="view-plan-details" type="Next"><i class="fa fa-angle-right"></i></a></li>
+                      <a (click)="setPage(pager.currentPage + 1)" class="view-plan-details" type="Next">
+                        <i class="fa fa-angle-right"></i>
+                      </a>
+                    </li>
                     <li [ngClass]="{hide:pager.currentPage === pager.totalPages}">
-                        <a (click)="setPage(pager.totalPages)" class="view-plan-details" type="Last"><i class="fa fa-angle-double-right"></i></a>
-                      </li>
-                    </ul>
-                  <div class="col-md-2 col-sm-4 col-xs-12 space-b" style="margin-top: 2px">
-                    <button class="Compare" (click)="Comapreproduct()">Compare</button>
+                      <a (click)="setPage(pager.totalPages)" class="view-plan-details" type="Last">
+                        <i class="fa fa-angle-double-right"></i>
+                      </a>
+                    </li>
+                  </ul>
+                  
+                  <div class="col-md-1 col-sm-4 col-xs-12 prod-select-list">
                     
-                    <button class="print" (click)="onPrint()">
-                      <i class="fa fa-print"></i>
-                    </button>
-                    
+                      <mat-form-field>
+                          <mat-select  placeholder="10 PER PAGE" selected="10" (change)="fetchitem(items)" required [(ngModel)]="items" name="items">
+                            <mat-option value="10" selected="true">10 PER PAGE</mat-option>
+                            <mat-option value="20">20 PER PAGE</mat-option>
+                            <mat-option value="40">40 PER PAGE</mat-option>
+                            <mat-option value="556">SEE ALL</mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                          <!-- <a class="btn  dropdown-toggle" href="https://example.com" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"placeholder="10 PER PAGE" selected="10" (change)="fetchitem(items)" required [(ngModel)]="items" name="items">
+                            Dropdown link
+                          </a>
+                        
+                          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" >
+                            <a class="dropdown-item" value="10" selected="true">10 PER PAGE</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                          </div> -->
+                        
+              
+                  </div>
+                  <div class="col-md-2 col-sm-4 col-xs-12 compare-print">
+                      <button class="Compare" (click)="Comapreproduct()">Compare</button>
+
+                      <button class="print" (click)="onPrint()">
+                        <i class="fa fa-print"></i>
+                      </button>
                   </div>
                   <!-- <a target="_blank"   onclick="window.print();" class="print-grid-temp" title="Print plan results">
                     <img alt="print" src="/Content/images/printer.png" width="16" height="16"></a> -->
+                    
                 </div>
+               
 
 
 
@@ -190,19 +224,19 @@
             </div>
             <!-- <input type="checkbox" name="comp"  #comp (change)="checked(data.id,i)">{{data.id}} -->
             <div class="card-content" style="padding: 0px;">
-             
+
               <div class="col-md-3  col-sm-6 col-xs-12 plan-detail text-center logo-div">
                 <div class="check-box">
-                  <input type="checkbox" name="comp"  #comp (change)="checked(data.id,i)">
+                  <input type="checkbox" name="comp" #comp (change)="checked(data.id,i)">
                 </div>
-                  <!-- <input type="checkbox" value="{{data.id}}" name="comp"  > -->
+                <!-- <input type="checkbox" value="{{data.id}}" name="comp"  > -->
                 <a href="{{data.profileurl}}" target="_blank" class="display-b margin-top">
 
                   <img src="{{data.profile_logo}}" alt="{{data.title}}" style="width: 90%;
                   height: 85px;" />
                 </a>
                 <img src="{{data.rating_logo}}" alt="{{data.title}}" class="rating-stars" />
-                
+
 
 
 
@@ -210,11 +244,12 @@
 
 
                 <a>
-                   
 
-                <label class="view-plan-details" style="padding-bottom: 0px; margin-bottom: 0px;"  (click)="btnDeleteClick(data.id,data.title,data.profileurl,data.profile_logo)"
-                  data-toggle="modal" data-target="#myModal3"> Leave a Review
-                </label></a>
+
+                  <label class="view-plan-details" style="padding-bottom: 0px; margin-bottom: 0px;" (click)="btnDeleteClick(data.id,data.title,data.profileurl,data.profile_logo)"
+                    data-toggle="modal" data-target="#myModal3"> Leave a Review
+                  </label>
+                </a>
                 <div class="modal fade" id="myModal3" role="dialog">
                   <div class="modal-dialog">
 
@@ -402,21 +437,22 @@
                 <h3 class="text-center" style="margin-top: -22px !important;">
                   <b> Call now</b>
                 </h3>
-                <p class="text-center" >
-                    <!-- <a href="tel:1-832-975-1000"> -->
+                <p class="text-center">
+                  <!-- <a href="tel:1-832-975-1000"> -->
                   <a href="tel:{{data.phone}}">
-                      <!-- <input type="text" id="phone" value="{{data.phone}}"  name="phone"  > -->
-                    {{data.phone}}</a><br/>
-                    <span>OR</span>
+                    <!-- <input type="text" id="phone" value="{{data.phone}}"  name="phone"  > -->
+                    {{data.phone}}</a>
+                  <br/>
+                  <span>OR</span>
                 </p>
-             
+
                 <!-- (click)="openDialog(data.id)" -->
                 <button class="btn signup-btn" style="display: block;  margin: 0 auto;">
                   <a style="color:white" href="{{data.profileurl}}" target="_blank">Signup </a>
                   <!-- <i class="material-icons">bubble_chart</i> -->
                 </button>
                 <a href="Review/{{data.id}}">
-                <label  class="view-plan-details" style="padding-bottom: 0px; margin-bottom: 0px;">Reviews</label>
+                  <label class="view-plan-details" style="padding-bottom: 0px; margin-bottom: 0px;">Reviews</label>
                 </a>
                 <!-- <a href="Review/{{data.id}}"><div  class="rating">
                     <p >
