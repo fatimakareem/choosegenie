@@ -91,46 +91,42 @@ width: 73%;">
 
           </div>
         </div>
-        <br class="clearfix" />
+        <!-- <br class="clearfix" />
         <div class="col-sm-6">
           <div class="form-group">
             <mat-form-field>
               <input matInput placeholder="Billing Address "  value = "{{data.billing_address}}" #updatebillingaddress  required>
-              <!-- <mat-error *ngIf="secondFormGroup.controls.Country.dirty && !secondFormGroup.controls.Country.value"> Special characters not allowed</mat-error> -->
-            </mat-form-field>
+               </mat-form-field>
 
           </div>
-        </div>
-        <br class="clearfix" />
+        </div> -->
+        <!-- <br class="clearfix" />
         <div class="col-sm-6">
           <div class="form-group">
             <mat-form-field>
               <input matInput placeholder="Billing city " value = "{{data.billing_city}}" #updatebillingcity  required>
-              <!-- <mat-error *ngIf="secondFormGroup.controls.Country.dirty && !secondFormGroup.controls.Country.value"> Special characters not allowed</mat-error> -->
-            </mat-form-field>
+               </mat-form-field>
 
           </div>
-        </div>
-        <br class="clearfix" />
+        </div> -->
+        <!-- <br class="clearfix" />
         <div class="col-sm-6">
           <div class="form-group">
             <mat-form-field>
               <input matInput placeholder="Billing state" value = "{{data.billing_state}}" #updatebillingstate   required>
-              <!-- <mat-error *ngIf="secondFormGroup.controls.Country.dirty && !secondFormGroup.controls.Country.value"> Special characters not allowed</mat-error> -->
-            </mat-form-field>
+               </mat-form-field>
 
           </div>
-        </div>
-        <br class="clearfix" />
+        </div> -->
+        <!-- <br class="clearfix" />
         <div class="col-sm-6">
           <div class="form-group">
             <mat-form-field>
               <input matInput placeholder="Billing Zip" value = "{{data.billing_zip}}" #updatebillingZipcode required>
-              <!-- <mat-error *ngIf="secondFormGroup.controls.Country.dirty && !secondFormGroup.controls.Country.value"> Special characters not allowed</mat-error> -->
-            </mat-form-field>
+              </mat-form-field>
 
           </div>
-        </div>
+        </div> -->
         <input matInput placeholder="code authentication" value = "{{data.authentication_code}}" hidden ="true" #updateauthenticationcode required>
         <input matInput placeholder="Billing Zip" value = "{{data.AcountActive}}" hidden="true" #updateacountactive required>
         <input matInput placeholder="Billing Zip" value = "{{data.user}}" hidden="true" #updateuserid required>
@@ -141,11 +137,11 @@ width: 73%;">
 
 
       <div class="form-footer text-right">
-
+<!-- //data.billing_address,data.billing_city,data.billing_state,data.billing_zip -->
         <div class="form-group">
-          <button class="btn btn-lrg btn-rose btn-fill btn-wd" style="width:100%; border-radius:50px;font-size:24px !important;" type="submit" (click)="btnEditClick(data.id,data.name,data.phone_no,data.service_address,data.service_state,data.service_city,data.service_zip,data.billing_address,data.billing_city,data.billing_state,data.billing_zip,data.authentication_code,data.AcountActive,data.user);
+          <button class="btn btn-lrg btn-rose btn-fill btn-wd" style="width:100%; border-radius:50px;font-size:24px !important;" type="submit" (click)="btnEditClick(data.id,data.name,data.phone_no,data.service_address,data.service_state,data.service_city,data.service_zip,data.authentication_code,data.AcountActive,data.user);
           editClick(updateid.value,updatename.value,updatecontact.value,updateserviceaddress.value,updateservicestate.value,updateservicecity.value,updateservicezipcode.value,
-          updatebillingaddress.value,updatebillingcity.value,updatebillingstate.value,updatebillingZipcode.value,updateauthenticationcode.value,updateacountactive.value,updateuserid.value)"
+          updateauthenticationcode.value,updateacountactive.value,updateuserid.value)"
             >Register</button>
         </div>
       </div>

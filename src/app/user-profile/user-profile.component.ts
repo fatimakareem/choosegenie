@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 // import {FormControl, Validators} from '@angular/forms';
-import {NgForm} from '@angular/forms';
+import { NgForm } from '@angular/forms';
 // import {ContactUsService} from "./contact-us.service";
 import { AgmCoreModule } from '@agm/core';
 import { Headers, Http, Response } from '@angular/http';
@@ -12,8 +12,8 @@ import { SimpleGlobal } from 'ng2-simple-global';
 import { ResponseContentType } from '@angular/http/src/enums';
 import { FormBuilder, Validators, NgControl, RadioControlValueAccessor, FormControl, FormGroup } from '@angular/forms';
 import { HttpClient, HttpResponse, HttpHeaders } from "@angular/common/http";
- import swal from 'sweetalert2'; 
-import { MatSelect, MatDialog } from '@angular/material'; 
+import swal from 'sweetalert2';
+import { MatSelect, MatDialog } from '@angular/material';
 import { UpdateService } from './update.service';
 import { DataService } from '../data.service';
 
@@ -27,7 +27,7 @@ import { DataService } from '../data.service';
 export class UserProfileComponent implements OnInit {
 
   public username;
-  state:any=[];
+  state: any = [];
   city;
   confirmpassword;
   signupForm: FormGroup;
@@ -41,19 +41,19 @@ export class UserProfileComponent implements OnInit {
   date = new FormControl(new Date());
   emailexist: boolean = true;
   hide = true;
-data:any=[];
+  data: any = [];
 
-profile: any= [];
-personal : any = [];
-local;
-uname;
-usernameexist;
+  profile: any = [];
+  personal: any = [];
+  local;
+  uname;
+  usernameexist;
 
-  constructor(private https:Http,public router: Router, private fb: FormBuilder, private http: HttpClient,     
-    private route: ActivatedRoute,private sg: SimpleGlobal, 
-    private serve: UpdateService,  private dialog: MatDialog, private dataa: DataService) { 
+  constructor(private https: Http, public router: Router, private fb: FormBuilder, private http: HttpClient,
+    private route: ActivatedRoute, private sg: SimpleGlobal,
+    private serve: UpdateService, private dialog: MatDialog, private dataa: DataService) {
 
-    
+
     //   if (localStorage.getItem('username')) {
     //     this.local = localStorage.getItem('username');
     //   // let pars = JSON.parse(this.local) ;
@@ -70,27 +70,27 @@ usernameexist;
     //     });
     //   }
     // }
-    }
-   
- 
-  ngOnInit() 
-  { this.username = localStorage.getItem('custum');
-   this.fetchzip()
-  this.signupForm = this.fb.group({
-    'name': ['', Validators.compose([Validators.required])],
-    'phone_no': ['', Validators.compose([Validators.required, Validators.pattern(this.digitsOnly)])],
-    'service_address': ['', Validators.compose([Validators.required])],
-    'service_state': ['', Validators.compose([Validators.required])],
-    'service_city': ['', Validators.compose([Validators.required])],
-    'service_zip': ['', Validators.compose([Validators.required])],
-    'billing_address ': ['', Validators.compose([Validators.required])],
-    'billing_city ': ['', Validators.compose([Validators.required])],
-    'billing_state': ['', Validators.compose([Validators.required])],
-    'billing_zip ': ['', Validators.compose([Validators.required])],
-  },
-  {
-    //validator: PasswordValidation.MatchPassword // your validation method
-});
+  }
+
+
+  ngOnInit() {
+  this.username = localStorage.getItem('custum');
+    this.fetchzip();
+    this.signupForm = this.fb.group({
+      'name': ['', Validators.compose([Validators.required])],
+      'phone_no': ['', Validators.compose([Validators.required, Validators.pattern(this.digitsOnly)])],
+      'service_address': ['', Validators.compose([Validators.required])],
+      'service_state': ['', Validators.compose([Validators.required])],
+      'service_city': ['', Validators.compose([Validators.required])],
+      'service_zip': ['', Validators.compose([Validators.required])],
+      'billing_address ': ['', Validators.compose([Validators.required])],
+      'billing_city ': ['', Validators.compose([Validators.required])],
+      'billing_state': ['', Validators.compose([Validators.required])],
+      'billing_zip ': ['', Validators.compose([Validators.required])],
+    },
+      {
+        //validator: PasswordValidation.MatchPassword // your validation method
+      });
   }
   catagoryId = "";
   zipcode = "";
@@ -101,7 +101,7 @@ usernameexist;
   // state = "";
   // email = "";
   country = "";
- // status="";
+  // status="";
 
   btnEditClick(id, val9, val2, val3, val4, val5, val6, val7, val8, val1) {
     this.catagoryId = id;
@@ -118,46 +118,46 @@ usernameexist;
 
     console.log(val1, val2, val3, val4, val5, val6, val7, val8, val9)
     console.log('id : ' + this.catagoryId);
-}
+  }
 
-//Event Binding of PopUp Delete Modal
-// item.id,item.zipcode,item.utilityarea,item.title,item.Phone,item.state,item.country,item.status,item.user
-editClick(updateid,updatename,updatecontact,updateserviceaddress,updateservicestate,updateservicecity,updateservicezipcode,
-  updatebillingaddress,updatebillingcity,updatebillingstate,updatebillingZipcode,updateauthenticationcode,updateacountactive,updateuserid) {
+  //Event Binding of PopUp Delete Modal
+  // item.id,item.zipcode,item.utilityarea,item.title,item.Phone,item.state,item.country,item.status,item.user
+  editClick(updateid,updatename,updatecontact,updateserviceaddress,updateservicestate,updateservicecity,updateservicezipcode,
+    updateauthenticationcode,updateacountactive,updateuserid) {
     console.log('edit' + updateid,updatename,updatecontact,updateserviceaddress,updateservicestate,updateservicecity,updateservicezipcode,
-    updatebillingaddress,updatebillingcity,updatebillingstate,updatebillingZipcode,updateauthenticationcode,updateacountactive,updateuserid);
-    console.log("TS OBJECT",updateid,updatename,updatecontact,updateserviceaddress,updateservicestate,updateservicecity,updateservicezipcode,
-    updatebillingaddress,updatebillingcity,updatebillingstate,updatebillingZipcode,updateauthenticationcode,updateacountactive,updateuserid);
+    updateauthenticationcode,updateacountactive,updateuserid);
+    console.log("TS OBJECT", updateid,updatename,updatecontact,updateserviceaddress,updateservicestate,updateservicecity,updateservicezipcode,
+    updateauthenticationcode,updateacountactive,updateuserid);
     //Calling Delete Service
     this.serve.editTodoList(updateid,updatename,updatecontact,updateserviceaddress,updateservicestate,updateservicecity,updateservicezipcode,
-      updatebillingaddress,updatebillingcity,updatebillingstate,updatebillingZipcode,updateauthenticationcode,updateacountactive,updateuserid).subscribe(data => {
+      updateauthenticationcode,updateacountactive,updateuserid).subscribe(data => {
         console.log(data);
-        swal({
-            type: 'success',
-            title: 'Updated Your Profile',
-            showConfirmButton: false,
-            timer: 1500
+       this.fetchzip();
+         swal({
+          type: 'success',
+          title: 'Updated Your Profile',
+          showConfirmButton: false,
+          timer: 1500
 
         })
-  this.fetchzip();
+       
 
 
-    }, error => {
-    });
-    //  window.location.reload();
- 
-}
+      }, error => {
+      });
+   // window.location.reload();
+   
+  }
   fetchzip() {
-    // this.route.params.subscribe(params => {
-    //   let zip =  this.sg['product_zipcode'];
+console.log(this.username)
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     this.https.get('http://192.168.30.135:9000/users_profile/' + this.username + '/', { headers: headers })
-    
-    .subscribe(Res => {
-    this.data=Res.json();
-    console.log(this.data);
-    });
-    
-    }
+
+      .subscribe(Res => {
+        this.data = Res.json();
+        console.log(this.data);
+      });
+
+  }
 }

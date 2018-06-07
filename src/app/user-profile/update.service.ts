@@ -12,15 +12,14 @@ public username;
    // item.id,item.zipcode,item.utilityarea,item.title,item.Phone,item.state,item.country,item.status,item.user
 //id,updatedrepname,updatedrepcertificateid,updatedcontactname,updatedcontactphone,updatedmarket,updatedstate,updateduser
 editTodoList(updateid,updatename,updatecontact,updateserviceaddress,updateservicestate,updateservicecity,updateservicezipcode,
-  updatebillingaddress,updatebillingcity,updatebillingstate,updatebillingZipcode,updateauthenticationcode,updateacountactive,updateuserid) {
+  updateauthenticationcode,updateacountactive,updateuserid) {
   console.log('Approve user');
   console.log(" service object",updateid,updatename,updatecontact,updateserviceaddress,updateservicestate,updateservicecity,updateservicezipcode,
-  updatebillingaddress,updatebillingcity,updatebillingstate,updatebillingZipcode,updateauthenticationcode,updateacountactive,updateuserid)
+  updateauthenticationcode,updateacountactive,updateuserid)
   const headers = new Headers();
   headers.append('Content-Type', 'application/json');
   return this.http.put('http://192.168.30.135:9000/users_profile/'+ this.username + '/' , JSON.stringify({
-  // return this.http.put(Config.api +'dashboardstatus/'+ id , JSON.stringify({
- // return this.http.put(Config.api+'dataup/'+ id , JSON.stringify({
+
    
   "id": updateid,
   "Name": updatename,
@@ -29,20 +28,14 @@ editTodoList(updateid,updatename,updatecontact,updateserviceaddress,updateservic
   "service_state": updateservicestate,
   "service_city": updateservicecity,
   "service_zip": updateservicezipcode,
-  "billing_address": updatebillingaddress,
-  "billing_city": updatebillingcity,
-  "billing_state": updatebillingstate,
-  "billing_zip": updatebillingZipcode,
+  // "billing_address": updatebillingaddress,
+  // "billing_city": updatebillingcity,
+  // "billing_state": updatebillingstate,
+  // "billing_zip": updatebillingZipcode,
   "authentication_code": updateauthenticationcode,
   "AcountActive": updateacountactive,
   "user": updateuserid
-  // "REP_name": updatedrepname,
-  // "REP_certificate_id": updatedrepcertificateid,
-  // "Contact_Name": updatedcontactname,
-  // "Contact_Phone": updatedcontactphone,
-  // "Market": updatedmarket,
-  // "status": updatedstatus,
-  // "user": updateduser
+ 
 
  
     

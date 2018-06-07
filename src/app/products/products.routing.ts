@@ -9,5 +9,5 @@ export const ProductsRoutes: Routes = [
             path: '',
             component: ProductsComponent
         }]
-    }
+    } 
 ];
