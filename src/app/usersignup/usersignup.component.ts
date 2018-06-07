@@ -175,8 +175,8 @@ export class UsersignupComponent implements OnInit {
 
 
     headers.append('Content-Type', 'application/json');
-    // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-    this.http.get('http://192.168.30.237:9000/choice/zipcodewithstatecity/' + zip, { headers: headers })
+    // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),http://192.168.30.237:9000/choice/
+    this.http.get(Config.api+'zipcodewithstatecity/' + zip, { headers: headers })
 
       .subscribe(data => {
         console.log(data);
@@ -256,7 +256,8 @@ export class UsersignupComponent implements OnInit {
     console.log("CHOICE GENIE", this.model);
     let headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
-    this.http.post( 'http://192.168.30.237:9000/choice/Usersignup/', this.model, { headers: headers })
+    // http://192.168.30.237:9000/choice/
+    this.http.post(Config.api+ 'Usersignup/', this.model, { headers: headers })
       .subscribe(Res => {
         console.log(Res);
         console.log(this.model);

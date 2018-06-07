@@ -187,7 +187,7 @@
           </div>
 
           <div class="col-md-3 col-sm-6 col-xs-12 rate plan-detail margin-up" style="text-align:center">
-            <h3 style=" text-align: center; margin-top: 20px !important;">
+            <h3 style=" text-align: center;">
               <b>Plan Details</b>
             </h3>
 
@@ -454,20 +454,12 @@
           <div class="col-md-3 col-sm-3 col-xs-7 term text-center">
             <div class="text-center">
 
-              <button style="padding:center;
-                              font-size: 29px;
-                              color: red;
-                              " class="fa fa-edit" type="submit" value="Edit" type="submit" (click)="btnEditClick(data.id,data.title,data.sign_up,data.phone,data.terms_of_service,data.fact_sheet,data.cancelation_fee,data.price_1000_kwh,data.price_500_kwh,data.price_2000_kwh,data.plan_information,data.rating_logo,data.profile_logo,data.profileurl,data.active)"
+              <button class="fa fa-edit edit-del-btn" type="submit" value="Edit" type="submit" (click)="btnEditClick(data.id,data.title,data.sign_up,data.phone,data.terms_of_service,data.fact_sheet,data.cancelation_fee,data.price_1000_kwh,data.price_500_kwh,data.price_2000_kwh,data.plan_information,data.rating_logo,data.profile_logo,data.profileurl,data.active)"
                 data-toggle="modal" data-target="#myModal2">
 
               </button>
-              <button style="padding:center;
-                                        font-size: 29px;
-                                        color: red;
-                                        " type="submit" type="submit" (click)="btnactiveClick(data.id,data.title,data.sign_up,data.phone,data.terms_of_service,data.fact_sheet,data.cancelation_fee,data.price_1000_kwh,data.price_500_kwh,data.price_2000_kwh,data.plan_information,data.rating_logo,data.profile_logo,data.profileurl)"
+              <button class="fa fa-check edit-del-btn"  type="submit" type="submit" (click)="btnactiveClick(data.id,data.title,data.sign_up,data.phone,data.terms_of_service,data.fact_sheet,data.cancelation_fee,data.price_1000_kwh,data.price_500_kwh,data.price_2000_kwh,data.plan_information,data.rating_logo,data.profile_logo,data.profileurl)"
                 data-toggle="modal" data-target="#myModal3">
-                <i class="fa fa-check"></i>
-
               </button>
             </div>
             <h3 class="text-center">

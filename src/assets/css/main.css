@@ -1423,7 +1423,7 @@ h3 {
 
 .new-product-holder {
   padding: 30px;
-  float: right;
+  /* float: right; */
   width: 79%;}
   .new-product-holder > .container {
     background: #fff;
@@ -4730,8 +4730,30 @@ section#boody{
   font-size: 15px;
     line-height: 19px;
     width: 98%;
-    float: right;
+    float: left;
     margin-top: -6px;
+}
+.products-area {
+  font-size: 15px;
+  line-height: 19px;
+  padding: 1% 2%;
+  width: 100%;
+  float: left;
+}
+.new-product-holder {
+  padding: 30px;
+  width: 100%;
+}
+.edit-del-btn{
+  padding:center;
+  font-size: 29px;
+  color: #000;
+  background: #fff;
+   border: none;
+}
+.edit-del-btn:hover{
+  color:#cc0000;
+  box-shadow: 0px 0px 5px #ccc;
 }
 .price-style {
   display: block;
@@ -4755,12 +4777,13 @@ section#boody{
     border: 1px solid #c4cdd7;
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
+    margin: 20px 0px;
     color: #ee0b0b;
     padding: 0px !important;
 }
-.layer-content button{
+/* .layer-content button{
   background: #cc0000;
-}
+} */
 .layer-content h2{
   font-size: 28px;
   color:#000;
@@ -5113,7 +5136,7 @@ background: linear-gradient(to bottom, #eaeaea 0%,#c6c6c6 50%,#999a9b 100%); /* 
 /*Start Contact details*/
 .contact-details-form{
   background: white;
-  margin:54px 0px 20px 330px;
+  /* margin:54px 0px 20px 330px; */
   border-radius: 10px;
   float: right;
   box-shadow: 1px 1px 14px 3px #ccc;
@@ -5716,6 +5739,9 @@ background: linear-gradient(to bottom, #eaeaea 0%,#c6c6c6 50%,#999a9b 100%); /* 
   border-right: 11px solid transparent !important;
   border-top: 12px solid !important;
   margin: 0 4px;
+}
+.superreviews-table.table > tbody > tr > td, .table > tfoot > tr > td{
+  text-align: center;
 }
 
 @media (max-width: 1246px) {

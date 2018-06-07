@@ -144,7 +144,8 @@ export class HomeComponent implements OnInit {
     
         headers.append('Content-Type', 'application/json');
         // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-        this.http.get('http://192.168.30.193:9000/choice/zipcodecheck/' + zipcode1 , { headers: headers })
+        // http://192.168.30.193:9000/choice/
+        this.http.get(Config.api + 'zipcodecheck/' + zipcode1 , { headers: headers })
     
     
           //   // this.http.post(Config.api + 'signup/'+ this.zip_code +'', {"premiseid": this.premiseID +'', {headers: headers})

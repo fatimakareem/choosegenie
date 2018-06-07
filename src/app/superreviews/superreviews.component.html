@@ -117,7 +117,7 @@
 
 
 
-    <table class="table table-bordered table-striped tablefixed" style="background-color:#ffffff">
+    <table class="table superreviews-table table-bordered  tablefixed" style="background-color:#ffffff">
       <thead>
         <tr class="bg">
           <!-- <th class="text-center">User ID</th>
@@ -126,6 +126,8 @@
           <th class="text-center">Rating</th>
           <th class="text-center">Comments</th>
           <th class="text-center">Status</th>
+          <th class="text-center">Delete</th>
+          <th class="text-center">Approve</th>
 
           <!--<th class="text-center">State</th>
         <th class="text-center">Email</th>
@@ -141,92 +143,92 @@
             <div class="media-info">
               <div class="rating" *ngIf="item.rate==5.00">
                 <p>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star" style="color:#f2b01e"></i>
+                  <i class="fa fa-star" style="color:#f2b01e"></i>
+                  <i class="fa fa-star" style="color:#f2b01e"></i>
+                  <i class="fa fa-star" style="color:#f2b01e"></i>
+                  <i class="fa fa-star" style="color:#f2b01e"></i>
                 </p>
               </div>
               <div class="rating" *ngIf="item.rate==4.5">
                 <p>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star-half-o"></i>
+                  <i class="fa fa-star" style="color:#f2b01e"></i>
+                  <i class="fa fa-star" style="color:#f2b01e"></i>
+                  <i class="fa fa-star" style="color:#f2b01e"></i>
+                  <i class="fa fa-star" style="color:#f2b01e"></i>
+                  <i class="fa fa-star-half-o" style="color:#f2b01e"></i>
                 </p>
               </div>
               <div class="rating" *ngIf="item.rate==4.00">
                 <p>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star-o"></i>
+                  <i class="fa fa-star" style="color:#f2b01e"></i>
+                  <i class="fa fa-star" style="color:#f2b01e"></i>
+                  <i class="fa fa-star" style="color:#f2b01e"></i>
+                  <i class="fa fa-star" style="color:#f2b01e"></i>
+                  <i class="fa fa-star-o" style="color:#f2b01e"></i>
                 </p>
               </div>
               <div class="rating" *ngIf="item.rate==3.5">
                 <p>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star-half-o"></i>
-                  <i class="fa fa-star-o"></i>
+                  <i class="fa fa-star" style="color:#f2b01e"></i>
+                  <i class="fa fa-star" style="color:#f2b01e"></i>
+                  <i class="fa fa-star" style="color:#f2b01e"></i>
+                  <i class="fa fa-star-half-o" style="color:#f2b01e"></i>
+                  <i class="fa fa-star-o" style="color:#f2b01e"></i>
                 </p>
               </div>
               <div class="rating" *ngIf="item.rate==3.00">
                 <p>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star-o"></i>
-                  <i class="fa fa-star-o"></i>
+                  <i class="fa fa-star" style="color:#f2b01e"></i>
+                  <i class="fa fa-star" style="color:#f2b01e"></i>
+                  <i class="fa fa-star" style="color:#f2b01e"></i>
+                  <i class="fa fa-star-o" style="color:#f2b01e"></i>
+                  <i class="fa fa-star-o" style="color:#f2b01e"></i>
                 </p>
               </div>
               <div class="rating" *ngIf="item.rate==2.5">
                 <p>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star-half-o"></i>
-                  <i class="fa fa-star-o"></i>
-                  <i class="fa fa-star-o"></i>
+                  <i class="fa fa-star" style="color:#f2b01e"></i>
+                  <i class="fa fa-star" style="color:#f2b01e"></i>
+                  <i class="fa fa-star-half-o" style="color:#f2b01e"></i>
+                  <i class="fa fa-star-o" style="color:#f2b01e"></i>
+                  <i class="fa fa-star-o" style="color:#f2b01e"></i>
                 </p>
               </div>
               <div class="rating" *ngIf="item.rate==2.00">
                 <p>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star-o"></i>
-                  <i class="fa fa-star-o"></i>
-                  <i class="fa fa-star-o"></i>
+                  <i class="fa fa-star" style="color:#f2b01e"></i>
+                  <i class="fa fa-star" style="color:#f2b01e"></i>
+                  <i class="fa fa-star-o" style="color:#f2b01e"></i>
+                  <i class="fa fa-star-o" style="color:#f2b01e"></i>
+                  <i class="fa fa-star-o" style="color:#f2b01e"></i>
                 </p>
               </div>
               <div class="rating" *ngIf="item.rate==1.5">
                 <p>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star-half-o"></i>
-                  <i class="fa fa-star-o"></i>
-                  <i class="fa fa-star-o"></i>
-                  <i class="fa fa-star-o"></i>
+                  <i class="fa fa-star" style="color:#f2b01e"></i>
+                  <i class="fa fa-star-half-o" style="color:#f2b01e"></i>
+                  <i class="fa fa-star-o" style="color:#f2b01e"></i>
+                  <i class="fa fa-star-o" style="color:#f2b01e"></i>
+                  <i class="fa fa-star-o" style="color:#f2b01e"></i>
                 </p>
               </div>
               <div class="rating" *ngIf="item.rate==1.00">
                 <p>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star-o"></i>
-                  <i class="fa fa-star-o"></i>
-                  <i class="fa fa-star-o"></i>
-                  <i class="fa fa-star-o"></i>
+                  <i class="fa fa-star" style="color:#f2b01e"></i>
+                  <i class="fa fa-star-o" style="color:#f2b01e"></i>
+                  <i class="fa fa-star-o" style="color:#f2b01e"></i>
+                  <i class="fa fa-star-o" style="color:#f2b01e"></i>
+                  <i class="fa fa-star-o" style="color:#f2b01e"></i>
                 </p>
               </div>
               <div class="rating" *ngIf="item.rate==0.5">
                 <p>
-                  <i class="fa fa-star-half-o"></i>
-                  <i class="fa fa-star-o"></i>
-                  <i class="fa fa-star-o"></i>
-                  <i class="fa fa-star-o"></i>
-                  <i class="fa fa-star-o"></i>
+                  <i class="fa fa-star-half-o" style="color:#f2b01e"></i>
+                  <i class="fa fa-star-o" style="color:#f2b01e"></i>
+                  <i class="fa fa-star-o" style="color:#f2b01e"></i>
+                  <i class="fa fa-star-o" style="color:#f2b01e"></i>
+                  <i class="fa fa-star-o" style="color:#f2b01e"></i>
                 </p>
               </div>
               <!-- <ul class="rating">
@@ -250,13 +252,17 @@
 
           <td style="font-size: 20px;">
 
-            <button class="btn btn-default" data-target="#myModal3" data-toggle="modal" style=" width: 100%; height: 100%; color: red; background-color: #ffffff !important; "
+            <button class="btn btn-default" data-target="#myModal3" data-toggle="modal" style=" height: 100%; color: #cc0000 !important; background-color: #ffffff !important; "
               type="submit" value="Delete" (click)="btnDeleteClick(item.id)">
-              <i class="fa fa-times">Delete</i>
+              <i class="fa fa-times"></i>
             </button>
-            <button class="btn btn-default" data-target="#myModal2" data-toggle="modal" style=" width: 100%; height: 100%; color: red; background-color: #ffffff !important; "
+         
+          </td>
+          <td style="font-size: 20px;">
+
+            <button class="btn btn-default" data-target="#myModal2" data-toggle="modal" style=" height: 100%; color: #1e970e !important; background-color: #ffffff !important; "
               type="submit" value="Delete" (click)="btnactiveClick(item.id,item.rate,item.productid,item.zipcode,item.comment,item.username,item.reviewactive,item.user)">
-              <i class="fa fa-times">Aprove</i>
+              <i class="fa fa-check"></i>
             </button>
 
           </td>
