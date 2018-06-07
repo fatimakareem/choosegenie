@@ -4947,7 +4947,7 @@ text-align: center;
   background: #CC0000 !important;
 }
 .print{
-  float: right;
+  /* float: right; */
   margin-right: 10px;
   background: #444;
   color: #fff;
@@ -4956,7 +4956,7 @@ text-align: center;
   border-radius: 4px;
 }
 .Compare{
-  float: right;
+  /* float: right; */
   background: #444;
   color: #fff;
   border: none;
@@ -4997,6 +4997,7 @@ text-align: center;
 .pagination{
   margin: 0px !important;
 }
+
 
 /* End Products */
 
@@ -5740,8 +5741,49 @@ background: linear-gradient(to bottom, #eaeaea 0%,#c6c6c6 50%,#999a9b 100%); /* 
   border-top: 12px solid !important;
   margin: 0 4px;
 }
+<<<<<<< HEAD
 .superreviews-table.table > tbody > tr > td, .table > tfoot > tr > td{
   text-align: center;
+=======
+.prod-select-list {
+  padding: 0px !important;
+}
+.prod-select-list .mat-form-field-underline {
+  display: none !important;
+}
+.prod-select-list .mat-input-wrapper{
+  padding-bottom: 0 !important;
+}
+.prod-select-list mat-form-field.mat-form-field {
+  font-size: 18px !important;
+  margin-top: 0px;
+}
+.prod-select-list  .mat-select-trigger {
+  padding: 0px !important;
+  font-size: 10px !important;
+}
+.prod-select-list .mat-input-placeholder.mat-empty {
+  top: 33px;
+  font-size: 12px !important
+}
+
+
+.prod-select-list .mat-input-placeholder-wrapper {
+  top: -23px;
+  padding-top: 11px;
+}
+.prod-select-list  .mat-form-field-underline .mat-form-field-ripple{
+  display: none;
+}
+.prod-select-list .mat-select-arrow {
+  border-left: 4px solid transparent !important;
+  border-right: 4px solid transparent !important;
+  border-top: 4px solid !important;
+}
+.prod-select-list .mat-option .mat-option-text {
+  font-size: 12px !important;
+  font-weight: 600 !important;
+>>>>>>> 7ed803916dd1e14c64430b6ba1ed749cae32514a
 }
 
 @media (max-width: 1246px) {
