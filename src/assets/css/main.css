@@ -4869,7 +4869,7 @@ text-align: center;
 .mat-option:hover {
   -webkit-box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(156, 39, 176, 0.4);
   box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(156, 39, 176, 0.4);
-  background: #9c27b0 !important;
+  background: #C00  !important;
   color: #FFFFFF !important;
 }
 
