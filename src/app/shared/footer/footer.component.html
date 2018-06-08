@@ -172,9 +172,9 @@
         <h2>What is ChoiceGenie ?</h2>
         <p class="newsletter-p font">We, the engineers at ChoiceGenie have devised bleeding edge Machine Learning (ML) and proprietary Artificially Intelligent (AI) algorithms to bring you a next generation Artificially Intelligent Comparative Shopping Marketplace for Energy Vendors/Products = BTW, we are very proud of our work! We believe that, it’s high time that subjective and traditional approaches for online comparative shopping are replaced with next-generation AI-driven technology.  </p>
         <div class="input-group">
-          <input class="form-control" style="font-size: 20px; color: #777777;" placeholder="Email Address" name="newsletterEmail" id="newsletterEmail" type="text">
+          <input class="form-control" style="font-size: 20px; color: #777777;" placeholder="Subscribe Now" name="newsletterEmail" id="newsletterEmail" type="text" name="email" [(ngModel)]="email">
           <span class="input-group-btn">
-            <button class="btn btn-primary" type="submit" style="background-color: #f80000!important"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+            <button class="btn btn-primary" type="submit" style="background-color: #f80000!important" (click)="subscribe()"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
           </span>
         </div>
       </div>

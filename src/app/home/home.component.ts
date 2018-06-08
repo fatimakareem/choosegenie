@@ -59,7 +59,7 @@ export class HomeComponent implements OnInit {
     onSubmit(f: NgForm) {
       
 
-        this.router.navigate(['/products/' + this.zipCode]);
+       // this.router.navigate(['/products/' + this.zipCode]);
         localStorage.setItem('zip', this.zipCode);
     }
 
@@ -167,6 +167,9 @@ export class HomeComponent implements OnInit {
 
         })
     }
+    else if(this.zipcodeexist =="Valid Zipcode"){
+      this.router.navigate(['/products/' + this.zipCode]);
+}
              
             //  console.log(this.usernameexist);
     

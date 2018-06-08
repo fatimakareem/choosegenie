@@ -88,6 +88,15 @@ this.pager = this.pagerService.getPager(Res['Total Result'], page, 5);
    //   window.location.reload();
 
   }
+  comt = '';
+  btncomtClick(id) {
+    this.comt = id;
+    console.log('id : ' + this.comt);
+}
+
+//Event Binding of PopUp Delete Modal
+
+
  
   catagoryId:'';
   rate:"";
