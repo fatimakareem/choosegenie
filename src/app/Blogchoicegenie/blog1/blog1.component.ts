@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { HttpClient, HttpResponse, HttpHeaders } from "@angular/common/http";
 import { Headers, Http, Response } from '@angular/http';
 import {HttpService} from '../../serv/http-service';
+import { Config } from '../../Config';
 // import {HttpService} from '/serv/http-service';
 
 @Component({
@@ -37,7 +38,7 @@ public heading1;
     headers.append('Content-Type', 'application/json');
     
     
-    this.http.get('http://192.168.30.41:9000/filterblog/'+ heading1 +'/' ,{ headers: headers })
+    this.http.get(Config.api+'filterblog/'+ heading1 +'/' ,{ headers: headers })
     .subscribe(Res => {
     this.data = Res.json()[0];
     console.log(this.data);

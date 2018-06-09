@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 
 @Injectable()
 export class Config {//https://apis.choicegenie.com/choice/
-    public static api: String = 'https://apis.choicegenie.com/choice/';
+    public static api: String = 'https://apis.choicegenie.com/';
 //    public static api: String = 'https://apis.choicegenie.com/';
 //    public static api: String = 'http://192.168.30.237:9000/choice/';
    public static Imageurl: string = 'https://storage.choicegenie.com/media/'; 

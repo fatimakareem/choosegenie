@@ -55,27 +55,23 @@ export class UsersignupComponent implements OnInit {
 
     // this.city();
     this.signupForm = this.fb.group({
+
       'Name': ['', Validators.compose([Validators.required])],
       'service_zip': ['', Validators.compose([Validators.required])],
-
-      // 'zipcode': ['', Validators.compose([Validators.required, , Validators.pattern(this.digitsOnly)])],
-      // 'utilityarea': ['', Validators.compose([Validators.required])],
+ 
       'email': ['', Validators.compose([Validators.required, Validators.pattern(this.email)])],
       'username': ['', Validators.compose([Validators.required, Validators.pattern(/^[a-zA-Z_\- ]+$/)])],
-      //'username': ['', Validators.compose([Validators.required, Validators.pattern(this.usernameOnly)])],
-      // username: ['', Validators.compose([Validators.required, Validators.pattern(this.usernameOnly)])],
+    
       'phone_no': ['', Validators.compose([Validators.required, Validators.pattern(this.digitsOnly)])],
       'dob': ['', Validators.compose([Validators.required])],
       'service_state': ['', Validators.compose([Validators.required, Validators.pattern(this.normalPattern)])],
       'service_address': ['', Validators.compose([Validators.required, Validators.pattern(this.normalPattern)])],
       'service_city': ['', Validators.compose([Validators.required, Validators.pattern(this.normalPattern)])],
-      'billing_address': ['', Validators.compose([Validators.required, Validators.pattern(this.normalPattern)])],
+   
       'password': ['', Validators.compose([Validators.required, Validators.minLength(6)])],
       'confirmpassword': ['', Validators.compose([Validators.required, Validators.minLength(6)])],
-      'billing_city': ['', Validators.compose([Validators.required, Validators.pattern(this.normalPattern)])],
-      'billing_state': ['', Validators.compose([Validators.required, Validators.pattern(this.normalPattern)])],
-      'billing_zip': ['', Validators.compose([Validators.required, Validators.pattern(this.normalPattern)])],
-      'Market': ['', Validators.compose([Validators.required, Validators.pattern(this.normalPattern)])],
+   
+ 
     },
       {
         validator: PasswordValidation.MatchPassword // your validation method
@@ -148,23 +144,7 @@ export class UsersignupComponent implements OnInit {
 
 
   }
-  //zip: any = [];
-  // states(zip) {
-  
-  //   let headers = new HttpHeaders();
-  //   headers.append('Content-Type', 'application/json');
-  //   this.http.get('http://192.168.30.193:9000/choice/zipcodewithstatecity/' + zip, { headers: headers })
-
-  //        .subscribe(Res => {
-  //       console.log(Res);
-  //         this.zip = Res;
-  //       this.state = this.zip.state;
-  //       console.log(this.state);
-  //       this.city = this.zip.city;
-  //       console.log(this.city);
-  //     });
-  // }
-
+ 
 
   states(zip) {
     //alert('hello');
@@ -251,15 +231,16 @@ export class UsersignupComponent implements OnInit {
   }
 
   signupuserdata() {
-    //alert('hello');
+     
     //console.log("main form",this.signupForm.value)
     console.log("CHOICE GENIE", this.model);
     let headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
     // http://192.168.30.237:9000/choice/
-    this.http.post(Config.api+ 'Usersignup/', this.model, { headers: headers })
+    this.http.post(Config.api+ 'userregister/', this.model, { headers: headers })
       .subscribe(Res => {
         console.log(Res);
+        alert('hello');
         console.log(this.model);
         swal({
           text: "Register Successflluy!",

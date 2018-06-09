@@ -121,8 +121,8 @@ export class AddblogComponent implements OnInit {
     //console.log("main form",this.signupForm.value)
     console.log("CHOICE GENIE", this.model.Ch_image);
     let headers = new HttpHeaders();
-    headers.append('Content-Type', 'application/json');
-    this.http.post('http://192.168.30.41:9000/postingblog/', this.model, { headers: headers })
+    headers.append('Content-Type', 'application/json');//http://192.168.30.41:9000/
+    this.http.post(Config.api+'postingblog/', this.model, { headers: headers })
       .subscribe(Res => {
         console.log(Res);
         console.log(this.model);
