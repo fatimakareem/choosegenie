@@ -41,11 +41,11 @@ export class FooterComponent {
 
             .subscribe(data => {
                 console.log(data)
-                this.emailexist = data['message'];
-                console.log(data['message'] )
-                if(this.emailexist=="ALREADY EXISTS..!!!"){
+                this.emailexist = data.json().message;
+                console.log(data.json().message);
+                if(this.emailexist=="Already Exists..!!!"){
                  swal({
-                 text: "ALREADY EXISTS..!!!",
+                 text: "Already Exists..!!!",
                  title: "Choice Genie",
                  type: "error",
                  showConfirmButton: true,
@@ -54,9 +54,9 @@ export class FooterComponent {
                  confirmButtonText: "OK",
        
                })
-               this.email = null;
+              
             }
-               else if(this.emailexist=="SUCCESSFULLY SUBSCRIBED...!!!"){
+               else if(this.emailexist=="Successfully Subscribed...!!!"){
                 swal({
                 text: "SUCCESSFULLY SUBSCRIBED...!!!",
                 title: "Choice Genie",
