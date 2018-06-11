@@ -54,7 +54,6 @@
     "jasny-bootstrap": "3.1.3",
     "jquery": "1.12.4",
     "jquery-validation": "1.17.0",
-    "jspdf": "^1.4.1",
     "jvectormap": "2.0.4",
     "mdbootstrap": "^4.4.4",
     "moment": "2.18.1",
