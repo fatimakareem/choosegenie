@@ -127,6 +127,7 @@ import { UpdatepartnerService } from './sviewapartner/updatepartner.service';
 import { GetreviewComponent } from './getreview/getreview.component';
 import { SuperreviewsComponent } from './superreviews/superreviews.component';
 import { HeaderService } from './header/header.service';
+import { UnsubscribeService } from './unsubscribe/unsubscribe.service';
 
 
 
@@ -225,6 +226,7 @@ export class MaterialModule { }
     HomeService,
     HeaderService,
     CompanyService,
+    UnsubscribeService,
     SimpleGlobal,
     DataService,
     LoginService,

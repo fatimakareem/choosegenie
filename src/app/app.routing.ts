@@ -63,6 +63,8 @@ export const AppRoutes: Routes = [
           },
           {path: "activateaccount/:query1",
           loadChildren: './activateaccount/activateaccount.module#ActivateAccountModule'},
+          {path: "unsubscribe/:query1",
+          loadChildren: './unsubscribe/unsubscribe.module#UnsubscribeModule'},
           {
             path: 'privacy',
             loadChildren: './privacy/privacy.module#PrivacyModule'

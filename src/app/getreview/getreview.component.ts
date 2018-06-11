@@ -30,11 +30,16 @@ import swal from 'sweetalert2';
 export class GetreviewComponent implements OnInit {
 rev:any=[];
 id;
-
+public customer;
+public zip_code;
 private Sub: Subscription;
-  constructor(private route: ActivatedRoute,private http: Http) {}
+  constructor(private router: Router,private route: ActivatedRoute,private http: Http) {}
 
   ngOnInit() {
+    
+    this.customer = localStorage.getItem('custum')
+    this.zip_code = localStorage.getItem('zip');
+
     this.route.params.subscribe ( params => {
 
 
@@ -52,6 +57,33 @@ private Sub: Subscription;
      // alert(this.username);
       });
   }
+  checked_login() {
+    if (localStorage.getItem('custum')) {
+        let local = localStorage.getItem('custum');
+        return true;
+    }
+    // else if(localStorage.getItem('custom')) {
+    //     return true;
+    // }
+    else {
+        return false;
+    }
+}
+data:any=[];
+user;
+profile() {
+
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    this.http.get('http://192.168.30.135:9000/users_profile/' + this.customer + '/', { headers: headers })
+
+        .subscribe(Res => {
+            this.data = Res.json();
+            console.log(this.data);
+            this.user = this.data['user']
+        });
+
+}
   rate:any=[];
   getreview(id) {
     
@@ -116,5 +148,49 @@ private Sub: Subscription;
       this.ave=this.avrage['Avg Reviews Per Product']
         });
         
+        }
+        ratee = '';
+        get(rating) {
+            this.ratee = rating;
+        }
+        reviews(ratee, comt, id) {
+            if (localStorage.getItem('custum')) {
+            console.log(id)
+            let headers = new Headers();
+            headers.append('Content-Type', 'application/json');
+            // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
+            this.http.post(Config.api + 'reviews/' + this.zip_code + '/' + this.user, JSON.stringify({
+    
+                "zipcode": this.zip_code,
+                "productid": id,
+                "user": this.user,
+                "rate": this.ratee,
+                "comment": comt
+            }
+    
+            ), { headers: headers })
+    
+                // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
+                .subscribe(Res => {
+                    console.log(Res)
+                    swal({
+                        type: 'success',
+                        title: 'Rewiew Added Successfully',
+                        showConfirmButton: false,
+                        timer: 1500
+    
+                    })
+                  
+                })
+               
+            }
+            else  {
+                swal(
+                    'Invalid',
+                    'User must login First!',
+                    'error'
+                )
+                this.router.navigate(['/userlogin/']);
+            }
         }
 }
