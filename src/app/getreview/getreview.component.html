@@ -1,3 +1,5 @@
+<div class="" style="background: #fff">
+
 <div class="container-fluid header-bar">
   <div class="container">
     <div class="row title-bar">
@@ -8,7 +10,7 @@
   </div>
 </div>
 
-<div class="container">
+<!-- <div class="container">
   <div class="row">
     <div class="col-lg-3 col-md-3"></div>
     <div class="col-lg-6 col-md-6 col-sm-12 rating-main">
@@ -189,12 +191,351 @@
   </div>
  <div *ngIf="rev==0">
    
-    <img _ngcontent-c5="" src="../../assets/img/review.gif" style="width: 550px; height: 400px;">
+    <img  src="../../assets/img/review.gif" style="width: 550px; height: 400px;">
      
+  </div>
+</div> -->
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-sm-12">
+
+      
+        <div class="rating-main">
+            <h1>Rating &amp; Reviews</h1>
+            <div class="rating-box" *ngIf="score<50">
+              <h2>Choice Genie Product Score</h2>
+              <round-progress
+                            [current]="score"
+                            [max]="100"
+                            [color]="'#ca260f'"
+                            [background]="'#eaeaea'"
+                            [radius]="100"
+                            [stroke]="20"
+                            [semicircle]="false"
+                            [rounded]="false"
+                            [clockwise]="true"
+                            [responsive]="false"
+                            [duration]="800"
+                            [animation]="'easeOutCubic'"
+                            [animationDelay]="5"
+                            style="margin: auto;">
+        
+                          </round-progress>
+                          <div style="position: relative; bottom: 112px;font-size:25px;">{{score}} %</div>
+              <h4>Total Reviews:{{totalrev}}</h4>
+              <h4>Average Reviews:{{ave}}</h4>
+            </div>
+            <div class="rating-box" *ngIf="score>50">
+                <h2>Choice Genie Product Score</h2>
+                <round-progress
+                              [current]="score"
+                              [max]="100"
+                              [color]="'#59c000'"
+                              [background]="'#eaeaea'"
+                              [radius]="100"
+                              [stroke]="20"
+                              [semicircle]="false"
+                              [rounded]="false"
+                              [clockwise]="true"
+                              [responsive]="false"
+                              [duration]="800"
+                              [animation]="'easeOutCubic'"
+                              [animationDelay]="5"
+                              style="margin: auto;">
+          
+                            </round-progress>
+                            <div style="position: relative; bottom: 112px;font-size:25px;">{{score}} %</div>
+                <h4>Total Reviews:{{totalrev}}</h4>
+                <h4>Average Reviews:{{ave}}</h4>
+              </div>
+          </div>
+
+      
+        <div  class="single-course-title text-center ng-star-inserted">
+            <h3 ><a  title=""> How to Design an Awesome Letterhead in Adobe Illustrator For Advanced Level</a></h3>
+            <div  class="post-sharing">
+              <ul  class="list-inline">
+                <li ><a  class="fb-button btn btn-primary"><i  class="fa fa-facebook"></i> <span  class="hidden-xs">Share on Facebook</span></a></li>
+                <li ><a  class="tw-button btn btn-primary"><i  class="fa fa-twitter"></i> <span  class="hidden-xs">Tweet on Twitter</span></a></li>
+                <li ><a  class="gp-button btn btn-primary"><i  class="fa fa-google-plus"></i></a></li>
+              </ul>
+            </div>
+        </div>
+      
+
+
+        <div  class="well well-sm">
+            <div  class="row">
+              <div  class="col-xs-12 col-md-3 text-center">
+                <h1  class="rating-num">
+                  4.0</h1>
+                <div  class="rating">
+                  <span  class="glyphicon glyphicon-star"></span><span  class="glyphicon glyphicon-star"></span>
+                  <span  class="glyphicon glyphicon-star"></span><span  class="glyphicon glyphicon-star"></span>
+                  <span  class="glyphicon glyphicon-star-empty"></span>
+                </div>
+                <div class="font-w">
+                  <span  class="glyphicon glyphicon-user"></span>1,050,008 total
+                </div>
+              </div>
+              <div  class="col-xs-12 col-md-9">
+                <div  class="row rating-desc">
+                  <div  class="col-xs-4 col-md-2 text-right font-w">
+                    <span  class="glyphicon glyphicon-star"></span>5
+                  </div>
+                  <div  class="col-xs-8 col-md-10">
+                    <div  class="progress progress-striped">
+                      <div  aria-valuemax="100" aria-valuemin="0" aria-valuenow="20" class="progress-bar progress-bar-success" role="progressbar" style="width: 80%; height: 100%;">
+                        <span  class="sr-only">80%</span>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div  class="col-xs-4 col-md-2 text-right font-w">
+                    <span  class="glyphicon glyphicon-star "></span>4
+                  </div>
+                  <div  class="col-xs-8 col-md-10">
+                    <div  class="progress">
+                      <div  aria-valuemax="100" aria-valuemin="0" aria-valuenow="20" class="progress-bar progress-bar-success" role="progressbar" style="width: 60%; height: 100%;">
+                        <span  class="sr-only">60%</span>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div  class="col-xs-4 col-md-2 text-right font-w">
+                    <span  class="glyphicon glyphicon-star"></span>3
+                  </div>
+                  <div  class="col-xs-8 col-md-10">
+                    <div  class="progress">
+                      <div  aria-valuemax="100" aria-valuemin="0" aria-valuenow="20" class="progress-bar progress-bar-info" role="progressbar" style="width: 40%; height: 100%;">
+                        <span  class="sr-only">40%</span>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div  class="col-xs-4 col-md-2 text-right font-w">
+                    <span  class="glyphicon glyphicon-star"></span>2
+                  </div>
+                  <div  class="col-xs-8 col-md-10">
+                    <div  class="progress">
+                      <div  aria-valuemax="100" aria-valuemin="0" aria-valuenow="20" class="progress-bar progress-bar-warning" role="progressbar" style="width: 20%; height: 100%;">
+                        <span  class="sr-only">20%</span>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div  class="col-xs-4 col-md-2 text-right font-w">
+                    <span  class="glyphicon glyphicon-star"></span>1
+                  </div>
+                  <div  class="col-xs-8 col-md-10">
+                    <div  class="progress">
+                      <div  aria-valuemax="100" aria-valuemin="0" aria-valuenow="80" class="progress-bar progress-bar-danger" role="progressbar" style="width: 15%; height: 100%;">
+                        <span  class="sr-only">15%</span>
+                      </div>
+                    </div>
+                  </div>
+                  
+                </div>
+                
+              </div>
+            </div>
+          </div>
+
+    </div>
+    <div class="col-md-4 col-sm-12 sidebar-reviews">
+        <div  class="sidebar-wrapper">
+            <div  class="post-media clearfix" style="position: relative;">
+              
+              <div  class="post-media clearfix" style="background: #ffffff; padding: 0; ">
+                
+                     
+                <!----><video  class="videoplayer ng-star-inserted" preload="none" poster="https://storage.coursefrenzy.com/images/How-to-Design-an-Awesome-Letterhead-in-Adobe-Illustrator.jpg">
+                  
+                  <source  src="https://0.s3.envato.com/h264-video-previews/ec34ad1d-cba5-43a6-a1d0-a537b10e5879/759078.mp4" type="video/mp4">
+                  
+                  <source  src="https://0.s3.envato.com/h264-video-previews/ec34ad1d-cba5-43a6-a1d0-a537b10e5879/759078.webm" type="video/webm">
+                  
+                  <source  src="https://0.s3.envato.com/h264-video-previews/ec34ad1d-cba5-43a6-a1d0-a537b10e5879/759078.ogv" type="video/ogg">
+                  
+                </video>
+                <img  alt="plya" class="video-play-icon" src="https://www.coursefrenzy.com/assets/img/coursefrenzy-play-icon.svg">
+                
+              </div>
+            </div>
+            <div  class="widget custom-widget course-pricing clearfix" style="padding: 20px !important;">
+              <div  class="customwidget text-left w40">
+                <p  class=" text-center linethrough">$0.00</p>
+                <p  class="widget-title text-center">$0.00</p>
+                <h4  class="text-center">30-Day Money-Back Guarantee</h4>
+                
+                <div  class="sidebar-btn">
+                  <!----><a  class="button ng-star-inserted" routerlink="/checkout" style="margin: 0" type="" href="/checkout"> Buy Now </a>
+                  <!---->
+                </div>
+                <!-- <div  class="sidebar-btn">
+                  <a  class="material-icons wishlist" title="Add to wishlist">favorite_border</a>
+                  <a  class="wishlist material-icons" title="Add to Cart">add_shopping_cart</a>
+                </div> -->
+  
+                
+  
+                
+  
+                
+                
+                <br >
+                <br >
+                <br >
+                <br >
+                <h3 style="margin-bottom: 0px !important;"><strong >Includes:</strong></h3>
+                <br >
+                <div class="inc-list">
+                  <p ><i  class="fa fa-file-video-o"></i> &nbsp; 27.5 hours on-demand video</p><br >
+                  <p ><i  class="fa fa-book"></i> &nbsp; 7 Articles</p><br >
+                  <p ><i  class="fa fa-universal-access"></i> &nbsp; Full lifetime access</p><br >
+                  
+                  <p ><i  class="fa fa-bolt"></i> &nbsp;&nbsp; Assignments <br ></p> <br >
+                  <p ><i  class="fa fa-certificate"></i> &nbsp; Certificate of Completion</p><br >
+                </div>
+                
+                <div  class="course-meta clearfix">
+                    <hr >
+                  <p  class="course-category">Category: <a  href="course-list.html">Graphic Design</a></p>
+                  <hr >
+                  <div  class="rating">
+                    <p >Reviews: &nbsp;
+                      <i  class="fa fa-star"></i>
+                      <i  class="fa fa-star"></i>
+                      <i  class="fa fa-star"></i>
+                      <i  class="fa fa-star"></i>
+                      <i  class="fa fa-star-o"></i>
+                  </p></div>
+                  <hr >
+                  <p  class="course-time">Period: 12 Month </p>
+                  <hr >
+                  <p  class="course-instructors">Instructor: <a  href="" title=""><img  alt="" class="img-circle" src=""> John DOE</a></p>
+                  <hr >
+                  <p  class="course-forum">Course Forum: <a  href="" title="">Web Designers</a></p>
+  
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
   </div>
 </div>
 
 
+<div class="container-fluid comments-box" *ngIf="rev">
+    <h1>Reviews</h1>
+    <div class="review-content" *ngFor="let item of rev" class="product-review">
+      <h3>{{item.username}}</h3>
+      <div class="rating-star" >
+        <div class="rating" *ngIf="item.rate==5.00">
+          <p>
+            <i class="fa fa-star" style="color:#f2b01e"></i>
+            <i class="fa fa-star" style="color:#f2b01e"></i>
+            <i class="fa fa-star" style="color:#f2b01e"></i>
+            <i class="fa fa-star" style="color:#f2b01e"></i>
+            <i class="fa fa-star" style="color:#f2b01e"></i>
+          </p>
+        </div>
+        <div class="rating" *ngIf="item.rate==4.5">
+          <p>
+            <i class="fa fa-star" style="color:#f2b01e"></i>
+            <i class="fa fa-star" style="color:#f2b01e"></i>
+            <i class="fa fa-star" style="color:#f2b01e"></i>
+            <i class="fa fa-star" style="color:#f2b01e"></i>
+            <i class="fa fa-star-half-o" style="color:#f2b01e"></i>
+          </p>
+        </div>
+        <div class="rating" *ngIf="item.rate==4.00">
+          <p>
+            <i class="fa fa-star" style="color:#f2b01e"></i>
+            <i class="fa fa-star" style="color:#f2b01e"></i>
+            <i class="fa fa-star" style="color:#f2b01e"></i>
+            <i class="fa fa-star" style="color:#f2b01e"></i>
+            <i class="fa fa-star-o" style="color:#f2b01e"></i>
+          </p>
+        </div>
+        <div class="rating" *ngIf="item.rate==3.5">
+          <p>
+            <i class="fa fa-star" style="color:#f2b01e"></i>
+            <i class="fa fa-star" style="color:#f2b01e"></i>
+            <i class="fa fa-star" style="color:#f2b01e"></i>
+            <i class="fa fa-star-half-o" style="color:#f2b01e"></i>
+            <i class="fa fa-star-o" style="color:#f2b01e"></i>
+          </p>
+        </div>
+        <div class="rating" *ngIf="item.rate==3.00">
+          <p>
+            <i class="fa fa-star" style="color:#f2b01e"></i>
+            <i class="fa fa-star" style="color:#f2b01e"></i>
+            <i class="fa fa-star" style="color:#f2b01e"></i>
+            <i class="fa fa-star-o" style="color:#f2b01e"></i>
+            <i class="fa fa-star-o" style="color:#f2b01e"></i>
+          </p>
+        </div>
+        <div class="rating" *ngIf="item.rate==2.5">
+          <p>
+            <i class="fa fa-star" style="color:#f2b01e"></i>
+            <i class="fa fa-star" style="color:#f2b01e"></i>
+            <i class="fa fa-star-half-o" style="color:#f2b01e"></i>
+            <i class="fa fa-star-o" style="color:#f2b01e"></i>
+            <i class="fa fa-star-o" style="color:#f2b01e"></i>
+          </p>
+        </div>
+        <div class="rating" *ngIf="item.rate==2.00">
+          <p>
+            <i class="fa fa-star" style="color:#f2b01e"></i>
+            <i class="fa fa-star" style="color:#f2b01e"></i>
+            <i class="fa fa-star-o" style="color:#f2b01e"></i>
+            <i class="fa fa-star-o" style="color:#f2b01e"></i>
+            <i class="fa fa-star-o" style="color:#f2b01e"></i>
+          </p>
+        </div>
+        <div class="rating" *ngIf="item.rate==1.5">
+          <p>
+            <i class="fa fa-star" style="color:#f2b01e"></i>
+            <i class="fa fa-star-half-o" style="color:#f2b01e"></i>
+            <i class="fa fa-star-o" style="color:#f2b01e"></i>
+            <i class="fa fa-star-o" style="color:#f2b01e"></i>
+            <i class="fa fa-star-o" style="color:#f2b01e"></i>
+          </p>
+        </div>
+        <div class="rating" *ngIf="item.rate==1.00">
+          <p>
+            <i class="fa fa-star" style="color:#f2b01e"></i>
+            <i class="fa fa-star-o" style="color:#f2b01e"></i>
+            <i class="fa fa-star-o" style="color:#f2b01e"></i>
+            <i class="fa fa-star-o" style="color:#f2b01e"></i>
+            <i class="fa fa-star-o" style="color:#f2b01e"></i>
+          </p>
+        </div>
+        <div class="rating" *ngIf="item.rate==0.5">
+          <p>
+            <i class="fa fa-star-half-o" style="color:#f2b01e"></i>
+            <i class="fa fa-star-o" style="color:#f2b01e"></i>
+            <i class="fa fa-star-o" style="color:#f2b01e"></i>
+            <i class="fa fa-star-o" style="color:#f2b01e"></i>
+            <i class="fa fa-star-o" style="color:#f2b01e"></i>
+          </p>
+        </div>
+  
+      </div>
+      <p>{{item.comment}}</p>
+      <hr>
+    </div>
+   <div *ngIf="rev==0">
+     
+      <img  src="../../assets/img/review.gif" style="width: 550px; height: 400px;">
+       
+    </div>
+  </div>
 
 
 
+
+
+</div>
