@@ -4454,7 +4454,9 @@ canvas {
 }
 
 .header-bar{
-  background:#c00;
+      background: -moz-linear-gradient(left,#751651 1%,#e64e51 100%);
+    background: -webkit-linear-gradient(left,#751651 1%,#e64e51 100%);
+    background: linear-gradient(to right,#751651 1%,#e64e51 100%);
   padding:10px;
   }
   .title-bar h2{
