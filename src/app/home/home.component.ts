@@ -94,7 +94,7 @@ export class HomeComponent implements OnInit {
         nextArrow: '<button class="slick-arrow rightArrow btn-slider btn-slider-right"><i class="fa fa-angle-right"></i></button>',
         responsive: [
           {
-            breakpoint: 426,
+            breakpoint: 427,
             settings: {
               slidesToShow: 1
             }

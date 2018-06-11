@@ -20,8 +20,8 @@
       <li>
         <div class="text-center">
           <button type="button" class="btn btn-rose sidebar-serch-btn" (click)="plantype(fixed,vari,index);fetchmutimonth(months1,months2,months3,months4,months5,months6,months7);companytitle();fetchzip()" style="margin: 0px;">
-            Search
-            <i class="material-icons" title="Use these filters to set your preferences. Get rid of the plans you don’t want to see and only show those that fit your needs.">search</i>
+           Refresh 
+            <!-- <i class="material-icons" title="Use these filters to set your preferences. Get rid of the plans you don’t want to see and only show those that fit your needs.">search</i> -->
           </button>
         </div>
       </li>
@@ -47,13 +47,13 @@
       <li style="margin-bottom: 0px;">
         <div class="panel-title">
           <a>
-            <h5>Estimated Usage&nbsp;&nbsp;&nbsp;
+            <h5>Estimated Usage
               <i class="fa fa-info-circle float" aria-hidden="true" title="If you choose a plan with a long contract period, you may be subject to an early cancellation fee if you decide to change plans prior to the expiration of the contract period.  Plans that are shorter give you more flexibility to switch, but they only lock in your set rate for a short amount of time.Month-to-Month plans are usually Variable or Indexed offers."></i>
           
           </h5>
         </a>
         </div>
-        <mat-form-field style="border-top: 0px !important;">
+        <mat-form-field class="margin-up" style="border-top: 0px !important;">
           <!-- <label class="control-label"style="font-size: 18px">KWh</label> -->
           <!-- placeholder="Kwh" -->
           <mat-select (ngModelChange)="check($event)" required [(ngModel)]="price" name="price">
@@ -287,7 +287,7 @@
         </div>
         <!-- <div class="select-f-sackers-heavy select-area" style="width: 160px;"> -->
         <!-- <span class="left"></span> -->
-        <mat-form-field>
+        <mat-form-field class="margin-up">
 
           <mat-select placeholder="Company" (ngModelChange)="check($event)"(change)="companydata(name)" required [(ngModel)]="name" name="name">
 
@@ -311,7 +311,7 @@
             </h5>
           </a>
         </div>
-        <mat-form-field>
+        <mat-form-field class="margin-up">
           <mat-select placeholder="10 PER PAGE" selected="10" (change)="fetchitem(items)" required [(ngModel)]="items" name="items">
             <mat-option value="10" selected="true">10 PER PAGE</mat-option>
             <mat-option value="20">20 PER PAGE</mat-option>
@@ -324,8 +324,8 @@
       <li>
         <div class="text-center">
           <button type="button" class="btn btn-rose sidebar-serch-btn" (click)="plantype(fixed,vari,index);fetchmutimonth(months1,months2,months3,months4,months5,months6,months7);companytitle();fetchzip()">
-            Search
-            <i class="material-icons" title="Use these filters to set your preferences. Get rid of the plans you don’t want to see and only show those that fit your needs.">search</i>
+              Refresh
+            <!-- <i class="material-icons" title="Use these filters to set your preferences. Get rid of the plans you don’t want to see and only show those that fit your needs.">search</i> -->
           </button>
         </div>
       </li>

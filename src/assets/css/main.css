@@ -18,8 +18,6 @@
   background: #cc0000;
 }
 
-
-
 .nav-home ul, .interest-area ul, .pw-solutions ul, .choose-criteria ul, .in-your-area a .overlay ul, .sidebar-user ul, .list-normal {
   padding: 0;
   margin: 0;
@@ -326,7 +324,9 @@ app-header {
         -moz-border-radius: 6px;
         border-radius: 6px;
         overflow: hidden;
-        text-align: center; }
+        text-align: center; 
+        margin-bottom: 10px;
+      }
         .pw-solutions ul li .img-holder .material-icons {
           width: 100px;
           height: 100px;
@@ -1543,6 +1543,16 @@ h3 {
   font-weight: 500;
 }
 /* footer css start */
+.footer-align{
+  text-align: left;
+}
+.footer-align ul{
+  margin-left: 0px;
+}
+
+
+
+
 .footer-1 .social-link a:hover {
   color: #46355C
   }
@@ -1558,7 +1568,7 @@ h3 {
   font-size: 17px !important;
 }
   .footer-upper {
-  padding: 50px 0;
+  padding: 18px 0;
   background: #282828;
   box-shadow: 0 0 10px #999
   }
@@ -1566,7 +1576,8 @@ h3 {
   .footer-upper h2 {
   font-size: 25px;
   color: #fff;
-  text-align:center;
+  text-align:left;
+  margin-bottom: 45px;
   }
 
   .footer-upper .social-link {
@@ -1611,6 +1622,7 @@ h3 {
   font-size: 14px;
   color: #ccc;
   font-weight: 700;
+  text-align: left;
   }
 
   .footer-social-link i.fa {
@@ -1640,11 +1652,15 @@ h3 {
   }
   .list-contact {
   font-size: 18px;
-  font-weight: 700
+  font-weight: bold;
   }
 
   .list-contact a {
-  color: #777;
+    font-weight: bold;
+    color: #7c7c7c;
+    font-size: 18px;
+    line-height: 28px;
+    text-transform: capitalize;
   }
 
   .list-contact a:hover {
@@ -1661,17 +1677,18 @@ h3 {
   width: 25px;
   text-align: center;
     color: #f80000;
+    margin-right: 15px;
   }
   .list-social {
   font-size: 25px;
   padding: 10px 0;
-    text-align: center;
+    text-align: left;
   }
 
   .list-social li {
   display: inline-block;
   vertical-align: top;
-  margin: 0 10px 0 0;
+  /* margin: 0 10px 0 0; */
   }
 
   .list-social li a {
@@ -1912,6 +1929,9 @@ h3 {
 }
 .social-widget ul li {
   display: inline-block;
+}
+.social-widget h2{
+  text-align: center !important;
 }
 .android-icon {
   height: 60px;
@@ -4019,7 +4039,9 @@ article .article-info a {
 footer {
   padding:20px 0px;
 }
-
+.input-group{
+  margin-top: 30px;
+}
 footer p {
   color:#666;
   margin:0;
@@ -4731,7 +4753,7 @@ section#boody{
     line-height: 19px;
     width: 100%;
     float: left;
-    margin-top: -6px;
+    margin-top: -6px !important;
     margin: 0 auto;
 }
 .products-area {
@@ -4811,12 +4833,17 @@ padding: 5px 10px;
 text-align: center;
 }
 /*Start Home*/
+.text-red{
+  color: #C00;
+}
+
+
 .play-store-icons-wrapper{
-  background: rgba(242,246,248,1);
-  background: -webkit-gradient(linear,left top,left bottom,from(rgba(242,246,248,1)),color-stop(16%,rgba(242,246,248,1)),color-stop(80%,rgba(194,195,199,1)),to(rgba(224,239,249,1)));
-  background: linear-gradient(to bottom,rgba(242,246,248,1) 0,rgba(242,246,248,1) 16%,rgba(194,195,199,1) 80%,rgba(224,239,249,1) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f6f8', endColorstr='#e0eff9', GradientType=0 );
-  margin: 0 0 10px;
+  background: #ededed; /* Old browsers */
+background: -moz-linear-gradient(top, #ededed 0%, #c1bfbf 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, #ededed 0%,#c1bfbf 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, #ededed 0%,#c1bfbf 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  /* margin: 0 0 10px; */
   padding: 25px 0;
 }
 
@@ -4835,7 +4862,7 @@ text-align: center;
 }
 
 .play-store-img li{
-  display: inline;
+  display: inline-block;
   padding-right: 10px;
 }
 
@@ -5003,6 +5030,9 @@ text-align: center;
 /* End Products */
 
 /* Start user Sidebar */
+.margin-up{
+  margin-top: -16px;
+}
 .float{
   float: right;
   margin-top: 6px;
@@ -5385,6 +5415,12 @@ background: linear-gradient(to bottom, #eaeaea 0%,#c6c6c6 50%,#999a9b 100%); /* 
 
 @media (min-width: 768px) {
   /* Medium devices (768px and up) */
+  /* .how-it-works-box{
+    min-height: 366px;
+  } */
+  .home-columns .home-column-title{
+    font-size: 17px;
+  }
 }
 
 @media (min-width: 992px) {
@@ -5477,6 +5513,34 @@ background: linear-gradient(to bottom, #eaeaea 0%,#c6c6c6 50%,#999a9b 100%); /* 
 }
 @media (max-width: 425px) {
   /* Small devices (425px and down) */
+  
+}
+@media (max-width: 426px) {
+  /* Small devices (425px and down) */
+  .wrap-zips{
+  padding: 0px 20px;
+  }
+  .play-store-inner h4 {
+    font-size: 25px;
+  }
+  .play-store-inner span {
+    font-size: 38px;
+  }
+  .play-store-inner ul{
+    margin-left: 0px;
+  }
+  .margintop {
+    margin-top: 322px !important;
+}
+  .footer-text p{
+    text-align: center;
+  }
+  .space-up{
+    margin-top: 180px;
+  }
+  .footer-text p{
+    text-align: center;
+  }
   .home-columns .home-column{
     margin: 24px 0px;
     width: 100%;
