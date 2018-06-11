@@ -269,14 +269,14 @@
             <div  class="row">
               <div  class="col-xs-12 col-md-3 text-center">
                 <h1  class="rating-num">
-                  4.0</h1>
+                    {{ave}}</h1>
                 <div  class="rating">
                   <span  class="glyphicon glyphicon-star"></span><span  class="glyphicon glyphicon-star"></span>
                   <span  class="glyphicon glyphicon-star"></span><span  class="glyphicon glyphicon-star"></span>
                   <span  class="glyphicon glyphicon-star-empty"></span>
                 </div>
                 <div class="font-w">
-                  <span  class="glyphicon glyphicon-user"></span>1,050,008 total
+                  <span  class="glyphicon glyphicon-user"></span>{{totalrev}} total
                 </div>
               </div>
               <div  class="col-xs-12 col-md-9">
@@ -350,7 +350,7 @@
               <div  class="post-media clearfix" style="background: #ffffff; padding: 0; ">
                 
                      
-                <!----><video  class="videoplayer ng-star-inserted" preload="none" poster="https://storage.coursefrenzy.com/images/How-to-Design-an-Awesome-Letterhead-in-Adobe-Illustrator.jpg">
+               <!-- <video  class="videoplayer ng-star-inserted" preload="none" poster="https://storage.coursefrenzy.com/images/How-to-Design-an-Awesome-Letterhead-in-Adobe-Illustrator.jpg">
                   
                   <source  src="https://0.s3.envato.com/h264-video-previews/ec34ad1d-cba5-43a6-a1d0-a537b10e5879/759078.mp4" type="video/mp4">
                   
@@ -358,19 +358,37 @@
                   
                   <source  src="https://0.s3.envato.com/h264-video-previews/ec34ad1d-cba5-43a6-a1d0-a537b10e5879/759078.ogv" type="video/ogg">
                   
-                </video>
-                <img  alt="plya" class="video-play-icon" src="https://www.coursefrenzy.com/assets/img/coursefrenzy-play-icon.svg">
+                </video> -->
+                <img src="{{pro.profile_logo}}" alt="{{pro.title}}" />
+                <!-- <img  alt="plya" class="video-play-icon" src="https://www.coursefrenzy.com/assets/img/coursefrenzy-play-icon.svg"> -->
                 
               </div>
             </div>
             <div  class="widget custom-widget course-pricing clearfix" style="padding: 20px !important;">
               <div  class="customwidget text-left w40">
-                <p  class=" text-center linethrough">$0.00</p>
-                <p  class="widget-title text-center">$0.00</p>
-                <h4  class="text-center">30-Day Money-Back Guarantee</h4>
+                  <div style="text-align:center;">
+                      500 kWh
+                      <b class="price-style"> {{pro.price_500_kwh}}¢</b>
+    
+                    </div>
+                    <div class="add-price grid-element">
+                      <div class="unit">1,000 kWh
+                        <span class="price-style"> {{pro.price_1000_kwh}}¢ </span>
+                      </div>
+                      <div class="unit">2,000 kWh
+                        <span class="price-style"> {{pro.price_2000_kwh}}¢ </span>
+                      </div>
+    
+                    </div>
+                <!-- <p  class=" text-center linethrough">$0.00</p>
+                <p  class="widget-title text-center">$0.00</p> -->
+                <!-- <h4  class="text-center">30-Day Money-Back Guarantee</h4> -->
                 
+                <br >
+                <br >
+             
                 <div  class="sidebar-btn">
-                  <!----><a  class="button ng-star-inserted" routerlink="/checkout" style="margin: 0" type="" href="/checkout"> Buy Now </a>
+                  <!----><a  class="button ng-star-inserted"  style="margin: 0" type="" href="{{pro.profileurl}}"> Signup Now </a>
                   <!---->
                 </div>
                 <!-- <div  class="sidebar-btn">
@@ -386,8 +404,12 @@
                 
                 <br >
                 <br >
+                <h3 style="margin-bottom: 0px !important;"><strong >Plan Information:</strong></h3>
+                <p class="items-detail" *ngFor="let item of plan">
+                    {{item}}</p>
                 <br >
                 <br >
+                <hr >
                 <h3 style="margin-bottom: 0px !important;"><strong >Includes:</strong></h3>
                 <br >
                 <div class="inc-list">
@@ -401,22 +423,32 @@
                 
                 <div  class="course-meta clearfix">
                     <hr >
-                  <p  class="course-category">Category: <a  href="course-list.html">Graphic Design</a></p>
+                  <p  class="course-category">Category: <a  >{{pro.title}}</a></p>
                   <hr >
                   <div  class="rating">
                     <p >Reviews: &nbsp;
-                      <i  class="fa fa-star"></i>
-                      <i  class="fa fa-star"></i>
-                      <i  class="fa fa-star"></i>
-                      <i  class="fa fa-star"></i>
-                      <i  class="fa fa-star-o"></i>
+                        <img src="{{pro.rating_logo}}" alt="{{pro.title}}" class="rating-stars" />
                   </p></div>
                   <hr >
-                  <p  class="course-time">Period: 12 Month </p>
-                  <hr >
+                  
+                  <p class="course-time" *ngIf="pro.cancelation_fee;else no_data_temp2">
+                      Cancelation Fee:  {{pro.cancelation_fee.split(' ',3000)[2]}}
+                  </p> 
+                    <ng-template #no_data_temp2>
+
+                        <!-- <img src="../../assets/img/no_Record.png" style="width: 250px;height:200px" > -->
+                        <h4>&nbsp;&nbsp;&nbsp;&nbsp; ---</h4>
+                      </ng-template>
+                      <hr>
+                      <p >Call Now: &nbsp;
+                          <a href="tel:{{data.phone}}">
+                              <!-- <input type="text" id="phone" value="{{data.phone}}"  name="phone"  > -->
+                              {{pro.phone}}</a>
+                    </p>
+                  <!-- <hr >
                   <p  class="course-instructors">Instructor: <a  href="" title=""><img  alt="" class="img-circle" src=""> John DOE</a></p>
                   <hr >
-                  <p  class="course-forum">Course Forum: <a  href="" title="">Web Designers</a></p>
+                  <p  class="course-forum">Course Forum: <a  href="" title="">Web Designers</a></p> -->
   
                 </div>
               </div>
