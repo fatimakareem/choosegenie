@@ -55,7 +55,8 @@
         </div>
         <mat-form-field style="border-top: 0px !important;">
           <!-- <label class="control-label"style="font-size: 18px">KWh</label> -->
-          <mat-select placeholder="Kwh" (ngModelChange)="check($event)" required [(ngModel)]="price" name="price">
+          <!-- placeholder="Kwh" -->
+          <mat-select (ngModelChange)="check($event)" required [(ngModel)]="price" name="price">
 
             <mat-option value="500" style="font-size: 20px">500 kWh</mat-option>
             <mat-option value="1000" style="font-size: 20px">1000 kWh</mat-option>

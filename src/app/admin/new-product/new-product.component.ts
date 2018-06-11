@@ -112,8 +112,8 @@ title;
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     
-    
-    this.https.get('http://192.168.30.193:9000/choice/mydata/'+ this.username +'/' ,{ headers: headers })
+    // http://192.168.30.193:9000/choice/mydata/
+    this.https.get(Config.api+'addproduct'+ this.username +'/' ,{ headers: headers })
     .subscribe(Res => {
     this.sg['products'] = Res.json()['Results'];
     this.data=this.sg['products'];

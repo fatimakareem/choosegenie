@@ -31,16 +31,16 @@ export class SuperdashboardmainComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.fetchzip();
+    this.fetchregister();
   }
 
 
-  fetchzip() {
+  fetchregister() {
     // this.route.params.subscribe(params => {
     //   let zip =  this.sg['product_zipcode'];
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    this.https.get('http://127.0.0.1:8000/company_usercount/', { headers: headers })
+    this.https.get(Config.api+'register_usercount/', { headers: headers })
     
     .subscribe(Res => {
     this.data=Res.json();
@@ -48,4 +48,17 @@ export class SuperdashboardmainComponent implements OnInit {
     });
     
     }
+    fetchcompany() {
+      // this.route.params.subscribe(params => {
+      //   let zip =  this.sg['product_zipcode'];
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      this.https.get(Config.api+'company_usercount/', { headers: headers })
+      
+      .subscribe(Res => {
+      this.data=Res.json();
+      console.log(this.data);
+      });
+      
+      }
 }

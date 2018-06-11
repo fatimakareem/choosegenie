@@ -32,7 +32,7 @@
               <div class="form-group margin">
 
                 <mat-form-field>
-                  <input matInput placeholder="  Name" [formControl]="signupForm.controls['Name']" required [(ngModel)]="model.name">
+                  <input matInput placeholder="  Name" [formControl]="signupForm.controls['Name']" required [(ngModel)]="model.Name">
                 </mat-form-field>
               </div>
             </div>
@@ -123,7 +123,7 @@
               <div class="form-group margin">
 
                 <mat-form-field>
-                  <input matInput placeholder="Phone No" [formControl]="signupForm.controls['phone_no']" required [(ngModel)]="model.phoneno">
+                  <input matInput placeholder="Phone No" [formControl]="signupForm.controls['phone_no']" required [(ngModel)]="model.phone_no">
                   <!-- <mat-error *ngIf="secondFormGroup.controls.Phone_No.dirty && !secondFormGroup.controls.Phone_No.value"> Special characters not allowed</mat-error> -->
                 </mat-form-field>
               </div>
@@ -225,7 +225,7 @@
 
                 <mat-form-field>
                   <input matInput placeholder="Confirm Password" type="password" [type]="hide ? 'password' : 'text'" [formControl]="signupForm.controls['confirmpassword']"
-                    [(ngModel)]="model.confirmpassword">
+                    >
                   <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                   <!-- <mat-error *ngIf="secondFormGroup.controls.Confirm_Password.dirty && !secondFormGroup.controls.Confirm_Password.value"> Special characters not allowed</mat-error> -->
                   <mat-error *ngIf="(signupForm.controls.confirmpassword.value != signupForm.controls.password.value) || signupForm.controls.confirmpassword.value == ''">

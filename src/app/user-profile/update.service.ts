@@ -18,7 +18,7 @@ editTodoList(updateid,updatename,updatecontact,updateserviceaddress,updateservic
   updateauthenticationcode,updateacountactive,updateuserid)
   const headers = new Headers();
   headers.append('Content-Type', 'application/json');
-  return this.http.put('http://192.168.30.135:9000/users_profile/'+ this.username + '/' , JSON.stringify({
+  return this.http.put(Config.api+'users_profile/'+ this.username + '/' , JSON.stringify({
 
    
   "id": updateid,

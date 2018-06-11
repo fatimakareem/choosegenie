@@ -122,7 +122,7 @@ console.log("TS OBJECT",updatedtitle,updatedsign_up,updatedphone,updatedterms_of
     
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    this.http.get('http://192.168.30.135:9000/users_profile/' + this.username + '/', { headers: headers })
+    this.http.get(Config.api+'users_profile/' + this.username + '/', { headers: headers })
   
     .subscribe(Res => {
     this.data=Res.json();

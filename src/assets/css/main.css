@@ -698,7 +698,7 @@ background: goldenrod;
   overflow-x: hidden;
 }
 .top-margin{
-  margin-top: 80px;
+  margin-top: 75px;
 }
   .sidebar.custom label {
     color: #212121;
@@ -4729,9 +4729,10 @@ section#boody{
 .products-area-products{
   font-size: 15px;
     line-height: 19px;
-    width: 98%;
+    width: 100%;
     float: left;
     margin-top: -6px;
+    margin: 0 auto;
 }
 .products-area {
   font-size: 15px;
