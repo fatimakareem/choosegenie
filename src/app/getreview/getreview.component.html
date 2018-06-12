@@ -3,7 +3,7 @@
 <div class="container-fluid header-bar">
   <div class="container">
     <div class="row title-bar">
-      <div class="col-lg-12">
+      <div class="col-lg-12 text-center">
         <h2>{{pro.title}}</h2>
       </div>
     </div>
@@ -204,7 +204,7 @@
         <div class="rating-main">
             <h1>Rating &amp; Reviews</h1>
             <div class="rating-box" *ngIf="score<50">
-              <h2>ChoiceGenie Product Score</h2>
+              <h2>{{pro.title}} Reviews Score</h2>
               <round-progress
                             [current]="score"
                             [max]="100"
@@ -251,8 +251,8 @@
               </div>
           </div>
 
-      
-        <div  class="single-course-title text-center ng-star-inserted">
+      <br >
+        <!-- <div  class="single-course-title text-center ng-star-inserted">
             <h3 ><a  title=""> How to Design an Awesome Letterhead in Adobe Illustrator For Advanced Level</a></h3>
             <div  class="post-sharing">
               <ul  class="list-inline">
@@ -262,7 +262,7 @@
               </ul>
             </div>
         </div>
-      
+       -->
 
 
         <div  class="well well-sm">
@@ -345,9 +345,9 @@
     </div>
     <div class="col-md-4 col-sm-12 sidebar-reviews">
         <div  class="sidebar-wrapper">
-            <div  class="post-media clearfix" style="position: relative;">
+            <div  class="clearfix" style="position: relative;">
               
-              <div  class="post-media clearfix" style="background: #ffffff; padding: 0; ">
+              <div  class="post-media clearfix text-center" style="background: #ffffff; padding: 0; ">
                 
                      
                <!-- <video  class="videoplayer ng-star-inserted" preload="none" poster="https://storage.coursefrenzy.com/images/How-to-Design-an-Awesome-Letterhead-in-Adobe-Illustrator.jpg">
@@ -367,7 +367,8 @@
             <div  class="widget custom-widget course-pricing clearfix" style="padding: 20px !important;">
               <div  class="customwidget text-left w40">
                 <div style="margin-bottom: 0px !important;">
-                  <div style="text-align:center;">
+                    <h3 style="margin-bottom: 0px !important; color: #c00;"><strong >Plan Price:</strong></h3>
+                  <div style="text-align:center;font-weight: bold;">
                       500 kWh
                       <b class="price-style"> {{pro.price_500_kwh}}¢</b>
     
@@ -386,13 +387,10 @@
                 <p  class="widget-title text-center">$0.00</p> -->
                 <h4  class="text-center"></h4>
                 
-                <br >
-                <br >
+                <!-- <br >
+                <br > -->
              
-                <div class="sidebar-btn">
-                  <!----><a  class="button ng-star-inserted"  style="margin: 0" type="" href="{{pro.profileurl}}" target="_blank"> Signup Now </a>
-                  <!---->
-                </div>
+               
                 <!-- <div  class="sidebar-btn">
                   <a  class="material-icons wishlist" title="Add to wishlist">favorite_border</a>
                   <a  class="wishlist material-icons" title="Add to Cart">add_shopping_cart</a>
@@ -405,36 +403,26 @@
                 
                 
                 <br >
-                <br >
-                <h3 style="margin-bottom: 0px !important;"><strong >Plan Information:</strong></h3>
+                <br>
+                <hr/>
+                <h3 style="margin-bottom: 0px !important; color: #c00;"><strong >Plan Details:</strong></h3>
                 <p class="items-detail" *ngFor="let item of plan">
                     {{item}}</p>
-                <br >
-                <br >
-                <hr >
-                <h3 style="margin-bottom: 0px !important;"><strong >Includes:</strong></h3>
-                <br >
-                <div class="inc-list">
-                  <p ><i  class="fa fa-file-video-o"></i> &nbsp; 27.5 hours on-demand video</p><br >
-                  <p ><i  class="fa fa-book"></i> &nbsp; 7 Articles</p><br >
-                  <p ><i  class="fa fa-universal-access"></i> &nbsp; Full lifetime access</p><br >
-                  
-                  <p ><i  class="fa fa-bolt"></i> &nbsp;&nbsp; Assignments <br ></p> <br >
-                  <p ><i  class="fa fa-certificate"></i> &nbsp; Certificate of Completion</p><br >
-                </div>
+                <!-- <br > -->
+               
                 
                 <div  class="course-meta clearfix">
                     <hr >
-                  <p  class="course-category">Title: <a  >{{pro.title}}</a></p>
+                  <p  class="course-category"><span style="color: #c00;"> Title: </span><a  >{{pro.title}}</a></p>
                   <hr >
                   <div  class="rating">
-                    <p >Reviews: &nbsp;
-                        <img src="{{pro.rating_logo}}" alt="{{pro.title}}" class="rating-stars" />
+                    <p ><span style="color: #c00;">Reviews:</span> &nbsp;
+                        <img src="{{pro.rating_logo}}" alt="{{pro.title}}" class="reviews-stars" />
                   </p></div>
                   <hr >
                   
                   <p class="course-time" *ngIf="pro.cancelation_fee;else no_data_temp2">
-                      Cancelation Fee:  {{pro.cancelation_fee.split(' ',3000)[2]}}
+                    <span style="color: #c00;"> Cancelation Fee:</span>  {{pro.cancelation_fee.split(' ',3000)[2]}}
                   </p> 
                     <ng-template #no_data_temp2>
 
@@ -442,8 +430,8 @@
                         <h4>&nbsp;&nbsp;&nbsp;&nbsp; ---</h4>
                       </ng-template>
                       <hr>
-                      <p >Call Now: &nbsp;
-                          <a href="tel:{{data.phone}}">
+                      <p ><span style="color: #c00;">Call Now:</span> &nbsp;
+                          <a href="tel:{{data.phone}}" style="color: #000;">
                               <!-- <input type="text" id="phone" value="{{data.phone}}"  name="phone"  > -->
                               {{pro.phone}}</a>
                     </p>
@@ -453,6 +441,10 @@
                   <p  class="course-forum">Course Forum: <a  href="" title="">Web Designers</a></p> -->
   
                 </div>
+                <div class="sidebar-btn">
+                    <!----><a  class="button ng-star-inserted"  style="margin: 0" type="" href="{{pro.profileurl}}" target="_blank"> Signup Now </a>
+                    <!---->
+                  </div>
               </div>
             </div>
           </div>
@@ -563,7 +555,7 @@
     </div>
    <div *ngIf="rev==0">
      
-      <img  src="../../assets/img/review.gif" style="width: 550px; height: 400px;">
+      <img  src="../../assets/img/review.gif" class="reviews-animation" >
        
     </div>
   </div>
