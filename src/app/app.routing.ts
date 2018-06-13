@@ -48,7 +48,10 @@ export const AppRoutes: Routes = [
               path: 'products/:zipCode',
               loadChildren: './products/products.module#ProductsModule'
           },
-          
+          {
+            path: 'product/:zipCode',
+            loadChildren: './product/product.module#ProductModule'
+        },
 
         ]
     },

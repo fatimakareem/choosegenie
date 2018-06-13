@@ -1,0 +1,771 @@
+<!-- <h5>Items per Page</h5>
+        <mat-form-field >
+        <mat-select  (ngModelChange)="check($event)" [(ngModel)]="items"  >
+          <mat-option value="5" style="font-size: 20px">5</mat-option>
+          <mat-option value="10" style="font-size: 20px">10 </mat-option>
+          <mat-option value="20" style="font-size: 20px">20 </mat-option>
+        </mat-select>
+        </mat-form-field> -->
+
+
+        <div class="main-content custom" style="padding-top: 5px; padding-left: 12px;">
+          <!-- <div class="container-fluid"> -->
+          <div class="row"></div>
+          <div class="col-sm-12 product-main" style="padding:0px;">
+        
+            <!-- <div class="page-title">
+                <span>Product Search</span>
+              </div> -->
+            <!-- <li>
+        
+                <div class="panel-title">
+                  <a>
+                    <h5>Product per Page</h5>
+                  </a>
+                </div>
+                <mat-form-field>
+                  <mat-select placeholder="10 PER PAGE" selected="10" (change)="fetchitempages(items)" required [(ngModel)]="items" name="items">
+                    <mat-option value="10" selected="true">10 PER PAGE</mat-option>
+                    <mat-option value="20">20 PER PAGE</mat-option>
+                    <mat-option value="40">40 PER PAGE</mat-option>
+                    <mat-option value="556">SEE ALL</mat-option>
+                  </mat-select>
+                </mat-form-field>
+        
+              </li> -->
+        
+            <!-- </div> -->
+            <!-- <mat-paginator [length]="100" [pageSize]="20" [pageSizeOptions]="[5, 10, 25, 100]" (change)="_changePageSize($event.value)">
+              </mat-paginator> -->
+        
+        
+        
+            <div class="products-area-products" *ngIf="prod_loaded">
+              <div class="row">
+        
+                <div class="col-lg-12 position">
+                  <div class="custom card" style="float: right; margin-top: 4px;">
+                    <div class="">
+                      <div class="">
+                        <div class="product-page-bar">
+                          <div class=" col-lg-1 col-md-2 col-sm-4 col-xs-12 align padding">
+                            <label class="product-label ">SORT BY:</label>
+                          </div>
+        
+                          <div class="col-lg-1 col-md-2 col-sm-4 col-xs-12 align padding" style="margin-top: 5px">
+                            <button class="sort-btn " type="button" (click)="Renewable()">
+                              RENEWABLE
+                              <i class="fa fa-sort-down down-icon"></i>
+        
+                            </button>
+        
+                          </div>
+        
+        
+                          <div class="col-lg-1 col-md-2 col-sm-4 col-xs-12 align padding" style="margin-top: 5px">
+                            <button class="sort-btn " type="button" (click)="Price()">
+                              Price KW/h
+                              <i class="fa fa-sort-down down-icon"></i>
+        
+                            </button>
+        
+                          </div>
+        
+                          <div class="col-lg-1 col-md-2 col-sm-4 col-xs-12 align space-b" style="margin-top: 5px">
+                            <button class="sort-btn " type="button" (click)="company()">
+                              Company
+                              <i class="fa fa-sort-down down-icon"></i>
+        
+                            </button>
+                          </div>
+        
+                          <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+                            <li [ngClass]="{hide:pager.currentPage === 1}">
+                              <a (click)="setPage(1)" class="view-plan-details">
+                                <i class="fa fa-angle-double-left"></i>
+                              </a>
+                            </li>
+                            <li [ngClass]="{hide:pager.currentPage === 1}">
+                              <a (click)="setPage(pager.currentPage - 1)" class="view-plan-details">
+                                <i class="fa fa-angle-left"></i>
+                              </a>
+                            </li>
+        
+                            <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+                              <a (click)="setPage(page)" class="view-plan-details">{{page}}</a>
+                            </li>
+        
+                            <li [ngClass]="{hide:pager.currentPage === pager.totalPages}">
+                              <a (click)="setPage(pager.currentPage + 1)" class="view-plan-details" type="Next">
+                                <i class="fa fa-angle-right"></i>
+                              </a>
+                            </li>
+                            <li [ngClass]="{hide:pager.currentPage === pager.totalPages}">
+                              <a (click)="setPage(pager.totalPages)" class="view-plan-details" type="Last">
+                                <i class="fa fa-angle-double-right"></i>
+                              </a>
+                            </li>
+                          </ul>
+                          
+                          <div class="col-md-1 col-sm-4 col-xs-12 prod-select-list">
+                            
+                              <mat-form-field>
+                                  <mat-select  placeholder="10 PER PAGE" selected="10" (change)="fetchitem(items)" required [(ngModel)]="items" name="items">
+                                    <mat-option value="10" selected="true">10 PER PAGE</mat-option>
+                                    <mat-option value="20">20 PER PAGE</mat-option>
+                                    <mat-option value="40">40 PER PAGE</mat-option>
+                                    <mat-option value="556">SEE ALL</mat-option>
+                                  </mat-select>
+                                </mat-form-field>
+                                  <!-- <a class="btn  dropdown-toggle" href="https://example.com" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"placeholder="10 PER PAGE" selected="10" (change)="fetchitem(items)" required [(ngModel)]="items" name="items">
+                                    Dropdown link
+                                  </a>
+                                
+                                  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" >
+                                    <a class="dropdown-item" value="10" selected="true">10 PER PAGE</a>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                  </div> -->
+                                
+                      
+                          </div>
+                          <div class="col-md-2 col-sm-4 col-xs-12 compare-print">
+                              <button class="Compare" (click)="Comapreproduct()">Compare</button>
+        
+                              <button class="print" (click)="onPrint()">
+                                <i class="fa fa-print"></i>
+                              </button>
+                              <!-- <button id="cmd">Generate PDF</button> -->
+                          </div>
+                          <!-- <a target="_blank"   onclick="window.print();" class="print-grid-temp" title="Print plan results">
+                            <img alt="print" src="/Content/images/printer.png" width="16" height="16"></a> -->
+                            
+                        </div>
+                       
+        
+        
+        
+        
+        
+        
+        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+        
+                <div style="height: 50px;"></div>
+        
+        
+                <!-- <div class="col-lg-12">
+                  <div class="custom card col-lg-12" style="float: right;">
+                    <div class="col-sm-12">
+                      <div class="sortBy-bar col-lg-8 col-sm-12">
+                        <div class="product-page-bar col-lg-6">
+        
+                          <label class="col-md-6 product-label">Sort By</label>
+                          <div class="col-md-6" style="padding: 0px">
+                            <mat-form-field style="padding: 0px">
+                              <mat-select (change)="sortby(sort)" required [(ngModel)]="sort" name="sort">
+                                <mat-option value="Renewable" style="font-size: 20px">Renewable</mat-option>
+                                <mat-option value="Price" style="font-size: 20px">Price </mat-option>
+                                <mat-option value="Company" style="font-size: 20px">Company</mat-option>
+                              </mat-select>
+                            </mat-form-field>
+        
+                          </div>
+                        </div>
+        
+        
+        
+                        <div class="product-page-bar col-lg-6">
+                          <label class="col-md-6 product-label">Product per Page</label>
+        
+                          <div class="col-md-6" style="padding: 0px">
+                            <mat-form-field style="padding: 0px">
+                              <mat-select selected="10" (change)="fetchitem(items)" required [(ngModel)]="items" name="items">
+                                <mat-option value="10" selected="true">10 PER PAGE</mat-option>
+                                <mat-option value="20">20 PER PAGE</mat-option>
+                                <mat-option value="40">40 PER PAGE</mat-option>
+                                <mat-option value="556">SEE ALL</mat-option>
+                              </mat-select>
+                            </mat-form-field>
+        
+                          </div>
+                        </div>
+                        <!-- <div class="col-lg-2 icon-bar">
+                                  <a target="_blank" href="javascript:;" onclick="window.print();" class="print-grid-temp" title="Print plan results">
+                                      <img alt="print" src="http://www.powertochoose.org/Content/images/printer.png" width="16" height="16">
+                                  </a>
+                                  <a target="_blank" href="#" class="export-excel" title="Export results to Excel">
+                                      <img alt="export to excel" src="http://www.powertochoose.org/Content/images/excel.png" width="16" height="16">
+                                  </a>
+                                  <a target="_blank" href="#" class="export-csv" title="Export ALL offers to CSV. Ignores search results and relation to zip code. Only exports the active offers by REP Company">
+                                      <img alt="export to csv" src="http://www.powertochoose.org/Content/images/export_csv.png" width="16" height="16">
+                                  </a>
+                              </div> 
+        
+        
+                      </div>
+                    </div>
+                  </div>
+                </div> -->
+              </div>
+        
+        
+        
+              <div class="custom card up-margin" *ngFor="let data of sg['products']; let i = index">
+                <div class="row">
+        
+                  <div class="col-sm-12" style="padding: 0px 10px 11px 10px;">
+                    <div class="card-header card-header-text position-abs cards-itme" data-background-color="rose">
+                      <!-- {{data.id}}  -->
+                      <h4 class="card-title">{{data.title}} </h4>
+        
+                    </div>
+                    <!-- <input type="checkbox" name="comp"  #comp (change)="checked(data.id,i)">{{data.id}} -->
+                    <div class="card-content" style="padding: 0px;">
+        
+                      <div class="col-md-3  col-sm-6 col-xs-12 plan-detail text-center logo-div">
+                        <div class="check-box">
+                          <input type="checkbox" name="comp" #comp (change)="checked(data.id,i)">
+                        </div>
+                        <!-- <input type="checkbox" value="{{data.id}}" name="comp"  > -->
+                        <a href="{{data.profileurl}}" target="_blank" class="display-b margin-top">
+        
+                          <img src="{{data.profile_logo}}" alt="{{data.title}}" style="width: 90%;
+                          height: 85px;" />
+                        </a>
+                       
+        
+        
+        
+        
+        
+        
+        
+                        <a>
+        
+        
+                          <label class="view-plan-details" style="padding-bottom: 0px; margin-bottom: 0px;" (click)="btnDeleteClick(data.id,data.title,data.profileurl,data.profile_logo)"
+                            data-toggle="modal" data-target="#myModal3"> Leave a Review
+                          </label>
+                        </a>
+                        <div class="modal fade" id="myModal3" role="dialog">
+                          <div class="modal-dialog">
+        
+                            <!-- Modal content-->
+                            <div class="modal-content popupmodel">
+                              <!-- <div class="modal-header">
+                                               
+                                               
+                                              </div> -->
+                              <div class="modal-body" style="font-size: 18px;
+                                              background: #ffffff;
+                                              padding: 20px;
+                                              margin: 15px;
+                                              position: relative;">
+                                <div class="popup-close-button" data-dismiss="modal">X</div>
+                                <div class="row">
+                                  <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 " style="border-bottom: 1px #4f4f4f solid;">
+                                    <p class=" modal-v2__main-heading"> {{title}}</p>
+        
+                                  </div>
+                                  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" style="border-bottom: 1px #4f4f4f solid;">
+                                    <div class="popup-image">
+                                      <a href="{{profileurl}}" target="_blank" class="display-b margin-top">
+                                        <img src="{{profile_logo}}" />
+                                      </a>
+                                    </div>
+                                  </div>
+                                  <div>
+        
+                                    <h4 class="modal-title" style="text-align: center;
+                                                 
+                                                    font-size: 30px;">Based on what you've seen so far, how would you rate this Product?</h4>
+                                    <fieldset class="ratingq move-to-center" style="padding-left:3.5in">
+                                      <input type="radio" id="star5q" name="rating" value="5" (click)="get(5)" />
+                                      <label class="full" for="star5q" title="Awesome - 5 stars"></label>
+                                      <input type="radio" id="star4halfq" name="rating" value="4.5" (click)="get(4.5)" />
+                                      <label class="half" for="star4halfq" title="Pretty good - 4.5 stars"></label>
+                                      <input type="radio" id="starq" name="rating" value="4" (click)="get(4)" />
+                                      <label class="full" for="starq" title="Pretty good - 4 stars"></label>
+                                      <input type="radio" id="star3halfq" name="rating" value="3.5" (click)="get(3.5)" />
+                                      <label class="half" for="star3halfq" title="Meh - 3.5 stars"></label>
+                                      <input type="radio" id="star3q" name="rating" value="3" (click)="get(3)" />
+                                      <label class="full" for="star3q" title="Meh - 3 stars"></label>
+                                      <input type="radio" id="star2halfq" name="rating" value="2.5" (click)="get(2.5)" />
+                                      <label class="half" for="star2halfq" title="Kinda bad - 2.5 stars"></label>
+                                      <input type="radio" id="star2q" name="rating" value="2" (click)="get(2)" />
+                                      <label class="full" for="star2q" title="Kinda bad - 2 stars"></label>
+                                      <input type="radio" id="star1halfq" name="rating" value="1.5" (click)="get(1.5)" />
+                                      <label class="half" for="star1halfq" title="Meh - 1.5 stars"></label>
+                                      <input type="radio" id="star1q" name="rating" value="1" (click)="get(1)" />
+                                      <label class="full" for="star1q" title="Sucks big time - 1 star"></label>
+                                      <input type="radio" id="starhalfq" name="rating" value="0.5" (click)="get(0.5)" />
+                                      <label class="half" for="starhalfq" title="Sucks big time - 0.5 stars"></label>
+                                    </fieldset>
+        
+                                  </div>
+                                  <div class="modal-title" style="text-align: center;padding-left:3in">
+                                    <h3 style="
+                                                 
+                                  font-size: 30px;">Why Did You Leaving This Review?</h3>
+                                  </div>
+                                  <br>
+                                  <br>
+                                  <mat-form-field>
+                                    <textarea matInput placeholder="Share your Opinion about the quality of this product." matAutosizeMinRows="10" matAutosizeMaxRows="5"
+                                      style="height: 40px !important;width:920px !important;" name="comt" [(ngModel)]="comt">
+        
+                                      </textarea>
+        
+                                  </mat-form-field>
+        
+                                </div>
+                                <p>Your review will be publicly visible within 1 Second.</p>
+                              </div>
+        
+                              <div class="modal-footer">
+        
+                                <button type="button" class="btn btn-rose" data-dismiss="modal" style="
+                                                color: white;
+                        
+                                                width: 20%;
+                                                height: 45px;
+                                                font-size: 18px;">Cancel</button>
+                                <button type="button" style="
+                                                color: white;
+                        
+                                                width: 20%;
+                                                height: 45px;
+                                                font-size: 18px;" class="btn btn-rose" (click)="reviews(rating,comt,id)" data-dismiss="modal">Done</button>
+        
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+        
+        
+        
+                        <!-- <input  class="fa fa-star" aria-hidden="true" type="radio" value="1" (change)="reviews(rating,data.id)" [(ngModel)]="rating" name="rating">
+                     <ul class="product-list__star-list">
+                        <li>
+                          <a>
+                              <label title="Pretty good" (click)='reviews(rating,data.id)'> <i class="fa fa-star" aria-hidden="true"></i></label>
+                           
+                          </a>
+                        </li>
+                        <li>
+                          <a>
+                              <input type="radio" value="2" (change)="reviews(rating,data.id)" [(ngModel)]="rating" name="rating">
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="">
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="">
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="">
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                          </a>
+                        </li>
+                      </ul> -->
+                        <!-- <cli-star-rating (click)="reviews(data.id)" [starReadonly]="false" [rating]="rating"></cli-star-rating> -->
+        
+                        <!-- <img src="{{data.rating_logo}}" /> -->
+        
+        
+                        <!-- <br> <star-rating-comp [size]="'large'" [starType]="'svg'" [rating]="" [(ngModel)]="rating"></star-rating-comp>  -->
+        
+                      </div>
+                      <div class="col-md-3  col-sm-6 col-xs-12 plan-detail text-center margin-up">
+                        <h3 style=" text-align: center">
+                          <b> Price Rate</b>
+                        </h3>
+        
+                        <!-- <div class="holder white"> -->
+                        <!--class="product-price"-->
+                        <div style="text-align:center;">
+                        
+                          <b class="price-style"> {{data.price_rate}}¢</b>
+        
+                        </div>
+                        
+                        <a>
+                          <label class="view-plan-details" (click)="btnEditClick(data.id,data.title,data.sign_up,data.phone,data.terms_of_service,data.fact_sheet,data.cancelation_fee,data.price_rate,data.plan_information,data.rating_logo,data.profile_logo,data.profileurl); getreview(data.id); avereview(data.id)"
+                            data-toggle="modal" data-target="#myModal2" style="    padding-bottom: 0px; margin-bottom: 0px;">Plan Information</label>
+                        </a>
+                      </div>
+        
+        
+                      <div class="col-md-3 col-sm-6 col-xs-12 rate plan-detail margin-up" style="text-align:center">
+                        <h3 style=" text-align: center">
+                          <b> Plan Details</b>
+                        </h3>
+        
+                        <!-- <div class="holder white"> -->
+                        <!--class="product-price"-->
+                        <div style="text-align:center; padding-top:10px;">
+        
+        
+                          <p *ngFor="let item of data.plan_information" class="items-detail">
+                            {{item}}
+                          </p>
+        
+                        </div>
+        
+        
+                      </div>
+        
+                      <div class="col-md-3 col-sm-6 col-xs-12 term text-center">
+        
+                        <h3 class="text-center" style="margin-top: -22px !important;">
+                          <b> Call now</b>
+                        </h3>
+                        <p class="text-center" *ngIf="data.phone">
+                          <!-- <a href="tel:1-832-975-1000"> -->
+                          <a href="tel:{{data.phone}}">
+                            <!-- <input type="text" id="phone" value="{{data.phone}}"  name="phone"  > -->
+                            {{data.phone}}</a>
+                          <br/>
+                          <span>OR</span>
+                        </p>
+                        <p class="text-center" *ngIf="!data.phone">
+                          <!-- <a href="tel:1-832-975-1000"> -->
+                          <a>
+                            <!-- <input type="text" id="phone" value="{{data.phone}}"  name="phone"  > -->
+                           ----</a>
+                          <br/>
+                          <span>OR</span>
+                        </p>
+        
+                        <!-- (click)="openDialog(data.id)" -->
+                        <button *ngIf="data.profileurl" class="btn signup-btn" style="display: block;  margin: 0 auto;">
+                          <a style="color:white" href="{{data.profileurl}}" target="_blank">Signup </a>
+                          <!-- <i class="material-icons">bubble_chart</i> -->
+                        </button>
+                        <a href="Review/{{data.id}}">
+                          <label class="view-plan-details" style="padding-bottom: 0px; margin-bottom: 0px;">Reviews</label>
+                        </a>
+                        <!-- <a href="Review/{{data.id}}"><div  class="rating">
+                            <p >
+                                  <i class="fa fa-star"></i>
+                                  <i  class="fa fa-star"></i>
+                                  <i  class="fa fa-star"></i>
+                                  <i class="fa fa-star"></i>
+                                  <i  class="fa fa-star-o"></i>
+                              </p></div></a>  -->
+        
+                      </div>
+                      <!-- <div class="col-md-3 col-sm-3 col-xs-7 term top-margin-25">
+        (click)="signUp(data.product_id)"
+        
+        
+        
+        </div> -->
+                      <div class="col-sm-12">
+                        <!-- <a href="#p-pane-{{i}}" class="view-more collapsed" data-toggle="collapse">
+                            View more
+                            <i class="material-icons">arrow_drop_down</i>
+                          </a> -->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+        
+                <div class="modal fade" id="myModal2" role="dialog">
+                  <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content popupmodel">
+        
+                      <div class="modal-body" style="font-size: 18px;
+                        background: #ffffff;
+                        padding: 20px;
+                        margin: 15px;
+                        position: relative;">
+                        <div class="popup-close-button" data-dismiss="modal">X</div>
+                        <div class="row">
+                          <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 " style="border-bottom: 1px #4f4f4f solid;">
+                            <p class=" modal-v2__main-heading"> {{title}}</p>
+        
+                          </div>
+                          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" style="border-bottom: 1px #4f4f4f solid;">
+                            <div class="popup-image">
+                              <a href="{{profileurl}}" target="_blank" class="display-b margin-top">
+                                <img src="{{profile_logo}}" />
+                              </a>
+                            </div>
+                          </div>
+                          <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                            <div class="plan-information__heading">Price Rate</div>
+                            <table>
+                              <tbody>
+                                <tr class="plan-information__row">
+                                  <td class="plan-information__cell">Price Rate</td>
+                                  <td class="plan-information__cell plan-information__cell--last ">{{price_rate}}¢</td>
+                                </tr>
+                               
+                              </tbody>
+                            </table>
+                            <table>
+                              <tbody>
+        
+        
+                                <tr class="plan-information__row plan-information__row--last">
+                                  <td class="plan-information__cell">Documents</td>
+                                  <td class="plan-information__cell plan-information__cell--last">
+                                    <a *ngIf="fact_sheet" style="color:rgba(0,0,0, 0.87)" href="{{fact_sheet}}" target="_blank">
+                                      <i style="color:#25B7D3" class="material-icons">picture_as_pdf</i>
+                                      <a>Fact Sheet</a>
+                                      <br>
+                                    </a>
+                                    <a *ngIf="terms_of_service" style="color:rgba(0,0,0, 0.87)" href="{{terms_of_service}}" target="_blank">
+                                      <i style="color:#25B7D3" class="material-icons">picture_as_pdf</i>
+                                      Terms of service
+                                    </a>
+        
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                            <div class="plan-description">
+                              <div class="plan-description__heading">Cancelation Fee</div>
+                              <div class="plan-description__content">
+        
+                                <h4 *ngIf="data.cancelation_fee;else no_data_temp2">
+                                  &nbsp;&nbsp;&nbsp;&nbsp; {{data.cancelation_fee.split(' ',3000)[2]}}
+                                </h4>
+        
+                                <ng-template #no_data_temp2>
+        
+                                  <!-- <img src="../../assets/img/no_Record.png" style="width: 250px;height:200px" > -->
+                                  <h4>&nbsp;&nbsp;&nbsp;&nbsp; ---</h4>
+                                </ng-template>
+                                <!-- <p class="ng-binding">A great low rate with guaranteed price protection for 1 full year. Exclusive online offer available to new customers.</p> -->
+                              </div>
+                            </div>
+        
+                          </div>
+                          <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+                            <div class="plan-description">
+                              <div class="plan-description__heading">Plan Information</div>
+                              <div class="plan-description__content">
+                                <ul>
+                                  <li *ngFor="let data of plan_information">{{data}}</li>
+                                </ul>
+                                <!-- <div class="well well-sm">
+                                  <div class="row">
+                                    <div class="col-xs-12 col-md-3 text-center">
+                                      <h1 class="rating-num">{{avrage}}</h1>
+                                      <div class="rating">
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star-empty"></span>
+                                      </div>
+                                      <div>
+                                        <span class="glyphicon glyphicon-user"></span>{{rev}} total
+                                      </div>
+                                    </div>
+                                    <div class="col-xs-12 col-md-9">
+                                      <div class="row rating-desc">
+                                        <div class="col-xs-4 col-md-2 text-right">
+                                          <span class="glyphicon glyphicon-star"></span>5
+                                        </div>
+                                        <div class="col-xs-8 col-md-10">
+                                          <div class="progress progress-striped">
+                                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"
+                                              style="width: 80%">
+                                              <span class="sr-only">80%</span>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      
+                                        <div class="col-xs-4 col-md-2 text-right">
+                                          <span class="glyphicon glyphicon-star"></span>4
+                                        </div>
+                                        <div class="col-xs-8 col-md-10">
+                                          <div class="progress">
+                                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"
+                                              style="width: 60%">
+                                              <span class="sr-only">60%</span>
+                                            </div>
+                                          </div>
+                                        </div>
+                                       
+                                        <div class="col-xs-4 col-md-2 text-right">
+                                          <span class="glyphicon glyphicon-star"></span>3
+                                        </div>
+                                        <div class="col-xs-8 col-md-10">
+                                          <div class="progress">
+                                            <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                                              <span class="sr-only">40%</span>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      
+                                        <div class="col-xs-4 col-md-2 text-right">
+                                          <span class="glyphicon glyphicon-star"></span>2
+                                        </div>
+                                        <div class="col-xs-8 col-md-10">
+                                          <div class="progress">
+                                            <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"
+                                              style="width: 20%">
+                                              <span class="sr-only">20%</span>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      
+                                        <div class="col-xs-4 col-md-2 text-right">
+                                          <span class="glyphicon glyphicon-star"></span>1
+                                        </div>
+                                        <div class="col-xs-8 col-md-10">
+                                          <div class="progress">
+                                            <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"
+                                              style="width: 15%">
+                                              <span class="sr-only">15%</span>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      
+                                      </div>
+                                     
+                                    </div>
+                                  </div>
+                                </div> -->
+        
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+        
+                      <div style="display:inline-block; text-align:center;">
+                        <a *ngIf="sign_up" href="{{sign_up}}" target="_blank">
+                          <button class="btn btn-rose">Signup Now</button>
+                        </a>
+                        <div *ngIf="phone" style="display:inline-block; padding:24px;">
+                          <span style="font-size:24px; font-weight:600px">OR CALL
+                            <b> {{phone}} </b>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- <div class="clearfix"></div> -->
+        
+        
+                  <!-- <div class="col-sm-12 col-md-6">
+        <h4>Get your year-pass savings:</h4>
+        <ul>
+        <li>Keep your bills mild when the weather gets wild, and get a low rate in between.*</li>
+        <li>In summer and winter months, see the Season Pass Savings right on your bill.
+        
+        </li>
+        </ul>
+        <h5>Plan Documents</h5>
+        <ul class="list-normal">
+        <li>
+        <a href="{{data.terms_of_service}}" target="_blank">
+        <i class="material-icons">picture_as_pdf</i>
+        Terms of service
+        </a>
+        </li>
+        <li>
+        <a href="#">
+        <i class="material-icons">picture_as_pdf</i>
+        Your rights as a Customer
+        </a>
+        </li>
+        <li>
+        <a href="{{data.fact_sheet}}" target="_blank">
+        <i class="material-icons">picture_as_pdf</i>
+        Fact Sheet
+        </a>
+        </li>
+        </ul>
+        </div> -->
+        
+        
+                </div>
+              </div>
+              <span>
+                <ng-template #no_data_templ>
+        
+                  <!-- <img src="../../assets/img/no_Record.png" style="width: 250px;height:200px" > -->
+                  <h1 style="height:1000px;width:1000px;padding:200px">
+        
+                    <!-- <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;No Record Found</b> -->
+                  </h1>
+                </ng-template>
+              </span>
+        
+            </div>
+          </div>
+        </div>
+        <!-- <div>
+            <div> -->
+        <div class="container">
+          <div class="text-center">
+            <!-- <h1>Angular 2 - Pagination Example with logic like Google</h1> -->
+        
+            <!-- items being paged -->
+            <div *ngFor="let item of pagedItems">{{item.name}}</div>
+        
+            <!-- pager -->
+            <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+              <li [ngClass]="{hide:pager.currentPage === 1}">
+                <a (click)="setPage(1)" class="btn btn-rose">First</a>
+              </li>
+              <li [ngClass]="{hide:pager.currentPage === 1}">
+                <a (click)="setPage(pager.currentPage - 1)" class="btn btn-rose">Previous</a>
+              </li>
+              <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+                <a (click)="setPage(page)" class="btn btn-rose">{{page}}</a>
+              </li>
+              <li [ngClass]="{hide:pager.currentPage === pager.totalPages}">
+                <a (click)="setPage(pager.currentPage + 1)" class="btn btn-rose" type="Next">Next</a>
+              </li>
+              <li [ngClass]="{hide:pager.currentPage === pager.totalPages}">
+                <a (click)="setPage(pager.totalPages)" class="btn btn-rose" type="Last">Last</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <!-- <div class="mat-paginator-page-size">
+          <div class="mat-paginator-page-size-label">{{_intl.itemsPerPageLabel}}</div>
+          <mat-form-field *ngIf="_displayedPageSizeOptions.length > 1" class="mat-paginator-page-size-select">
+            <mat-select [value]="pageSize" [aria-label]="_intl.itemsPerPageLabel" (change)="_changePageSize($event.value)">
+              <mat-option *ngFor="let pageSizeOption of _displayedPageSizeOptions" [value]="pageSizeOption">{{pageSizeOption}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div *ngIf="_displayedPageSizeOptions.length <= 1">{{pageSize}}</div>
+        </div>
+        <div class="mat-paginator-range-label">{{_intl.getRangeLabel(pageIndex, pageSize, length)}}</div>
+        <button mat-icon-button type="button" class="mat-paginator-navigation-previous"
+          (click)="previousPage()" [attr.aria-label]="_intl.previousPageLabel" [matTooltip]="_intl.previousPageLabel" [matTooltipPosition]="'above'"
+          [disabled]="!hasPreviousPage()">
+          <div class="mat-paginator-increment"></div>
+        </button>
+        <button mat-icon-button type="button" class="mat-paginator-navigation-next" (click)="nextPage()" [attr.aria-label]="_intl.nextPageLabel"
+          [matTooltip]="_intl.nextPageLabel" [matTooltipPosition]="'above'" [disabled]="!hasNextPage()">
+          <div class="mat-paginator-decrement"></div>
+        </button> -->
