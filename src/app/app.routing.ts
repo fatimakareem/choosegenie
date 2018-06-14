@@ -253,6 +253,10 @@ export const AppRoutes: Routes = [
                 loadChildren: './superreviews/superreviews.module#SuperreviewsModule'
             },
             {
+                path: 'admin/subscribers',canActivate: [Authgaurd3Service],
+                loadChildren: './supersubscriber/supersubscriber.module#SupersubscriberModule'
+            },
+            {
                 path: 'superadmin/blog',canActivate: [Authgaurd3Service],
                 loadChildren: './Blogchoicegenie/blog3/blog3.module#Blog3Module'
             },//addblogModule

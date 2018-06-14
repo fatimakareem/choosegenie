@@ -14,12 +14,14 @@ import { LoginRoutes } from './userlogin.routing';
 import { DataService } from '../../data.service';
 import { UserloginComponent } from './userlogin.component';
 import { BlackgeeksRecaptchaModule } from 'recaptcha-blackgeeks';
+import { RecaptchaModule } from 'ng-recaptcha';
 
 
 
 @NgModule({
     imports: [
         CommonModule,
+        RecaptchaModule.forRoot(),
         RouterModule.forChild(LoginRoutes),
         BlackgeeksRecaptchaModule,
 

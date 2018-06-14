@@ -105,6 +105,11 @@ user;
 
 
   }
+  recaptcha;
+  resolved(captchaResponse: string) {
+    console.log(`Resolved captcha with response ${captchaResponse}:`);
+    this.recaptcha = captchaResponse;
+    }
   onLogin() {
     // console.log(this.login);
     if (this.login.valid) {

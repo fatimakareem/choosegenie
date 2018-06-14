@@ -55,7 +55,7 @@ export class SuperreviewsComponent implements OnInit {
 // this.rate=this.rev['rate'];
 //     console.log(this.rate);
 //this.pager = this.pagerService.getPager(Res['Results'],Res['Total Pages']);
-this.pager = this.pagerService.getPager(Res['Total Result'], page, 5);
+this.pager = this.pagerService.getPager(Res.json()['Total Result'], page, 10);
     });
     
     }
