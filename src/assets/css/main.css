@@ -2833,7 +2833,7 @@ section {
 }
 
 mat-form-field.mat-form-field{
-  width: 100% !important;
+  width: 100%;
   margin-top: 15px;
 }
 .mat-input-underline > .mat-input-ripple{
@@ -3232,6 +3232,7 @@ li.pinterest:hover {
   font-weight: 300;
   overflow: hidden;
   text-align: center;
+  /* float: right; */
 }
 h1, .entry-title {
   color: #414142;
@@ -4994,21 +4995,22 @@ background: linear-gradient(to bottom, #ededed 0%,#c1bfbf 100%); /* W3C, IE10+, 
   background: #CC0000 !important;
 }
 .print{
-  /* float: right; */
   margin-right: 10px;
   background: #444;
   color: #fff;
   border: none;
   padding: 5px 10px;
   border-radius: 4px;
+  float: right;
 }
 .Compare{
-  /* float: right; */
+  float: right;
   background: #444;
   color: #fff;
   border: none;
   padding: 5px 10px;
   border-radius: 4px;
+  margin-right: 10px;
 }
 .Compare:hover{
   background: #c00;
@@ -5044,8 +5046,12 @@ background: linear-gradient(to bottom, #ededed 0%,#c1bfbf 100%); /* W3C, IE10+, 
 .pagination{
   margin: 0px !important;
 }
-
-
+.width-sec{
+  width: 50% !important;
+}
+.sec-list{
+  display: flex;
+}
 /* End Products */
 
 /* Start user Sidebar */

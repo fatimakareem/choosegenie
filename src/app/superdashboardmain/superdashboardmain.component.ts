@@ -32,6 +32,7 @@ export class SuperdashboardmainComponent implements OnInit {
 
   ngOnInit() {
     this.fetchregister();
+    this.fetchcompany();
   }
 
 
@@ -48,6 +49,7 @@ export class SuperdashboardmainComponent implements OnInit {
     });
     
     }
+    item;
     fetchcompany() {
       // this.route.params.subscribe(params => {
       //   let zip =  this.sg['product_zipcode'];
@@ -56,8 +58,8 @@ export class SuperdashboardmainComponent implements OnInit {
       this.https.get(Config.api+'company_usercount/', { headers: headers })
       
       .subscribe(Res => {
-      this.data=Res.json();
-      console.log(this.data);
+      this.item=Res.json();
+      console.log(this.item);
       });
       
       }
