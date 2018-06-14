@@ -3,6 +3,7 @@ import { Headers, Http, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Config } from '../../Config';
 import { HttpClient, HttpResponse, HttpHeaders } from "@angular/common/http";
+import { ErrorStateMatcher, MatStepper } from '@angular/material';
 
 import { ActivatedRoute, Router, RouterModule, NavigationExtras } from "@angular/router";
 import { SimpleGlobal } from 'ng2-simple-global';
@@ -239,6 +240,11 @@ export class LoginComponent implements OnInit {
       this.validateAllFormFields(this.login);
     }
   }
+  recaptcha;
+  resolved(captchaResponse: string) {
+    console.log(`Resolved captcha with response ${captchaResponse}:`);
+    this.recaptcha = captchaResponse;
+    }
   model: any = {};
   forgetpass(Email) {
     //alert('hello');

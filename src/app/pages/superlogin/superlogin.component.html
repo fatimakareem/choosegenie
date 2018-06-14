@@ -13,7 +13,7 @@
         </div>
         <div class="login-form-1-body">
           <mat-form-field [ngClass]="displayFieldCss(login, 'username')">
-            <input matInput id="username" placeholder="Enter Username" >
+            <input matInput id="username" placeholder="Enter Username">
           </mat-form-field>
           <mat-form-field [ngClass]="displayFieldCss(login, 'password')">
               <!-- <input matInput type="password" id="password" [type]="hide ? 'password' : 'text'"  placeholder="Enter Your Password" formControlName="password" [(ngModel)]="password"> -->
@@ -24,7 +24,9 @@
           <mat-checkbox>
             Stay signed in
           </mat-checkbox>
-          <button type="submit" (click)="onLogin()">Login</button>
+          <re-captcha (resolved)="resolved($event)" siteKey="6LfsRDIUAAAAACiv609X_7y1iwMmwE4tA-YqRZLg
+          " style="transform:scale(0.77);-webkit-transform:scale(0.77);transform-origin:0 0;-webkit-transform-origin:0 0;"></re-captcha>
+          <button type="submit" (click)="onLogin()" [disabled]="!recaptcha">Login</button>
           <!-- <a  value="Delete" data-toggle="modal" data-target="#myModal3">Forgot Password?</a> -->
           <!-- <div class="modal fade" id="myModal3" role="dialog">
             <div class="modal-dialog">
