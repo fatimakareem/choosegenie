@@ -223,8 +223,8 @@
 
 
 
-      <div class="custom card up-margin" *ngFor="let data of sg['products']; let i = index">
-        <div class="row">
+      <div class="custom card up-margin" *ngFor="let data of sg['products']; let i = index" >
+        <div class="row" onscroll="myFunction()">
 
           <div class="col-sm-12" style="padding: 0px 10px 11px 10px;">
             <div class="card-header card-header-text position-abs cards-itme" data-background-color="rose">
@@ -237,7 +237,7 @@
 
               <div class="col-md-3  col-sm-6 col-xs-12 plan-detail text-center logo-div">
                 <div class="check-box">
-                  <input type="checkbox" name="comp" #comp (change)="checked(data.id,i)">
+                  <input type="checkbox" (change)="checked($event,data.id,i)">
                 </div>
                 <!-- <input type="checkbox" value="{{data.id}}" name="comp"  > -->
                 <a href="{{data.profileurl}}" target="_blank" class="display-b margin-top">
