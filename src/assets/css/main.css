@@ -1550,9 +1550,24 @@ h3 {
 .footer-align ul{
   margin-left: 0px;
 }
-
-
-
+.footer-upper .container-fluid{
+  padding: 0px 50px;
+}
+.left-margin{
+  margin-left: 33%;
+}
+.sub-input{
+font-size: 20px !important;
+color: #777777 !important;
+background: #fff !important;
+height: 33px !important;
+margin-top: -16px !important;
+border-radius: 4px 0px 0px 4px !important;
+padding: 7px 0px 7px 10px !important;
+}
+.input-group .input-group-btn{
+  padding: 0px !important;
+}
 
 .footer-1 .social-link a:hover {
   color: #46355C
@@ -1578,7 +1593,7 @@ h3 {
   font-size: 25px;
   color: #fff;
   text-align:left;
-  margin-bottom: 45px;
+  margin-bottom: 16px;
   }
 
   .footer-upper .social-link {
@@ -2833,7 +2848,7 @@ section {
 }
 
 mat-form-field.mat-form-field{
-  width: 100% !important;
+  width: 100%;
   margin-top: 15px;
 }
 .mat-input-underline > .mat-input-ripple{
@@ -3232,6 +3247,7 @@ li.pinterest:hover {
   font-weight: 300;
   overflow: hidden;
   text-align: center;
+  /* float: right; */
 }
 h1, .entry-title {
   color: #414142;
@@ -4994,21 +5010,22 @@ background: linear-gradient(to bottom, #ededed 0%,#c1bfbf 100%); /* W3C, IE10+, 
   background: #CC0000 !important;
 }
 .print{
-  /* float: right; */
   margin-right: 10px;
   background: #444;
   color: #fff;
   border: none;
   padding: 5px 10px;
   border-radius: 4px;
+  float: right;
 }
 .Compare{
-  /* float: right; */
+  float: right;
   background: #444;
   color: #fff;
   border: none;
   padding: 5px 10px;
   border-radius: 4px;
+  margin-right: 10px;
 }
 .Compare:hover{
   background: #c00;
@@ -5044,8 +5061,17 @@ background: linear-gradient(to bottom, #ededed 0%,#c1bfbf 100%); /* W3C, IE10+, 
 .pagination{
   margin: 0px !important;
 }
-
-
+.width-sec{
+  width: 83% !important;
+  height: 26px;
+}
+.sec-list{
+  display: flex;
+  margin-top: -4px;
+}
+.compare-print{
+  margin-top: 3px;
+}
 /* End Products */
 
 /* Start user Sidebar */
@@ -5877,7 +5903,7 @@ background: linear-gradient(to bottom, #eaeaea 0%,#c6c6c6 50%,#999a9b 100%); /* 
 }
 .prod-select-list .mat-input-placeholder.mat-empty {
   top: 33px;
-  font-size: 12px !important
+  font-size: 12px;
 }
 
 

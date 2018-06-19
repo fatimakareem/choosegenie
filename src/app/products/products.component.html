@@ -123,10 +123,11 @@
                     </li>
                   </ul>
                   
-                  <div class="col-md-1 col-sm-4 col-xs-12 prod-select-list">
-                    
+                  <div class="col-md-2 col-sm-4 col-xs-12 prod-select-list sec-list">
+                    <label class="product-label" style="margin: 9px 10px 0px 0px;">View:</label>
                       <mat-form-field>
-                          <mat-select  placeholder="10 PER PAGE" selected="10" (change)="fetchitem(items)" required [(ngModel)]="items" name="items">
+                          
+                          <mat-select class="width-sec"  placeholder="" selected="10" (change)="fetchitem(items)" required [(ngModel)]="items" name="items">
                             <mat-option value="10" selected="true">10 PER PAGE</mat-option>
                             <mat-option value="20">20 PER PAGE</mat-option>
                             <mat-option value="40">40 PER PAGE</mat-option>
@@ -145,12 +146,13 @@
                         
               
                   </div>
-                  <div class="col-md-3 col-sm-4 col-xs-12 compare-print">
+                  <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12 compare-print">
+                      <button class="print" (click)="onPrint()">
+                          <i class="fa fa-print"></i>
+                        </button>
                       <button class="Compare" (click)="Comapreproduct()">Compare</button>
 
-                      <button class="print" (click)="onPrint()">
-                        <i class="fa fa-print"></i>
-                      </button>
+                      
                       <!-- <button id="cmd">Generate PDF</button> -->
                   </div>
                   <!-- <a target="_blank"   onclick="window.print();" class="print-grid-temp" title="Print plan results">
