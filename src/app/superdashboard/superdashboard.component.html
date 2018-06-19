@@ -18,26 +18,26 @@ margin-right: 4%;" >
           <table class="table table-bordered  " style="background-color:#ffffff; border-radius: 5px; table-layout: fixed">
             <thead>
               <tr>
-                <th class="text-center">User ID</th>
+                <th class="text-center" hidden="ture">User ID</th>
                 <th class="text-center">REP Name</th>
                 <th class="text-center">REP Certificate # Area</th>
                 <th class="text-center">Contact Name</th>
                 <th class="text-center">Contact Phone#</th>
-                <th class="text-center">Market</th>
+                <!-- <th class="text-center">Market</th> -->
                 <th class="text-center">Status</th>
-                <th class="text-center">Approve</th>
-                <th class="text-center">Delete</th>
+                <th class="text-center">Active</th>
+                <th class="text-center">Un Active</th>
 
               </tr>
             </thead>
             <tbody *ngIf="data;else no_data_templ">
               <tr *ngFor="let item of data.slice().reverse(); let i = index">
-                <td style="font-size: 20px;">{{item.id}}</td>
+                <td style="font-size: 20px;" hidden="true" >{{item.id}}</td>
                 <td style="font-size: 20px;">{{item.REP_name}}</td>
                 <td style="font-size: 20px;">{{item.REP_certificate_id}}</td>
                 <td style="font-size: 20px;">{{item.Contact_Name}}</td>
                 <td style="font-size: 20px;">{{item.Contact_Phone}}</td>
-                <td style="font-size: 20px;">{{item.Market}}</td>
+                <td style="font-size: 20px;"  hidden="true">{{item.Market}}</td>
                 <td style="font-size: 20px;">{{item.status}}</td>
                 <!-- <td style="font-size: 20px;">{{item.user}}</td> -->
                 <td style="font-size: 20px;">
