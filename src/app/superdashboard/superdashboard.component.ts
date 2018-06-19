@@ -195,7 +195,7 @@ export class SuperdashboardComponent implements OnInit {
         //   this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
         this.http.get(Config.api + 'dashboard/' + '?page=' + page, { headers: headers }).subscribe(Res => {
             console.log(Res);
-            this.pager = this.pagerService.getPager(Res['Results'], page, 10);
+            this.pager = this.pagerService.getPager(Res.json()['Total Result'], page, 10);
 
             this.data = Res.json()['Results'];
 

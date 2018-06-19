@@ -26,25 +26,27 @@ import swal from 'sweetalert2';
 })
 export class SupersubscriberComponent implements OnInit {
   pager: any = {};
+  subs;
   constructor( private pagerService: PagerService,private route: ActivatedRoute,private http: Http) { }
 
   ngOnInit() {
+    this.getreview(1)
   }
-//   getreview(page:number) {
-//     if (page < 1 || page > this.pager.totalPages) {
-//       return;
-//   }
-//     let headers = new Headers();
-//     headers.append('Content-Type', 'application/json');
-//     this.http.get(Config.api +'getallreviewssuperdashboard/'+'?page=' + page, { headers: headers })
-//     .subscribe(Res => {
-//     this.rev=Res.json()['Results'];
-//     console.log(this.rev)
-// // this.rate=this.rev['rate'];
-// //     console.log(this.rate);
-// //this.pager = this.pagerService.getPager(Res['Results'],Res['Total Pages']);
-// this.pager = this.pagerService.getPager(Res.json()['Total Result'], page, 10);
-//     });
+  getreview(page:number) {
+    if (page < 1 || page > this.pager.totalPages) {
+      return;
+  }
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    this.http.get('http://192.168.30.193:9000/choice/subscribeusers/'+'?page=' + page, { headers: headers })
+    .subscribe(Res => {
+    this.subs=Res.json()['Results'];
+    console.log(this.subs)
+// this.rate=this.rev['rate'];
+//     console.log(this.rate);
+//this.pager = this.pagerService.getPager(Res['Results'],Res['Total Pages']);
+this.pager = this.pagerService.getPager(Res.json()['Total Result'], page, 10);
+    });
     
-//     }
+    }
 }

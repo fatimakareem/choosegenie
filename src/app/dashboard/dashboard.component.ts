@@ -94,7 +94,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
             // console.log(Response.id);
             // this.id = Response.id;
             console.log('service');       
-            this.sg['products'] = Response['Results'];
+            this.sg['products'] = Response.json()['Results'];
            
             console.log(this.sg['products']);
             for (let prod of this.sg['products']) {
@@ -110,8 +110,8 @@ export class DashboardComponent implements OnInit, AfterViewInit {
             this.prods_loaded = true;
             this.allItems = this.sg['products'];
             // console.clear()
-            console.log(Response['Total Result']);
-             this.pager = this.pagerService.getPager(Response['Total Result'], page, 10);
+            console.log(Response.json()['Total Result']);
+             this.pager = this.pagerService.getPager(Response.json()['Total Result'], page, 10);
            
 
         });
