@@ -89,7 +89,7 @@ export class AddblogComponent implements OnInit {
   }
 
   upload() {
-    alert('Image Object ' + this.Ch_image);
+   // alert('Image Object ' + this.Ch_image);
 
     this.http.post(
       Config.Imageurlupload,

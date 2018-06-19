@@ -185,7 +185,7 @@ premiseIdData(page: number) {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     //   this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-    this.http.get( Config.api + 'inactivepartner/' + '?page=' + page, { headers: headers }).subscribe(Res => {
+    this.http.get( Config.api + 'partnerfilter/' + '?page=' + page, { headers: headers }).subscribe(Res => {
         console.log(Res);
         this.pager = this.pagerService.getPager(Res.json()['Total Result'], page, 10);
   
