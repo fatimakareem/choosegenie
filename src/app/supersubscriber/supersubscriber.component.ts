@@ -27,6 +27,7 @@ import swal from 'sweetalert2';
 export class SupersubscriberComponent implements OnInit {
   pager: any = {};
   subs;
+  pagedItems;
   constructor( private pagerService: PagerService,private route: ActivatedRoute,private http: Http) { }
 
   ngOnInit() {
