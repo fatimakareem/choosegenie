@@ -2976,8 +2976,8 @@ li.pinterest:hover {
   position: relative;
 }
 .com-table {
-  margin: 0 0 80px;
-  overflow-x: scroll;
+  margin: 0 0 30px;
+  /* overflow-x: scroll; */
 }
 
 .appio-center-heading span.bordered-icon {
@@ -5219,7 +5219,7 @@ background: linear-gradient(to bottom, #eaeaea 0%,#c6c6c6 50%,#999a9b 100%); /* 
   background-color:#2f2f2f;
   position: fixed;
   width:20%;
-  height: 665px;
+  height: 700px;
   overflow-y: scroll;
 }
 .super-sidebar-list li{
