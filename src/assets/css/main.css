@@ -83,7 +83,12 @@ p {
 .wrapper {
   height: auto !important;
   min-height: 100vh !important; }
-
+.color-red{
+  color: #CC0000;
+}
+.color-black{
+  color: #000000;
+}
 .mat-select {
   padding: 0 !important;
   background: none;
@@ -324,7 +329,7 @@ app-header {
         -moz-border-radius: 6px;
         border-radius: 6px;
         overflow: hidden;
-        text-align: center; 
+        text-align: center;
         margin-bottom: 10px;
       }
         .pw-solutions ul li .img-holder .material-icons {
@@ -877,8 +882,13 @@ background: goldenrod;
     line-height: 21px; }
 
 .page-title {
-  margin: 0 0 50px;
-   /* text-align: center; */
+  /*margin: 0 0 50px;*/
+    text-align: center !important;
+}
+.page-title h3{
+  border-bottom: 3px solid #CC0000;
+  display: inline-block;
+  padding-bottom: 15px;
 }
   .page-title span {
     font-size: 30px;
@@ -1959,8 +1969,8 @@ padding: 7px 0px 7px 10px !important;
 
 /* how it Works start */
 .how-it-works-paragraph{
-  text-align: center; 
-  color: #fff; 
+  text-align: center;
+  color: #fff;
   padding-bottom: 30px;
   font-weight:500;
 }
@@ -3007,9 +3017,9 @@ li.pinterest:hover {
 .com-table table th {
   background-color: #cc0000;
   color: #fff;
-  font-size: 22px !important;
-  padding: 25px 0 !important;
-  font-weight: 700 !important;
+  font-size: 1.25em !important;
+  /*padding: 25px 0 !important;*/
+  font-weight: 300 !important;
 }
 .com-table-2 table th {
   background-color: #cc0000;
@@ -4216,7 +4226,7 @@ footer p a:hover { color:#333; border-bottom-color: #333; }
 .card-content h3 {
   margin: 0px !important;
   padding: 0px !important;
-  font-size: 21px !important;
+  font-size: 24px !important;
 }
 .view-plan-details{
   padding: 2px 0px;
@@ -4236,6 +4246,9 @@ footer p a:hover { color:#333; border-bottom-color: #333; }
 .blog li{
   width: 33% !important;
   cursor: pointer;
+}
+.pric-range-box{
+  font-weight: bold;
 }
 .pric-range-box input {
   width: 65px;
@@ -4629,7 +4642,13 @@ canvas {
   color: #ddd;
   float: right;
 }
-
+.btn-fill{
+  background: #444 !important;
+  transition: 0.5s;
+}
+.btn-fill:hover{
+  background: #c00 !important;
+}
 /***** CSS Magic to Highlight Stars on Hover *****/
 
 .ratingp > input:checked ~ label, /* show gold star when clicked */
@@ -4818,6 +4837,7 @@ section#boody{
   width: 100%;
   /* overflow: hidden; */
   /* padding: 18px 0 0; */
+  font-weight: bold;
 }
 .unit {
   float: left;
@@ -5153,7 +5173,7 @@ background: linear-gradient(to bottom, #eaeaea 0%,#c6c6c6 50%,#999a9b 100%); /* 
   margin: 5px;
 } */
 .mat-select-arrow{
-  color: #cc0000 !important;
+  color: #000000 !important;
   width: 0;
   height: 0;
   border-left: 11px solid transparent !important;
@@ -5440,6 +5460,12 @@ background: linear-gradient(to bottom, #eaeaea 0%,#c6c6c6 50%,#999a9b 100%); /* 
 /*End Reviews Dashboard */
 
 
+/*Start Add New Blog*/
+.width-full{
+  width: 100% !important;
+}
+/*End Add New Blog*/
+
 
 /*
  * --------------------------------------------------
@@ -5494,6 +5520,9 @@ background: linear-gradient(to bottom, #eaeaea 0%,#c6c6c6 50%,#999a9b 100%); /* 
 
 @media (max-width: 768px) {
   /* Medium devices (767px and down) */
+  .popupmodel {
+    width: 682px !important;
+  }
   .pw-solutions{
     padding: 0px;
   }
@@ -5558,7 +5587,7 @@ background: linear-gradient(to bottom, #eaeaea 0%,#c6c6c6 50%,#999a9b 100%); /* 
 }
 @media (max-width: 425px) {
   /* Small devices (425px and down) */
-  
+
 }
 @media (max-width: 426px) {
   /* Small devices (425px and down) */
@@ -5569,7 +5598,7 @@ background: linear-gradient(to bottom, #eaeaea 0%,#c6c6c6 50%,#999a9b 100%); /* 
     padding: 8px;
   }
   .up-margin {
-    margin-top: 122px !important;
+    margin-top: 143px !important;
   }
   .reviews-animation {
     width: 100%;
@@ -5732,6 +5761,18 @@ background: linear-gradient(to bottom, #eaeaea 0%,#c6c6c6 50%,#999a9b 100%); /* 
 }
 @media (max-width: 1024px) {
   /* Large devices (992px and down) */
+  .popupmodel{
+    width: 100% !important;
+    right: 0%;
+  }
+  .Compare{
+    font-size: 10px;
+    margin-right: 2px;
+  }
+  .print{
+    font-size: 10px;
+    margin-right: 0px;
+  }
   .pagination{
     margin-top: 5px !important;
   }
@@ -5874,7 +5915,7 @@ background: linear-gradient(to bottom, #eaeaea 0%,#c6c6c6 50%,#999a9b 100%); /* 
   margin: 2px 5px;
 }
 .mat-select-arrow{
-  color: #cc0000 !important;
+  color: #000000 !important;
   width: 0;
   height: 0;
   border-left: 11px solid transparent !important;
@@ -5883,7 +5924,12 @@ background: linear-gradient(to bottom, #eaeaea 0%,#c6c6c6 50%,#999a9b 100%); /* 
   margin: 0 4px;
 }
 .superreviews-table.table > tbody > tr > td, .table > tfoot > tr > td{
-  text-align: center;}
+  text-align: center;
+  padding: 0px;
+}
+.table > tbody > tr > td, .table > tfoot > tr > td{
+  padding: 0px !important;
+}
 .prod-select-list {
   padding: 0px !important;
 }
@@ -6006,4 +6052,3 @@ background: linear-gradient(to bottom, #eaeaea 0%,#c6c6c6 50%,#999a9b 100%); /* 
     right: -1.5%;
   }
 }
-

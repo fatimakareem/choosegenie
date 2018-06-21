@@ -3805,8 +3805,8 @@
  .ct-rose {
    stroke: #e91e63 !important; }
 
- .mat-form-field {
-   width: auto !important; }
+ /* .mat-form-field {
+   width: auto !important; } */
 
  .mat-select {
    width: 100%; }

@@ -48,6 +48,7 @@ private Sub: Subscription;
         this. product(params['id'])
         this. totalreview(params['id'])
         this. avereview(params['id'])
+        this.hitcount(params['id'])
       });
       //  alert("junaid");
       // this.data.currentProducts.subscribe(products => this.sg['products'] = products)
@@ -71,6 +72,18 @@ private Sub: Subscription;
 }
 data:any=[];
 user;
+hit:any=[];
+hitcount(id){
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json')
+    this.http.get('http://192.168.30.193:9000/choice/counthitsperproduct/'+ id ,{ headers: headers })
+
+        .subscribe(Res => {
+           console.log(Res);
+           this.hit=Res.json()[0].hits;
+           console.log(this.hit)
+        });
+    }
 profile() {
 
     let headers = new Headers();
@@ -91,7 +104,7 @@ profile() {
     headers.append('Content-Type', 'application/json');
     this.http.get(Config.api + 'getallreviews/'+ id , { headers: headers })
     .subscribe(Res => {
-    this.rev=Res.json()['Results'];
+    this.rev=Res.json();
     console.log(this.rev)
 // this.rate=this.rev['rate'];
 //     console.log(this.rate);

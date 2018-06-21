@@ -420,9 +420,12 @@
                         <img src="{{pro.rating_logo}}" alt="{{pro.title}}" class="reviews-stars" />
                   </p></div>
                   <hr >
-                  
                   <p class="course-time" *ngIf="pro.cancelation_fee;else no_data_temp2">
-                    <span style="color: #c00;"> Cancelation Fee:</span>  {{pro.cancelation_fee.split(' ',3000)[2]}}
+                      <span style="color: #c00;"> Cancelation Fee:</span>  {{pro.cancelation_fee.split(' ',3000)[2]}}
+                    </p> 
+                    <hr>
+                  <p class="course-time" *ngIf="hit;else no_data_temp2">
+                    <span style="color: #c00;"> No of Hits:</span>  {{hit}}
                   </p> 
                     <ng-template #no_data_temp2>
 
@@ -453,12 +456,12 @@
 </div>
 
 
-<div class="container-fluid comments-box" *ngIf="rev">
+<div class="container-fluid comments-box" *ngIf="rev" >
     <h1>Reviews</h1>
     <div class="review-content" *ngFor="let item of rev" class="product-review">
-      <h3>{{item.username}}</h3>
+      <h3>{{item.User}}</h3>
       <div class="rating-star" >
-        <div class="rating" *ngIf="item.rate==5.00">
+        <div class="rating" *ngIf="item.Rating==5.00">
           <p>
             <i class="fa fa-star" style="color:#f2b01e"></i>
             <i class="fa fa-star" style="color:#f2b01e"></i>
@@ -467,7 +470,7 @@
             <i class="fa fa-star" style="color:#f2b01e"></i>
           </p>
         </div>
-        <div class="rating" *ngIf="item.rate==4.5">
+        <div class="rating" *ngIf="item.Rating==4.5">
           <p>
             <i class="fa fa-star" style="color:#f2b01e"></i>
             <i class="fa fa-star" style="color:#f2b01e"></i>
@@ -476,7 +479,7 @@
             <i class="fa fa-star-half-o" style="color:#f2b01e"></i>
           </p>
         </div>
-        <div class="rating" *ngIf="item.rate==4.00">
+        <div class="rating" *ngIf="item.Rating==4.00">
           <p>
             <i class="fa fa-star" style="color:#f2b01e"></i>
             <i class="fa fa-star" style="color:#f2b01e"></i>
@@ -485,7 +488,7 @@
             <i class="fa fa-star-o" style="color:#f2b01e"></i>
           </p>
         </div>
-        <div class="rating" *ngIf="item.rate==3.5">
+        <div class="rating" *ngIf="item.Rating==3.5">
           <p>
             <i class="fa fa-star" style="color:#f2b01e"></i>
             <i class="fa fa-star" style="color:#f2b01e"></i>
@@ -494,7 +497,7 @@
             <i class="fa fa-star-o" style="color:#f2b01e"></i>
           </p>
         </div>
-        <div class="rating" *ngIf="item.rate==3.00">
+        <div class="rating" *ngIf="item.Rating==3.00">
           <p>
             <i class="fa fa-star" style="color:#f2b01e"></i>
             <i class="fa fa-star" style="color:#f2b01e"></i>
@@ -503,7 +506,7 @@
             <i class="fa fa-star-o" style="color:#f2b01e"></i>
           </p>
         </div>
-        <div class="rating" *ngIf="item.rate==2.5">
+        <div class="rating" *ngIf="item.Rating==2.5">
           <p>
             <i class="fa fa-star" style="color:#f2b01e"></i>
             <i class="fa fa-star" style="color:#f2b01e"></i>
@@ -512,7 +515,7 @@
             <i class="fa fa-star-o" style="color:#f2b01e"></i>
           </p>
         </div>
-        <div class="rating" *ngIf="item.rate==2.00">
+        <div class="rating" *ngIf="item.Rating==2.00">
           <p>
             <i class="fa fa-star" style="color:#f2b01e"></i>
             <i class="fa fa-star" style="color:#f2b01e"></i>
@@ -521,7 +524,7 @@
             <i class="fa fa-star-o" style="color:#f2b01e"></i>
           </p>
         </div>
-        <div class="rating" *ngIf="item.rate==1.5">
+        <div class="rating" *ngIf="item.Rating==1.5">
           <p>
             <i class="fa fa-star" style="color:#f2b01e"></i>
             <i class="fa fa-star-half-o" style="color:#f2b01e"></i>
@@ -530,7 +533,7 @@
             <i class="fa fa-star-o" style="color:#f2b01e"></i>
           </p>
         </div>
-        <div class="rating" *ngIf="item.rate==1.00">
+        <div class="rating" *ngIf="item.Rating==1.00">
           <p>
             <i class="fa fa-star" style="color:#f2b01e"></i>
             <i class="fa fa-star-o" style="color:#f2b01e"></i>
@@ -539,7 +542,7 @@
             <i class="fa fa-star-o" style="color:#f2b01e"></i>
           </p>
         </div>
-        <div class="rating" *ngIf="item.rate==0.5">
+        <div class="rating" *ngIf="item.Rating==0.5">
           <p>
             <i class="fa fa-star-half-o" style="color:#f2b01e"></i>
             <i class="fa fa-star-o" style="color:#f2b01e"></i>
@@ -550,10 +553,10 @@
         </div>
   
       </div>
-      <p>{{item.comment}}</p>
+      <p>{{item.Results}}</p>
       <hr>
     </div>
-   <div *ngIf="rev==0">
+   <div *ngIf="rev == 0">
      
       <img  src="../../assets/img/review.gif" class="reviews-animation" >
        

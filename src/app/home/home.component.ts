@@ -86,7 +86,7 @@ export class HomeComponent implements OnInit {
         //console.log(position.coords);
     }
     ngOnInit() {
-      this.hits();
+      // this.hits();
       $('.slick-date').slick({
         slidesToShow: 3,
         autoplaySpeed: 1500,
@@ -135,29 +135,7 @@ export class HomeComponent implements OnInit {
         //alert("i am here")
 
     }
-    hits() {
-    
-      //alert('hello');
-      console.log("CHOICE GENIE", this.model.zipcode1    );
-      // alert("REP_certificate_id1"+this.REP_certificate_id);
-  
-      let headers = new HttpHeaders();
-  
-  
-      headers.append('Content-Type', 'text/html');
-      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      // http://192.168.30.193:9000/choice/
-      this.http.get('http://192.168.30.165:9000/getcounts/4/', { headers: headers })
-  
-  
-        //   // this.http.post(Config.api + 'signup/'+ this.zip_code +'', {"premiseid": this.premiseID +'', {headers: headers})
-        .subscribe(data => {
-          console.log(data);
-          // this.next = Res[0].next;
-       
-
-        });
-  }
+   
 
     Checkzipcode(zipcode1) {
         //alert('hello');

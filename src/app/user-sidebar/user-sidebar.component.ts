@@ -205,7 +205,7 @@ price_to;
   fetchmutimonth(months1, months2, months3, months4, months5, months6, months7) {
    
    
-     if (months1 == true && months2 == true && months3==true && months4==true && months5==true && months6==true && months7==true) {
+     if (months1 == true && months2 == true && months3 == true && months4 == true && months5 == true && months6 == true && months7 == true) {
       months1 = "36 Months";
       months2 = "24 Months";
 months3="18 Months";
@@ -3409,7 +3409,7 @@ months6="6 Months";
 
         });
     }
-   else if (months1 = true) {
+   else if (months1 == true) {
       months1 = "36 Months";
       console.log(months1, 'tttttttttttt')
       let headers = new Headers();
@@ -3442,7 +3442,7 @@ months6="6 Months";
 
         });
     }
-    else if (months2 = true) {
+    else if (months2 == true) {
       months2 = "24 Months";
       console.log(months2, 'tttttttttttt')
       let headers = new Headers();
@@ -3475,7 +3475,7 @@ months6="6 Months";
 
         });
     }
-    else if (months3 = true) {
+    else if (months3 == true) {
       months3 = "18 Months";
       console.log(months3, 'tttttttttttt')
       let headers = new Headers();
@@ -3508,7 +3508,7 @@ months6="6 Months";
 
         });
     }
-    else if (months4 = true) {
+    else if (months4 == true) {
       months4 = "14 Months";
       console.log(months4, 'tttttttttttt')
       let headers = new Headers();
@@ -3541,7 +3541,7 @@ months6="6 Months";
 
         });
     }
-    else if (months5 = true) {
+    else if (months5 == true) {
       months5 = "12 Months";
       console.log(months5, 'tttttttttttt')
       let headers = new Headers();
@@ -3574,7 +3574,7 @@ months6="6 Months";
 
         });
     }
-    else if (months6 = true) {
+    else if (months6 == true) {
       months6 = "6 Months";
       console.log(months6, 'tttttttttttt')
       let headers = new Headers();
@@ -3607,7 +3607,7 @@ months6="6 Months";
 
         });
     }
-    else if (months7 = true) {
+    else if (months7 == true) {
       months7 = "5 Months";
       console.log(months7, 'tttttttttttt')
       let headers = new Headers();
