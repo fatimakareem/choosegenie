@@ -77,6 +77,7 @@ export class ContactusComponent implements OnInit {
       'mobno': ['', Validators.compose([Validators.required])],
       'msg': ['', Validators.compose([Validators.required])],
       'email': ['', Validators.compose([Validators.required])],
+      'subject':['', Validators.compose([Validators.required])]
 
       // 'Phone': ['', Validators.compose([Validators.required, Validators.pattern(this.digitsOnly)])],
       // 'country': ['', Validators.compose([Validators.required, Validators.pattern(this.normalPattern)])],
@@ -91,6 +92,10 @@ export class ContactusComponent implements OnInit {
     console.log(this.model)
   }
 
+  cleardata(){
+    this.email ='';
+    this.email=null;
+  }
   Contactuserdata() {
     //alert('hello');
     console.log("CHOICE GENIE", this.model);
@@ -119,9 +124,10 @@ export class ContactusComponent implements OnInit {
 
         })
      //   this.name.clear();
-        // this.model.clear();
+  
         //this.router.navigate(['/pages/login'])
       },
+      
         error => {
           console.log(error);
           //  this.toastr.error(error, null, {toastLife: 5000});
