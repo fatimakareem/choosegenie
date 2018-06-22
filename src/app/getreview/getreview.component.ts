@@ -106,6 +106,7 @@ profile() {
 
 }
   rate:any=[];
+  total:any=[];
   getreview(id) {
     
     let headers = new Headers();
@@ -113,6 +114,8 @@ profile() {
     this.http.get(Config.api + 'getallreviews/'+ id , { headers: headers })
     .subscribe(Res => {
     this.rev=Res.json()['Results'];
+this.total=Res.json()['Total Result'];
+console.log(this.total)
     console.log(this.rev)
 
   
