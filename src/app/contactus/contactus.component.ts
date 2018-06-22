@@ -73,7 +73,7 @@ export class ContactusComponent implements OnInit {
   ngOnInit() {
     this.signupForm = this.fb.group({
       //['', Validators.compose([Validators.required])],
-      'name': ['', Validators.compose([Validators.required])],
+      'name': ['', Validators.compose([Validators.requiredTrue])],
       'mobno': ['', Validators.compose([Validators.required])],
       'msg': ['', Validators.compose([Validators.required])],
       'email': ['', Validators.compose([Validators.required])],
@@ -92,9 +92,19 @@ export class ContactusComponent implements OnInit {
     console.log(this.model)
   }
 
+  name;
+  mobno;
+  msg;
+  subject;
   cleardata(){
-    this.email ='';
-    this.email=null;
+   
+ this.model.name= null;
+ this.model.mobno=null;
+ this.model.msg=null;
+ this.model.subject=null;
+ this.model.email=null;
+
+
   }
   Contactuserdata() {
     //alert('hello');
