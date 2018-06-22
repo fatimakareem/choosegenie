@@ -29,9 +29,15 @@
 .input-group .input-group-btn{
   padding: 0px !important;
 }
-
-
-
+.prod-slide{
+  background: #fff;
+}
+.prod-slide > h2{
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+    margin: 10px 0px; 
+    text-align: center; 
+}
 
 
 

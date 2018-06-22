@@ -94,28 +94,15 @@ export const AppRoutes: Routes = [
         // },
         {
             path: 'blog',
-            loadChildren: './blog/blog.module#BlogModule'
+            loadChildren: './Blogchoicegenie/blog/blog.module#BlogModule'
         },
         {
             path: 'blog/:heading1',
-            loadChildren: './Blogchoicegenie/blog1/blog1.module#Blog1Module'
+            loadChildren: './Blogchoicegenie/viewblog/blog1.module#Blog1Module'
             // loadChildren: './pages/login/login.module#LoginModule'
         },
     
-        
-        {
-            path: 'blog2',
-            loadChildren: './Blogchoicegenie/blog2/blog2.module#Blog2Module'
-        },
-        
-        {
-            path: 'blog4',
-            loadChildren: './Blogchoicegenie/blog4/blog4.module#Blog4Module'
-        },
-        {
-            path: 'blog5',
-            loadChildren: './Blogchoicegenie/blog5/blog5.module#Blog5Module'
-        },
+    
         {
             path: 'Why-Choice-Genie',
             loadChildren: './why-chocie-genie/whychoicegenie.module#WhyModule'
@@ -152,10 +139,7 @@ export const AppRoutes: Routes = [
         //     path: "new-product",
         //     loadChildren: './admin/new-product/new-product.module#NewProductModule'
         //   },
-          {
-            path: 'admin/search-customer',
-            loadChildren: './admin/search-customer/search-customer.module#SearchCustomerModule'
-          },  {
+           {
             path: 'adminlogin',
             loadChildren: './pages/superlogin/superlogin.module#LoginModule'
           },
@@ -258,11 +242,11 @@ export const AppRoutes: Routes = [
             },
             {
                 path: 'superadmin/blog',canActivate: [Authgaurd3Service],
-                loadChildren: './Blogchoicegenie/blog3/blog3.module#Blog3Module'
+                loadChildren: './Blogchoicegenie/adminblog/blog3.module#Blog3Module'
             },//addblogModule
             {
                 path: 'addnewblog',canActivate: [Authgaurd3Service],
-                loadChildren: './addblog/addblog.module#addblogModule'
+                loadChildren: './Blogchoicegenie/addblog/addblog.module#addblogModule'
             },
             {
                 path: 'SuperChangePassword',canActivate: [Authgaurd3Service],
@@ -310,27 +294,10 @@ export const AppRoutes: Routes = [
                 loadChildren: './changepassword/changepassword.module#ChangePasswordModule'
             },
             
-            {
-                path: 'components',canActivate: [AuthguardService],
-                loadChildren: './components/components.module#ComponentsModule'
-            }, {
-                path: 'forms',canActivate: [AuthguardService],
-                loadChildren: './forms/forms.module#Forms'
-            },  {
-                path: 'maps',canActivate: [AuthguardService],
-                loadChildren: './maps/maps.module#MapsModule'
-            }, 
-            //  {
-            //     path: 'calendar',
-            //     loadChildren: './calendar/calendar.module#CalendarModule'
-            // },
              {
                 path: '',
                 loadChildren: './userpage/user.module#UserModule'
-            }, {
-                path: '',
-                loadChildren: './timeline/timeline.module#TimelineModule'
-            }
+            },
         ]
     }, 
     

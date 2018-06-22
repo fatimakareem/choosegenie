@@ -1,12 +1,8 @@
-
 import { Router, ActivatedRoute } from '@angular/router';
-
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { Headers, Http, Response } from '@angular/http';
 import 'rxjs/add/operator/map'
-
 import { Config } from "../Config";
-
 import { SimpleGlobal } from 'ng2-simple-global';
 import { ResponseContentType } from '@angular/http/src/enums';
 import { FormBuilder, Validators, NgControl, RadioControlValueAccessor, FormControl, FormGroup } from '@angular/forms';
@@ -15,11 +11,9 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import swal from 'sweetalert2';
 import { MatSelect } from '@angular/material';
 import { LoginService } from '../pages/login/login.service';
-// import { PasswordValidation } from './password-validator.component';
 import { ViewChild } from '@angular/core';
 import { RecaptchaComponent } from 'recaptcha-blackgeeks';
 import { HeaderService } from './header.service';
-
 declare var $: any;
 
 @Component({
@@ -40,9 +34,6 @@ export class HeaderComponent implements OnInit {
       let local = localStorage.getItem('custum');
       return true;
     }
-    // else if(localStorage.getItem('custom')) {
-    //     return true;
-    // }
     else {
       return false;
     }
@@ -52,10 +43,6 @@ export class HeaderComponent implements OnInit {
       let local = localStorage.getItem('user');
       return true;
     }
-    // else if(localStorage.getItem('custom')) {
-    //     let local = localStorage.getItem('custom');
-    //     return true;
-    // }
     else {
       return false;
     }
@@ -95,7 +82,7 @@ export class HeaderComponent implements OnInit {
   logout() {
     localStorage.clear();
     this.router.navigate(['/']);
-    //  console.log("logout"); 
+
   }
   searchuserdata(val) {
     console.log(val)
@@ -109,7 +96,6 @@ export class HeaderComponent implements OnInit {
   
   singlerfp(zipcode){
     let sth = 'products/'+zipcode;
-    // sth=sth.replace(/&/g,'and').replace(/\s+/g, '-').toLowerCase();
     this.router.navigate([sth]);
     localStorage.setItem('zip', zipcode);
   }

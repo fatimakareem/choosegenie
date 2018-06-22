@@ -38,19 +38,12 @@ export class BecomeapartnerComponent implements OnInit {
   date = new FormControl(new Date());
   constructor(public router: Router, private fb: FormBuilder, private http: HttpClient, private route: ActivatedRoute, private sg: SimpleGlobal) { }
 
-  //constructor() { }
-
   ngOnInit() {
     this.signupForm = this.fb.group({
-      //['', Validators.compose([Validators.required])],
        'name': ['', Validators.compose([Validators.required])],
        'partnername': ['', Validators.compose([Validators.required])],
        'desc': ['', Validators.compose([Validators.required])],
        'email': ['', Validators.compose([Validators.required])],
-       
-       // 'Phone': ['', Validators.compose([Validators.required, Validators.pattern(this.digitsOnly)])],
-       // 'country': ['', Validators.compose([Validators.required, Validators.pattern(this.normalPattern)])],
-       
      });
   }
   
@@ -69,31 +62,26 @@ export class BecomeapartnerComponent implements OnInit {
 
 
     headers.append('Content-Type', 'application/json');
-    // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
     this.http.post(Config.api + 'becomepartner/',this.model , { headers: headers })
 
 
      .subscribe(Res => {
         console.log(Res);
-        // this.next = Res[0].next;
-
         console.log(this.model);
         swal({
           text: "Thank you for Successflluy Become a Partner!",
           title: "Choice Genie",
           type: "success",
           showConfirmButton: false,
-          //     confirmButtonColor: "#DD6B55",
           timer: 1200,
           confirmButtonText: "OK",
 
         })
 
-        //this.router.navigate(['/pages/login'])
       },
         error => {
           console.log(error);
-        //  this.toastr.error(error, null, {toastLife: 5000});
+    
           swal(
             'Invalid',
             'Please Try Again!',

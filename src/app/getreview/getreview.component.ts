@@ -10,17 +10,10 @@ import { DataService } from '../data.service';
 import * as _ from 'underscore';
 import { PagerService } from '../pager.service';
 import { Pipe, PipeTransform } from "@angular/core";
-// import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { Headers, Http, Response } from '@angular/http';
-
-// import {Config} from "../Config";
 import { HttpClient, HttpResponse, HttpHeaders } from "@angular/common/http";
 import { jsonpCallbackContext } from '@angular/common/http/src/module';
-// import { ValueUnwrapper } from '@angular/core/src/change_detection/change_detection_util';
-//import { Http } from '@angular/http/src/http';
 import { PageEvent } from '@angular/material';
-// import { SSL_OP_NO_TICKET } from 'constants';
-
 import swal from 'sweetalert2'; 
 @Component({
   selector: 'app-getreview',
@@ -36,26 +29,19 @@ private Sub: Subscription;
   constructor(private router: Router,private route: ActivatedRoute,private http: Http) {}
 
   ngOnInit() {
-    
     this.customer = localStorage.getItem('custum')
     this.zip_code = localStorage.getItem('zip');
-
-    this.route.params.subscribe ( params => {
-
-
-      //  console.log('paramsssssssssss',params['username'])
+     this.route.params.subscribe ( params => {
         this.getreview(params['id']) 
         this. product(params['id'])
         this. totalreview(params['id'])
         this. avereview(params['id'])
         this.hitcount(params['id'])
       });
-      //  alert("junaid");
-      // this.data.currentProducts.subscribe(products => this.sg['products'] = products)
-      // this.data.currentProducts
+     
       this.Sub = this.route.params.subscribe(params => {
       this.id= +params['id'];
-     // alert(this.username);
+   
       });
   }
   checked_login() {
@@ -63,9 +49,6 @@ private Sub: Subscription;
         let local = localStorage.getItem('custum');
         return true;
     }
-    // else if(localStorage.getItem('custom')) {
-    //     return true;
-    // }
     else {
         return false;
     }
@@ -73,6 +56,31 @@ private Sub: Subscription;
 data:any=[];
 user;
 hit:any=[];
+sortby(sort,id){
+    console.log(sort,id)
+    if(sort=="newest"){
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json')
+    this.http.get(Config.api + 'reviewsnewest/'+ id  ,{ headers: headers })
+
+        .subscribe(Res => {
+           console.log(Res);
+           this.rev=Res.json();
+           console.log(this.rev)
+        });
+    }
+    else if(sort=="oldest"){
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json')
+        this.http.get(Config.api + 'reviewsoldest/'+ id  ,{ headers: headers })
+    
+            .subscribe(Res => {
+               console.log(Res);
+               this.rev=Res.json();
+    console.log(this.rev)
+            });
+        }
+}
 hitcount(id){
     let headers = new Headers();
     headers.append('Content-Type', 'application/json')
@@ -104,10 +112,9 @@ profile() {
     headers.append('Content-Type', 'application/json');
     this.http.get(Config.api + 'getallreviews/'+ id , { headers: headers })
     .subscribe(Res => {
-    this.rev=Res.json();
+    this.rev=Res.json()['Results'];
     console.log(this.rev)
-// this.rate=this.rev['rate'];
-//     console.log(this.rate);
+
   
     });
     
@@ -182,9 +189,7 @@ profile() {
             }
     
             ), { headers: headers })
-    
-                // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
-                .subscribe(Res => {
+             .subscribe(Res => {
                     console.log(Res)
                     swal({
                         type: 'success',

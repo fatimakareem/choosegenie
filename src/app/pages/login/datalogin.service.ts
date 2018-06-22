@@ -30,17 +30,5 @@ export class DataloginService {
   logout() {
     localStorage.removeItem('currentUser');
   }
-  // getItem(): Observable<any> {
-  //   const getItemUrl = this.url + 'get/item/list';
-  //   return this.http
-  //     .get(getItemUrl, {})
-  //     .map(
-  //     res => {
-  //       return res.json();
-  //     },
-  //     err => {
-  //       return err;
-  //     }
-  //     )
-  // }
+ 
 }

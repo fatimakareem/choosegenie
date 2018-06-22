@@ -9,7 +9,6 @@ export class DeleteService {
   objGlobalvariables;
 
 DeleteTodoList(id) {
- // console.log('mmmmmmmmmmmmmmmmmmmmm');
   console.log(id)
   const headers = new Headers();
   headers.append('Content-Type', 'application/json');

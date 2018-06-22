@@ -56,13 +56,13 @@ export class UsersignupComponent implements OnInit {
     // this.city();
     this.signupForm = this.fb.group({
 
-      'Name': ['', Validators.compose([Validators.required])],
+      'name': ['', Validators.compose([Validators.required])],
       'service_zip': ['', Validators.compose([Validators.required])],
  
       'email': ['', Validators.compose([Validators.required, Validators.pattern(this.email)])],
       'username': ['', Validators.compose([Validators.required, Validators.pattern(/^[a-zA-Z_\- ]+$/)])],
     
-      'phone_no': ['', Validators.compose([Validators.required, Validators.pattern(this.digitsOnly)])],
+      'phoneno': ['', Validators.compose([Validators.required, Validators.pattern(this.digitsOnly)])],
       'dob': ['', Validators.compose([Validators.required])],
       'service_state': ['', Validators.compose([Validators.required, Validators.pattern(this.normalPattern)])],
       'service_address': ['', Validators.compose([Validators.required, Validators.pattern(this.normalPattern)])],
@@ -237,7 +237,7 @@ export class UsersignupComponent implements OnInit {
     let headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
     // http://192.168.30.237:9000/choice/
-    this.http.post(Config.api+ 'userregister/', this.model, { headers: headers })
+    this.http.post(Config.api+ 'usersignup/', this.model, { headers: headers })
       .subscribe(Res => {
         console.log(Res);
         alert('hello');

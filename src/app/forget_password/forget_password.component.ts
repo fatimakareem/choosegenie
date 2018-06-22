@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Headers, Http, Response } from '@angular/http';
 import 'rxjs/add/operator/map'
 import {ErrorStateMatcher, MatStepper} from '@angular/material';
-
 import { Config } from "../Config";
 import { ActivatedRoute, Router } from "@angular/router";
 import { SimpleGlobal } from 'ng2-simple-global';
@@ -28,8 +27,6 @@ export class ForgetpasswordComponent implements OnInit {
     sub;
   
   ngOnInit() {
-   
-  
   
     this.route.params.subscribe(params => {
 this.qurey=params['qurey']
@@ -37,8 +34,6 @@ this.qurey=params['qurey']
        console.log('paramsssssssssss',this.qurey)
      
       console.log(params['qurey'],1)
-      
-
   });
     this.sub = this.route.params.subscribe ( params => {
       console.log('params',params['query'])
@@ -46,22 +41,15 @@ this.qurey=params['qurey']
         });
   }
   forgetpass(qurey) {
-    //alert('hello');
    console.log(qurey,"ffffffffffffffffff")
-
     let headers = new HttpHeaders();
-
-
     headers.append('Content-Type', 'application/json');
    
     this.http.post(Config.api +'reset_password/', {'pass1':this.pass1,
     'pass2':this.pass2,
     'code': this.qurey
   }, { headers: headers })
-
-
-     
-      .subscribe(Res => {
+   .subscribe(Res => {
       
         console.log(Res);
      
@@ -72,7 +60,6 @@ this.qurey=params['qurey']
           timer: 1500
         })
       
-       
       },
         error => {
           console.log(error);
@@ -83,11 +70,5 @@ this.qurey=params['qurey']
             'error'
           )
         });
-   
-
-
-    
-
-
-  }
+       }
 }

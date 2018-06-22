@@ -17,8 +17,7 @@ import { EditService } from '../dashboard/edit.service';
 // import {Config} from "../Config";
 import { HttpClient, HttpResponse, HttpHeaders } from "@angular/common/http";
 import { jsonpCallbackContext } from '@angular/common/http/src/module';
-// import { ValueUnwrapper } from '@angular/core/src/change_detection/change_detection_util';
-//import { Http } from '@angular/http/src/http';
+
 import { PageEvent } from '@angular/material';
 // import { SSL_OP_NO_TICKET } from 'constants';
 
@@ -168,14 +167,10 @@ export class InactiveProductComponent implements OnInit {
         const Results = {}
         this.title = localStorage.getItem('username');
         this.obj.inactiveproduct(title, page).subscribe(response => {
-            // localStorage.setItem('products',response['Results']);
-
-
             this.sg['products'] = response.json()['Results'];
 
             for (let prod of this.sg['products']) {
-                // console.log(prod["plan_information"])
-                // console.log(prod["price_rate"])
+              
                 prod["plan_information"] = prod["plan_information"].split(',', 3000);
                 prod["price_rate"] = prod["price_rate"].split('..', 3000);
 
@@ -185,22 +180,13 @@ export class InactiveProductComponent implements OnInit {
             this.prod_loaded = true;
             this.prods_loaded = true;
             this.allItems = this.sg['products'];
-            //  this.allItems = this.sg['products'];
-            //console.clear()
-            // console.log(response['Total Result']);
+           
             this.pager = this.pagerService.getPager(response.json()['Total Result'], page, 10);
-
-            //this.setPage(1);
-            // initialize to page 1
-            // console.log(this.sg['products']);
 
         }
 
 
         );
-
-
-        // this.pagedItems = this.allItems.slice(this.pager.startIndex, this.pager.endIndex + 1);
 
     }
 }

@@ -2,15 +2,13 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // this is needed!
 import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
-// import { HttpService } from './http-service';
 import { APP_BASE_HREF } from '@angular/common';
 import { FormsModule, ReactiveFormsModule, NgForm, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
-// import { SweetAlertService } from 'ng2-sweetalert2';
 import { ProfileService } from './com-profile/profile.service';
-import { DeleteBlogService } from './Blogchoicegenie/blog3/delete-blog.service';
-import { EditBlogService } from './Blogchoicegenie/blog3/edit-blog.service';
+import { DeleteBlogService } from './Blogchoicegenie/adminblog/delete-blog.service';
+import { EditBlogService } from './Blogchoicegenie/adminblog/edit-blog.service';
 import { AngularcliStarRatingModule } from 'angularcli-star-rating'
 import { LoaderModule } from '../app/loader/loader.module';
 import {
@@ -122,7 +120,6 @@ import { UserNavbarModule } from './shared/usernavbar/usernavbar.module';
 import { UpdateService } from './user-profile/update.service';
 import { SuperdashboardmainComponent } from './superdashboardmain/superdashboardmain.component';
 
-import { AddblogComponent } from './addblog/addblog.component';
 import { UpdatepartnerService } from './sviewapartner/updatepartner.service';
 import { GetreviewComponent } from './getreview/getreview.component';
 import { SuperreviewsComponent } from './superreviews/superreviews.component';

@@ -2,8 +2,6 @@
 import { Component, OnInit , Directive, Input } from '@angular/core';
 import { Headers, Http, Response } from '@angular/http';
 import 'rxjs/add/operator/map'
-
-
 import { Config } from '../../Config';
 import { ActivatedRoute, Router } from "@angular/router";
 import { SimpleGlobal } from 'ng2-simple-global';
@@ -14,7 +12,6 @@ import { HttpClient, HttpResponse, HttpHeaders } from "@angular/common/http";
 import { MatSelect } from '@angular/material';
 
 import { modelGroupProvider } from '@angular/forms/src/directives/ng_model_group';
-// import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-new-product',
   templateUrl: './new-product.component.html'
@@ -56,30 +53,20 @@ export class NewProductComponent implements OnInit {
   fourthFormGroup: FormGroup;
   constructor(private https:Http,public router: Router, private fb: FormBuilder, private http: HttpClient, private route: ActivatedRoute, private sg: SimpleGlobal) { }
 title;
-// profileurl;
-// profile_logo;
-// rating_logo;
-  //constructor() { }
+
   public user;
   ngOnInit() {
     this.user = localStorage.getItem('user')
     this.username = localStorage.getItem('username')
     console.log(this.username)
    this. fetchProducts()
-   // localStorage.setItem('username', this.username);
-  //  this.username = localStorage.getItem('username')
     console.log(this.username)
     this.signupForm = this.fb.group({
-     // 'zipcode': ['', Validators.compose([Validators.required, Validators.pattern(this.normalPattern)])],
       'utilityarea': ['', Validators.compose([Validators.required, Validators.pattern(this.normalPattern)])],
-      // 'title': [],
      
 
     });
     this.secondFormGroup = this.fb.group({
-     // 'profileurl': ['', Validators.compose([Validators.required])],
-      // 'profile_logo': ['', Validators.compose([Validators.required])],
-      // 'rating_logo': ['', Validators.compose([Validators.required])],
       'plan_information': ['', Validators.compose([Validators.required, Validators.pattern(this.normalPattern)])],
       'price_rate': ['', Validators.compose([Validators.required, Validators.pattern(this.normalPattern)])],
       'cancelation_fee': ['', Validators.compose([Validators.required])],
@@ -88,7 +75,6 @@ title;
       'fact_sheet': ['', Validators.compose([Validators.required, Validators.pattern(this.normalPattern)])],
       'terms_of_service': ['', Validators.compose([Validators.required, Validators.pattern(this.normalPattern)])],
       'phone': ['', Validators.compose([Validators.required])],
-     // 'sign_up': ['', Validators.compose([Validators.required, Validators.pattern(this.normalPattern)])],
       'minimum_usage_fee': ['', Validators.compose([Validators.required])],
       'renewable': ['', Validators.compose([Validators.required, Validators.pattern(this.normalPattern)])],
     });
@@ -112,7 +98,6 @@ title;
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     
-    // http://192.168.30.193:9000/choice/mydata/
     this.https.get(Config.api+'mydata/'+ this.username +'/' ,{ headers: headers })
     .subscribe(Res => {
     this.sg['products'] = Res.json()['Results'];
@@ -139,14 +124,10 @@ console.log(this.tit)
     f.resetForm();
   }
   signupuserdata(utilityarea,title,profileurl,profile_logo,plan_information,price_rate,cancelation_fee,fact_sheet,terms_of_service,phone,sign_up,minimum_usage_fee,renewable,specialterms,price_1000_kwh,price_500_kwh,price_2000_kwh) {
-    //alert('hello');
     console.log(utilityarea,title,profileurl,profile_logo,plan_information,price_rate,cancelation_fee,fact_sheet,terms_of_service,phone,sign_up,minimum_usage_fee,renewable,specialterms,price_1000_kwh,price_500_kwh,price_2000_kwh);
-
     let headers = new HttpHeaders();
-    headers.append('Content-Type', 'application/json');
-    
+    headers.append('Content-Type', 'application/json');    
     this.http.post(Config.api+'addproduct/', {
-     
       "serviceareaname":utilityarea,
       "title":title,
       "profileurl":profileurl,
@@ -168,33 +149,29 @@ console.log(this.tit)
     }, { headers: headers })
       .subscribe(Res => {
         console.log(Res);
-        // this.next = Res[0].next;
         console.log(this.model);
         swal({
         text: "Successfully Added!",
         title: "Choice Genie",
         type: "success",
         showConfirmButton: false,
-        //     confirmButtonColor: "#DD6B55",
         timer: 1200,
         confirmButtonText: "OK",
 
         })
         console.log(this.model);
-        //  this.router.navigate(['/pages/login'])
+
       },
 
         error => {
           console.log(error);
-         // this.toastr.error(error, null, {toastLife: 5000});
+    
           swal(
           'Invalid',
           'Please Try Again!',
           'error'
           )
-
-        
-          //  f.resetForm();
+      
         });
 
   }

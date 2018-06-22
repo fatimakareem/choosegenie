@@ -6,14 +6,14 @@ import { AgmCoreModule } from '@agm/core';
 import { Headers, Http, Response } from '@angular/http';
 import 'rxjs/add/operator/map'
 
-import { Config } from "../Config";
+import { Config } from "../../Config";
 import { ActivatedRoute, Router } from "@angular/router";
 import { SimpleGlobal } from 'ng2-simple-global';
 import { ResponseContentType } from '@angular/http/src/enums';
 import { FormBuilder, Validators, NgControl, RadioControlValueAccessor, FormControl, FormGroup } from '@angular/forms';
 import { HttpClient, HttpResponse, HttpHeaders } from "@angular/common/http";
  import swal from 'sweetalert2'; 
- import {HttpService} from '../serv/http-service';
+ import {HttpService} from '../../serv/http-service';
 import { MatSelect } from '@angular/material'; 
 @Component({
   selector: 'app-blog',
@@ -28,12 +28,10 @@ data:any=[];
     this. profile();
   }
   profile() {
-    //http://192.168.30.41:9000/
+  
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     this.https.get(Config.api+'Gettingblog/' , { headers: headers })
-    //this.https.get('http://192.168.30.41:9000/Gettingblog/' , { headers: headers })
-    
     .subscribe(Res => {
     this.data=Res.json();
     console.log(this.data);

@@ -32,7 +32,7 @@
               <div class="form-group margin">
 
                 <mat-form-field>
-                  <input matInput placeholder="  Name" [formControl]="signupForm.controls['Name']" required [(ngModel)]="model.Name">
+                  <input matInput placeholder="  Name" [formControl]="signupForm.controls['name']" required [(ngModel)]="model.name">
                 </mat-form-field>
               </div>
             </div>
@@ -66,7 +66,7 @@
 <mat-error *ngIf="secondFormGroup.controls.State.dirty && !secondFormGroup.controls.State.value"> Special characters not allowed</mat-error>
 </mat-form-field> -->
 <mat-form-field>
-  <input matInput placeholder="Service State" [formControl]="signupForm.controls['service_state']" #service_state required [(ngModel)]="model.service_state"   >
+  <input matInput placeholder="Service State" [formControl]="signupForm.controls['service_state']" #servicestate required [(ngModel)]="model.service_state"   >
   </mat-form-field>
                 <!-- <mat-form-field>
                   <input type="text" placeholder="Service State" aria-label="Number" matInput [formControl]="signupForm.controls['service_state']"
@@ -123,7 +123,7 @@
               <div class="form-group margin">
 
                 <mat-form-field>
-                  <input matInput placeholder="Phone No" [formControl]="signupForm.controls['phone_no']" required [(ngModel)]="model.phone_no">
+                  <input matInput placeholder="Phone No" [formControl]="signupForm.controls['phoneno']" required [(ngModel)]="model.phoneno">
                   <!-- <mat-error *ngIf="secondFormGroup.controls.Phone_No.dirty && !secondFormGroup.controls.Phone_No.value"> Special characters not allowed</mat-error> -->
                 </mat-form-field>
               </div>

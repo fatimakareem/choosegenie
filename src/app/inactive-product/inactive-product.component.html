@@ -2,80 +2,24 @@
   <div class="page-title">
     <span>Product Search</span>
   </div>
-
-
-
-
   <div class="products-area-products" *ngIf="prod_loaded">
-
-
-
-
-    <div class="custom card" *ngFor="let data of allItems; let i = index">
+     <div class="custom card" *ngFor="let data of allItems; let i = index">
       <div class="row">
 
         <div class="col-sm-12">
           <div class="card-header card-header-text position-abs cards-itme" data-background-color="rose">
-            <!-- {{data.id}}  -->
             <h4 class="card-title">{{data.title}} </h4>
 
           </div>
 
           <div class="card-content" style="padding: 0px;">
-            <!-- <input type="checkbox" [(ngModel)]="id" value="{{data.id}}" name="{{data.id}}" [checked]="data.id" />{{data.id}} -->
             <div class="col-md-3  col-sm-6 col-xs-12 plan-detail text-center">
               <a href="{{data.profileurl}}" target="_blank" class="display-b margin-top">
 
                 <img src="{{data.profile_logo}}" alt="{{data.title}}" style="width: 90%;
                               margin-top: 16%;" />
               </a>
-
-
-
-
-
-
-
-
-
-              <!-- <input  class="fa fa-star" aria-hidden="true" type="radio" value="1" (change)="reviews(rating,data.id)" [(ngModel)]="rating" name="rating">
-                       <ul class="product-list__star-list">
-                          <li>
-                            <a>
-                                <label title="Pretty good" (click)='reviews(rating,data.id)'> <i class="fa fa-star" aria-hidden="true"></i></label>
-                             
-                            </a>
-                          </li>
-                          <li>
-                            <a>
-                                <input type="radio" value="2" (change)="reviews(rating,data.id)" [(ngModel)]="rating" name="rating">
-                              <i class="fa fa-star" aria-hidden="true"></i>
-                            </a>
-                          </li>
-                          <li>
-                            <a href="">
-                              <i class="fa fa-star" aria-hidden="true"></i>
-                            </a>
-                          </li>
-                          <li>
-                            <a href="">
-                              <i class="fa fa-star" aria-hidden="true"></i>
-                            </a>
-                          </li>
-                          <li>
-                            <a href="">
-                              <i class="fa fa-star" aria-hidden="true"></i>
-                            </a>
-                          </li>
-                        </ul> -->
-              <!-- <cli-star-rating (click)="reviews(data.id)" [starReadonly]="false" [rating]="rating"></cli-star-rating> -->
-
-              <!-- <img src="{{data.rating_logo}}" /> -->
-
-
-              <!-- <br> <star-rating-comp [size]="'large'" [starType]="'svg'" [rating]="" [(ngModel)]="rating"></star-rating-comp>  -->
-
-            </div>
+     </div>
 
             <div class="col-md-3  col-sm-6 col-xs-12 plan-detail text-center">
 
@@ -83,10 +27,7 @@
                 <b> Plan Detail</b>
               </h3>
 
-              <!-- <div class="holder white"> -->
-              <!--class="product-price"-->
               <div style="text-align:center; padding-top:10px;">
-
 
                 <p *ngFor="let item of data.plan_information" class="items-detail">
                   {{item}}
@@ -100,9 +41,6 @@
               <h3 style=" text-align: center">
                 <b> Price Detail</b>
               </h3>
-
-              <!-- <div class="holder white"> -->
-              <!--class="product-price"-->
               <div style="text-align:center; padding-top:10px;">
                 500 kWh
                 <b class="price-style"> {{data.price_500_kwh}}¢</b>
@@ -214,7 +152,6 @@
                           data-dismiss="modal">active</button>
 
                         <button type="button" class="btn btn-rose" data-dismiss="modal">Cancel</button>
-                        <!-- <button class="btn btn-rose btn-wd btn-lg" type="submit" (click)="onSubmit()" >Search</button> -->
                       </div>
                     </form>
 
@@ -236,25 +173,16 @@
                 <b> Call Now</b>
               </h3>
               <p class="text-center">{{data.phone}}</p>
-              <!-- (click)="openDialog(data.id)" -->
               <button class="btn btn-rose" style="display:block; margin: 0 auto;">
                 <a style="color:white" href="{{data.profileurl}}" target="_blank">Signup </a>
-                <!-- <i class="material-icons">bubble_chart</i> -->
+              
               </button>
 
 
             </div>
-            <!-- <div class="col-md-3 col-sm-3 col-xs-7 term top-margin-25">
-          (click)="signUp(data.product_id)"
-          
-          
-          
-          </div> -->
+      
             <div class="col-sm-12">
-              <!-- <a href="#p-pane-{{i}}" class="view-more collapsed" data-toggle="collapse">
-                              View more
-                              <i class="material-icons">arrow_drop_down</i>
-                            </a> -->
+            
             </div>
           </div>
         </div>
@@ -303,8 +231,6 @@
                   </table>
                   <table>
                     <tbody>
-  
-  
                       <tr class="plan-information__row plan-information__row--last">
                         <td class="plan-information__cell">Documents</td>
                         <td class="plan-information__cell plan-information__cell--last">
@@ -331,11 +257,8 @@
                       </h4>
   
                       <ng-template #no_data_temp2>
-  
-                        <!-- <img src="../../assets/img/no_Record.png" style="width: 250px;height:200px" > -->
                         <h4>&nbsp;&nbsp;&nbsp;&nbsp; ---</h4>
                       </ng-template>
-                      <!-- <p class="ng-binding">A great low rate with guaranteed price protection for 1 full year. Exclusive online offer available to new customers.</p> -->
                     </div>
                   </div>
                 </div>
@@ -366,18 +289,10 @@
             </div>
           </div>
         </div>
-  
-  
-  
-  
       </div>
       <span>
         <ng-template #no_data_templ>
-
-          <!-- <img src="../../assets/img/no_Record.png" style="width: 250px;height:200px" > -->
           <h1 style="height:1000px;width:1000px;padding:200px">
-
-            <!-- <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;No Record Found</b> -->
           </h1>
         </ng-template>
       </span>
@@ -385,10 +300,9 @@
     </div>
 
   </div>
-  <!-- <div>
-              <div> -->
+  
   <div class="text-center">
-    <!-- <h1>Angular 2 - Pagination Example with logic like Google</h1> -->
+ 
     <div class="products-area" *ngIf="prod_loaded">
       <ng-container class="card" *ngFor="let data of sg['products']; let i = index">
         <!-- items being paged -->

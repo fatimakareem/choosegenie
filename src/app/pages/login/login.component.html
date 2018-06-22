@@ -4,17 +4,10 @@
         <form [formGroup]="login" class="login-form-1">
           <div class="login-form-1-header">
             <h3>Log In to Your Account</h3>
-            <!-- <ul class="logic-from-1-sl">
-              <li><a href=""><i class="fa fa-facebook"></i></a></li>
-              <li><a href=""><i class="fa fa-twitter"></i></a></li>
-              <li><a href=""><i class="fa fa-google-plus"></i></a></li>
-            </ul> -->
+           
           </div>
           <div class="login-form-1-body">
-<!--           
-              <mat-form-field [ngClass]="displayFieldCss(login, 'title')">
-                  <input matInput id="title" placeholder="Enter title" formControlName="title" [(ngModel)]="title">
-                </mat-form-field> -->
+
             <mat-form-field [ngClass]="displayFieldCss(login, 'username')">
               <input matInput id="username" placeholder="Enter Username" formControlName="username" [(ngModel)]="username">
             </mat-form-field>
@@ -29,27 +22,22 @@
             </mat-checkbox>
             <re-captcha (resolved)="resolved($event)" siteKey="6Lc4418UAAAAAPxDwXhjAF3a2sdRn2RIoMQxF9D9
             " style="transform:scale(0.77);-webkit-transform:scale(0.77);transform-origin:0 0;-webkit-transform-origin:0 0;"></re-captcha>
-            <!-- <blackgeeks-recaptcha (resolved)="resolved($event)" ></blackgeeks-recaptcha> -->
-          
+    
             <button type="submit" (click)="onLogin()" [disabled]="!username || !password || !recaptcha">Login</button>
             <a  value="Delete" data-toggle="modal" data-target="#myModal3">Forgot Password?</a>
             <div class="modal fade" id="myModal3" role="dialog">
               <div class="modal-dialog">
-                <!-- Modal content-->
+              
                 <div class="modal-content" style="margin-top:25%; width:119%;">
                   <div class="modal-header">
                    
                   </div>
                   <div class="modal-body" style="font-size: 18px;
                   text-align: center;">
-                  <!-- [(ngModel)]="email" name="email" -->
+                
                   <h3>Enter Your Email</h3>
                   <input type="text" placeholder="Enter Your Email" class="form-control" [(ngModel)]="Email" formControlName="Email" style="font-size: 20px">
-                  </div>
-                 
-                  
-                    
-                   
+                  </div>    
                   <div class="modal-footer">
                       
                     <button type="button" class="btn btn-rose"  data-dismiss="modal" style="

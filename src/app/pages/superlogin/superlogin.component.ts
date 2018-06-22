@@ -143,18 +143,7 @@ user;
            
             });
 
-       // },
-        // error => {
-        //   // console.log("eer",error);
-
-        //   //  this.toastr.error(error.status, null, {toastLife: 5000});
-        //   swal(
-        //     'Error',
-        //     'User Does not exist',
-        //     'error'
-        //   )
-        // }
-      //);
+      
     }
     else {
       this.validateAllFormFields(this.login);

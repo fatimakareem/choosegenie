@@ -49,22 +49,6 @@ export const ROUTES: RouteInfo[] = [{
         type: 'link',
         icontype: 'dashboard'
     },
-    // {
-    //     path: '/components',
-    //     title: 'Components',
-    //     type: 'sub',
-    //     icontype: 'apps',
-    //     collapse: 'components',
-    //     children: [
-    //         {path: 'buttons', title: 'Buttons', ab:'B'},
-    //         {path: 'grid', title: 'Grid System', ab:'GS'},
-    //         {path: 'panels', title: 'Panels', ab:'P'},
-    //         {path: 'sweet-alert', title: 'Sweet Alert', ab:'SA'},
-    //         {path: 'notifications', title: 'Notifications', ab:'N'},
-    //         {path: 'icons', title: 'Icons', ab:'I'},
-    //         {path: 'typography', title: 'Typography', ab:'T'}
-    //     ]
-    // },
     
 ];
 
@@ -75,11 +59,9 @@ export const ROUTES: RouteInfo[] = [{
   styleUrls: ['./consumersidebar.component.scss']
 })
 export class ConsumersidebarComponent implements OnInit {
-
   public menuItems: any[];
   constructor(private route: ActivatedRoute, private https: HttpClient, private newService: DeleteService,private serve:EditService,
       private location: Location, private router: Router, private http: Http, private pagerService: PagerService, private homeService: HomeService, private sg: SimpleGlobal, private obj: HomeService, private dialog: MatDialog, private dataa: DataService, private companyService: CompanyService) {
-
   }
   backClicked() {
       this.location.back();
@@ -90,8 +72,6 @@ export class ConsumersidebarComponent implements OnInit {
   home: any = {};
   id: number;
   page: any[];
-
-  // paged items
   pagedItems: any[];
   private sub: Subscription;
   private zip: any;
@@ -101,8 +81,6 @@ export class ConsumersidebarComponent implements OnInit {
   public products: any;
   rating;
   closeResult: string;
-
- 
   isMobileMenu() {
       if ($(window).width() > 991) {
           return false;
@@ -114,15 +92,12 @@ export class ConsumersidebarComponent implements OnInit {
   logout(){
     localStorage.clear();
     this.router.navigate(['/']);
-  //  console.log("logout"); 
   }
   public user;
   ngOnInit() {
      
-         
-         
           this.user = localStorage.getItem('custum')
-        // this.username = localStorage.getItem('username')
+       
       this.menuItems = ROUTES.filter(menuItem => menuItem);
       
                   console.log(this.menuItems);

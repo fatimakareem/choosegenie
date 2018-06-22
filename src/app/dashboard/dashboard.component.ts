@@ -3,31 +3,23 @@ import { Config } from "../Config";
 import { Subscription } from 'rxjs/Subscription';
 import { CompanyService } from "../company.service";
 import { ErrorStateMatcher, MAT_DIALOG_DATA, MatDialog, MatDialogRef } from "@angular/material";
-
 import { Pipe, PipeTransform } from "@angular/core";
-// import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { Headers, Http, Response } from '@angular/http';
 import { HomeService } from "../home/home.service";
 import { PagerService } from '../pager.service';
 import { ResponseContentType } from '@angular/http/src/enums';
 import { Console } from '@angular/core/src/console';
-// import {Config} from "../Config";
 import { HttpClient, HttpResponse, HttpHeaders } from "@angular/common/http";
 import { jsonpCallbackContext } from '@angular/common/http/src/module';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SimpleGlobal } from 'ng2-simple-global';
-// import { ValueUnwrapper } from '@angular/core/src/change_detection/change_detection_util';
-//import { Http } from '@angular/http/src/http';
 import { PageEvent } from '@angular/material';
 import { DeleteService } from './delete.service';
 import { DataService } from '../data.service';
 import { EditService } from './edit.service';
 import { NgForm,FormBuilder, FormGroup, Validators, FormControl, AbstractControl,FormGroupDirective,RadioControlValueAccessor } from '@angular/forms';
-
 import swal from 'sweetalert2';
 import {NgControl} from '@angular/forms';
-
-
 
 declare interface DataTable {
     headerRow: string[];
@@ -60,17 +52,12 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 
         }
 
-
-    // array of all items to be paged
-    // pager object
     pageSizeOptions;
     private allItems: any[];
     pager: any = {};
     home: any = {};
     id: number;
     page: any[];
-
-    // paged items
     pagedItems: any[];
     private sub: Subscription;
     private zip: any;
@@ -84,22 +71,17 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     obj:any=[];
     editdata: any = [];
     setPage(title,page: number) {
-        // alert("username")
         this.title = localStorage.getItem('username');
          console.log("usernameeeeeeeeeeeee",this.title)
 
         const Results = {};
       
         this.companyService.searchProduct(title,page).subscribe(Response => {
-            // console.log(Response.id);
-            // this.id = Response.id;
             console.log('service');       
             this.sg['products'] = Response.json()['Results'];
            
             console.log(this.sg['products']);
             for (let prod of this.sg['products']) {
-                //console.log(prod["plan_information"])
-                //console.log(prod["price_rate"])
                 prod["plan_information"] = prod["plan_information"].split(',,', 3000);
                 prod["price_rate"] = prod["price_rate"].split('..', 3000);
 
@@ -109,12 +91,9 @@ export class DashboardComponent implements OnInit, AfterViewInit {
             this.prod_loaded = true;
             this.prods_loaded = true;
             this.allItems = this.sg['products'];
-            // console.clear()
             console.log(Response.json()['Total Result']);
              this.pager = this.pagerService.getPager(Response.json()['Total Result'], page, 10);
-           
-
-        });
+              });
       
     }
     catagoryId = '';
@@ -152,15 +131,10 @@ export class DashboardComponent implements OnInit, AfterViewInit {
          this.profile_logo=val10;
          this.profileurl=val11;
         
-         
-        
-        
          console.log(val1,val2,val3,val4,val5,val6,val7,val8,val9,val10,val11)
          console.log('id : ' + this.catagoryId );
      }
     data;
-   // public title;
-   
     dataId = '';
     list = 'Hello';
     status: boolean = false;
@@ -190,26 +164,10 @@ export class DashboardComponent implements OnInit, AfterViewInit {
                
         }, error => {
         });
-     //   window.location.reload();
+  
 
     }
-//     catagoryId = '';
-//    // list = 'Hello';
-//    title;
-//    cancelation_fee='';
-//             fact_sheet='';
-//             phone='';
-//             plan_information='';
-            // price_rate='';
-//             profile_logo='';
-//             profileurl='';
-//             rating_logo='';
-//             sign_up='';
-//             terms_of_service='';
-          
-    //Event Binding of Delete Buttons
-  
-    btnEditClick(id,val1,val2,val3,val4,val5,val6,val12,val13,val7,val8,val9,val10,val11) {
+ btnEditClick(id,val1,val2,val3,val4,val5,val6,val12,val13,val7,val8,val9,val10,val11) {
         this.catagoryId = id;
         console.log(this.plan_information)
         this.title=val1;
@@ -221,9 +179,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
         this.cancelation_fee=val6;
         this.price_1000_kwh=val7;
         this.price_500_kwh=val12;
-
-                 this.price_2000_kwh=val13;
-
+  this.price_2000_kwh=val13;
         this.rating_logo=val9;
         this.profile_logo=val10;
         this.profileurl=val11;
@@ -250,9 +206,7 @@ console.log("TS OBJECT",updatedtitle,updatedsign_up,updatedphone,updatedterms_of
               this.setPage(this.title,1);
         }, error => {
         });
-      //  window.location.reload();
-
-    }
+     }
     btnactiveClick(id,val1,val2,val3,val4,val5,val6,val12,val13,val7,val8,val9,val10,val11) {
         this.catagoryId = id;
         console.log(this.plan_information)
@@ -294,14 +248,12 @@ console.log("TS OBJECT",updatedtitle,updatedsign_up,updatedphone,updatedterms_of
 
         }, error => {
         });
-      //  window.location.reload();
-
+    
     }
    
     private Sub: Subscription;
     form;
     updataForm : FormGroup;
-    // constructor(private navbarTitleService: NavbarTitleService) { }
     public ngOnInit() {
       this.title = localStorage.getItem('username')
         console.log(this.title,'gggggggggggggggg')
@@ -328,7 +280,6 @@ console.log("TS OBJECT",updatedtitle,updatedsign_up,updatedphone,updatedterms_of
     ngAfterViewInit() {
         const breakCards = true;
         if (breakCards === true) {
-            // We break the cards headers if there is too much stress on them :-)
             $('[data-header-animation="true"]').each(function () {
                 const $fix_button = $(this);
                 const $card = $(this).parent('.card');

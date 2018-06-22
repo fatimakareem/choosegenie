@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Headers, Http, Response } from '@angular/http';
 import 'rxjs/add/operator/map'
-
-import { Config } from "../Config";
+import { Config } from "../../Config";
 import { ActivatedRoute, Router } from "@angular/router";
 import { SimpleGlobal } from 'ng2-simple-global';
 import { ResponseContentType } from '@angular/http/src/enums';
@@ -10,9 +9,6 @@ import { FormBuilder, Validators, NgControl, RadioControlValueAccessor, FormCont
 import { HttpClient, HttpResponse, HttpHeaders } from "@angular/common/http";
 import swal from 'sweetalert2';
 import { MatSelect } from '@angular/material';
-import { LoginService } from '../pages/login/login.service';
-
-
 
 @Component({
   selector: 'app-addblog',
@@ -40,10 +36,7 @@ export class AddblogComponent implements OnInit {
   url: any = 'JPG, GIF, PNG';
   Ch_image;
 
-  constructor(private _serv: LoginService, public router: Router, private fb: FormBuilder, private http: HttpClient, private route: ActivatedRoute, private sg: SimpleGlobal) { }
-
-
-
+  constructor( public router: Router, private fb: FormBuilder, private http: HttpClient, private route: ActivatedRoute, private sg: SimpleGlobal) { }
   ngOnInit() {
     this.signupForm = this.fb.group({
       'Ch_image': ['', Validators.compose([Validators.required])],
@@ -62,9 +55,7 @@ export class AddblogComponent implements OnInit {
 
     });
   }
-  // onChange(event) {
-  //   this.Ch_image = event.target.files[0];
-  // }
+ 
   onChange(event: EventTarget) {
     this.Ch_image = new FormData();
     const eventObj: MSInputMethodContext = <MSInputMethodContext>event;
@@ -74,7 +65,6 @@ export class AddblogComponent implements OnInit {
     alert(this.Ch_image);
   }
 
-
   readUrl(event: any) {
     if (event.target.files && event.target.files[0]) {
       const reader = new FileReader();
@@ -83,31 +73,24 @@ export class AddblogComponent implements OnInit {
         this.url = e.target.result;
         console.log(this.url);
       };
-      // this.img=this.url;
+    
       reader.readAsDataURL(event.target.files[0]);
     }
   }
 
   upload() {
-   // alert('Image Object ' + this.Ch_image);
-
     this.http.post(
       Config.Imageurlupload,
       this.Ch_image, { responseType: 'text' }).subscribe(data => {
         if (data === "Sorry, not a valid Image.Sorry, only JPG, JPEG, PNG & GIF files are allowed.Sorry, your file was not uploaded.") {
-          // EditCourseDialogComponent.ImageUploadFailer();
-          // this.CourseFailure();
         }
         else {
 
-          // this.CourseSuccess();
-          // this.course_image = data;
-          // alert(this.course_image);
-          //              this.ifImageUpload();            }
+          
           console.log(data);
           alert(data);
           this.model.Ch_image = data;
-          // this.model.course_content = data;
+        
           this.signupuserdata();
         }
       });
@@ -117,11 +100,9 @@ export class AddblogComponent implements OnInit {
   }
 
   signupuserdata() {
-    //alert('hello');
-    //console.log("main form",this.signupForm.value)
     console.log("CHOICE GENIE", this.model.Ch_image);
     let headers = new HttpHeaders();
-    headers.append('Content-Type', 'application/json');//http://192.168.30.41:9000/
+    headers.append('Content-Type', 'application/json');
     this.http.post(Config.api+'postingblog/', this.model, { headers: headers })
       .subscribe(Res => {
         console.log(Res);
@@ -131,7 +112,6 @@ export class AddblogComponent implements OnInit {
           title: "Choice Genie",
           type: "success",
           showConfirmButton: false,
-          //     confirmButtonColor: "#DD6B55",
           timer: 1200,
           confirmButtonText: "OK",
 
@@ -140,11 +120,8 @@ export class AddblogComponent implements OnInit {
 
       },
         error => {
-          //this.validateAllFormFields(this.model);
           console.log(error);
 
-
-          //   f.resetForm();
         });
 
   }

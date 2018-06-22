@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-// import {FormControl, Validators} from '@angular/forms';
 import {NgForm} from '@angular/forms';
-// import {ContactUsService} from "./contact-us.service";
 import { AgmCoreModule } from '@agm/core';
 import { Headers, Http, Response } from '@angular/http';
 import 'rxjs/add/operator/map'
-
 import { Config } from "../Config";
 import { ActivatedRoute, Router } from "@angular/router";
 import { SimpleGlobal } from 'ng2-simple-global';
@@ -58,8 +55,6 @@ data:any=[];
     }
     onRegister(updatedid,updatedREP,updatedREPid,updatedName,updatedphone,updatedmarket,updatedstatus,updateduser) {
       console.log('edit' +updatedid,updatedREP,updatedREPid,updatedName,updatedphone,updatedmarket,updatedstatus,updateduser);
-
-      //Calling Delete Service
       this.serve.updata( updatedid,updatedREP,updatedREPid,updatedName,updatedphone,updatedmarket,updatedstatus,updateduser).subscribe(data => {
           console.log(data);
           swal({
@@ -72,8 +67,6 @@ data:any=[];
 
       }, error => {
       });
-    //  window.location.reload();
-
   }
 
 }

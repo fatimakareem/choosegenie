@@ -14,11 +14,8 @@ export class ActivateaccountComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private http5: Http) { }
-
-
   ngOnInit() {
     this.sub = this.route.params.subscribe ( params => {
-      // console.log('params',params['query1'])
       this.authenticate(params['query1']) 
   });
   }

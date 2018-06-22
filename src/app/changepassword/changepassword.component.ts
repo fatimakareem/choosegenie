@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ChangepasswordService } from '../changepassword.service';
 import swal from 'sweetalert2'; 
-
 @Component({
   selector: 'app-changepassword',
   templateUrl: './changepassword.component.html',
@@ -20,7 +19,6 @@ public username;
   editClick(oldpass,pass1,pass2) {
     console.log('edit',oldpass,pass1,pass2 );
 console.log("TS OBJECT",);
-    //Calling Delete Service
     this.serve.changepsd(this.username,oldpass,pass1,pass2 ).subscribe(data => {
         console.log(data);
         swal({
@@ -29,12 +27,9 @@ console.log("TS OBJECT",);
             showConfirmButton: false,
             timer: 1500
           })
-      
-
     }, error => {
      
     });
-  //  window.location.reload();
 
 }
 }
