@@ -19,7 +19,7 @@
           <input matInput placeholder="Enter Your Phone Number" [formControl]="signupForm.controls['mobno']" required [(ngModel)]="model.mobno">
         </mat-form-field>
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="Enter Subject" >
+          <input matInput placeholder="Enter Subject" [formControl]="signupForm.controls['subject']" required [(ngModel)]="model.subject" >
         </mat-form-field>
       </form>
         </div>
@@ -29,7 +29,7 @@
 
             </textarea>
           </mat-form-field>
-          <button class="btn  pull-right" style="background-color: #e53935" (click)="Contactuserdata()">Send Messege</button>
+          <button class="btn  pull-right" style="background-color: #e53935" (click)="Contactuserdata();cleardata()">Send Messege</button>
         </div>
       </div>
 
