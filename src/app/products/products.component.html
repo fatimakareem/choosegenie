@@ -1,42 +1,8 @@
-<!-- <h5>Items per Page</h5>
-        <mat-form-field >
-        <mat-select  (ngModelChange)="check($event)" [(ngModel)]="items"  >
-          <mat-option value="5" style="font-size: 20px">5</mat-option>
-          <mat-option value="10" style="font-size: 20px">10 </mat-option>
-          <mat-option value="20" style="font-size: 20px">20 </mat-option>
-        </mat-select>
-        </mat-form-field> -->
-
-
 <div class="main-content custom" style="padding-top: 5px; padding-left: 12px;">
   <!-- <div class="container-fluid"> -->
   <div class="row"></div>
   <div class="col-sm-12 product-main" style="padding:0px;">
 
-    <!-- <div class="page-title">
-                  <span>Product Search</span>
-                </div> -->
-    <!-- <li>
-          
-                  <div class="panel-title">
-                    <a>
-                      <h5>Product per Page</h5>
-                    </a>
-                  </div>
-                  <mat-form-field>
-                    <mat-select placeholder="10 PER PAGE" selected="10" (change)="fetchitempages(items)" required [(ngModel)]="items" name="items">
-                      <mat-option value="10" selected="true">10 PER PAGE</mat-option>
-                      <mat-option value="20">20 PER PAGE</mat-option>
-                      <mat-option value="40">40 PER PAGE</mat-option>
-                      <mat-option value="556">SEE ALL</mat-option>
-                    </mat-select>
-                  </mat-form-field>
-          
-                </li> -->
-
-    <!-- </div> -->
-    <!-- <mat-paginator [length]="100" [pageSize]="20" [pageSizeOptions]="[5, 10, 25, 100]" (change)="_changePageSize($event.value)">
-                </mat-paginator> -->
 
 
     <div class="products-area-products">
@@ -64,32 +30,7 @@
                 </button>
               </div>
 
-              <!-- <div class="col-lg-1 col-md-2 col-sm-4 col-xs-12 align padding" style="margin-top: 5px">
-                              <button class="sort-btn " type="button" (click)="Renewable()">
-                                RENEWABLE
-                                <i class="fa fa-sort-down down-icon"></i>
-          
-                              </button>
-          
-                            </div> -->
 
-
-              <!-- <div class="col-lg-1 col-md-2 col-sm-4 col-xs-12 align padding" style="margin-top: 5px">
-                              <button class="sort-btn " type="button" (click)="Price()">
-                                Price KW/h
-                                <i class="fa fa-sort-down down-icon"></i>
-          
-                              </button>
-          
-                            </div> -->
-
-              <!-- <div class="col-lg-1 col-md-2 col-sm-4 col-xs-12 align space-b" style="margin-top: 5px">
-                              <button class="sort-btn " type="button" (click)="company()">
-                                Company
-                                <i class="fa fa-sort-down down-icon"></i>
-          
-                              </button>
-                            </div> -->
 
               <ul class="col-lg-3 col-md-3 col-sm-12 pagination" *ngIf="pager.pages && pager.pages.length">
                 <li [ngClass]="{hide:pager.currentPage === 1}">
@@ -130,15 +71,7 @@
                     <mat-option value="556">SEE ALL</mat-option>
                   </mat-select>
                 </mat-form-field>
-                <!-- <a class="btn  dropdown-toggle" href="https://example.com" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"placeholder="10 PER PAGE" selected="10" (change)="fetchitem(items)" required [(ngModel)]="items" name="items">
-                                      Dropdown link
-                                    </a>
-          
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" >
-                                      <a class="dropdown-item" value="10" selected="true">10 PER PAGE</a>
-                                      <a class="dropdown-item" href="#">Another action</a>
-                                      <a class="dropdown-item" href="#">Something else here</a>
-                                    </div> -->
+
 
 
               </div>
@@ -159,76 +92,21 @@
           </div>
         </div>
 
-        <!-- <div style="height: 50px;"></div> -->
 
-
-        <!-- <div class="col-lg-12">
-                    <div class="custom card col-lg-12" style="float: right;">
-                      <div class="col-sm-12">
-                        <div class="sortBy-bar col-lg-8 col-sm-12">
-                          <div class="product-page-bar col-lg-6">
-          
-                            <label class="col-md-6 product-label">Sort By</label>
-                            <div class="col-md-6" style="padding: 0px">
-                              <mat-form-field style="padding: 0px">
-                                <mat-select (change)="sortby(sort)" required [(ngModel)]="sort" name="sort">
-                                  <mat-option value="Renewable" style="font-size: 20px">Renewable</mat-option>
-                                  <mat-option value="Price" style="font-size: 20px">Price </mat-option>
-                                  <mat-option value="Company" style="font-size: 20px">Company</mat-option>
-                                </mat-select>
-                              </mat-form-field>
-          
-                            </div>
-                          </div>
-          
-          
-          
-                          <div class="product-page-bar col-lg-6">
-                            <label class="col-md-6 product-label">Product per Page</label>
-          
-                            <div class="col-md-6" style="padding: 0px">
-                              <mat-form-field style="padding: 0px">
-                                <mat-select selected="10" (change)="fetchitem(items)" required [(ngModel)]="items" name="items">
-                                  <mat-option value="10" selected="true">10 PER PAGE</mat-option>
-                                  <mat-option value="20">20 PER PAGE</mat-option>
-                                  <mat-option value="40">40 PER PAGE</mat-option>
-                                  <mat-option value="556">SEE ALL</mat-option>
-                                </mat-select>
-                              </mat-form-field>
-          
-                            </div>
-                          </div>
-                          <!-- <div class="col-lg-2 icon-bar">
-                                    <a target="_blank" href="javascript:;" onclick="window.print();" class="print-grid-temp" title="Print plan results">
-                                        <img alt="print" src="http://www.powertochoose.org/Content/images/printer.png" width="16" height="16">
-                                    </a>
-                                    <a target="_blank" href="#" class="export-excel" title="Export results to Excel">
-                                        <img alt="export to excel" src="http://www.powertochoose.org/Content/images/excel.png" width="16" height="16">
-                                    </a>
-                                    <a target="_blank" href="#" class="export-csv" title="Export ALL offers to CSV. Ignores search results and relation to zip code. Only exports the active offers by REP Company">
-                                        <img alt="export to csv" src="http://www.powertochoose.org/Content/images/export_csv.png" width="16" height="16">
-                                    </a>
-                                </div>
-          
-          
-                        </div>
-                      </div>
-                    </div>
-                  </div> -->
       </div>
       <div style="padding: 0px; text-align:center;">
-          <h1>Featured Plans</h1>
-        </div>
+        <h1>Most Papulor Plans</h1>
+      </div>
       <div class="autoplay">
         <div class="mustafa" style="width:1100px;margin:20px 10px; border-radius:20px" *ngFor="let data of sg['plan']; let i = index">
           <div class="prod-slide">
             <img src="{{data.profile_logo}}" alt="{{data.title}}" alt="Card image cap" style="width: 90%; height: 85px;" />
-           
+
             <h2 class="view-plan-details" (click)="btnEditClick(data.id,data.title,data.sign_up,data.phone,data.terms_of_service,data.fact_sheet,data.cancelation_fee,data.price_1000_kwh,data.price_500_kwh,data.price_2000_kwh,data.plan_information,data.rating_logo,data.profile_logo,data.profileurl); getreview(data.id); avereview(data.id)"
-                data-toggle="modal" data-target="#myModal2">Plan Information
-              </h2>
-            <h2 class="view-plan-details" (click)="btnDeleteClick(data.id,data.title,data.profileurl,data.profile_logo)"
-                  data-toggle="modal" data-target="#myModal3"> Leave a Review
+              data-toggle="modal" data-target="#myModal2">Plan Information
+            </h2>
+            <h2 class="view-plan-details" (click)="btnDeleteClick(data.id,data.title,data.profileurl,data.profile_logo)" data-toggle="modal"
+              data-target="#myModal3"> Leave a Review
             </h2>
           </div>
 
@@ -242,8 +120,8 @@
 
 
       <div class="col-md-12" style="padding: 0px; text-align:center;">
-          <h1>Plans</h1>
-        </div>
+        <h1>Plans</h1>
+      </div>
       <div class="custom card up-margin" *ngFor="let data of sg['products']; let i = index">
         <div class="row">
 
@@ -378,45 +256,6 @@
                   </div>
                 </div>
 
-
-
-                <!-- <input  class="fa fa-star" aria-hidden="true" type="radio" value="1" (change)="reviews(rating,data.id)" [(ngModel)]="rating" name="rating">
-                       <ul class="product-list__star-list">
-                          <li>
-                            <a>
-                                <label title="Pretty good" (click)='reviews(rating,data.id)'> <i class="fa fa-star" aria-hidden="true"></i></label>
-          
-                            </a>
-                          </li>
-                          <li>
-                            <a>
-                                <input type="radio" value="2" (change)="reviews(rating,data.id)" [(ngModel)]="rating" name="rating">
-                              <i class="fa fa-star" aria-hidden="true"></i>
-                            </a>
-                          </li>
-                          <li>
-                            <a href="">
-                              <i class="fa fa-star" aria-hidden="true"></i>
-                            </a>
-                          </li>
-                          <li>
-                            <a href="">
-                              <i class="fa fa-star" aria-hidden="true"></i>
-                            </a>
-                          </li>
-                          <li>
-                            <a href="">
-                              <i class="fa fa-star" aria-hidden="true"></i>
-                            </a>
-                          </li>
-                        </ul> -->
-                <!-- <cli-star-rating (click)="reviews(data.id)" [starReadonly]="false" [rating]="rating"></cli-star-rating> -->
-
-                <!-- <img src="{{data.rating_logo}}" /> -->
-
-
-                <!-- <br> <star-rating-comp [size]="'large'" [starType]="'svg'" [rating]="" [(ngModel)]="rating"></star-rating-comp>  -->
-
               </div>
               <div class="col-md-3  col-sm-6 col-xs-12 plan-detail text-center margin-up">
                 <h3 style=" text-align: center">
@@ -451,8 +290,7 @@
                   <b> Plan Details</b>
                 </h3>
 
-                <!-- <div class="holder white"> -->
-                <!--class="product-price"-->
+
                 <div style="text-align:center; padding-top:10px;">
 
 
@@ -487,14 +325,7 @@
                 <a href="Review/{{data.id}}">
                   <label class="view-plan-details" style="padding-bottom: 0px; margin-bottom: 0px;">Reviews</label>
                 </a>
-                <!-- <a href="Review/{{data.id}}"><div  class="rating">
-                              <p >
-                                    <i class="fa fa-star"></i>
-                                    <i  class="fa fa-star"></i>
-                                    <i  class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i  class="fa fa-star-o"></i>
-                                </p></div></a>  -->
+
 
               </div>
               <!-- <div class="col-md-3 col-sm-3 col-xs-7 term top-margin-25">
@@ -600,87 +431,7 @@
                         <ul>
                           <li *ngFor="let data of plan_information">{{data}}</li>
                         </ul>
-                        <!-- <div class="well well-sm">
-                                    <div class="row">
-                                      <div class="col-xs-12 col-md-3 text-center">
-                                        <h1 class="rating-num">{{avrage}}</h1>
-                                        <div class="rating">
-                                          <span class="glyphicon glyphicon-star"></span>
-                                          <span class="glyphicon glyphicon-star"></span>
-                                          <span class="glyphicon glyphicon-star"></span>
-                                          <span class="glyphicon glyphicon-star"></span>
-                                          <span class="glyphicon glyphicon-star-empty"></span>
-                                        </div>
-                                        <div>
-                                          <span class="glyphicon glyphicon-user"></span>{{rev}} total
-                                        </div>
-                                      </div>
-                                      <div class="col-xs-12 col-md-9">
-                                        <div class="row rating-desc">
-                                          <div class="col-xs-4 col-md-2 text-right">
-                                            <span class="glyphicon glyphicon-star"></span>5
-                                          </div>
-                                          <div class="col-xs-8 col-md-10">
-                                            <div class="progress progress-striped">
-                                              <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"
-                                                style="width: 80%">
-                                                <span class="sr-only">80%</span>
-                                              </div>
-                                            </div>
-                                          </div>
-          
-                                          <div class="col-xs-4 col-md-2 text-right">
-                                            <span class="glyphicon glyphicon-star"></span>4
-                                          </div>
-                                          <div class="col-xs-8 col-md-10">
-                                            <div class="progress">
-                                              <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"
-                                                style="width: 60%">
-                                                <span class="sr-only">60%</span>
-                                              </div>
-                                            </div>
-                                          </div>
-          
-                                          <div class="col-xs-4 col-md-2 text-right">
-                                            <span class="glyphicon glyphicon-star"></span>3
-                                          </div>
-                                          <div class="col-xs-8 col-md-10">
-                                            <div class="progress">
-                                              <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
-                                                <span class="sr-only">40%</span>
-                                              </div>
-                                            </div>
-                                          </div>
-          
-                                          <div class="col-xs-4 col-md-2 text-right">
-                                            <span class="glyphicon glyphicon-star"></span>2
-                                          </div>
-                                          <div class="col-xs-8 col-md-10">
-                                            <div class="progress">
-                                              <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"
-                                                style="width: 20%">
-                                                <span class="sr-only">20%</span>
-                                              </div>
-                                            </div>
-                                          </div>
-          
-                                          <div class="col-xs-4 col-md-2 text-right">
-                                            <span class="glyphicon glyphicon-star"></span>1
-                                          </div>
-                                          <div class="col-xs-8 col-md-10">
-                                            <div class="progress">
-                                              <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"
-                                                style="width: 15%">
-                                                <span class="sr-only">15%</span>
-                                              </div>
-                                            </div>
-                                          </div>
-          
-                                        </div>
-          
-                                      </div>
-                                    </div>
-                                  </div> -->
+
 
                       </div>
                     </div>
@@ -700,39 +451,6 @@
               </div>
             </div>
           </div>
-          <!-- <div class="clearfix"></div> -->
-
-
-          <!-- <div class="col-sm-12 col-md-6">
-          <h4>Get your year-pass savings:</h4>
-          <ul>
-          <li>Keep your bills mild when the weather gets wild, and get a low rate in between.*</li>
-          <li>In summer and winter months, see the Season Pass Savings right on your bill.
-          
-          </li>
-          </ul>
-          <h5>Plan Documents</h5>
-          <ul class="list-normal">
-          <li>
-          <a href="{{data.terms_of_service}}" target="_blank">
-          <i class="material-icons">picture_as_pdf</i>
-          Terms of service
-          </a>
-          </li>
-          <li>
-          <a href="#">
-          <i class="material-icons">picture_as_pdf</i>
-          Your rights as a Customer
-          </a>
-          </li>
-          <li>
-          <a href="{{data.fact_sheet}}" target="_blank">
-          <i class="material-icons">picture_as_pdf</i>
-          Fact Sheet
-          </a>
-          </li>
-          </ul>
-          </div> -->
 
 
         </div>
@@ -751,18 +469,7 @@
     </div>
   </div>
 </div>
-<!-- <div>
-              <div> -->
-<!-- <div id="slidebox">
-                      <h3>Follow us!</h3>
-                      <p>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      </p>
-                      <p class="text-center">
-                          <img src="https://placeimg.com/360/50/any" alt="social_icons"/>
-                      </p>
-                      <button class="btn btn-primary" id="close">No Thanks!</button>
-                  </div> -->
+
 <div class="container">
   <div class="text-center">
     <!-- <h1>Angular 2 - Pagination Example with logic like Google</h1> -->
@@ -790,31 +497,3 @@
     </ul>
   </div>
 </div>
-
-
-
-
-
-
-
-
-
-<!-- <div class="mat-paginator-page-size">
-            <div class="mat-paginator-page-size-label">{{_intl.itemsPerPageLabel}}</div>
-            <mat-form-field *ngIf="_displayedPageSizeOptions.length > 1" class="mat-paginator-page-size-select">
-              <mat-select [value]="pageSize" [aria-label]="_intl.itemsPerPageLabel" (change)="_changePageSize($event.value)">
-                <mat-option *ngFor="let pageSizeOption of _displayedPageSizeOptions" [value]="pageSizeOption">{{pageSizeOption}}</mat-option>
-              </mat-select>
-            </mat-form-field>
-            <div *ngIf="_displayedPageSizeOptions.length <= 1">{{pageSize}}</div>
-          </div>
-          <div class="mat-paginator-range-label">{{_intl.getRangeLabel(pageIndex, pageSize, length)}}</div>
-          <button mat-icon-button type="button" class="mat-paginator-navigation-previous"
-            (click)="previousPage()" [attr.aria-label]="_intl.previousPageLabel" [matTooltip]="_intl.previousPageLabel" [matTooltipPosition]="'above'"
-            [disabled]="!hasPreviousPage()">
-            <div class="mat-paginator-increment"></div>
-          </button>
-          <button mat-icon-button type="button" class="mat-paginator-navigation-next" (click)="nextPage()" [attr.aria-label]="_intl.nextPageLabel"
-            [matTooltip]="_intl.nextPageLabel" [matTooltipPosition]="'above'" [disabled]="!hasNextPage()">
-            <div class="mat-paginator-decrement"></div>
-          </button> -->

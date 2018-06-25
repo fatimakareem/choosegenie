@@ -30,10 +30,10 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
   localVar;
   renewable;
   model;
-price;
-energy;
-price_from;
-price_to;
+  price;
+  energy;
+  price_from;
+  price_to;
 
   // min;
   // max;
@@ -73,7 +73,7 @@ price_to;
 
     //this.months();
     this.companytitle();
- this.fetchzip();
+    this.fetchzip();
 
   }
   ngAfterContentInit() {
@@ -94,42 +94,42 @@ price_to;
     { value: 'other-2', viewValue: 'Other' }
   ];
   check(e) {
-    
+
 
   }
-    fetchitem(items) {
-     
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json')
-     this.http.get(Config.api + 'items_perpage/title/asc/' + items , { headers: headers })
-    
-        .subscribe(Res => {
-          console.log(Res.json()['results'])
-          this.sg['products'] = Res.json()['results'];
-          this.data.changeProducts(this.sg['products']);
-     
-          console.log(this.sg['products'])
-          for (let prod of this.sg['products']) {
-           
-            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
-            prod["price_rate"] = prod["price_rate"].split('..', 3000);
-          }
-       });
+  fetchitem(items) {
 
-      }
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json')
+    this.http.get(Config.api + 'items_perpage/title/asc/' + items, { headers: headers })
+
+      .subscribe(Res => {
+        console.log(Res.json()['results'])
+        this.sg['products'] = Res.json()['results'];
+        this.data.changeProducts(this.sg['products']);
+
+        console.log(this.sg['products'])
+        for (let prod of this.sg['products']) {
+
+          prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+          prod["price_rate"] = prod["price_rate"].split('..', 3000);
+        }
+      });
+
+  }
   months;
   fetchProducts() {
-  
+
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-   
+
     this.http.post(Config.api + 'filter/' + this.zip_code + '', this.months, { headers: headers })
       .subscribe(Res => {
         this.sg['products'] = Res.json()['Results'];
         this.data.changeProducts(this.sg['products']);
         this.allItems = this.sg['products'];
         for (let prod of this.sg['products']) {
-         
+
           prod["plan_information"] = prod["plan_information"].split(',,', 3000);
           prod["price_rate"] = prod["price_rate"].split('..', 3000);
         }
@@ -138,18 +138,18 @@ price_to;
   }
 
   fetchzip() {
-   
+
     let headers = new Headers();
     // alert("your zip code are show "+this.zip_code);
-   headers.append('Content-Type', 'application/json');
+    headers.append('Content-Type', 'application/json');
     this.http.get(Config.api + 'zipcodedata/' + this.zip_code + '', { headers: headers })
-      
+
       .subscribe(Res => {
         this.sg['products'] = Res.json()['Results'];
         this.data.changeProducts(this.sg['products']);
         this.allItems = this.sg['products'];
         for (let prod of this.sg['products']) {
-      
+
           prod["plan_information"] = prod["plan_information"].split(',,', 3000);
           prod["price_rate"] = prod["price_rate"].split('..', 3000);
         }
@@ -161,11 +161,11 @@ price_to;
     // http://192.168.30.193:9000/choice/companytitle/
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    this.http.get(Config.api+'companytitle/', { headers: headers })
+    this.http.get(Config.api + 'companytitle/', { headers: headers })
 
       .subscribe(Res => {
         this.title = Res.json();
-        this.title=this.title;
+        this.title = this.title;
         console.log(this.title)
       });
 
@@ -175,8 +175,8 @@ price_to;
   companydata(name) {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    this.http.get(Config.api+'company/' + this.zip_code + '/' + this.name.trim(), { headers: headers })
-     
+    this.http.get(Config.api + 'company/' + this.zip_code + '/' + this.name.trim(), { headers: headers })
+
       .subscribe(Res => {
         console.log(Res, 'hhhhhhhhhhhhhhhhhhh')
         this.sg['products'] = Res.json()['Results'];
@@ -203,2345 +203,21 @@ price_to;
   months7 = false;
 
   fetchmutimonth(months1, months2, months3, months4, months5, months6, months7) {
-   
-   
-     if (months1 == true && months2 == true && months3 == true && months4 == true && months5 == true && months6 == true && months7 == true) {
+
+
+    if (months1 == true && months2 == true && months3 == true && months4 == true && months5 == true && months6 == true && months7 == true) {
       months1 = "36 Months";
-      months2 = "24 Months";
-months3="18 Months";
-months4="14 Months";
-months5="12 Months";
-months6="6 Months";
-months7="5 Months";
-
-      console.log(months1,months2, months3, months4,months5,months6,months7,'tttttttttttt')
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-   
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
-        "plan_information1": months1,
-        "plan_information2": months2,
-        "plan_information3": months3,
-        "plan_information4": months4,
-        "plan_information5": months5,
-        "plan_information6": months6,
-        "plan_information7": months7,
-      }
-      ), { headers: headers })
- 
-        .subscribe(Res => {
-          console.log(Res)
-          
-          this.sg['products'] = Res.json()['Results'];
-          this.data.changeProducts(this.sg['products']);
-          for (let prod of this.sg['products']) {
-          
-            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
-            prod["price_rate"] = prod["price_rate"].split('..', 3000);
-          }
-
-        });
-    }
-    
-    
-    else if (months1 == true && months2 == true && months3==true && months4==true && months5==true && months6==true) {
-      months1 = "36 Months";
-      months2 = "24 Months";
-months3="18 Months";
-months4="14 Months";
-months5="12 Months";
-months6="6 Months";
-
-      console.log(months1,months2, months3, months4,months5,months6,'tttttttttttt')
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
-        "plan_information1": months1,
-        "plan_information2": months2,
-        "plan_information3": months3,
-        "plan_information4": months4,
-        "plan_information5": months5,
-        "plan_information6": months6,
-        "plan_information7": months7,
-      }
-      ), { headers: headers })
-
-        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
-        .subscribe(Res => {
-          console.log(Res)
-          //console.log(selectedvalue)
-          // console.log(plan_information)
-          this.sg['products'] = Res.json()['Results'];
-          this.data.changeProducts(this.sg['products']);
-          for (let prod of this.sg['products']) {
-            // console.log(prod["plan_information"])
-            // console.log(prod["price_rate"])
-            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
-            prod["price_rate"] = prod["price_rate"].split('..', 3000);
-          }
-
-        });
-    }
-    else if (months1 == true && months2 == true && months3==true && months4==true && months5==true && months7==true) {
-      months1 = "36 Months";
-      months2 = "24 Months";
-months3="18 Months";
-months4="14 Months";
-months5="12 Months";
-months7="5 Months";
-
-      console.log(months1,months2, months3, months4,months5,months7,'tttttttttttt')
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
-        "plan_information1": months1,
-        "plan_information2": months2,
-        "plan_information3": months3,
-        "plan_information4": months4,
-        "plan_information5": months5,
-        "plan_information6": months6,
-        "plan_information7": months7,
-      }
-      ), { headers: headers })
-
-        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
-        .subscribe(Res => {
-          console.log(Res)
-          //console.log(selectedvalue)
-          // console.log(plan_information)
-          this.sg['products'] = Res.json()['Results'];
-          this.data.changeProducts(this.sg['products']);
-          for (let prod of this.sg['products']) {
-            // console.log(prod["plan_information"])
-            // console.log(prod["price_rate"])
-            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
-            prod["price_rate"] = prod["price_rate"].split('..', 3000);
-          }
-
-        });
-    }
-    else if (months1 == true && months2 == true && months3==true && months4==true && months6==true && months7==true) {
-      months1 = "36 Months";
-      months2 = "24 Months";
-months3="18 Months";
-months4="14 Months";
-months7="5 Months";
-months6="6 Months";
-
-      console.log(months1,months2, months3, months4,months7,months6,'tttttttttttt')
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
-        "plan_information1": months1,
-        "plan_information2": months2,
-        "plan_information3": months3,
-        "plan_information4": months4,
-        "plan_information5": months5,
-        "plan_information6": months6,
-        "plan_information7": months7,
-      }
-      ), { headers: headers })
-
-        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
-        .subscribe(Res => {
-          console.log(Res)
-          //console.log(selectedvalue)
-          // console.log(plan_information)
-          this.sg['products'] = Res.json()['Results'];
-          this.data.changeProducts(this.sg['products']);
-          for (let prod of this.sg['products']) {
-            // console.log(prod["plan_information"])
-            // console.log(prod["price_rate"])
-            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
-            prod["price_rate"] = prod["price_rate"].split('..', 3000);
-          }
-
-        });
-    }
-    else if (months1 == true && months2 == true && months3==true && months7==true && months5==true && months6==true) {
-      months1 = "36 Months";
-      months2 = "24 Months";
-months3="18 Months";
-months7="5 Months";
-months5="12 Months";
-months6="6 Months";
-
-      console.log(months1,months2, months3, months7,months5,months6,'tttttttttttt')
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
-        "plan_information1": months1,
-        "plan_information2": months2,
-        "plan_information3": months3,
-        "plan_information4": months4,
-        "plan_information5": months5,
-        "plan_information6": months6,
-        "plan_information7": months7,
-      }
-      ), { headers: headers })
-
-        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
-        .subscribe(Res => {
-          console.log(Res)
-          //console.log(selectedvalue)
-          // console.log(plan_information)
-          this.sg['products'] = Res.json()['Results'];
-          this.data.changeProducts(this.sg['products']);
-          for (let prod of this.sg['products']) {
-            // console.log(prod["plan_information"])
-            // console.log(prod["price_rate"])
-            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
-            prod["price_rate"] = prod["price_rate"].split('..', 3000);
-          }
-
-        });
-    }
-    else if (months1 == true && months2 == true && months7==true && months4==true && months5==true && months6==true) {
-      months1 = "36 Months";
-      months2 = "24 Months";
-months7="5 Months";
-months4="14 Months";
-months5="12 Months";
-months6="6 Months";
-
-      console.log(months1,months2, months7, months4,months5,months6,'tttttttttttt')
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
-        "plan_information1": months1,
-        "plan_information2": months2,
-        "plan_information3": months3,
-        "plan_information4": months4,
-        "plan_information5": months5,
-        "plan_information6": months6,
-        "plan_information7": months7,
-      }
-      ), { headers: headers })
-
-        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
-        .subscribe(Res => {
-          console.log(Res)
-          //console.log(selectedvalue)
-          // console.log(plan_information)
-          this.sg['products'] = Res.json()['Results'];
-          this.data.changeProducts(this.sg['products']);
-          for (let prod of this.sg['products']) {
-            // console.log(prod["plan_information"])
-            // console.log(prod["price_rate"])
-            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
-            prod["price_rate"] = prod["price_rate"].split('..', 3000);
-          }
-
-        });
-    }
-    else if (months1 == true && months7 == true && months3==true && months4==true && months5==true && months6==true) {
-      months1 = "36 Months";
-      months7 = "5 Months";
-months3="18 Months";
-months4="14 Months";
-months5="12 Months";
-months6="6 Months";
-
-      console.log(months1,months7, months3, months4,months5,months6,'tttttttttttt')
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
-        "plan_information1": months1,
-        "plan_information2": months2,
-        "plan_information3": months3,
-        "plan_information4": months4,
-        "plan_information5": months5,
-        "plan_information6": months6,
-        "plan_information7": months7,
-      }
-      ), { headers: headers })
-
-        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
-        .subscribe(Res => {
-          console.log(Res)
-          //console.log(selectedvalue)
-          // console.log(plan_information)
-          this.sg['products'] = Res.json()['Results'];
-          this.data.changeProducts(this.sg['products']);
-          for (let prod of this.sg['products']) {
-            // console.log(prod["plan_information"])
-            // console.log(prod["price_rate"])
-            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
-            prod["price_rate"] = prod["price_rate"].split('..', 3000);
-          }
-
-        });
-    }
-    else if (months7 == true && months2 == true && months3==true && months4==true && months5==true && months6==true) {
-      months7 = "5 Months";
-      months2 = "24 Months";
-months3="18 Months";
-months4="14 Months";
-months5="12 Months";
-months6="6 Months";
-
-      console.log(months7,months2, months3, months4,months5,months6,'tttttttttttt')
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
-        "plan_information1": months1,
-        "plan_information2": months2,
-        "plan_information3": months3,
-        "plan_information4": months4,
-        "plan_information5": months5,
-        "plan_information6": months6,
-        "plan_information7": months7,
-      }
-      ), { headers: headers })
-
-        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
-        .subscribe(Res => {
-          console.log(Res)
-          //console.log(selectedvalue)
-          // console.log(plan_information)
-          this.sg['products'] = Res.json()['Results'];
-          this.data.changeProducts(this.sg['products']);
-          for (let prod of this.sg['products']) {
-            // console.log(prod["plan_information"])
-            // console.log(prod["price_rate"])
-            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
-            prod["price_rate"] = prod["price_rate"].split('..', 3000);
-          }
-
-        });
-    }
-    else if (months1 == true && months2 == true && months3==true && months4==true && months5==true) {
-      months1 = "36 Months";
-      months2 = "24 Months";
-months3="18 Months";
-months4="14 Months";
-months5="12 Months";
-
-      console.log(months1,months2, months3, months4,months5,'tttttttttttt')
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
-        "plan_information1": months1,
-        "plan_information2": months2,
-        "plan_information3": months3,
-        "plan_information4": months4,
-        "plan_information5": months5,
-        "plan_information6": months6,
-        "plan_information7": months7,
-      }
-      ), { headers: headers })
-
-        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
-        .subscribe(Res => {
-          console.log(Res)
-          //console.log(selectedvalue)
-          // console.log(plan_information)
-          this.sg['products'] = Res.json()['Results'];
-          this.data.changeProducts(this.sg['products']);
-          for (let prod of this.sg['products']) {
-            // console.log(prod["plan_information"])
-            // console.log(prod["price_rate"])
-            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
-            prod["price_rate"] = prod["price_rate"].split('..', 3000);
-          }
-
-        });
-    }
-    else if (months1 == true && months2 == true && months3==true && months4==true && months6==true) {
-      months1 = "36 Months";
-      months2 = "24 Months";
-months3="18 Months";
-months4="14 Months";
-months6="6 Months";
-
-      console.log(months1,months2, months3, months4,months6,'tttttttttttt')
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
-        "plan_information1": months1,
-        "plan_information2": months2,
-        "plan_information3": months3,
-        "plan_information4": months4,
-        "plan_information5": months5,
-        "plan_information6": months6,
-        "plan_information7": months7,
-      }
-      ), { headers: headers })
-
-        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
-        .subscribe(Res => {
-          console.log(Res)
-          //console.log(selectedvalue)
-          // console.log(plan_information)
-          this.sg['products'] = Res.json()['Results'];
-          this.data.changeProducts(this.sg['products']);
-          for (let prod of this.sg['products']) {
-            // console.log(prod["plan_information"])
-            // console.log(prod["price_rate"])
-            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
-            prod["price_rate"] = prod["price_rate"].split('..', 3000);
-          }
-
-        });
-    }
-    else if (months1 == true && months2 == true && months3==true && months5==true && months6==true) {
-      months1 = "36 Months";
-      months2 = "24 Months";
-months3="18 Months";
-months5="12 Months";
-months6="6 Months";
-
-      console.log(months1,months2, months3, months5,months6,'tttttttttttt')
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
-        "plan_information1": months1,
-        "plan_information2": months2,
-        "plan_information3": months3,
-        "plan_information4": months4,
-        "plan_information5": months5,
-        "plan_information6": months6,
-        "plan_information7": months7,
-      }
-      ), { headers: headers })
-
-        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
-        .subscribe(Res => {
-          console.log(Res)
-          //console.log(selectedvalue)
-          // console.log(plan_information)
-          this.sg['products'] = Res.json()['Results'];
-          this.data.changeProducts(this.sg['products']);
-          for (let prod of this.sg['products']) {
-            // console.log(prod["plan_information"])
-            // console.log(prod["price_rate"])
-            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
-            prod["price_rate"] = prod["price_rate"].split('..', 3000);
-          }
-
-        });
-    }
-    else if (months1 == true && months2 == true && months4==true && months5==true && months6==true) {
-      months1 = "36 Months";
-      months2 = "24 Months";
-months5="12 Months";
-months4="14 Months";
-months6="6 Months";
-
-      console.log(months1,months2, months5, months4,months6,'tttttttttttt')
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
-        "plan_information1": months1,
-        "plan_information2": months2,
-        "plan_information3": months3,
-        "plan_information4": months4,
-        "plan_information5": months5,
-        "plan_information6": months6,
-        "plan_information7": months7,
-      }
-      ), { headers: headers })
-
-        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
-        .subscribe(Res => {
-          console.log(Res)
-          //console.log(selectedvalue)
-          // console.log(plan_information)
-          this.sg['products'] = Res.json()['Results'];
-          this.data.changeProducts(this.sg['products']);
-          for (let prod of this.sg['products']) {
-            // console.log(prod["plan_information"])
-            // console.log(prod["price_rate"])
-            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
-            prod["price_rate"] = prod["price_rate"].split('..', 3000);
-          }
-
-        });
-    }
-    else if (months1 == true && months3 == true && months4==true && months5==true && months6==true) {
-      months1 = "36 Months";
-      months5 = "12 Months";
-months3="18 Months";
-months4="14 Months";
-months6="6 Months";
-
-      console.log(months1,months5, months3, months4,months6,'tttttttttttt')
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
-        "plan_information1": months1,
-        "plan_information2": months2,
-        "plan_information3": months3,
-        "plan_information4": months4,
-        "plan_information5": months5,
-        "plan_information6": months6,
-        "plan_information7": months7,
-      }
-      ), { headers: headers })
-
-        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
-        .subscribe(Res => {
-          console.log(Res)
-          //console.log(selectedvalue)
-          // console.log(plan_information)
-          this.sg['products'] = Res.json()['Results'];
-          this.data.changeProducts(this.sg['products']);
-          for (let prod of this.sg['products']) {
-            // console.log(prod["plan_information"])
-            // console.log(prod["price_rate"])
-            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
-            prod["price_rate"] = prod["price_rate"].split('..', 3000);
-          }
-
-        });
-    }
-    else if (months1 == true && months2 == true && months3==true && months4==true && months7==true) {
-      months1 = "36 Months";
-      months2 = "24 Months";
-months3="18 Months";
-months4="14 Months";
-months7="5 Months";
-
-      console.log(months1,months2, months3, months4,months7,'tttttttttttt')
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
-        "plan_information1": months1,
-        "plan_information2": months2,
-        "plan_information3": months3,
-        "plan_information4": months4,
-        "plan_information5": months5,
-        "plan_information6": months6,
-        "plan_information7": months7,
-      }
-      ), { headers: headers })
-
-        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
-        .subscribe(Res => {
-          console.log(Res)
-          //console.log(selectedvalue)
-          // console.log(plan_information)
-          this.sg['products'] = Res.json()['Results'];
-          this.data.changeProducts(this.sg['products']);
-          for (let prod of this.sg['products']) {
-            // console.log(prod["plan_information"])
-            // console.log(prod["price_rate"])
-            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
-            prod["price_rate"] = prod["price_rate"].split('..', 3000);
-          }
-
-        });
-    }
-    else if (months1 == true && months2 == true && months3==true && months5==true && months7==true) {
-      months1 = "36 Months";
-      months2 = "24 Months";
-months3="18 Months";
-months5="14 Months";
-months7="5 Months";
-
-      console.log(months1,months2, months3, months5,months7,'tttttttttttt')
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
-        "plan_information1": months1,
-        "plan_information2": months2,
-        "plan_information3": months3,
-        "plan_information4": months4,
-        "plan_information5": months5,
-        "plan_information6": months6,
-        "plan_information7": months7,
-      }
-      ), { headers: headers })
-
-        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
-        .subscribe(Res => {
-          console.log(Res)
-          //console.log(selectedvalue)
-          // console.log(plan_information)
-          this.sg['products'] = Res.json()['Results'];
-          this.data.changeProducts(this.sg['products']);
-          for (let prod of this.sg['products']) {
-            // console.log(prod["plan_information"])
-            // console.log(prod["price_rate"])
-            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
-            prod["price_rate"] = prod["price_rate"].split('..', 3000);
-          }
-
-        });
-    }
-    else if (months1 == true && months2 == true && months4==true && months5==true && months7==true) {
-      months1 = "36 Months";
-      months2 = "24 Months";
-months5="12 Months";
-months4="14 Months";
-months7="5 Months";
-
-      console.log(months1,months2, months5, months4,months7,'tttttttttttt')
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
-        "plan_information1": months1,
-        "plan_information2": months2,
-        "plan_information3": months3,
-        "plan_information4": months4,
-        "plan_information5": months5,
-        "plan_information6": months6,
-        "plan_information7": months7,
-      }
-      ), { headers: headers })
-
-        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
-        .subscribe(Res => {
-          console.log(Res)
-          //console.log(selectedvalue)
-          // console.log(plan_information)
-          this.sg['products'] = Res.json()['Results'];
-          this.data.changeProducts(this.sg['products']);
-          for (let prod of this.sg['products']) {
-            // console.log(prod["plan_information"])
-            // console.log(prod["price_rate"])
-            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
-            prod["price_rate"] = prod["price_rate"].split('..', 3000);
-          }
-
-        });
-    }
-    else if (months1 == true && months3 == true && months4==true && months5==true && months7==true) {
-      months1 = "36 Months";
-      months5 = "12 Months";
-months3="18 Months";
-months4="14 Months";
-months7="5 Months";
-
-      console.log(months1,months2, months3, months4,months7,'tttttttttttt')
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
-        "plan_information1": months1,
-        "plan_information2": months2,
-        "plan_information3": months3,
-        "plan_information4": months4,
-        "plan_information5": months5,
-        "plan_information6": months6,
-        "plan_information7": months7,
-      }
-      ), { headers: headers })
-
-        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
-        .subscribe(Res => {
-          console.log(Res)
-          //console.log(selectedvalue)
-          // console.log(plan_information)
-          this.sg['products'] = Res.json()['Results'];
-          this.data.changeProducts(this.sg['products']);
-          for (let prod of this.sg['products']) {
-            // console.log(prod["plan_information"])
-            // console.log(prod["price_rate"])
-            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
-            prod["price_rate"] = prod["price_rate"].split('..', 3000);
-          }
-
-        });
-    }
-    else if (months2 == true && months3 == true && months4==true && months5==true && months6==true) {
-      months6 = "6 Months";
-      months2 = "24 Months";
-months3="18 Months";
-months4="14 Months";
-months5="12 Months";
-
-      console.log(months6,months2, months3, months4,months5,'tttttttttttt')
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
-        "plan_information1": months1,
-        "plan_information2": months2,
-        "plan_information3": months3,
-        "plan_information4": months4,
-        "plan_information5": months5,
-        "plan_information6": months6,
-        "plan_information7": months7,
-      }
-      ), { headers: headers })
-
-        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
-        .subscribe(Res => {
-          console.log(Res)
-          //console.log(selectedvalue)
-          // console.log(plan_information)
-          this.sg['products'] = Res.json()['Results'];
-          this.data.changeProducts(this.sg['products']);
-          for (let prod of this.sg['products']) {
-            // console.log(prod["plan_information"])
-            // console.log(prod["price_rate"])
-            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
-            prod["price_rate"] = prod["price_rate"].split('..', 3000);
-          }
-
-        });
-    }
-    else if (months2 == true && months3 == true && months4==true && months5==true && months7==true) {
-      months7 = "5 Months";
-      months2 = "24 Months";
-months3="18 Months";
-months4="14 Months";
-months5="12 Months";
-
-      console.log(months7,months2, months3, months4,months5,'tttttttttttt')
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
-        "plan_information1": months1,
-        "plan_information2": months2,
-        "plan_information3": months3,
-        "plan_information4": months4,
-        "plan_information5": months5,
-        "plan_information6": months6,
-        "plan_information7": months7,
-      }
-      ), { headers: headers })
-
-        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
-        .subscribe(Res => {
-          console.log(Res)
-          //console.log(selectedvalue)
-          // console.log(plan_information)
-          this.sg['products'] = Res.json()['Results'];
-          this.data.changeProducts(this.sg['products']);
-          for (let prod of this.sg['products']) {
-            // console.log(prod["plan_information"])
-            // console.log(prod["price_rate"])
-            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
-            prod["price_rate"] = prod["price_rate"].split('..', 3000);
-          }
-
-        });
-    }
-    else if (months2 == true && months4 == true && months5==true && months6==true && months7==true) {
-      months5 = "12 Months";
-      months2 = "24 Months";
-months6="6 Months";
-months4="14 Months";
-months7="5 Months";
-
-      console.log(months5,months2, months6, months4,months7,'tttttttttttt')
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
-        "plan_information1": months1,
-        "plan_information2": months2,
-        "plan_information3": months3,
-        "plan_information4": months4,
-        "plan_information5": months5,
-        "plan_information6": months6,
-        "plan_information7": months7,
-      }
-      ), { headers: headers })
-
-        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
-        .subscribe(Res => {
-          console.log(Res)
-          //console.log(selectedvalue)
-          // console.log(plan_information)
-          this.sg['products'] = Res.json()['Results'];
-          this.data.changeProducts(this.sg['products']);
-          for (let prod of this.sg['products']) {
-            // console.log(prod["plan_information"])
-            // console.log(prod["price_rate"])
-            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
-            prod["price_rate"] = prod["price_rate"].split('..', 3000);
-          }
-
-        });
-    }
-    else if (months2 == true && months3 == true && months5==true && months6==true && months7==true) {
-      months5 = "12 Months";
-      months2 = "24 Months";
-months6="6 Months";
-months3="18 Months";
-months7="5 Months";
-
-      console.log(months5,months2, months6, months3,months7,'tttttttttttt')
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
-        "plan_information1": months1,
-        "plan_information2": months2,
-        "plan_information3": months3,
-        "plan_information4": months4,
-        "plan_information5": months5,
-        "plan_information6": months6,
-        "plan_information7": months7,
-      }
-      ), { headers: headers })
-
-        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
-        .subscribe(Res => {
-          console.log(Res)
-          //console.log(selectedvalue)
-          // console.log(plan_information)
-          this.sg['products'] = Res.json()['Results'];
-          this.data.changeProducts(this.sg['products']);
-          for (let prod of this.sg['products']) {
-            // console.log(prod["plan_information"])
-            // console.log(prod["price_rate"])
-            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
-            prod["price_rate"] = prod["price_rate"].split('..', 3000);
-          }
-
-        });
-    }
-    else if (months2 == true && months3 == true && months4==true && months6==true && months7==true) {
-      months3 = "18 Months";
-      months2 = "24 Months";
-months6="6 Months";
-months4="14 Months";
-months7="5 Months";
-
-      console.log(months3,months2, months6, months4,months7,'tttttttttttt')
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
-        "plan_information1": months1,
-        "plan_information2": months2,
-        "plan_information3": months3,
-        "plan_information4": months4,
-        "plan_information5": months5,
-        "plan_information6": months6,
-        "plan_information7": months7,
-      }
-      ), { headers: headers })
-
-        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
-        .subscribe(Res => {
-          console.log(Res)
-          //console.log(selectedvalue)
-          // console.log(plan_information)
-          this.sg['products'] = Res.json()['Results'];
-          this.data.changeProducts(this.sg['products']);
-          for (let prod of this.sg['products']) {
-            // console.log(prod["plan_information"])
-            // console.log(prod["price_rate"])
-            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
-            prod["price_rate"] = prod["price_rate"].split('..', 3000);
-          }
-
-        });
-    }
-    
-    else if (months3 == true && months4 == true && months5==true && months6==true && months7==true) {
-      months6 = "6 Months";
-      months7 = "5 Months";
-months3="18 Months";
-months4="14 Months";
-months5="12 Months";
-
-      console.log(months6,months7, months3, months4,months5,'tttttttttttt')
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
-        "plan_information1": months1,
-        "plan_information2": months2,
-        "plan_information3": months3,
-        "plan_information4": months4,
-        "plan_information5": months5,
-        "plan_information6": months6,
-        "plan_information7": months7,
-      }
-      ), { headers: headers })
-
-        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
-        .subscribe(Res => {
-          console.log(Res)
-          //console.log(selectedvalue)
-          // console.log(plan_information)
-          this.sg['products'] = Res.json()['Results'];
-          this.data.changeProducts(this.sg['products']);
-          for (let prod of this.sg['products']) {
-            // console.log(prod["plan_information"])
-            // console.log(prod["price_rate"])
-            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
-            prod["price_rate"] = prod["price_rate"].split('..', 3000);
-          }
-
-        });
-    }
-else if (months1 == true && months2 == true && months3==true && months4==true) {
-      months1 = "36 Months";
-      months2 = "24 Months";
-months3="18 Months";
-months4="14 Months";
-      console.log(months1, months2, months3,months4,'tttttttttttt')
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
-        "plan_information1": months1,
-        "plan_information2": months2,
-        "plan_information3": months3,
-        "plan_information4": months4,
-        "plan_information5": months5,
-        "plan_information6": months6,
-        "plan_information7": months7,
-      }
-      ), { headers: headers })
-
-        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
-        .subscribe(Res => {
-          console.log(Res)
-          //console.log(selectedvalue)
-          // console.log(plan_information)
-          this.sg['products'] = Res.json()['Results'];
-          this.data.changeProducts(this.sg['products']);
-          for (let prod of this.sg['products']) {
-            // console.log(prod["plan_information"])
-            // console.log(prod["price_rate"])
-            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
-            prod["price_rate"] = prod["price_rate"].split('..', 3000);
-          }
-
-        });
-    }
-    else if (months1 == true && months2 == true && months3==true && months5==true) {
-      months1 = "36 Months";
-      months2 = "24 Months";
-months3="18 Months";
-months5="12 Months";
-      console.log(months1, months2, months3,months5,'tttttttttttt')
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
-        "plan_information1": months1,
-        "plan_information2": months2,
-        "plan_information3": months3,
-        "plan_information4": months4,
-        "plan_information5": months5,
-        "plan_information6": months6,
-        "plan_information7": months7,
-      }
-      ), { headers: headers })
-
-        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
-        .subscribe(Res => {
-          console.log(Res)
-          //console.log(selectedvalue)
-          // console.log(plan_information)
-          this.sg['products'] = Res.json()['Results'];
-          this.data.changeProducts(this.sg['products']);
-          for (let prod of this.sg['products']) {
-            // console.log(prod["plan_information"])
-            // console.log(prod["price_rate"])
-            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
-            prod["price_rate"] = prod["price_rate"].split('..', 3000);
-          }
-
-        });
-    }
-    else if (months1 == true && months2 == true && months3==true && months6==true) {
-      months1 = "36 Months";
-      months2 = "24 Months";
-months3="18 Months";
-months6="6 Months";
-      console.log(months1, months2, months3,months6,'tttttttttttt')
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
-        "plan_information1": months1,
-        "plan_information2": months2,
-        "plan_information3": months3,
-        "plan_information4": months4,
-        "plan_information5": months5,
-        "plan_information6": months6,
-        "plan_information7": months7,
-      }
-      ), { headers: headers })
-
-        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
-        .subscribe(Res => {
-          console.log(Res)
-          //console.log(selectedvalue)
-          // console.log(plan_information)
-          this.sg['products'] = Res.json()['Results'];
-          this.data.changeProducts(this.sg['products']);
-          for (let prod of this.sg['products']) {
-            // console.log(prod["plan_information"])
-            // console.log(prod["price_rate"])
-            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
-            prod["price_rate"] = prod["price_rate"].split('..', 3000);
-          }
-
-        });
-    }
-    else if (months1 == true && months2 == true && months3==true && months7==true) {
-      months1 = "36 Months";
-      months2 = "24 Months";
-months3="18 Months";
-months7="5 Months";
-      console.log(months1, months2, months3,months7,'tttttttttttt')
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
-        "plan_information1": months1,
-        "plan_information2": months2,
-        "plan_information3": months3,
-        "plan_information4": months4,
-        "plan_information5": months5,
-        "plan_information6": months6,
-        "plan_information7": months7,
-      }
-      ), { headers: headers })
-
-        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
-        .subscribe(Res => {
-          console.log(Res)
-          //console.log(selectedvalue)
-          // console.log(plan_information)
-          this.sg['products'] = Res.json()['Results'];
-          this.data.changeProducts(this.sg['products']);
-          for (let prod of this.sg['products']) {
-            // console.log(prod["plan_information"])
-            // console.log(prod["price_rate"])
-            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
-            prod["price_rate"] = prod["price_rate"].split('..', 3000);
-          }
-
-        });
-    }
-    else if (months2 == true && months3 == true && months4==true && months5==true) {
       months2 = "24 Months";
       months3 = "18 Months";
-months4="14 Months";
-months5="12 Months";
-      console.log(months2, months3, months4,months5,'tttttttttttt')
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
-        "plan_information1": months1,
-        "plan_information2": months2,
-        "plan_information3": months3,
-        "plan_information4": months4,
-        "plan_information5": months5,
-        "plan_information6": months6,
-        "plan_information7": months7,
-      }
-      ), { headers: headers })
-
-        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
-        .subscribe(Res => {
-          console.log(Res)
-          //console.log(selectedvalue)
-          // console.log(plan_information)
-          this.sg['products'] = Res.json()['Results'];
-          this.data.changeProducts(this.sg['products']);
-          for (let prod of this.sg['products']) {
-            // console.log(prod["plan_information"])
-            // console.log(prod["price_rate"])
-            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
-            prod["price_rate"] = prod["price_rate"].split('..', 3000);
-          }
-
-        });
-    }
-    else if (months2 == true && months3 == true && months4==true && months6==true) {
-      months2 = "24 Months";
-      months3 = "18 Months";
-months4="14 Months";
-months6="6 Months";
-      console.log(months2, months3, months4,months6,'tttttttttttt')
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
-        "plan_information1": months1,
-        "plan_information2": months2,
-        "plan_information3": months3,
-        "plan_information4": months4,
-        "plan_information5": months5,
-        "plan_information6": months6,
-        "plan_information7": months7,
-      }
-      ), { headers: headers })
-
-        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
-        .subscribe(Res => {
-          console.log(Res)
-          //console.log(selectedvalue)
-          // console.log(plan_information)
-          this.sg['products'] = Res.json()['Results'];
-          this.data.changeProducts(this.sg['products']);
-          for (let prod of this.sg['products']) {
-            // console.log(prod["plan_information"])
-            // console.log(prod["price_rate"])
-            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
-            prod["price_rate"] = prod["price_rate"].split('..', 3000);
-          }
-
-        });
-    }
-    else if (months2 == true && months3 == true && months4==true && months7==true) {
-      months2 = "24 Months";
-      months3 = "18 Months";
-months4="14 Months";
-months7="5 Months";
-      console.log(months2, months3, months4,months7,'tttttttttttt')
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
-        "plan_information1": months1,
-        "plan_information2": months2,
-        "plan_information3": months3,
-        "plan_information4": months4,
-        "plan_information5": months5,
-        "plan_information6": months6,
-        "plan_information7": months7,
-      }
-      ), { headers: headers })
-
-        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
-        .subscribe(Res => {
-          console.log(Res)
-          //console.log(selectedvalue)
-          // console.log(plan_information)
-          this.sg['products'] = Res.json()['Results'];
-          this.data.changeProducts(this.sg['products']);
-          for (let prod of this.sg['products']) {
-            // console.log(prod["plan_information"])
-            // console.log(prod["price_rate"])
-            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
-            prod["price_rate"] = prod["price_rate"].split('..', 3000);
-          }
-
-        });
-    }
-    else if (months3 == true && months4 == true && months5==true && months6==true) {
-      months6 = "6 Months";
-      months3 = "18 Months";
-months4="14 Months";
-months5="12 Months";
-      console.log(months6, months3, months4,months5,'tttttttttttt')
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
-        "plan_information1": months1,
-        "plan_information2": months2,
-        "plan_information3": months3,
-        "plan_information4": months4,
-        "plan_information5": months5,
-        "plan_information6": months6,
-        "plan_information7": months7,
-      }
-      ), { headers: headers })
-
-        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
-        .subscribe(Res => {
-          console.log(Res)
-          //console.log(selectedvalue)
-          // console.log(plan_information)
-          this.sg['products'] = Res.json()['Results'];
-          this.data.changeProducts(this.sg['products']);
-          for (let prod of this.sg['products']) {
-            // console.log(prod["plan_information"])
-            // console.log(prod["price_rate"])
-            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
-            prod["price_rate"] = prod["price_rate"].split('..', 3000);
-          }
-
-        });
-    }
-    else if (months3 == true && months4 == true && months5==true && months7==true) {
-      months7 = "5 Months";
-      months3 = "18 Months";
-months4="14 Months";
-months5="12 Months";
-      console.log(months7, months3, months4,months5,'tttttttttttt')
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
-        "plan_information1": months1,
-        "plan_information2": months2,
-        "plan_information3": months3,
-        "plan_information4": months4,
-        "plan_information5": months5,
-        "plan_information6": months6,
-        "plan_information7": months7,
-      }
-      ), { headers: headers })
-
-        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
-        .subscribe(Res => {
-          console.log(Res)
-          //console.log(selectedvalue)
-          // console.log(plan_information)
-          this.sg['products'] = Res.json()['Results'];
-          this.data.changeProducts(this.sg['products']);
-          for (let prod of this.sg['products']) {
-            // console.log(prod["plan_information"])
-            // console.log(prod["price_rate"])
-            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
-            prod["price_rate"] = prod["price_rate"].split('..', 3000);
-          }
-
-        });
-    }
-    else if (months4 == true && months5 == true && months6==true && months7==true) {
-      months6 = "6 Months";
-      months7 = "5 Months";
-months4="14 Months";
-months5="12 Months";
-      console.log(months6, months7, months4,months5,'tttttttttttt')
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
-        "plan_information1": months1,
-        "plan_information2": months2,
-        "plan_information3": months3,
-        "plan_information4": months4,
-        "plan_information5": months5,
-        "plan_information6": months6,
-        "plan_information7": months7,
-      }
-      ), { headers: headers })
-
-        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
-        .subscribe(Res => {
-          console.log(Res)
-          //console.log(selectedvalue)
-          // console.log(plan_information)
-          this.sg['products'] = Res.json()['Results'];
-          this.data.changeProducts(this.sg['products']);
-          for (let prod of this.sg['products']) {
-            // console.log(prod["plan_information"])
-            // console.log(prod["price_rate"])
-            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
-            prod["price_rate"] = prod["price_rate"].split('..', 3000);
-          }
-
-        });
-    }
-
-  else if (months1 == true && months2 == true && months3==true) {
-      months1 = "36 Months";
-      months2 = "24 Months";
-months3="18 Months";
-      console.log(months1, months2, months3,'tttttttttttt')
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
-        "plan_information1": months1,
-        "plan_information2": months2,
-        "plan_information3": months3,
-        "plan_information4": months4,
-        "plan_information5": months5,
-        "plan_information6": months6,
-        "plan_information7": months7,
-      }
-      ), { headers: headers })
-
-        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
-        .subscribe(Res => {
-          console.log(Res)
-          //console.log(selectedvalue)
-          // console.log(plan_information)
-          this.sg['products'] = Res.json()['Results'];
-          this.data.changeProducts(this.sg['products']);
-          for (let prod of this.sg['products']) {
-            // console.log(prod["plan_information"])
-            // console.log(prod["price_rate"])
-            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
-            prod["price_rate"] = prod["price_rate"].split('..', 3000);
-          }
-
-        });
-    }
-    else if (months1 == true && months2 == true && months4==true) {
-      months1 = "36 Months";
-      months2 = "24 Months";
-      months4="14 Months";
-      console.log(months1, months2, months4,'tttttttttttt')
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
-        "plan_information1": months1,
-        "plan_information2": months2,
-        "plan_information3": months3,
-        "plan_information4": months4,
-        "plan_information5": months5,
-        "plan_information6": months6,
-        "plan_information7": months7,
-      }
-      ), { headers: headers })
-
-        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
-        .subscribe(Res => {
-          console.log(Res)
-          //console.log(selectedvalue)
-          // console.log(plan_information)
-          this.sg['products'] = Res.json()['Results'];
-          this.data.changeProducts(this.sg['products']);
-          for (let prod of this.sg['products']) {
-            // console.log(prod["plan_information"])
-            // console.log(prod["price_rate"])
-            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
-            prod["price_rate"] = prod["price_rate"].split('..', 3000);
-          }
-
-        });
-    }
-    else if (months1 == true && months2 == true && months5==true) {
-      months1 = "36 Months";
-      months2 = "24 Months";
-months5="12 Months";
-      console.log(months1, months2, months5,'tttttttttttt')
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
-        "plan_information1": months1,
-        "plan_information2": months2,
-        "plan_information3": months3,
-        "plan_information4": months4,
-        "plan_information5": months5,
-        "plan_information6": months6,
-        "plan_information7": months7,
-      }
-      ), { headers: headers })
-
-        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
-        .subscribe(Res => {
-          console.log(Res)
-          //console.log(selectedvalue)
-          // console.log(plan_information)
-          this.sg['products'] = Res.json()['Results'];
-          this.data.changeProducts(this.sg['products']);
-          for (let prod of this.sg['products']) {
-            // console.log(prod["plan_information"])
-            // console.log(prod["price_rate"])
-            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
-            prod["price_rate"] = prod["price_rate"].split('..', 3000);
-          }
-
-        });
-    }
-    else if (months1 == true && months2 == true && months6==true) {
-      months1 = "36 Months";
-      months2 = "24 Months";
-months6="6 Months";
-      console.log(months1, months2, months6,'tttttttttttt')
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
-        "plan_information1": months1,
-        "plan_information2": months2,
-        "plan_information3": months3,
-        "plan_information4": months4,
-        "plan_information5": months5,
-        "plan_information6": months6,
-        "plan_information7": months7,
-      }
-      ), { headers: headers })
-
-        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
-        .subscribe(Res => {
-          console.log(Res)
-          //console.log(selectedvalue)
-          // console.log(plan_information)
-          this.sg['products'] = Res.json()['Results'];
-          this.data.changeProducts(this.sg['products']);
-          for (let prod of this.sg['products']) {
-            // console.log(prod["plan_information"])
-            // console.log(prod["price_rate"])
-            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
-            prod["price_rate"] = prod["price_rate"].split('..', 3000);
-          }
-
-        });
-    }
-    else if (months1 == true && months2 == true && months7==true) {
-      months1 = "36 Months";
-      months2 = "24 Months";
-months7="5 Months";
-      console.log(months1, months2, months7,'tttttttttttt')
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
-        "plan_information1": months1,
-        "plan_information2": months2,
-        "plan_information3": months3,
-        "plan_information4": months4,
-        "plan_information5": months5,
-        "plan_information6": months6,
-        "plan_information7": months7,
-      }
-      ), { headers: headers })
-
-        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
-        .subscribe(Res => {
-          console.log(Res)
-          //console.log(selectedvalue)
-          // console.log(plan_information)
-          this.sg['products'] = Res.json()['Results'];
-          this.data.changeProducts(this.sg['products']);
-          for (let prod of this.sg['products']) {
-            // console.log(prod["plan_information"])
-            // console.log(prod["price_rate"])
-            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
-            prod["price_rate"] = prod["price_rate"].split('..', 3000);
-          }
-
-        });
-    }
-    else if (months1 == true && months3 == true && months4==true) {
-      months1 = "36 Months";
-      months4 = "14 Months";
-months3="18 Months";
-      console.log(months1, months3, months4,'tttttttttttt')
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
-        "plan_information1": months1,
-        "plan_information2": months2,
-        "plan_information3": months3,
-        "plan_information4": months4,
-        "plan_information5": months5,
-        "plan_information6": months6,
-        "plan_information7": months7,
-      }
-      ), { headers: headers })
-
-        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
-        .subscribe(Res => {
-          console.log(Res)
-          //console.log(selectedvalue)
-          // console.log(plan_information)
-          this.sg['products'] = Res.json()['Results'];
-          this.data.changeProducts(this.sg['products']);
-          for (let prod of this.sg['products']) {
-            // console.log(prod["plan_information"])
-            // console.log(prod["price_rate"])
-            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
-            prod["price_rate"] = prod["price_rate"].split('..', 3000);
-          }
-
-        });
-    }
-    else if (months1 == true && months3 == true && months5==true) {
-      months1 = "36 Months";
-      months5 = "12 Months";
-months3="18 Months";
-      console.log(months1, months3, months5,'tttttttttttt')
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
-        "plan_information1": months1,
-        "plan_information2": months2,
-        "plan_information3": months3,
-        "plan_information4": months4,
-        "plan_information5": months5,
-        "plan_information6": months6,
-        "plan_information7": months7,
-      }
-      ), { headers: headers })
-
-        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
-        .subscribe(Res => {
-          console.log(Res)
-          //console.log(selectedvalue)
-          // console.log(plan_information)
-          this.sg['products'] = Res.json()['Results'];
-          this.data.changeProducts(this.sg['products']);
-          for (let prod of this.sg['products']) {
-            // console.log(prod["plan_information"])
-            // console.log(prod["price_rate"])
-            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
-            prod["price_rate"] = prod["price_rate"].split('..', 3000);
-          }
-
-        });
-    }
-    else if (months1 == true && months3 == true && months6==true) {
-      months1 = "36 Months";
-      months6 = "6 Months";
-months3="18 Months";
-      console.log(months1, months3, months6,'tttttttttttt')
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
-        "plan_information1": months1,
-        "plan_information2": months2,
-        "plan_information3": months3,
-        "plan_information4": months4,
-        "plan_information5": months5,
-        "plan_information6": months6,
-        "plan_information7": months7,
-      }
-      ), { headers: headers })
-
-        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
-        .subscribe(Res => {
-          console.log(Res)
-          //console.log(selectedvalue)
-          // console.log(plan_information)
-          this.sg['products'] = Res.json()['Results'];
-          this.data.changeProducts(this.sg['products']);
-          for (let prod of this.sg['products']) {
-            // console.log(prod["plan_information"])
-            // console.log(prod["price_rate"])
-            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
-            prod["price_rate"] = prod["price_rate"].split('..', 3000);
-          }
-
-        });
-    }
-    else if (months1 == true && months3 == true && months7==true) {
-      months1 = "36 Months";
-      months7 = "5 Months";
-months3="18 Months";
-      console.log(months1, months3, months7,'tttttttttttt')
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
-        "plan_information1": months1,
-        "plan_information2": months2,
-        "plan_information3": months3,
-        "plan_information4": months4,
-        "plan_information5": months5,
-        "plan_information6": months6,
-        "plan_information7": months7,
-      }
-      ), { headers: headers })
-
-        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
-        .subscribe(Res => {
-          console.log(Res)
-          //console.log(selectedvalue)
-          // console.log(plan_information)
-          this.sg['products'] = Res.json()['Results'];
-          this.data.changeProducts(this.sg['products']);
-          for (let prod of this.sg['products']) {
-            // console.log(prod["plan_information"])
-            // console.log(prod["price_rate"])
-            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
-            prod["price_rate"] = prod["price_rate"].split('..', 3000);
-          }
-
-        });
-    }
-    else if (months1 == true && months4 == true && months5==true) {
-      months1 = "36 Months";
-      months4 = "14 Months";
-months5="12 Months";
-      console.log(months1, months4, months5,'tttttttttttt')
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
-        "plan_information1": months1,
-        "plan_information2": months2,
-        "plan_information3": months3,
-        "plan_information4": months4,
-        "plan_information5": months5,
-        "plan_information6": months6,
-        "plan_information7": months7,
-      }
-      ), { headers: headers })
-
-        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
-        .subscribe(Res => {
-          console.log(Res)
-          //console.log(selectedvalue)
-          // console.log(plan_information)
-          this.sg['products'] = Res.json()['Results'];
-          this.data.changeProducts(this.sg['products']);
-          for (let prod of this.sg['products']) {
-            // console.log(prod["plan_information"])
-            // console.log(prod["price_rate"])
-            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
-            prod["price_rate"] = prod["price_rate"].split('..', 3000);
-          }
-
-        });
-    }
-    else if (months1 == true && months4 == true && months6==true) {
-      months1 = "36 Months";
-      months4 = "14 Months";
-months6="6 Months";
-      console.log(months1, months4, months6,'tttttttttttt')
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
-        "plan_information1": months1,
-        "plan_information2": months2,
-        "plan_information3": months3,
-        "plan_information4": months4,
-        "plan_information5": months5,
-        "plan_information6": months6,
-        "plan_information7": months7,
-      }
-      ), { headers: headers })
-
-        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
-        .subscribe(Res => {
-          console.log(Res)
-          //console.log(selectedvalue)
-          // console.log(plan_information)
-          this.sg['products'] = Res.json()['Results'];
-          this.data.changeProducts(this.sg['products']);
-          for (let prod of this.sg['products']) {
-            // console.log(prod["plan_information"])
-            // console.log(prod["price_rate"])
-            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
-            prod["price_rate"] = prod["price_rate"].split('..', 3000);
-          }
-
-        });
-    }
-    else if (months1 == true && months4 == true && months7==true) {
-      months1 = "36 Months";
-      months4 = "14 Months";
-months7="12 Months";
-      console.log(months1, months4, months7,'tttttttttttt')
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
-        "plan_information1": months1,
-        "plan_information2": months2,
-        "plan_information3": months3,
-        "plan_information4": months4,
-        "plan_information5": months5,
-        "plan_information6": months6,
-        "plan_information7": months7,
-      }
-      ), { headers: headers })
-
-        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
-        .subscribe(Res => {
-          console.log(Res)
-          //console.log(selectedvalue)
-          // console.log(plan_information)
-          this.sg['products'] = Res.json()['Results'];
-          this.data.changeProducts(this.sg['products']);
-          for (let prod of this.sg['products']) {
-            // console.log(prod["plan_information"])
-            // console.log(prod["price_rate"])
-            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
-            prod["price_rate"] = prod["price_rate"].split('..', 3000);
-          }
-
-        });
-    }
-    else if (months1 == true && months5 == true && months6==true) {
-      months1 = "36 Months";
-      months6 = "6 Months";
-months5="12 Months";
-      console.log(months1, months5, months6,'tttttttttttt')
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
-        "plan_information1": months1,
-        "plan_information2": months2,
-        "plan_information3": months3,
-        "plan_information4": months4,
-        "plan_information5": months5,
-        "plan_information6": months6,
-        "plan_information7": months7,
-      }
-      ), { headers: headers })
-
-        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
-        .subscribe(Res => {
-          console.log(Res)
-          //console.log(selectedvalue)
-          // console.log(plan_information)
-          this.sg['products'] = Res.json()['Results'];
-          this.data.changeProducts(this.sg['products']);
-          for (let prod of this.sg['products']) {
-            // console.log(prod["plan_information"])
-            // console.log(prod["price_rate"])
-            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
-            prod["price_rate"] = prod["price_rate"].split('..', 3000);
-          }
-
-        });
-    }
-    else if (months1 == true && months5 == true && months7==true) {
-      months1 = "36 Months";
-      months7 = "5 Months";
-months5="12 Months";
-      console.log(months1, months5, months7,'tttttttttttt')
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
-        "plan_information1": months1,
-        "plan_information2": months2,
-        "plan_information3": months3,
-        "plan_information4": months4,
-        "plan_information5": months5,
-        "plan_information6": months6,
-        "plan_information7": months7,
-      }
-      ), { headers: headers })
-
-        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
-        .subscribe(Res => {
-          console.log(Res)
-          //console.log(selectedvalue)
-          // console.log(plan_information)
-          this.sg['products'] = Res.json()['Results'];
-          this.data.changeProducts(this.sg['products']);
-          for (let prod of this.sg['products']) {
-            // console.log(prod["plan_information"])
-            // console.log(prod["price_rate"])
-            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
-            prod["price_rate"] = prod["price_rate"].split('..', 3000);
-          }
-
-        });
-    }
-    else if (months1 == true && months6 == true && months7==true) {
-      months1 = "36 Months";
-      months6 = "6 Months";
-months7="5 Months";
-      console.log(months1, months6, months7,'tttttttttttt')
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
-        "plan_information1": months1,
-        "plan_information2": months2,
-        "plan_information3": months3,
-        "plan_information4": months4,
-        "plan_information5": months5,
-        "plan_information6": months6,
-        "plan_information7": months7,
-      }
-      ), { headers: headers })
-
-        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
-        .subscribe(Res => {
-          console.log(Res)
-          //console.log(selectedvalue)
-          // console.log(plan_information)
-          this.sg['products'] = Res.json()['Results'];
-          this.data.changeProducts(this.sg['products']);
-          for (let prod of this.sg['products']) {
-            // console.log(prod["plan_information"])
-            // console.log(prod["price_rate"])
-            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
-            prod["price_rate"] = prod["price_rate"].split('..', 3000);
-          }
-
-        });
-    }
-    else if (months2 == true && months3 == true && months4==true) {
-      months2 = "24 Months";
-      months3 = "18 Months";
-months4="14 Months";
-      console.log(months2, months3, months4,'tttttttttttt')
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
-        "plan_information1": months1,
-        "plan_information2": months2,
-        "plan_information3": months3,
-        "plan_information4": months4,
-        "plan_information5": months5,
-        "plan_information6": months6,
-        "plan_information7": months7,
-      }
-      ), { headers: headers })
-
-        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
-        .subscribe(Res => {
-          console.log(Res)
-          //console.log(selectedvalue)
-          // console.log(plan_information)
-          this.sg['products'] = Res.json()['Results'];
-          this.data.changeProducts(this.sg['products']);
-          for (let prod of this.sg['products']) {
-            // console.log(prod["plan_information"])
-            // console.log(prod["price_rate"])
-            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
-            prod["price_rate"] = prod["price_rate"].split('..', 3000);
-          }
-
-        });
-    }
-    else if (months2 == true && months3 == true && months5==true) {
-      months2 = "24 Months";
-      months3 = "18 Months";
-months5="12 Months";
-      console.log(months2, months3, months5,'tttttttttttt')
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
-        "plan_information1": months1,
-        "plan_information2": months2,
-        "plan_information3": months3,
-        "plan_information4": months4,
-        "plan_information5": months5,
-        "plan_information6": months6,
-        "plan_information7": months7,
-      }
-      ), { headers: headers })
-
-        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
-        .subscribe(Res => {
-          console.log(Res)
-          //console.log(selectedvalue)
-          // console.log(plan_information)
-          this.sg['products'] = Res.json()['Results'];
-          this.data.changeProducts(this.sg['products']);
-          for (let prod of this.sg['products']) {
-            // console.log(prod["plan_information"])
-            // console.log(prod["price_rate"])
-            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
-            prod["price_rate"] = prod["price_rate"].split('..', 3000);
-          }
-
-        });
-    }
-    else if (months2 == true && months3 == true && months6==true) {
-      months2 = "24 Months";
-      months3 = "18 Months";
-months6="6 Months";
-      console.log(months2, months3, months6,'tttttttttttt')
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
-        "plan_information1": months1,
-        "plan_information2": months2,
-        "plan_information3": months3,
-        "plan_information4": months4,
-        "plan_information5": months5,
-        "plan_information6": months6,
-        "plan_information7": months7,
-      }
-      ), { headers: headers })
-
-        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
-        .subscribe(Res => {
-          console.log(Res)
-          //console.log(selectedvalue)
-          // console.log(plan_information)
-          this.sg['products'] = Res.json()['Results'];
-          this.data.changeProducts(this.sg['products']);
-          for (let prod of this.sg['products']) {
-            // console.log(prod["plan_information"])
-            // console.log(prod["price_rate"])
-            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
-            prod["price_rate"] = prod["price_rate"].split('..', 3000);
-          }
-
-        });
-    }
-    else if (months2 == true && months3 == true && months7==true) {
-      months2 = "24 Months";
-      months3 = "18 Months";
-months7="5 Months";
-      console.log(months2, months3, months7,'tttttttttttt')
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
-        "plan_information1": months1,
-        "plan_information2": months2,
-        "plan_information3": months3,
-        "plan_information4": months4,
-        "plan_information5": months5,
-        "plan_information6": months6,
-        "plan_information7": months7,
-      }
-      ), { headers: headers })
-
-        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
-        .subscribe(Res => {
-          console.log(Res)
-          //console.log(selectedvalue)
-          // console.log(plan_information)
-          this.sg['products'] = Res.json()['Results'];
-          this.data.changeProducts(this.sg['products']);
-          for (let prod of this.sg['products']) {
-            // console.log(prod["plan_information"])
-            // console.log(prod["price_rate"])
-            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
-            prod["price_rate"] = prod["price_rate"].split('..', 3000);
-          }
-
-        });
-    }
-    else if (months2 == true && months4 == true && months5==true) {
-      months2 = "24 Months";
-      months4 = "14 Months";
-months5="12 Months";
-      console.log(months2, months4, months5,'tttttttttttt')
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
-        "plan_information1": months1,
-        "plan_information2": months2,
-        "plan_information3": months3,
-        "plan_information4": months4,
-        "plan_information5": months5,
-        "plan_information6": months6,
-        "plan_information7": months7,
-      }
-      ), { headers: headers })
-
-        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
-        .subscribe(Res => {
-          console.log(Res)
-          //console.log(selectedvalue)
-          // console.log(plan_information)
-          this.sg['products'] = Res.json()['Results'];
-          this.data.changeProducts(this.sg['products']);
-          for (let prod of this.sg['products']) {
-            // console.log(prod["plan_information"])
-            // console.log(prod["price_rate"])
-            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
-            prod["price_rate"] = prod["price_rate"].split('..', 3000);
-          }
-
-        });
-    }
-    else if (months2 == true && months4 == true && months6==true) {
-      months2 = "24 Months";
-      months4 = "14 Months";
-months6="6 Months";
-      console.log(months2, months4, months6,'tttttttttttt')
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
-        "plan_information1": months1,
-        "plan_information2": months2,
-        "plan_information3": months3,
-        "plan_information4": months4,
-        "plan_information5": months5,
-        "plan_information6": months6,
-        "plan_information7": months7,
-      }
-      ), { headers: headers })
-
-        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
-        .subscribe(Res => {
-          console.log(Res)
-          //console.log(selectedvalue)
-          // console.log(plan_information)
-          this.sg['products'] = Res.json()['Results'];
-          this.data.changeProducts(this.sg['products']);
-          for (let prod of this.sg['products']) {
-            // console.log(prod["plan_information"])
-            // console.log(prod["price_rate"])
-            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
-            prod["price_rate"] = prod["price_rate"].split('..', 3000);
-          }
-
-        });
-    }
-    else if (months2 == true && months4 == true && months7==true) {
-      months2 = "24 Months";
-      months4 = "14 Months";
-months7="5 Months";
-      console.log(months2, months4, months7,'tttttttttttt')
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
-        "plan_information1": months1,
-        "plan_information2": months2,
-        "plan_information3": months3,
-        "plan_information4": months4,
-        "plan_information5": months5,
-        "plan_information6": months6,
-        "plan_information7": months7,
-      }
-      ), { headers: headers })
-
-        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
-        .subscribe(Res => {
-          console.log(Res)
-          //console.log(selectedvalue)
-          // console.log(plan_information)
-          this.sg['products'] = Res.json()['Results'];
-          this.data.changeProducts(this.sg['products']);
-          for (let prod of this.sg['products']) {
-            // console.log(prod["plan_information"])
-            // console.log(prod["price_rate"])
-            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
-            prod["price_rate"] = prod["price_rate"].split('..', 3000);
-          }
-
-        });
-    }
-    else if (months2 == true && months5 == true && months6==true) {
-      months2 = "24 Months";
-      months6 = "6 Months";
-months5="12 Months";
-      console.log(months2, months6, months5,'tttttttttttt')
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
-        "plan_information1": months1,
-        "plan_information2": months2,
-        "plan_information3": months3,
-        "plan_information4": months4,
-        "plan_information5": months5,
-        "plan_information6": months6,
-        "plan_information7": months7,
-      }
-      ), { headers: headers })
-
-        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
-        .subscribe(Res => {
-          console.log(Res)
-          //console.log(selectedvalue)
-          // console.log(plan_information)
-          this.sg['products'] = Res.json()['Results'];
-          this.data.changeProducts(this.sg['products']);
-          for (let prod of this.sg['products']) {
-            // console.log(prod["plan_information"])
-            // console.log(prod["price_rate"])
-            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
-            prod["price_rate"] = prod["price_rate"].split('..', 3000);
-          }
-
-        });
-    }
-    else if (months2 == true && months5 == true && months7==true) {
-      months2 = "24 Months";
-      months7 = "5 Months";
-months5="12 Months";
-      console.log(months2, months7, months5,'tttttttttttt')
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
-        "plan_information1": months1,
-        "plan_information2": months2,
-        "plan_information3": months3,
-        "plan_information4": months4,
-        "plan_information5": months5,
-        "plan_information6": months6,
-        "plan_information7": months7,
-      }
-      ), { headers: headers })
-
-        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
-        .subscribe(Res => {
-          console.log(Res)
-          //console.log(selectedvalue)
-          // console.log(plan_information)
-          this.sg['products'] = Res.json()['Results'];
-          this.data.changeProducts(this.sg['products']);
-          for (let prod of this.sg['products']) {
-            // console.log(prod["plan_information"])
-            // console.log(prod["price_rate"])
-            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
-            prod["price_rate"] = prod["price_rate"].split('..', 3000);
-          }
-
-        });
-    }
-    else if (months2 == true && months6 == true && months7==true) {
-      months2 = "24 Months";
-      months6 = "6 Months";
-months7="5 Months";
-      console.log(months2, months6, months7,'tttttttttttt')
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
-        "plan_information1": months1,
-        "plan_information2": months2,
-        "plan_information3": months3,
-        "plan_information4": months4,
-        "plan_information5": months5,
-        "plan_information6": months6,
-        "plan_information7": months7,
-      }
-      ), { headers: headers })
-
-        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
-        .subscribe(Res => {
-          console.log(Res)
-          //console.log(selectedvalue)
-          // console.log(plan_information)
-          this.sg['products'] = Res.json()['Results'];
-          this.data.changeProducts(this.sg['products']);
-          for (let prod of this.sg['products']) {
-            // console.log(prod["plan_information"])
-            // console.log(prod["price_rate"])
-            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
-            prod["price_rate"] = prod["price_rate"].split('..', 3000);
-          }
-
-        });
-    }
-    else if (months3 == true && months4 == true && months5==true) {
-      months3 = "18 Months";
-      months4 = "14 Months";
-months5="12 Months";
-      console.log(months3, months4, months5,'tttttttttttt')
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
-        "plan_information1": months1,
-        "plan_information2": months2,
-        "plan_information3": months3,
-        "plan_information4": months4,
-        "plan_information5": months5,
-        "plan_information6": months6,
-        "plan_information7": months7,
-      }
-      ), { headers: headers })
-
-        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
-        .subscribe(Res => {
-          console.log(Res)
-          //console.log(selectedvalue)
-          // console.log(plan_information)
-          this.sg['products'] = Res.json()['Results'];
-          this.data.changeProducts(this.sg['products']);
-          for (let prod of this.sg['products']) {
-            // console.log(prod["plan_information"])
-            // console.log(prod["price_rate"])
-            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
-            prod["price_rate"] = prod["price_rate"].split('..', 3000);
-          }
-
-        });
-    }
-    else if (months3 == true && months4 == true && months6==true) {
-      months3 = "18 Months";
-      months4 = "14 Months";
-months6="6 Months";
-      console.log(months3, months4, months6,'tttttttttttt')
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
-        "plan_information1": months1,
-        "plan_information2": months2,
-        "plan_information3": months3,
-        "plan_information4": months4,
-        "plan_information5": months5,
-        "plan_information6": months6,
-        "plan_information7": months7,
-      }
-      ), { headers: headers })
-
-        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
-        .subscribe(Res => {
-          console.log(Res)
-          //console.log(selectedvalue)
-          // console.log(plan_information)
-          this.sg['products'] = Res.json()['Results'];
-          this.data.changeProducts(this.sg['products']);
-          for (let prod of this.sg['products']) {
-            // console.log(prod["plan_information"])
-            // console.log(prod["price_rate"])
-            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
-            prod["price_rate"] = prod["price_rate"].split('..', 3000);
-          }
-
-        });
-    }
-    else if (months3 == true && months4 == true && months7==true) {
-      months3 = "18 Months";
-      months4 = "14 Months";
-months7="5 Months";
-      console.log(months3, months4, months7,'tttttttttttt')
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
-        "plan_information1": months1,
-        "plan_information2": months2,
-        "plan_information3": months3,
-        "plan_information4": months4,
-        "plan_information5": months5,
-        "plan_information6": months6,
-        "plan_information7": months7,
-      }
-      ), { headers: headers })
-
-        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
-        .subscribe(Res => {
-          console.log(Res)
-          //console.log(selectedvalue)
-          // console.log(plan_information)
-          this.sg['products'] = Res.json()['Results'];
-          this.data.changeProducts(this.sg['products']);
-          for (let prod of this.sg['products']) {
-            // console.log(prod["plan_information"])
-            // console.log(prod["price_rate"])
-            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
-            prod["price_rate"] = prod["price_rate"].split('..', 3000);
-          }
-
-        });
-    }
-    else if (months3 == true && months5 == true && months6==true) {
-      months3 = "18 Months";
-      months6 = "6 Months";
-months5="12 Months";
-      console.log(months3, months6, months5,'tttttttttttt')
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
-        "plan_information1": months1,
-        "plan_information2": months2,
-        "plan_information3": months3,
-        "plan_information4": months4,
-        "plan_information5": months5,
-        "plan_information6": months6,
-        "plan_information7": months7,
-      }
-      ), { headers: headers })
-
-        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
-        .subscribe(Res => {
-          console.log(Res)
-          //console.log(selectedvalue)
-          // console.log(plan_information)
-          this.sg['products'] = Res.json()['Results'];
-          this.data.changeProducts(this.sg['products']);
-          for (let prod of this.sg['products']) {
-            // console.log(prod["plan_information"])
-            // console.log(prod["price_rate"])
-            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
-            prod["price_rate"] = prod["price_rate"].split('..', 3000);
-          }
-
-        });
-    }
-    else if (months3 == true && months5 == true && months7==true) {
-      months3 = "18 Months";
-      months7 = "5 Months";
-months5="12 Months";
-      console.log(months3, months7, months5,'tttttttttttt')
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
-        "plan_information1": months1,
-        "plan_information2": months2,
-        "plan_information3": months3,
-        "plan_information4": months4,
-        "plan_information5": months5,
-        "plan_information6": months6,
-        "plan_information7": months7,
-      }
-      ), { headers: headers })
-
-        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
-        .subscribe(Res => {
-          console.log(Res)
-          //console.log(selectedvalue)
-          // console.log(plan_information)
-          this.sg['products'] = Res.json()['Results'];
-          this.data.changeProducts(this.sg['products']);
-          for (let prod of this.sg['products']) {
-            // console.log(prod["plan_information"])
-            // console.log(prod["price_rate"])
-            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
-            prod["price_rate"] = prod["price_rate"].split('..', 3000);
-          }
-
-        });
-    }
-    else if (months3 == true && months6 == true && months7==true) {
-      months3 = "18 Months";
-      months6 = "6 Months";
-months7="5 Months";
-      console.log(months3, months6, months7,'tttttttttttt')
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
-        "plan_information1": months1,
-        "plan_information2": months2,
-        "plan_information3": months3,
-        "plan_information4": months4,
-        "plan_information5": months5,
-        "plan_information6": months6,
-        "plan_information7": months7,
-      }
-      ), { headers: headers })
-
-        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
-        .subscribe(Res => {
-          console.log(Res)
-          //console.log(selectedvalue)
-          // console.log(plan_information)
-          this.sg['products'] = Res.json()['Results'];
-          this.data.changeProducts(this.sg['products']);
-          for (let prod of this.sg['products']) {
-            // console.log(prod["plan_information"])
-            // console.log(prod["price_rate"])
-            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
-            prod["price_rate"] = prod["price_rate"].split('..', 3000);
-          }
-
-        });
-    }
-    else if (months4 == true && months5 == true && months6==true) {
       months4 = "14 Months";
       months5 = "12 Months";
-months6="6 Months";
-      console.log(months4, months5, months6,'tttttttttttt')
+      months6 = "6 Months";
+      months7 = "5 Months";
+
+      console.log(months1, months2, months3, months4, months5, months6, months7, 'tttttttttttt')
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
-      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
+
       this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
@@ -2553,27 +229,30 @@ months6="6 Months";
       }
       ), { headers: headers })
 
-        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
         .subscribe(Res => {
           console.log(Res)
-          //console.log(selectedvalue)
-          // console.log(plan_information)
+
           this.sg['products'] = Res.json()['Results'];
           this.data.changeProducts(this.sg['products']);
           for (let prod of this.sg['products']) {
-            // console.log(prod["plan_information"])
-            // console.log(prod["price_rate"])
+
             prod["plan_information"] = prod["plan_information"].split(',,', 3000);
             prod["price_rate"] = prod["price_rate"].split('..', 3000);
           }
 
         });
     }
-    else if (months4 == true && months5 == true && months7==true) {
+
+
+    else if (months1 == true && months2 == true && months3 == true && months4 == true && months5 == true && months6 == true) {
+      months1 = "36 Months";
+      months2 = "24 Months";
+      months3 = "18 Months";
       months4 = "14 Months";
       months5 = "12 Months";
-months7="5 Months";
-      console.log(months4, months5, months7,'tttttttttttt')
+      months6 = "6 Months";
+
+      console.log(months1, months2, months3, months4, months5, months6, 'tttttttttttt')
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
@@ -2604,11 +283,54 @@ months7="5 Months";
 
         });
     }
-    else if (months4 == true && months6 == true && months7==true) {
+    else if (months1 == true && months2 == true && months3 == true && months4 == true && months5 == true && months7 == true) {
+      months1 = "36 Months";
+      months2 = "24 Months";
+      months3 = "18 Months";
+      months4 = "14 Months";
+      months5 = "12 Months";
+      months7 = "5 Months";
+
+      console.log(months1, months2, months3, months4, months5, months7, 'tttttttttttt')
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
+      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+        "plan_information1": months1,
+        "plan_information2": months2,
+        "plan_information3": months3,
+        "plan_information4": months4,
+        "plan_information5": months5,
+        "plan_information6": months6,
+        "plan_information7": months7,
+      }
+      ), { headers: headers })
+
+        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
+        .subscribe(Res => {
+          console.log(Res)
+          //console.log(selectedvalue)
+          // console.log(plan_information)
+          this.sg['products'] = Res.json()['Results'];
+          this.data.changeProducts(this.sg['products']);
+          for (let prod of this.sg['products']) {
+            // console.log(prod["plan_information"])
+            // console.log(prod["price_rate"])
+            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+            prod["price_rate"] = prod["price_rate"].split('..', 3000);
+          }
+
+        });
+    }
+    else if (months1 == true && months2 == true && months3 == true && months4 == true && months6 == true && months7 == true) {
+      months1 = "36 Months";
+      months2 = "24 Months";
+      months3 = "18 Months";
       months4 = "14 Months";
       months7 = "5 Months";
-months6="6 Months";
-      console.log(months4, months7, months6,'tttttttttttt')
+      months6 = "6 Months";
+
+      console.log(months1, months2, months3, months4, months7, months6, 'tttttttttttt')
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
@@ -2639,11 +361,15 @@ months6="6 Months";
 
         });
     }
-    else if (months5 == true && months6 == true && months7==true) {
+    else if (months1 == true && months2 == true && months3 == true && months7 == true && months5 == true && months6 == true) {
+      months1 = "36 Months";
+      months2 = "24 Months";
+      months3 = "18 Months";
       months7 = "5 Months";
       months5 = "12 Months";
-months6="6 Months";
-      console.log(months7, months5, months6,'tttttttttttt')
+      months6 = "6 Months";
+
+      console.log(months1, months2, months3, months7, months5, months6, 'tttttttttttt')
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
@@ -2674,7 +400,2281 @@ months6="6 Months";
 
         });
     }
-   else if (months1 == true && months2 == true) {
+    else if (months1 == true && months2 == true && months7 == true && months4 == true && months5 == true && months6 == true) {
+      months1 = "36 Months";
+      months2 = "24 Months";
+      months7 = "5 Months";
+      months4 = "14 Months";
+      months5 = "12 Months";
+      months6 = "6 Months";
+
+      console.log(months1, months2, months7, months4, months5, months6, 'tttttttttttt')
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
+      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+        "plan_information1": months1,
+        "plan_information2": months2,
+        "plan_information3": months3,
+        "plan_information4": months4,
+        "plan_information5": months5,
+        "plan_information6": months6,
+        "plan_information7": months7,
+      }
+      ), { headers: headers })
+
+        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
+        .subscribe(Res => {
+          console.log(Res)
+          //console.log(selectedvalue)
+          // console.log(plan_information)
+          this.sg['products'] = Res.json()['Results'];
+          this.data.changeProducts(this.sg['products']);
+          for (let prod of this.sg['products']) {
+            // console.log(prod["plan_information"])
+            // console.log(prod["price_rate"])
+            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+            prod["price_rate"] = prod["price_rate"].split('..', 3000);
+          }
+
+        });
+    }
+    else if (months1 == true && months7 == true && months3 == true && months4 == true && months5 == true && months6 == true) {
+      months1 = "36 Months";
+      months7 = "5 Months";
+      months3 = "18 Months";
+      months4 = "14 Months";
+      months5 = "12 Months";
+      months6 = "6 Months";
+
+      console.log(months1, months7, months3, months4, months5, months6, 'tttttttttttt')
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
+      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+        "plan_information1": months1,
+        "plan_information2": months2,
+        "plan_information3": months3,
+        "plan_information4": months4,
+        "plan_information5": months5,
+        "plan_information6": months6,
+        "plan_information7": months7,
+      }
+      ), { headers: headers })
+
+        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
+        .subscribe(Res => {
+          console.log(Res)
+          //console.log(selectedvalue)
+          // console.log(plan_information)
+          this.sg['products'] = Res.json()['Results'];
+          this.data.changeProducts(this.sg['products']);
+          for (let prod of this.sg['products']) {
+            // console.log(prod["plan_information"])
+            // console.log(prod["price_rate"])
+            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+            prod["price_rate"] = prod["price_rate"].split('..', 3000);
+          }
+
+        });
+    }
+    else if (months7 == true && months2 == true && months3 == true && months4 == true && months5 == true && months6 == true) {
+      months7 = "5 Months";
+      months2 = "24 Months";
+      months3 = "18 Months";
+      months4 = "14 Months";
+      months5 = "12 Months";
+      months6 = "6 Months";
+
+      console.log(months7, months2, months3, months4, months5, months6, 'tttttttttttt')
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
+      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+        "plan_information1": months1,
+        "plan_information2": months2,
+        "plan_information3": months3,
+        "plan_information4": months4,
+        "plan_information5": months5,
+        "plan_information6": months6,
+        "plan_information7": months7,
+      }
+      ), { headers: headers })
+
+        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
+        .subscribe(Res => {
+          console.log(Res)
+          //console.log(selectedvalue)
+          // console.log(plan_information)
+          this.sg['products'] = Res.json()['Results'];
+          this.data.changeProducts(this.sg['products']);
+          for (let prod of this.sg['products']) {
+            // console.log(prod["plan_information"])
+            // console.log(prod["price_rate"])
+            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+            prod["price_rate"] = prod["price_rate"].split('..', 3000);
+          }
+
+        });
+    }
+    else if (months1 == true && months2 == true && months3 == true && months4 == true && months5 == true) {
+      months1 = "36 Months";
+      months2 = "24 Months";
+      months3 = "18 Months";
+      months4 = "14 Months";
+      months5 = "12 Months";
+
+      console.log(months1, months2, months3, months4, months5, 'tttttttttttt')
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
+      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+        "plan_information1": months1,
+        "plan_information2": months2,
+        "plan_information3": months3,
+        "plan_information4": months4,
+        "plan_information5": months5,
+        "plan_information6": months6,
+        "plan_information7": months7,
+      }
+      ), { headers: headers })
+
+        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
+        .subscribe(Res => {
+          console.log(Res)
+          //console.log(selectedvalue)
+          // console.log(plan_information)
+          this.sg['products'] = Res.json()['Results'];
+          this.data.changeProducts(this.sg['products']);
+          for (let prod of this.sg['products']) {
+            // console.log(prod["plan_information"])
+            // console.log(prod["price_rate"])
+            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+            prod["price_rate"] = prod["price_rate"].split('..', 3000);
+          }
+
+        });
+    }
+    else if (months1 == true && months2 == true && months3 == true && months4 == true && months6 == true) {
+      months1 = "36 Months";
+      months2 = "24 Months";
+      months3 = "18 Months";
+      months4 = "14 Months";
+      months6 = "6 Months";
+
+      console.log(months1, months2, months3, months4, months6, 'tttttttttttt')
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
+      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+        "plan_information1": months1,
+        "plan_information2": months2,
+        "plan_information3": months3,
+        "plan_information4": months4,
+        "plan_information5": months5,
+        "plan_information6": months6,
+        "plan_information7": months7,
+      }
+      ), { headers: headers })
+
+        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
+        .subscribe(Res => {
+          console.log(Res)
+          //console.log(selectedvalue)
+          // console.log(plan_information)
+          this.sg['products'] = Res.json()['Results'];
+          this.data.changeProducts(this.sg['products']);
+          for (let prod of this.sg['products']) {
+            // console.log(prod["plan_information"])
+            // console.log(prod["price_rate"])
+            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+            prod["price_rate"] = prod["price_rate"].split('..', 3000);
+          }
+
+        });
+    }
+    else if (months1 == true && months2 == true && months3 == true && months5 == true && months6 == true) {
+      months1 = "36 Months";
+      months2 = "24 Months";
+      months3 = "18 Months";
+      months5 = "12 Months";
+      months6 = "6 Months";
+
+      console.log(months1, months2, months3, months5, months6, 'tttttttttttt')
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
+      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+        "plan_information1": months1,
+        "plan_information2": months2,
+        "plan_information3": months3,
+        "plan_information4": months4,
+        "plan_information5": months5,
+        "plan_information6": months6,
+        "plan_information7": months7,
+      }
+      ), { headers: headers })
+
+        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
+        .subscribe(Res => {
+          console.log(Res)
+          //console.log(selectedvalue)
+          // console.log(plan_information)
+          this.sg['products'] = Res.json()['Results'];
+          this.data.changeProducts(this.sg['products']);
+          for (let prod of this.sg['products']) {
+            // console.log(prod["plan_information"])
+            // console.log(prod["price_rate"])
+            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+            prod["price_rate"] = prod["price_rate"].split('..', 3000);
+          }
+
+        });
+    }
+    else if (months1 == true && months2 == true && months4 == true && months5 == true && months6 == true) {
+      months1 = "36 Months";
+      months2 = "24 Months";
+      months5 = "12 Months";
+      months4 = "14 Months";
+      months6 = "6 Months";
+
+      console.log(months1, months2, months5, months4, months6, 'tttttttttttt')
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
+      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+        "plan_information1": months1,
+        "plan_information2": months2,
+        "plan_information3": months3,
+        "plan_information4": months4,
+        "plan_information5": months5,
+        "plan_information6": months6,
+        "plan_information7": months7,
+      }
+      ), { headers: headers })
+
+        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
+        .subscribe(Res => {
+          console.log(Res)
+          //console.log(selectedvalue)
+          // console.log(plan_information)
+          this.sg['products'] = Res.json()['Results'];
+          this.data.changeProducts(this.sg['products']);
+          for (let prod of this.sg['products']) {
+            // console.log(prod["plan_information"])
+            // console.log(prod["price_rate"])
+            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+            prod["price_rate"] = prod["price_rate"].split('..', 3000);
+          }
+
+        });
+    }
+    else if (months1 == true && months3 == true && months4 == true && months5 == true && months6 == true) {
+      months1 = "36 Months";
+      months5 = "12 Months";
+      months3 = "18 Months";
+      months4 = "14 Months";
+      months6 = "6 Months";
+
+      console.log(months1, months5, months3, months4, months6, 'tttttttttttt')
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
+      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+        "plan_information1": months1,
+        "plan_information2": months2,
+        "plan_information3": months3,
+        "plan_information4": months4,
+        "plan_information5": months5,
+        "plan_information6": months6,
+        "plan_information7": months7,
+      }
+      ), { headers: headers })
+
+        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
+        .subscribe(Res => {
+          console.log(Res)
+          //console.log(selectedvalue)
+          // console.log(plan_information)
+          this.sg['products'] = Res.json()['Results'];
+          this.data.changeProducts(this.sg['products']);
+          for (let prod of this.sg['products']) {
+            // console.log(prod["plan_information"])
+            // console.log(prod["price_rate"])
+            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+            prod["price_rate"] = prod["price_rate"].split('..', 3000);
+          }
+
+        });
+    }
+    else if (months1 == true && months2 == true && months3 == true && months4 == true && months7 == true) {
+      months1 = "36 Months";
+      months2 = "24 Months";
+      months3 = "18 Months";
+      months4 = "14 Months";
+      months7 = "5 Months";
+
+      console.log(months1, months2, months3, months4, months7, 'tttttttttttt')
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
+      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+        "plan_information1": months1,
+        "plan_information2": months2,
+        "plan_information3": months3,
+        "plan_information4": months4,
+        "plan_information5": months5,
+        "plan_information6": months6,
+        "plan_information7": months7,
+      }
+      ), { headers: headers })
+
+        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
+        .subscribe(Res => {
+          console.log(Res)
+          //console.log(selectedvalue)
+          // console.log(plan_information)
+          this.sg['products'] = Res.json()['Results'];
+          this.data.changeProducts(this.sg['products']);
+          for (let prod of this.sg['products']) {
+            // console.log(prod["plan_information"])
+            // console.log(prod["price_rate"])
+            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+            prod["price_rate"] = prod["price_rate"].split('..', 3000);
+          }
+
+        });
+    }
+    else if (months1 == true && months2 == true && months3 == true && months5 == true && months7 == true) {
+      months1 = "36 Months";
+      months2 = "24 Months";
+      months3 = "18 Months";
+      months5 = "14 Months";
+      months7 = "5 Months";
+
+      console.log(months1, months2, months3, months5, months7, 'tttttttttttt')
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
+      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+        "plan_information1": months1,
+        "plan_information2": months2,
+        "plan_information3": months3,
+        "plan_information4": months4,
+        "plan_information5": months5,
+        "plan_information6": months6,
+        "plan_information7": months7,
+      }
+      ), { headers: headers })
+
+        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
+        .subscribe(Res => {
+          console.log(Res)
+          //console.log(selectedvalue)
+          // console.log(plan_information)
+          this.sg['products'] = Res.json()['Results'];
+          this.data.changeProducts(this.sg['products']);
+          for (let prod of this.sg['products']) {
+            // console.log(prod["plan_information"])
+            // console.log(prod["price_rate"])
+            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+            prod["price_rate"] = prod["price_rate"].split('..', 3000);
+          }
+
+        });
+    }
+    else if (months1 == true && months2 == true && months4 == true && months5 == true && months7 == true) {
+      months1 = "36 Months";
+      months2 = "24 Months";
+      months5 = "12 Months";
+      months4 = "14 Months";
+      months7 = "5 Months";
+
+      console.log(months1, months2, months5, months4, months7, 'tttttttttttt')
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
+      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+        "plan_information1": months1,
+        "plan_information2": months2,
+        "plan_information3": months3,
+        "plan_information4": months4,
+        "plan_information5": months5,
+        "plan_information6": months6,
+        "plan_information7": months7,
+      }
+      ), { headers: headers })
+
+        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
+        .subscribe(Res => {
+          console.log(Res)
+          //console.log(selectedvalue)
+          // console.log(plan_information)
+          this.sg['products'] = Res.json()['Results'];
+          this.data.changeProducts(this.sg['products']);
+          for (let prod of this.sg['products']) {
+            // console.log(prod["plan_information"])
+            // console.log(prod["price_rate"])
+            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+            prod["price_rate"] = prod["price_rate"].split('..', 3000);
+          }
+
+        });
+    }
+    else if (months1 == true && months3 == true && months4 == true && months5 == true && months7 == true) {
+      months1 = "36 Months";
+      months5 = "12 Months";
+      months3 = "18 Months";
+      months4 = "14 Months";
+      months7 = "5 Months";
+
+      console.log(months1, months2, months3, months4, months7, 'tttttttttttt')
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
+      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+        "plan_information1": months1,
+        "plan_information2": months2,
+        "plan_information3": months3,
+        "plan_information4": months4,
+        "plan_information5": months5,
+        "plan_information6": months6,
+        "plan_information7": months7,
+      }
+      ), { headers: headers })
+
+        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
+        .subscribe(Res => {
+          console.log(Res)
+          //console.log(selectedvalue)
+          // console.log(plan_information)
+          this.sg['products'] = Res.json()['Results'];
+          this.data.changeProducts(this.sg['products']);
+          for (let prod of this.sg['products']) {
+            // console.log(prod["plan_information"])
+            // console.log(prod["price_rate"])
+            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+            prod["price_rate"] = prod["price_rate"].split('..', 3000);
+          }
+
+        });
+    }
+    else if (months2 == true && months3 == true && months4 == true && months5 == true && months6 == true) {
+      months6 = "6 Months";
+      months2 = "24 Months";
+      months3 = "18 Months";
+      months4 = "14 Months";
+      months5 = "12 Months";
+
+      console.log(months6, months2, months3, months4, months5, 'tttttttttttt')
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
+      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+        "plan_information1": months1,
+        "plan_information2": months2,
+        "plan_information3": months3,
+        "plan_information4": months4,
+        "plan_information5": months5,
+        "plan_information6": months6,
+        "plan_information7": months7,
+      }
+      ), { headers: headers })
+
+        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
+        .subscribe(Res => {
+          console.log(Res)
+          //console.log(selectedvalue)
+          // console.log(plan_information)
+          this.sg['products'] = Res.json()['Results'];
+          this.data.changeProducts(this.sg['products']);
+          for (let prod of this.sg['products']) {
+            // console.log(prod["plan_information"])
+            // console.log(prod["price_rate"])
+            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+            prod["price_rate"] = prod["price_rate"].split('..', 3000);
+          }
+
+        });
+    }
+    else if (months2 == true && months3 == true && months4 == true && months5 == true && months7 == true) {
+      months7 = "5 Months";
+      months2 = "24 Months";
+      months3 = "18 Months";
+      months4 = "14 Months";
+      months5 = "12 Months";
+
+      console.log(months7, months2, months3, months4, months5, 'tttttttttttt')
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
+      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+        "plan_information1": months1,
+        "plan_information2": months2,
+        "plan_information3": months3,
+        "plan_information4": months4,
+        "plan_information5": months5,
+        "plan_information6": months6,
+        "plan_information7": months7,
+      }
+      ), { headers: headers })
+
+        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
+        .subscribe(Res => {
+          console.log(Res)
+          //console.log(selectedvalue)
+          // console.log(plan_information)
+          this.sg['products'] = Res.json()['Results'];
+          this.data.changeProducts(this.sg['products']);
+          for (let prod of this.sg['products']) {
+            // console.log(prod["plan_information"])
+            // console.log(prod["price_rate"])
+            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+            prod["price_rate"] = prod["price_rate"].split('..', 3000);
+          }
+
+        });
+    }
+    else if (months2 == true && months4 == true && months5 == true && months6 == true && months7 == true) {
+      months5 = "12 Months";
+      months2 = "24 Months";
+      months6 = "6 Months";
+      months4 = "14 Months";
+      months7 = "5 Months";
+
+      console.log(months5, months2, months6, months4, months7, 'tttttttttttt')
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
+      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+        "plan_information1": months1,
+        "plan_information2": months2,
+        "plan_information3": months3,
+        "plan_information4": months4,
+        "plan_information5": months5,
+        "plan_information6": months6,
+        "plan_information7": months7,
+      }
+      ), { headers: headers })
+
+        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
+        .subscribe(Res => {
+          console.log(Res)
+          //console.log(selectedvalue)
+          // console.log(plan_information)
+          this.sg['products'] = Res.json()['Results'];
+          this.data.changeProducts(this.sg['products']);
+          for (let prod of this.sg['products']) {
+            // console.log(prod["plan_information"])
+            // console.log(prod["price_rate"])
+            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+            prod["price_rate"] = prod["price_rate"].split('..', 3000);
+          }
+
+        });
+    }
+    else if (months2 == true && months3 == true && months5 == true && months6 == true && months7 == true) {
+      months5 = "12 Months";
+      months2 = "24 Months";
+      months6 = "6 Months";
+      months3 = "18 Months";
+      months7 = "5 Months";
+
+      console.log(months5, months2, months6, months3, months7, 'tttttttttttt')
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
+      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+        "plan_information1": months1,
+        "plan_information2": months2,
+        "plan_information3": months3,
+        "plan_information4": months4,
+        "plan_information5": months5,
+        "plan_information6": months6,
+        "plan_information7": months7,
+      }
+      ), { headers: headers })
+
+        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
+        .subscribe(Res => {
+          console.log(Res)
+          //console.log(selectedvalue)
+          // console.log(plan_information)
+          this.sg['products'] = Res.json()['Results'];
+          this.data.changeProducts(this.sg['products']);
+          for (let prod of this.sg['products']) {
+            // console.log(prod["plan_information"])
+            // console.log(prod["price_rate"])
+            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+            prod["price_rate"] = prod["price_rate"].split('..', 3000);
+          }
+
+        });
+    }
+    else if (months2 == true && months3 == true && months4 == true && months6 == true && months7 == true) {
+      months3 = "18 Months";
+      months2 = "24 Months";
+      months6 = "6 Months";
+      months4 = "14 Months";
+      months7 = "5 Months";
+
+      console.log(months3, months2, months6, months4, months7, 'tttttttttttt')
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
+      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+        "plan_information1": months1,
+        "plan_information2": months2,
+        "plan_information3": months3,
+        "plan_information4": months4,
+        "plan_information5": months5,
+        "plan_information6": months6,
+        "plan_information7": months7,
+      }
+      ), { headers: headers })
+
+        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
+        .subscribe(Res => {
+          console.log(Res)
+          //console.log(selectedvalue)
+          // console.log(plan_information)
+          this.sg['products'] = Res.json()['Results'];
+          this.data.changeProducts(this.sg['products']);
+          for (let prod of this.sg['products']) {
+            // console.log(prod["plan_information"])
+            // console.log(prod["price_rate"])
+            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+            prod["price_rate"] = prod["price_rate"].split('..', 3000);
+          }
+
+        });
+    }
+
+    else if (months3 == true && months4 == true && months5 == true && months6 == true && months7 == true) {
+      months6 = "6 Months";
+      months7 = "5 Months";
+      months3 = "18 Months";
+      months4 = "14 Months";
+      months5 = "12 Months";
+
+      console.log(months6, months7, months3, months4, months5, 'tttttttttttt')
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
+      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+        "plan_information1": months1,
+        "plan_information2": months2,
+        "plan_information3": months3,
+        "plan_information4": months4,
+        "plan_information5": months5,
+        "plan_information6": months6,
+        "plan_information7": months7,
+      }
+      ), { headers: headers })
+
+        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
+        .subscribe(Res => {
+          console.log(Res)
+          //console.log(selectedvalue)
+          // console.log(plan_information)
+          this.sg['products'] = Res.json()['Results'];
+          this.data.changeProducts(this.sg['products']);
+          for (let prod of this.sg['products']) {
+            // console.log(prod["plan_information"])
+            // console.log(prod["price_rate"])
+            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+            prod["price_rate"] = prod["price_rate"].split('..', 3000);
+          }
+
+        });
+    }
+    else if (months1 == true && months2 == true && months3 == true && months4 == true) {
+      months1 = "36 Months";
+      months2 = "24 Months";
+      months3 = "18 Months";
+      months4 = "14 Months";
+      console.log(months1, months2, months3, months4, 'tttttttttttt')
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
+      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+        "plan_information1": months1,
+        "plan_information2": months2,
+        "plan_information3": months3,
+        "plan_information4": months4,
+        "plan_information5": months5,
+        "plan_information6": months6,
+        "plan_information7": months7,
+      }
+      ), { headers: headers })
+
+        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
+        .subscribe(Res => {
+          console.log(Res)
+          //console.log(selectedvalue)
+          // console.log(plan_information)
+          this.sg['products'] = Res.json()['Results'];
+          this.data.changeProducts(this.sg['products']);
+          for (let prod of this.sg['products']) {
+            // console.log(prod["plan_information"])
+            // console.log(prod["price_rate"])
+            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+            prod["price_rate"] = prod["price_rate"].split('..', 3000);
+          }
+
+        });
+    }
+    else if (months1 == true && months2 == true && months3 == true && months5 == true) {
+      months1 = "36 Months";
+      months2 = "24 Months";
+      months3 = "18 Months";
+      months5 = "12 Months";
+      console.log(months1, months2, months3, months5, 'tttttttttttt')
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
+      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+        "plan_information1": months1,
+        "plan_information2": months2,
+        "plan_information3": months3,
+        "plan_information4": months4,
+        "plan_information5": months5,
+        "plan_information6": months6,
+        "plan_information7": months7,
+      }
+      ), { headers: headers })
+
+        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
+        .subscribe(Res => {
+          console.log(Res)
+          //console.log(selectedvalue)
+          // console.log(plan_information)
+          this.sg['products'] = Res.json()['Results'];
+          this.data.changeProducts(this.sg['products']);
+          for (let prod of this.sg['products']) {
+            // console.log(prod["plan_information"])
+            // console.log(prod["price_rate"])
+            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+            prod["price_rate"] = prod["price_rate"].split('..', 3000);
+          }
+
+        });
+    }
+    else if (months1 == true && months2 == true && months3 == true && months6 == true) {
+      months1 = "36 Months";
+      months2 = "24 Months";
+      months3 = "18 Months";
+      months6 = "6 Months";
+      console.log(months1, months2, months3, months6, 'tttttttttttt')
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
+      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+        "plan_information1": months1,
+        "plan_information2": months2,
+        "plan_information3": months3,
+        "plan_information4": months4,
+        "plan_information5": months5,
+        "plan_information6": months6,
+        "plan_information7": months7,
+      }
+      ), { headers: headers })
+
+        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
+        .subscribe(Res => {
+          console.log(Res)
+          //console.log(selectedvalue)
+          // console.log(plan_information)
+          this.sg['products'] = Res.json()['Results'];
+          this.data.changeProducts(this.sg['products']);
+          for (let prod of this.sg['products']) {
+            // console.log(prod["plan_information"])
+            // console.log(prod["price_rate"])
+            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+            prod["price_rate"] = prod["price_rate"].split('..', 3000);
+          }
+
+        });
+    }
+    else if (months1 == true && months2 == true && months3 == true && months7 == true) {
+      months1 = "36 Months";
+      months2 = "24 Months";
+      months3 = "18 Months";
+      months7 = "5 Months";
+      console.log(months1, months2, months3, months7, 'tttttttttttt')
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
+      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+        "plan_information1": months1,
+        "plan_information2": months2,
+        "plan_information3": months3,
+        "plan_information4": months4,
+        "plan_information5": months5,
+        "plan_information6": months6,
+        "plan_information7": months7,
+      }
+      ), { headers: headers })
+
+        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
+        .subscribe(Res => {
+          console.log(Res)
+          //console.log(selectedvalue)
+          // console.log(plan_information)
+          this.sg['products'] = Res.json()['Results'];
+          this.data.changeProducts(this.sg['products']);
+          for (let prod of this.sg['products']) {
+            // console.log(prod["plan_information"])
+            // console.log(prod["price_rate"])
+            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+            prod["price_rate"] = prod["price_rate"].split('..', 3000);
+          }
+
+        });
+    }
+    else if (months2 == true && months3 == true && months4 == true && months5 == true) {
+      months2 = "24 Months";
+      months3 = "18 Months";
+      months4 = "14 Months";
+      months5 = "12 Months";
+      console.log(months2, months3, months4, months5, 'tttttttttttt')
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
+      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+        "plan_information1": months1,
+        "plan_information2": months2,
+        "plan_information3": months3,
+        "plan_information4": months4,
+        "plan_information5": months5,
+        "plan_information6": months6,
+        "plan_information7": months7,
+      }
+      ), { headers: headers })
+
+        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
+        .subscribe(Res => {
+          console.log(Res)
+          //console.log(selectedvalue)
+          // console.log(plan_information)
+          this.sg['products'] = Res.json()['Results'];
+          this.data.changeProducts(this.sg['products']);
+          for (let prod of this.sg['products']) {
+            // console.log(prod["plan_information"])
+            // console.log(prod["price_rate"])
+            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+            prod["price_rate"] = prod["price_rate"].split('..', 3000);
+          }
+
+        });
+    }
+    else if (months2 == true && months3 == true && months4 == true && months6 == true) {
+      months2 = "24 Months";
+      months3 = "18 Months";
+      months4 = "14 Months";
+      months6 = "6 Months";
+      console.log(months2, months3, months4, months6, 'tttttttttttt')
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
+      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+        "plan_information1": months1,
+        "plan_information2": months2,
+        "plan_information3": months3,
+        "plan_information4": months4,
+        "plan_information5": months5,
+        "plan_information6": months6,
+        "plan_information7": months7,
+      }
+      ), { headers: headers })
+
+        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
+        .subscribe(Res => {
+          console.log(Res)
+          //console.log(selectedvalue)
+          // console.log(plan_information)
+          this.sg['products'] = Res.json()['Results'];
+          this.data.changeProducts(this.sg['products']);
+          for (let prod of this.sg['products']) {
+            // console.log(prod["plan_information"])
+            // console.log(prod["price_rate"])
+            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+            prod["price_rate"] = prod["price_rate"].split('..', 3000);
+          }
+
+        });
+    }
+    else if (months2 == true && months3 == true && months4 == true && months7 == true) {
+      months2 = "24 Months";
+      months3 = "18 Months";
+      months4 = "14 Months";
+      months7 = "5 Months";
+      console.log(months2, months3, months4, months7, 'tttttttttttt')
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
+      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+        "plan_information1": months1,
+        "plan_information2": months2,
+        "plan_information3": months3,
+        "plan_information4": months4,
+        "plan_information5": months5,
+        "plan_information6": months6,
+        "plan_information7": months7,
+      }
+      ), { headers: headers })
+
+        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
+        .subscribe(Res => {
+          console.log(Res)
+          //console.log(selectedvalue)
+          // console.log(plan_information)
+          this.sg['products'] = Res.json()['Results'];
+          this.data.changeProducts(this.sg['products']);
+          for (let prod of this.sg['products']) {
+            // console.log(prod["plan_information"])
+            // console.log(prod["price_rate"])
+            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+            prod["price_rate"] = prod["price_rate"].split('..', 3000);
+          }
+
+        });
+    }
+    else if (months3 == true && months4 == true && months5 == true && months6 == true) {
+      months6 = "6 Months";
+      months3 = "18 Months";
+      months4 = "14 Months";
+      months5 = "12 Months";
+      console.log(months6, months3, months4, months5, 'tttttttttttt')
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
+      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+        "plan_information1": months1,
+        "plan_information2": months2,
+        "plan_information3": months3,
+        "plan_information4": months4,
+        "plan_information5": months5,
+        "plan_information6": months6,
+        "plan_information7": months7,
+      }
+      ), { headers: headers })
+
+        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
+        .subscribe(Res => {
+          console.log(Res)
+          //console.log(selectedvalue)
+          // console.log(plan_information)
+          this.sg['products'] = Res.json()['Results'];
+          this.data.changeProducts(this.sg['products']);
+          for (let prod of this.sg['products']) {
+            // console.log(prod["plan_information"])
+            // console.log(prod["price_rate"])
+            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+            prod["price_rate"] = prod["price_rate"].split('..', 3000);
+          }
+
+        });
+    }
+    else if (months3 == true && months4 == true && months5 == true && months7 == true) {
+      months7 = "5 Months";
+      months3 = "18 Months";
+      months4 = "14 Months";
+      months5 = "12 Months";
+      console.log(months7, months3, months4, months5, 'tttttttttttt')
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
+      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+        "plan_information1": months1,
+        "plan_information2": months2,
+        "plan_information3": months3,
+        "plan_information4": months4,
+        "plan_information5": months5,
+        "plan_information6": months6,
+        "plan_information7": months7,
+      }
+      ), { headers: headers })
+
+        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
+        .subscribe(Res => {
+          console.log(Res)
+          //console.log(selectedvalue)
+          // console.log(plan_information)
+          this.sg['products'] = Res.json()['Results'];
+          this.data.changeProducts(this.sg['products']);
+          for (let prod of this.sg['products']) {
+            // console.log(prod["plan_information"])
+            // console.log(prod["price_rate"])
+            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+            prod["price_rate"] = prod["price_rate"].split('..', 3000);
+          }
+
+        });
+    }
+    else if (months4 == true && months5 == true && months6 == true && months7 == true) {
+      months6 = "6 Months";
+      months7 = "5 Months";
+      months4 = "14 Months";
+      months5 = "12 Months";
+      console.log(months6, months7, months4, months5, 'tttttttttttt')
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
+      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+        "plan_information1": months1,
+        "plan_information2": months2,
+        "plan_information3": months3,
+        "plan_information4": months4,
+        "plan_information5": months5,
+        "plan_information6": months6,
+        "plan_information7": months7,
+      }
+      ), { headers: headers })
+
+        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
+        .subscribe(Res => {
+          console.log(Res)
+          //console.log(selectedvalue)
+          // console.log(plan_information)
+          this.sg['products'] = Res.json()['Results'];
+          this.data.changeProducts(this.sg['products']);
+          for (let prod of this.sg['products']) {
+            // console.log(prod["plan_information"])
+            // console.log(prod["price_rate"])
+            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+            prod["price_rate"] = prod["price_rate"].split('..', 3000);
+          }
+
+        });
+    }
+
+    else if (months1 == true && months2 == true && months3 == true) {
+      months1 = "36 Months";
+      months2 = "24 Months";
+      months3 = "18 Months";
+      console.log(months1, months2, months3, 'tttttttttttt')
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
+      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+        "plan_information1": months1,
+        "plan_information2": months2,
+        "plan_information3": months3,
+        "plan_information4": months4,
+        "plan_information5": months5,
+        "plan_information6": months6,
+        "plan_information7": months7,
+      }
+      ), { headers: headers })
+
+        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
+        .subscribe(Res => {
+          console.log(Res)
+          //console.log(selectedvalue)
+          // console.log(plan_information)
+          this.sg['products'] = Res.json()['Results'];
+          this.data.changeProducts(this.sg['products']);
+          for (let prod of this.sg['products']) {
+            // console.log(prod["plan_information"])
+            // console.log(prod["price_rate"])
+            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+            prod["price_rate"] = prod["price_rate"].split('..', 3000);
+          }
+
+        });
+    }
+    else if (months1 == true && months2 == true && months4 == true) {
+      months1 = "36 Months";
+      months2 = "24 Months";
+      months4 = "14 Months";
+      console.log(months1, months2, months4, 'tttttttttttt')
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
+      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+        "plan_information1": months1,
+        "plan_information2": months2,
+        "plan_information3": months3,
+        "plan_information4": months4,
+        "plan_information5": months5,
+        "plan_information6": months6,
+        "plan_information7": months7,
+      }
+      ), { headers: headers })
+
+        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
+        .subscribe(Res => {
+          console.log(Res)
+          //console.log(selectedvalue)
+          // console.log(plan_information)
+          this.sg['products'] = Res.json()['Results'];
+          this.data.changeProducts(this.sg['products']);
+          for (let prod of this.sg['products']) {
+            // console.log(prod["plan_information"])
+            // console.log(prod["price_rate"])
+            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+            prod["price_rate"] = prod["price_rate"].split('..', 3000);
+          }
+
+        });
+    }
+    else if (months1 == true && months2 == true && months5 == true) {
+      months1 = "36 Months";
+      months2 = "24 Months";
+      months5 = "12 Months";
+      console.log(months1, months2, months5, 'tttttttttttt')
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
+      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+        "plan_information1": months1,
+        "plan_information2": months2,
+        "plan_information3": months3,
+        "plan_information4": months4,
+        "plan_information5": months5,
+        "plan_information6": months6,
+        "plan_information7": months7,
+      }
+      ), { headers: headers })
+
+        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
+        .subscribe(Res => {
+          console.log(Res)
+          //console.log(selectedvalue)
+          // console.log(plan_information)
+          this.sg['products'] = Res.json()['Results'];
+          this.data.changeProducts(this.sg['products']);
+          for (let prod of this.sg['products']) {
+            // console.log(prod["plan_information"])
+            // console.log(prod["price_rate"])
+            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+            prod["price_rate"] = prod["price_rate"].split('..', 3000);
+          }
+
+        });
+    }
+    else if (months1 == true && months2 == true && months6 == true) {
+      months1 = "36 Months";
+      months2 = "24 Months";
+      months6 = "6 Months";
+      console.log(months1, months2, months6, 'tttttttttttt')
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
+      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+        "plan_information1": months1,
+        "plan_information2": months2,
+        "plan_information3": months3,
+        "plan_information4": months4,
+        "plan_information5": months5,
+        "plan_information6": months6,
+        "plan_information7": months7,
+      }
+      ), { headers: headers })
+
+        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
+        .subscribe(Res => {
+          console.log(Res)
+          //console.log(selectedvalue)
+          // console.log(plan_information)
+          this.sg['products'] = Res.json()['Results'];
+          this.data.changeProducts(this.sg['products']);
+          for (let prod of this.sg['products']) {
+            // console.log(prod["plan_information"])
+            // console.log(prod["price_rate"])
+            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+            prod["price_rate"] = prod["price_rate"].split('..', 3000);
+          }
+
+        });
+    }
+    else if (months1 == true && months2 == true && months7 == true) {
+      months1 = "36 Months";
+      months2 = "24 Months";
+      months7 = "5 Months";
+      console.log(months1, months2, months7, 'tttttttttttt')
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
+      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+        "plan_information1": months1,
+        "plan_information2": months2,
+        "plan_information3": months3,
+        "plan_information4": months4,
+        "plan_information5": months5,
+        "plan_information6": months6,
+        "plan_information7": months7,
+      }
+      ), { headers: headers })
+
+        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
+        .subscribe(Res => {
+          console.log(Res)
+          //console.log(selectedvalue)
+          // console.log(plan_information)
+          this.sg['products'] = Res.json()['Results'];
+          this.data.changeProducts(this.sg['products']);
+          for (let prod of this.sg['products']) {
+            // console.log(prod["plan_information"])
+            // console.log(prod["price_rate"])
+            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+            prod["price_rate"] = prod["price_rate"].split('..', 3000);
+          }
+
+        });
+    }
+    else if (months1 == true && months3 == true && months4 == true) {
+      months1 = "36 Months";
+      months4 = "14 Months";
+      months3 = "18 Months";
+      console.log(months1, months3, months4, 'tttttttttttt')
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
+      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+        "plan_information1": months1,
+        "plan_information2": months2,
+        "plan_information3": months3,
+        "plan_information4": months4,
+        "plan_information5": months5,
+        "plan_information6": months6,
+        "plan_information7": months7,
+      }
+      ), { headers: headers })
+
+        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
+        .subscribe(Res => {
+          console.log(Res)
+          //console.log(selectedvalue)
+          // console.log(plan_information)
+          this.sg['products'] = Res.json()['Results'];
+          this.data.changeProducts(this.sg['products']);
+          for (let prod of this.sg['products']) {
+            // console.log(prod["plan_information"])
+            // console.log(prod["price_rate"])
+            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+            prod["price_rate"] = prod["price_rate"].split('..', 3000);
+          }
+
+        });
+    }
+    else if (months1 == true && months3 == true && months5 == true) {
+      months1 = "36 Months";
+      months5 = "12 Months";
+      months3 = "18 Months";
+      console.log(months1, months3, months5, 'tttttttttttt')
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
+      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+        "plan_information1": months1,
+        "plan_information2": months2,
+        "plan_information3": months3,
+        "plan_information4": months4,
+        "plan_information5": months5,
+        "plan_information6": months6,
+        "plan_information7": months7,
+      }
+      ), { headers: headers })
+
+        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
+        .subscribe(Res => {
+          console.log(Res)
+          //console.log(selectedvalue)
+          // console.log(plan_information)
+          this.sg['products'] = Res.json()['Results'];
+          this.data.changeProducts(this.sg['products']);
+          for (let prod of this.sg['products']) {
+            // console.log(prod["plan_information"])
+            // console.log(prod["price_rate"])
+            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+            prod["price_rate"] = prod["price_rate"].split('..', 3000);
+          }
+
+        });
+    }
+    else if (months1 == true && months3 == true && months6 == true) {
+      months1 = "36 Months";
+      months6 = "6 Months";
+      months3 = "18 Months";
+      console.log(months1, months3, months6, 'tttttttttttt')
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
+      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+        "plan_information1": months1,
+        "plan_information2": months2,
+        "plan_information3": months3,
+        "plan_information4": months4,
+        "plan_information5": months5,
+        "plan_information6": months6,
+        "plan_information7": months7,
+      }
+      ), { headers: headers })
+
+        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
+        .subscribe(Res => {
+          console.log(Res)
+          //console.log(selectedvalue)
+          // console.log(plan_information)
+          this.sg['products'] = Res.json()['Results'];
+          this.data.changeProducts(this.sg['products']);
+          for (let prod of this.sg['products']) {
+            // console.log(prod["plan_information"])
+            // console.log(prod["price_rate"])
+            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+            prod["price_rate"] = prod["price_rate"].split('..', 3000);
+          }
+
+        });
+    }
+    else if (months1 == true && months3 == true && months7 == true) {
+      months1 = "36 Months";
+      months7 = "5 Months";
+      months3 = "18 Months";
+      console.log(months1, months3, months7, 'tttttttttttt')
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
+      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+        "plan_information1": months1,
+        "plan_information2": months2,
+        "plan_information3": months3,
+        "plan_information4": months4,
+        "plan_information5": months5,
+        "plan_information6": months6,
+        "plan_information7": months7,
+      }
+      ), { headers: headers })
+
+        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
+        .subscribe(Res => {
+          console.log(Res)
+          //console.log(selectedvalue)
+          // console.log(plan_information)
+          this.sg['products'] = Res.json()['Results'];
+          this.data.changeProducts(this.sg['products']);
+          for (let prod of this.sg['products']) {
+            // console.log(prod["plan_information"])
+            // console.log(prod["price_rate"])
+            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+            prod["price_rate"] = prod["price_rate"].split('..', 3000);
+          }
+
+        });
+    }
+    else if (months1 == true && months4 == true && months5 == true) {
+      months1 = "36 Months";
+      months4 = "14 Months";
+      months5 = "12 Months";
+      console.log(months1, months4, months5, 'tttttttttttt')
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
+      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+        "plan_information1": months1,
+        "plan_information2": months2,
+        "plan_information3": months3,
+        "plan_information4": months4,
+        "plan_information5": months5,
+        "plan_information6": months6,
+        "plan_information7": months7,
+      }
+      ), { headers: headers })
+
+        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
+        .subscribe(Res => {
+          console.log(Res)
+          //console.log(selectedvalue)
+          // console.log(plan_information)
+          this.sg['products'] = Res.json()['Results'];
+          this.data.changeProducts(this.sg['products']);
+          for (let prod of this.sg['products']) {
+            // console.log(prod["plan_information"])
+            // console.log(prod["price_rate"])
+            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+            prod["price_rate"] = prod["price_rate"].split('..', 3000);
+          }
+
+        });
+    }
+    else if (months1 == true && months4 == true && months6 == true) {
+      months1 = "36 Months";
+      months4 = "14 Months";
+      months6 = "6 Months";
+      console.log(months1, months4, months6, 'tttttttttttt')
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
+      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+        "plan_information1": months1,
+        "plan_information2": months2,
+        "plan_information3": months3,
+        "plan_information4": months4,
+        "plan_information5": months5,
+        "plan_information6": months6,
+        "plan_information7": months7,
+      }
+      ), { headers: headers })
+
+        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
+        .subscribe(Res => {
+          console.log(Res)
+          //console.log(selectedvalue)
+          // console.log(plan_information)
+          this.sg['products'] = Res.json()['Results'];
+          this.data.changeProducts(this.sg['products']);
+          for (let prod of this.sg['products']) {
+            // console.log(prod["plan_information"])
+            // console.log(prod["price_rate"])
+            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+            prod["price_rate"] = prod["price_rate"].split('..', 3000);
+          }
+
+        });
+    }
+    else if (months1 == true && months4 == true && months7 == true) {
+      months1 = "36 Months";
+      months4 = "14 Months";
+      months7 = "12 Months";
+      console.log(months1, months4, months7, 'tttttttttttt')
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
+      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+        "plan_information1": months1,
+        "plan_information2": months2,
+        "plan_information3": months3,
+        "plan_information4": months4,
+        "plan_information5": months5,
+        "plan_information6": months6,
+        "plan_information7": months7,
+      }
+      ), { headers: headers })
+
+        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
+        .subscribe(Res => {
+          console.log(Res)
+          //console.log(selectedvalue)
+          // console.log(plan_information)
+          this.sg['products'] = Res.json()['Results'];
+          this.data.changeProducts(this.sg['products']);
+          for (let prod of this.sg['products']) {
+            // console.log(prod["plan_information"])
+            // console.log(prod["price_rate"])
+            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+            prod["price_rate"] = prod["price_rate"].split('..', 3000);
+          }
+
+        });
+    }
+    else if (months1 == true && months5 == true && months6 == true) {
+      months1 = "36 Months";
+      months6 = "6 Months";
+      months5 = "12 Months";
+      console.log(months1, months5, months6, 'tttttttttttt')
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
+      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+        "plan_information1": months1,
+        "plan_information2": months2,
+        "plan_information3": months3,
+        "plan_information4": months4,
+        "plan_information5": months5,
+        "plan_information6": months6,
+        "plan_information7": months7,
+      }
+      ), { headers: headers })
+
+        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
+        .subscribe(Res => {
+          console.log(Res)
+          //console.log(selectedvalue)
+          // console.log(plan_information)
+          this.sg['products'] = Res.json()['Results'];
+          this.data.changeProducts(this.sg['products']);
+          for (let prod of this.sg['products']) {
+            // console.log(prod["plan_information"])
+            // console.log(prod["price_rate"])
+            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+            prod["price_rate"] = prod["price_rate"].split('..', 3000);
+          }
+
+        });
+    }
+    else if (months1 == true && months5 == true && months7 == true) {
+      months1 = "36 Months";
+      months7 = "5 Months";
+      months5 = "12 Months";
+      console.log(months1, months5, months7, 'tttttttttttt')
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
+      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+        "plan_information1": months1,
+        "plan_information2": months2,
+        "plan_information3": months3,
+        "plan_information4": months4,
+        "plan_information5": months5,
+        "plan_information6": months6,
+        "plan_information7": months7,
+      }
+      ), { headers: headers })
+
+        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
+        .subscribe(Res => {
+          console.log(Res)
+          //console.log(selectedvalue)
+          // console.log(plan_information)
+          this.sg['products'] = Res.json()['Results'];
+          this.data.changeProducts(this.sg['products']);
+          for (let prod of this.sg['products']) {
+            // console.log(prod["plan_information"])
+            // console.log(prod["price_rate"])
+            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+            prod["price_rate"] = prod["price_rate"].split('..', 3000);
+          }
+
+        });
+    }
+    else if (months1 == true && months6 == true && months7 == true) {
+      months1 = "36 Months";
+      months6 = "6 Months";
+      months7 = "5 Months";
+      console.log(months1, months6, months7, 'tttttttttttt')
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
+      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+        "plan_information1": months1,
+        "plan_information2": months2,
+        "plan_information3": months3,
+        "plan_information4": months4,
+        "plan_information5": months5,
+        "plan_information6": months6,
+        "plan_information7": months7,
+      }
+      ), { headers: headers })
+
+        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
+        .subscribe(Res => {
+          console.log(Res)
+          //console.log(selectedvalue)
+          // console.log(plan_information)
+          this.sg['products'] = Res.json()['Results'];
+          this.data.changeProducts(this.sg['products']);
+          for (let prod of this.sg['products']) {
+            // console.log(prod["plan_information"])
+            // console.log(prod["price_rate"])
+            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+            prod["price_rate"] = prod["price_rate"].split('..', 3000);
+          }
+
+        });
+    }
+    else if (months2 == true && months3 == true && months4 == true) {
+      months2 = "24 Months";
+      months3 = "18 Months";
+      months4 = "14 Months";
+      console.log(months2, months3, months4, 'tttttttttttt')
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
+      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+        "plan_information1": months1,
+        "plan_information2": months2,
+        "plan_information3": months3,
+        "plan_information4": months4,
+        "plan_information5": months5,
+        "plan_information6": months6,
+        "plan_information7": months7,
+      }
+      ), { headers: headers })
+
+        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
+        .subscribe(Res => {
+          console.log(Res)
+          //console.log(selectedvalue)
+          // console.log(plan_information)
+          this.sg['products'] = Res.json()['Results'];
+          this.data.changeProducts(this.sg['products']);
+          for (let prod of this.sg['products']) {
+            // console.log(prod["plan_information"])
+            // console.log(prod["price_rate"])
+            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+            prod["price_rate"] = prod["price_rate"].split('..', 3000);
+          }
+
+        });
+    }
+    else if (months2 == true && months3 == true && months5 == true) {
+      months2 = "24 Months";
+      months3 = "18 Months";
+      months5 = "12 Months";
+      console.log(months2, months3, months5, 'tttttttttttt')
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
+      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+        "plan_information1": months1,
+        "plan_information2": months2,
+        "plan_information3": months3,
+        "plan_information4": months4,
+        "plan_information5": months5,
+        "plan_information6": months6,
+        "plan_information7": months7,
+      }
+      ), { headers: headers })
+
+        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
+        .subscribe(Res => {
+          console.log(Res)
+          //console.log(selectedvalue)
+          // console.log(plan_information)
+          this.sg['products'] = Res.json()['Results'];
+          this.data.changeProducts(this.sg['products']);
+          for (let prod of this.sg['products']) {
+            // console.log(prod["plan_information"])
+            // console.log(prod["price_rate"])
+            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+            prod["price_rate"] = prod["price_rate"].split('..', 3000);
+          }
+
+        });
+    }
+    else if (months2 == true && months3 == true && months6 == true) {
+      months2 = "24 Months";
+      months3 = "18 Months";
+      months6 = "6 Months";
+      console.log(months2, months3, months6, 'tttttttttttt')
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
+      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+        "plan_information1": months1,
+        "plan_information2": months2,
+        "plan_information3": months3,
+        "plan_information4": months4,
+        "plan_information5": months5,
+        "plan_information6": months6,
+        "plan_information7": months7,
+      }
+      ), { headers: headers })
+
+        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
+        .subscribe(Res => {
+          console.log(Res)
+          //console.log(selectedvalue)
+          // console.log(plan_information)
+          this.sg['products'] = Res.json()['Results'];
+          this.data.changeProducts(this.sg['products']);
+          for (let prod of this.sg['products']) {
+            // console.log(prod["plan_information"])
+            // console.log(prod["price_rate"])
+            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+            prod["price_rate"] = prod["price_rate"].split('..', 3000);
+          }
+
+        });
+    }
+    else if (months2 == true && months3 == true && months7 == true) {
+      months2 = "24 Months";
+      months3 = "18 Months";
+      months7 = "5 Months";
+      console.log(months2, months3, months7, 'tttttttttttt')
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
+      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+        "plan_information1": months1,
+        "plan_information2": months2,
+        "plan_information3": months3,
+        "plan_information4": months4,
+        "plan_information5": months5,
+        "plan_information6": months6,
+        "plan_information7": months7,
+      }
+      ), { headers: headers })
+
+        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
+        .subscribe(Res => {
+          console.log(Res)
+          //console.log(selectedvalue)
+          // console.log(plan_information)
+          this.sg['products'] = Res.json()['Results'];
+          this.data.changeProducts(this.sg['products']);
+          for (let prod of this.sg['products']) {
+            // console.log(prod["plan_information"])
+            // console.log(prod["price_rate"])
+            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+            prod["price_rate"] = prod["price_rate"].split('..', 3000);
+          }
+
+        });
+    }
+    else if (months2 == true && months4 == true && months5 == true) {
+      months2 = "24 Months";
+      months4 = "14 Months";
+      months5 = "12 Months";
+      console.log(months2, months4, months5, 'tttttttttttt')
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
+      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+        "plan_information1": months1,
+        "plan_information2": months2,
+        "plan_information3": months3,
+        "plan_information4": months4,
+        "plan_information5": months5,
+        "plan_information6": months6,
+        "plan_information7": months7,
+      }
+      ), { headers: headers })
+
+        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
+        .subscribe(Res => {
+          console.log(Res)
+          //console.log(selectedvalue)
+          // console.log(plan_information)
+          this.sg['products'] = Res.json()['Results'];
+          this.data.changeProducts(this.sg['products']);
+          for (let prod of this.sg['products']) {
+            // console.log(prod["plan_information"])
+            // console.log(prod["price_rate"])
+            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+            prod["price_rate"] = prod["price_rate"].split('..', 3000);
+          }
+
+        });
+    }
+    else if (months2 == true && months4 == true && months6 == true) {
+      months2 = "24 Months";
+      months4 = "14 Months";
+      months6 = "6 Months";
+      console.log(months2, months4, months6, 'tttttttttttt')
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
+      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+        "plan_information1": months1,
+        "plan_information2": months2,
+        "plan_information3": months3,
+        "plan_information4": months4,
+        "plan_information5": months5,
+        "plan_information6": months6,
+        "plan_information7": months7,
+      }
+      ), { headers: headers })
+
+        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
+        .subscribe(Res => {
+          console.log(Res)
+          //console.log(selectedvalue)
+          // console.log(plan_information)
+          this.sg['products'] = Res.json()['Results'];
+          this.data.changeProducts(this.sg['products']);
+          for (let prod of this.sg['products']) {
+            // console.log(prod["plan_information"])
+            // console.log(prod["price_rate"])
+            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+            prod["price_rate"] = prod["price_rate"].split('..', 3000);
+          }
+
+        });
+    }
+    else if (months2 == true && months4 == true && months7 == true) {
+      months2 = "24 Months";
+      months4 = "14 Months";
+      months7 = "5 Months";
+      console.log(months2, months4, months7, 'tttttttttttt')
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
+      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+        "plan_information1": months1,
+        "plan_information2": months2,
+        "plan_information3": months3,
+        "plan_information4": months4,
+        "plan_information5": months5,
+        "plan_information6": months6,
+        "plan_information7": months7,
+      }
+      ), { headers: headers })
+
+        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
+        .subscribe(Res => {
+          console.log(Res)
+          //console.log(selectedvalue)
+          // console.log(plan_information)
+          this.sg['products'] = Res.json()['Results'];
+          this.data.changeProducts(this.sg['products']);
+          for (let prod of this.sg['products']) {
+            // console.log(prod["plan_information"])
+            // console.log(prod["price_rate"])
+            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+            prod["price_rate"] = prod["price_rate"].split('..', 3000);
+          }
+
+        });
+    }
+    else if (months2 == true && months5 == true && months6 == true) {
+      months2 = "24 Months";
+      months6 = "6 Months";
+      months5 = "12 Months";
+      console.log(months2, months6, months5, 'tttttttttttt')
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
+      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+        "plan_information1": months1,
+        "plan_information2": months2,
+        "plan_information3": months3,
+        "plan_information4": months4,
+        "plan_information5": months5,
+        "plan_information6": months6,
+        "plan_information7": months7,
+      }
+      ), { headers: headers })
+
+        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
+        .subscribe(Res => {
+          console.log(Res)
+          //console.log(selectedvalue)
+          // console.log(plan_information)
+          this.sg['products'] = Res.json()['Results'];
+          this.data.changeProducts(this.sg['products']);
+          for (let prod of this.sg['products']) {
+            // console.log(prod["plan_information"])
+            // console.log(prod["price_rate"])
+            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+            prod["price_rate"] = prod["price_rate"].split('..', 3000);
+          }
+
+        });
+    }
+    else if (months2 == true && months5 == true && months7 == true) {
+      months2 = "24 Months";
+      months7 = "5 Months";
+      months5 = "12 Months";
+      console.log(months2, months7, months5, 'tttttttttttt')
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
+      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+        "plan_information1": months1,
+        "plan_information2": months2,
+        "plan_information3": months3,
+        "plan_information4": months4,
+        "plan_information5": months5,
+        "plan_information6": months6,
+        "plan_information7": months7,
+      }
+      ), { headers: headers })
+
+        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
+        .subscribe(Res => {
+          console.log(Res)
+          //console.log(selectedvalue)
+          // console.log(plan_information)
+          this.sg['products'] = Res.json()['Results'];
+          this.data.changeProducts(this.sg['products']);
+          for (let prod of this.sg['products']) {
+            // console.log(prod["plan_information"])
+            // console.log(prod["price_rate"])
+            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+            prod["price_rate"] = prod["price_rate"].split('..', 3000);
+          }
+
+        });
+    }
+    else if (months2 == true && months6 == true && months7 == true) {
+      months2 = "24 Months";
+      months6 = "6 Months";
+      months7 = "5 Months";
+      console.log(months2, months6, months7, 'tttttttttttt')
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
+      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+        "plan_information1": months1,
+        "plan_information2": months2,
+        "plan_information3": months3,
+        "plan_information4": months4,
+        "plan_information5": months5,
+        "plan_information6": months6,
+        "plan_information7": months7,
+      }
+      ), { headers: headers })
+
+        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
+        .subscribe(Res => {
+          console.log(Res)
+          //console.log(selectedvalue)
+          // console.log(plan_information)
+          this.sg['products'] = Res.json()['Results'];
+          this.data.changeProducts(this.sg['products']);
+          for (let prod of this.sg['products']) {
+            // console.log(prod["plan_information"])
+            // console.log(prod["price_rate"])
+            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+            prod["price_rate"] = prod["price_rate"].split('..', 3000);
+          }
+
+        });
+    }
+    else if (months3 == true && months4 == true && months5 == true) {
+      months3 = "18 Months";
+      months4 = "14 Months";
+      months5 = "12 Months";
+      console.log(months3, months4, months5, 'tttttttttttt')
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
+      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+        "plan_information1": months1,
+        "plan_information2": months2,
+        "plan_information3": months3,
+        "plan_information4": months4,
+        "plan_information5": months5,
+        "plan_information6": months6,
+        "plan_information7": months7,
+      }
+      ), { headers: headers })
+
+        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
+        .subscribe(Res => {
+          console.log(Res)
+          //console.log(selectedvalue)
+          // console.log(plan_information)
+          this.sg['products'] = Res.json()['Results'];
+          this.data.changeProducts(this.sg['products']);
+          for (let prod of this.sg['products']) {
+            // console.log(prod["plan_information"])
+            // console.log(prod["price_rate"])
+            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+            prod["price_rate"] = prod["price_rate"].split('..', 3000);
+          }
+
+        });
+    }
+    else if (months3 == true && months4 == true && months6 == true) {
+      months3 = "18 Months";
+      months4 = "14 Months";
+      months6 = "6 Months";
+      console.log(months3, months4, months6, 'tttttttttttt')
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
+      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+        "plan_information1": months1,
+        "plan_information2": months2,
+        "plan_information3": months3,
+        "plan_information4": months4,
+        "plan_information5": months5,
+        "plan_information6": months6,
+        "plan_information7": months7,
+      }
+      ), { headers: headers })
+
+        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
+        .subscribe(Res => {
+          console.log(Res)
+          //console.log(selectedvalue)
+          // console.log(plan_information)
+          this.sg['products'] = Res.json()['Results'];
+          this.data.changeProducts(this.sg['products']);
+          for (let prod of this.sg['products']) {
+            // console.log(prod["plan_information"])
+            // console.log(prod["price_rate"])
+            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+            prod["price_rate"] = prod["price_rate"].split('..', 3000);
+          }
+
+        });
+    }
+    else if (months3 == true && months4 == true && months7 == true) {
+      months3 = "18 Months";
+      months4 = "14 Months";
+      months7 = "5 Months";
+      console.log(months3, months4, months7, 'tttttttttttt')
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
+      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+        "plan_information1": months1,
+        "plan_information2": months2,
+        "plan_information3": months3,
+        "plan_information4": months4,
+        "plan_information5": months5,
+        "plan_information6": months6,
+        "plan_information7": months7,
+      }
+      ), { headers: headers })
+
+        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
+        .subscribe(Res => {
+          console.log(Res)
+          //console.log(selectedvalue)
+          // console.log(plan_information)
+          this.sg['products'] = Res.json()['Results'];
+          this.data.changeProducts(this.sg['products']);
+          for (let prod of this.sg['products']) {
+            // console.log(prod["plan_information"])
+            // console.log(prod["price_rate"])
+            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+            prod["price_rate"] = prod["price_rate"].split('..', 3000);
+          }
+
+        });
+    }
+    else if (months3 == true && months5 == true && months6 == true) {
+      months3 = "18 Months";
+      months6 = "6 Months";
+      months5 = "12 Months";
+      console.log(months3, months6, months5, 'tttttttttttt')
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
+      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+        "plan_information1": months1,
+        "plan_information2": months2,
+        "plan_information3": months3,
+        "plan_information4": months4,
+        "plan_information5": months5,
+        "plan_information6": months6,
+        "plan_information7": months7,
+      }
+      ), { headers: headers })
+
+        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
+        .subscribe(Res => {
+          console.log(Res)
+          //console.log(selectedvalue)
+          // console.log(plan_information)
+          this.sg['products'] = Res.json()['Results'];
+          this.data.changeProducts(this.sg['products']);
+          for (let prod of this.sg['products']) {
+            // console.log(prod["plan_information"])
+            // console.log(prod["price_rate"])
+            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+            prod["price_rate"] = prod["price_rate"].split('..', 3000);
+          }
+
+        });
+    }
+    else if (months3 == true && months5 == true && months7 == true) {
+      months3 = "18 Months";
+      months7 = "5 Months";
+      months5 = "12 Months";
+      console.log(months3, months7, months5, 'tttttttttttt')
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
+      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+        "plan_information1": months1,
+        "plan_information2": months2,
+        "plan_information3": months3,
+        "plan_information4": months4,
+        "plan_information5": months5,
+        "plan_information6": months6,
+        "plan_information7": months7,
+      }
+      ), { headers: headers })
+
+        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
+        .subscribe(Res => {
+          console.log(Res)
+          //console.log(selectedvalue)
+          // console.log(plan_information)
+          this.sg['products'] = Res.json()['Results'];
+          this.data.changeProducts(this.sg['products']);
+          for (let prod of this.sg['products']) {
+            // console.log(prod["plan_information"])
+            // console.log(prod["price_rate"])
+            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+            prod["price_rate"] = prod["price_rate"].split('..', 3000);
+          }
+
+        });
+    }
+    else if (months3 == true && months6 == true && months7 == true) {
+      months3 = "18 Months";
+      months6 = "6 Months";
+      months7 = "5 Months";
+      console.log(months3, months6, months7, 'tttttttttttt')
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
+      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+        "plan_information1": months1,
+        "plan_information2": months2,
+        "plan_information3": months3,
+        "plan_information4": months4,
+        "plan_information5": months5,
+        "plan_information6": months6,
+        "plan_information7": months7,
+      }
+      ), { headers: headers })
+
+        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
+        .subscribe(Res => {
+          console.log(Res)
+          //console.log(selectedvalue)
+          // console.log(plan_information)
+          this.sg['products'] = Res.json()['Results'];
+          this.data.changeProducts(this.sg['products']);
+          for (let prod of this.sg['products']) {
+            // console.log(prod["plan_information"])
+            // console.log(prod["price_rate"])
+            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+            prod["price_rate"] = prod["price_rate"].split('..', 3000);
+          }
+
+        });
+    }
+    else if (months4 == true && months5 == true && months6 == true) {
+      months4 = "14 Months";
+      months5 = "12 Months";
+      months6 = "6 Months";
+      console.log(months4, months5, months6, 'tttttttttttt')
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
+      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+        "plan_information1": months1,
+        "plan_information2": months2,
+        "plan_information3": months3,
+        "plan_information4": months4,
+        "plan_information5": months5,
+        "plan_information6": months6,
+        "plan_information7": months7,
+      }
+      ), { headers: headers })
+
+        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
+        .subscribe(Res => {
+          console.log(Res)
+          //console.log(selectedvalue)
+          // console.log(plan_information)
+          this.sg['products'] = Res.json()['Results'];
+          this.data.changeProducts(this.sg['products']);
+          for (let prod of this.sg['products']) {
+            // console.log(prod["plan_information"])
+            // console.log(prod["price_rate"])
+            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+            prod["price_rate"] = prod["price_rate"].split('..', 3000);
+          }
+
+        });
+    }
+    else if (months4 == true && months5 == true && months7 == true) {
+      months4 = "14 Months";
+      months5 = "12 Months";
+      months7 = "5 Months";
+      console.log(months4, months5, months7, 'tttttttttttt')
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
+      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+        "plan_information1": months1,
+        "plan_information2": months2,
+        "plan_information3": months3,
+        "plan_information4": months4,
+        "plan_information5": months5,
+        "plan_information6": months6,
+        "plan_information7": months7,
+      }
+      ), { headers: headers })
+
+        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
+        .subscribe(Res => {
+          console.log(Res)
+          //console.log(selectedvalue)
+          // console.log(plan_information)
+          this.sg['products'] = Res.json()['Results'];
+          this.data.changeProducts(this.sg['products']);
+          for (let prod of this.sg['products']) {
+            // console.log(prod["plan_information"])
+            // console.log(prod["price_rate"])
+            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+            prod["price_rate"] = prod["price_rate"].split('..', 3000);
+          }
+
+        });
+    }
+    else if (months4 == true && months6 == true && months7 == true) {
+      months4 = "14 Months";
+      months7 = "5 Months";
+      months6 = "6 Months";
+      console.log(months4, months7, months6, 'tttttttttttt')
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
+      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+        "plan_information1": months1,
+        "plan_information2": months2,
+        "plan_information3": months3,
+        "plan_information4": months4,
+        "plan_information5": months5,
+        "plan_information6": months6,
+        "plan_information7": months7,
+      }
+      ), { headers: headers })
+
+        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
+        .subscribe(Res => {
+          console.log(Res)
+          //console.log(selectedvalue)
+          // console.log(plan_information)
+          this.sg['products'] = Res.json()['Results'];
+          this.data.changeProducts(this.sg['products']);
+          for (let prod of this.sg['products']) {
+            // console.log(prod["plan_information"])
+            // console.log(prod["price_rate"])
+            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+            prod["price_rate"] = prod["price_rate"].split('..', 3000);
+          }
+
+        });
+    }
+    else if (months5 == true && months6 == true && months7 == true) {
+      months7 = "5 Months";
+      months5 = "12 Months";
+      months6 = "6 Months";
+      console.log(months7, months5, months6, 'tttttttttttt')
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
+      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+        "plan_information1": months1,
+        "plan_information2": months2,
+        "plan_information3": months3,
+        "plan_information4": months4,
+        "plan_information5": months5,
+        "plan_information6": months6,
+        "plan_information7": months7,
+      }
+      ), { headers: headers })
+
+        // this.http.post(Config.api + 'monthly/' + this.zip_code + '/' + this.months + '',{"month": this.months+" Month","custom":"['2','8']"},{ headers: headers })
+        .subscribe(Res => {
+          console.log(Res)
+          //console.log(selectedvalue)
+          // console.log(plan_information)
+          this.sg['products'] = Res.json()['Results'];
+          this.data.changeProducts(this.sg['products']);
+          for (let prod of this.sg['products']) {
+            // console.log(prod["plan_information"])
+            // console.log(prod["price_rate"])
+            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+            prod["price_rate"] = prod["price_rate"].split('..', 3000);
+          }
+
+        });
+    }
+    else if (months1 == true && months2 == true) {
       months1 = "36 Months";
       months2 = "24 Months"
 
@@ -3409,7 +3409,7 @@ months6="6 Months";
 
         });
     }
-   else if (months1 == true) {
+    else if (months1 == true) {
       months1 = "36 Months";
       console.log(months1, 'tttttttttttt')
       let headers = new Headers();
@@ -3855,22 +3855,22 @@ months6="6 Months";
   nullplan() {
     console.log(this.aChecked)
     // if (this.aChecked) {
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-      this.http.get(Config.api + 'planmin/' + this.zip_code + '', { headers: headers })
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    this.http.get(Config.api + 'planmin/' + this.zip_code + '', { headers: headers })
 
-        .subscribe(Res => {
-          console.log(Res, 'hhhhhhhhhhhhhhhhhhh')
-          this.sg['products'] = Res.json()['Results'];
-          this.data.changeProducts(this.sg['products']);
-          this.allItems = this.sg['products'];
-          for (let prod of this.sg['products']) {
-            console.log(prod["plan_information"])
-            console.log(prod["minumum_usage_fee"])
-            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
-            prod["price_rate"] = prod["price_rate"].split('..', 3000);
-          }
-        });
+      .subscribe(Res => {
+        console.log(Res, 'hhhhhhhhhhhhhhhhhhh')
+        this.sg['products'] = Res.json()['Results'];
+        this.data.changeProducts(this.sg['products']);
+        this.allItems = this.sg['products'];
+        for (let prod of this.sg['products']) {
+          console.log(prod["plan_information"])
+          console.log(prod["minumum_usage_fee"])
+          prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+          prod["price_rate"] = prod["price_rate"].split('..', 3000);
+        }
+      });
 
     // } else (error => {
     //   console.log(error)
@@ -3885,23 +3885,23 @@ months6="6 Months";
     console.log(this.preplanChecked)
     // this.route.params.subscribe(params => {
     //   let zip =  this.sg['product_zipcode'];
-   // if (this.preplanChecked) {
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-      this.http.get(Config.api + 'onlyprepaidplans/' + this.zip_code + '', { headers: headers })
+    // if (this.preplanChecked) {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    this.http.get(Config.api + 'onlyprepaidplans/' + this.zip_code + '', { headers: headers })
 
-        .subscribe(Res => {
-          console.log(Res, 'hhhhhhhhhhhhhhhhhhh')
-          this.sg['products'] = Res.json()['Results'];
-          this.data.changeProducts(this.sg['products']);
-          this.allItems = this.sg['products'];
-          for (let prod of this.sg['products']) {
-            console.log(prod["plan_information"])
-            console.log(prod["minumum_usage_fee"])
-            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
-            prod["price_rate"] = prod["price_rate"].split('..', 3000);
-          }
-        });
+      .subscribe(Res => {
+        console.log(Res, 'hhhhhhhhhhhhhhhhhhh')
+        this.sg['products'] = Res.json()['Results'];
+        this.data.changeProducts(this.sg['products']);
+        this.allItems = this.sg['products'];
+        for (let prod of this.sg['products']) {
+          console.log(prod["plan_information"])
+          console.log(prod["minumum_usage_fee"])
+          prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+          prod["price_rate"] = prod["price_rate"].split('..', 3000);
+        }
+      });
 
     // } else (error => {
     //   console.log(error)
@@ -3915,22 +3915,22 @@ months6="6 Months";
   nopaidplan() {
     console.log(this.noplanChecked)
     // if (this.noplanChecked) {
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-      this.http.get(Config.api + 'noprepaidplans/' + this.zip_code + '', { headers: headers })
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    this.http.get(Config.api + 'noprepaidplans/' + this.zip_code + '', { headers: headers })
 
-        .subscribe(Res => {
-          console.log(Res, 'hhhhhhhhhhhhhhhhhhh')
-          this.sg['products'] = Res.json()['Results'];
-          this.data.changeProducts(this.sg['products']);
-          this.allItems = this.sg['products'];
-          for (let prod of this.sg['products']) {
-            console.log(prod["plan_information"])
-            console.log(prod["minumum_usage_fee"])
-            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
-            prod["price_rate"] = prod["price_rate"].split('..', 3000);
-          }
-        });
+      .subscribe(Res => {
+        console.log(Res, 'hhhhhhhhhhhhhhhhhhh')
+        this.sg['products'] = Res.json()['Results'];
+        this.data.changeProducts(this.sg['products']);
+        this.allItems = this.sg['products'];
+        for (let prod of this.sg['products']) {
+          console.log(prod["plan_information"])
+          console.log(prod["minumum_usage_fee"])
+          prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+          prod["price_rate"] = prod["price_rate"].split('..', 3000);
+        }
+      });
 
     // } else (error => {
     //   console.log(error)
@@ -3945,24 +3945,24 @@ months6="6 Months";
     console.log(this.bChecked)
     //if (this.bChecked) {
 
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-      this.http.get(Config.api + 'planfull/' + this.zip_code + '', { headers: headers })
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    this.http.get(Config.api + 'planfull/' + this.zip_code + '', { headers: headers })
 
-        .subscribe(Res => {
-          console.log(Res)
-          this.sg['products'] = Res.json()['Results'];
-          this.data.changeProducts(this.sg['products']);
-          this.allItems = this.sg['products'];
-          for (let prod of this.sg['products']) {
-            console.log(prod["plan_information"])
-            console.log(prod["minumum_usage_fee"])
-            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
-            prod["price_rate"] = prod["price_rate"].split('..', 3000);
-            prod["minumum_usage_fee"] = prod["minumum_usage_fee"];
+      .subscribe(Res => {
+        console.log(Res)
+        this.sg['products'] = Res.json()['Results'];
+        this.data.changeProducts(this.sg['products']);
+        this.allItems = this.sg['products'];
+        for (let prod of this.sg['products']) {
+          console.log(prod["plan_information"])
+          console.log(prod["minumum_usage_fee"])
+          prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+          prod["price_rate"] = prod["price_rate"].split('..', 3000);
+          prod["minumum_usage_fee"] = prod["minumum_usage_fee"];
 
-          }
-        });
+        }
+      });
     // } else (error => {
     //   console.log(error)
     // }
@@ -3998,22 +3998,22 @@ months6="6 Months";
     // this.route.params.subscribe(params => {
     //   let zip =  this.sg['product_zipcode'];
     // if (this.notChecked) {
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-      this.http.get(Config.api + 'notimeuseplans/' + this.zip_code + '', { headers: headers })
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    this.http.get(Config.api + 'notimeuseplans/' + this.zip_code + '', { headers: headers })
 
-        .subscribe(Res => {
-          console.log(Res, 'hhhhhhhhhhhhhhhhhhh')
-          this.sg['products'] = Res.json()['Results'];
-          this.data.changeProducts(this.sg['products']);
-          this.allItems = this.sg['products'];
-          for (let prod of this.sg['products']) {
-            console.log(prod["plan_information"])
-            console.log(prod["minumum_usage_fee"])
-            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
-            prod["price_rate"] = prod["price_rate"].split('..', 3000);
-          }
-       });
+      .subscribe(Res => {
+        console.log(Res, 'hhhhhhhhhhhhhhhhhhh')
+        this.sg['products'] = Res.json()['Results'];
+        this.data.changeProducts(this.sg['products']);
+        this.allItems = this.sg['products'];
+        for (let prod of this.sg['products']) {
+          console.log(prod["plan_information"])
+          console.log(prod["minumum_usage_fee"])
+          prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+          prod["price_rate"] = prod["price_rate"].split('..', 3000);
+        }
+      });
 
     // } else (error => {
     //   console.log(error)
@@ -4031,22 +4031,22 @@ months6="6 Months";
     // this.route.params.subscribe(params => {
     //   let zip =  this.sg['product_zipcode'];
     // if (this.onlyChecked) {
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-      this.http.get(Config.api + 'onlytimeuseplans/' + this.zip_code + '', { headers: headers })
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    this.http.get(Config.api + 'onlytimeuseplans/' + this.zip_code + '', { headers: headers })
 
-        .subscribe(Res => {
-          console.log(Res, 'hhhhhhhhhhhhhhhhhhh')
-          this.sg['products'] = Res.json()['Results'];
-          this.data.changeProducts(this.sg['products']);
-          this.allItems = this.sg['products'];
-          for (let prod of this.sg['products']) {
-            console.log(prod["plan_information"])
-            console.log(prod["minumum_usage_fee"])
-            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
-            prod["price_rate"] = prod["price_rate"].split('..', 3000);
-          }
-        });
+      .subscribe(Res => {
+        console.log(Res, 'hhhhhhhhhhhhhhhhhhh')
+        this.sg['products'] = Res.json()['Results'];
+        this.data.changeProducts(this.sg['products']);
+        this.allItems = this.sg['products'];
+        for (let prod of this.sg['products']) {
+          console.log(prod["plan_information"])
+          console.log(prod["minumum_usage_fee"])
+          prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+          prod["price_rate"] = prod["price_rate"].split('..', 3000);
+        }
+      });
 
     // } 
     // else (error => {
@@ -4058,7 +4058,7 @@ months6="6 Months";
 
   }
 
-  pricerate( min, max) {
+  pricerate(min, max) {
     console.log(this.price)
     if (this.price == 500) {
       console.log(min, max, 'tttttttttttt');
@@ -4127,7 +4127,7 @@ months6="6 Months";
             prod["plan_information"] = prod["plan_information"].split(',,', 3000);
             prod["price_rate"] = prod["price_rate"].split('..', 3000);
           }
- 
+
         });
     };
 

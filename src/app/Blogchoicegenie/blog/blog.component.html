@@ -52,7 +52,7 @@
 <div class="container-fluid">
   <h3 class="text-center choiecegenie-offers wow fadeInLeft"> BLOG </h3>
 <div class="row">
-  <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 margin-b" *ngFor="let data of data;let i=index">
+  <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 margin-b" *ngFor="let data of data;let i=index">
     <div class="layer-content">
       <div>
         <img src="https://storage.choicegenie.com/images/{{data.Ch_image}}" alt="ChoiceGenie">
@@ -61,7 +61,7 @@
         <h2>{{data.heading1}}</h2>
         <p>{{data.content1 | slice:0:106}}..</p>
         <a  routerLink="/blog/{{data.heading1}}">
-        <button class="btn btn-rose" type="submit">Read more..</button></a>
+        <button class="btn btn-fill" type="submit">Read more</button></a>
       </div>
     </div>
   </div>
