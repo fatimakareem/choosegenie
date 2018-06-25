@@ -97,11 +97,13 @@ price_to;
     
 
   }
-    fetchitem(items) {
-     
+    fetchitem(items,page) {
+      if (page < 1 || page > this.pager.totalPages) {
+        return;
+    }
       let headers = new Headers();
       headers.append('Content-Type', 'application/json')
-     this.http.get(Config.api + 'items_perpage/title/asc/' + items , { headers: headers })
+     this.http.get(Config.api + 'items_perpage/title/asc/' + items +'?page='+page +'', { headers: headers })
     
         .subscribe(Res => {
           console.log(Res.json()['results'])
@@ -114,6 +116,7 @@ price_to;
             prod["plan_information"] = prod["plan_information"].split(',,', 3000);
             prod["price_rate"] = prod["price_rate"].split('..', 3000);
           }
+          this.pager = this.pagerService.getPager(Res['Total Result'], page, 10);
        });
 
       }
@@ -158,6 +161,7 @@ price_to;
   }
 
   companytitle() {
+   
     // http://192.168.30.193:9000/choice/companytitle/
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
@@ -172,12 +176,18 @@ price_to;
   }
   name;
   // 'http://192.168.30.193:9000/choice/company/
-  companydata(name) {
+  companydata(name,page) {
+    localStorage.setItem('company',name.trim())
+    if (page < 1 || page > this.pager.totalPages) {
+      return;
+  }
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    this.http.get(Config.api+'company/' + this.zip_code + '/' + this.name.trim(), { headers: headers })
+    this.http.get(Config.api+'company/' + this.zip_code + '/' + this.name.trim() +'?page='+page +'', { headers: headers })
      
       .subscribe(Res => {
+        console.log("totallllllllllllllllllllllll",Res.json()['Total Pages'])
+
         console.log(Res, 'hhhhhhhhhhhhhhhhhhh')
         this.sg['products'] = Res.json()['Results'];
         this.data.changeProducts(this.sg['products']);
@@ -188,6 +198,7 @@ price_to;
           prod["plan_information"] = prod["plan_information"].split(',,', 3000);
           prod["price_rate"] = prod["price_rate"].split('..', 3000);
         }
+        this.pager = this.pagerService.getPager(Res.json()['Total Result'], page, 10);
       });
 
 

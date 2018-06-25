@@ -1,3 +1,6 @@
+
+
+
 <!-- <h5>Items per Page</h5>
         <mat-form-field >
         <mat-select  (ngModelChange)="check($event)" [(ngModel)]="items"  >
@@ -217,7 +220,7 @@
                   </div> -->
       </div>
       <div style="padding: 0px; text-align:center;">
-          <h1>Featured Plans</h1>
+          <h1>Most Papular Plans</h1>
         </div>
       <div class="autoplay">
         <div class="mustafa" style="width:1100px;margin:20px 10px; border-radius:20px" *ngFor="let data of sg['plan']; let i = index">
@@ -379,43 +382,6 @@
                 </div>
 
 
-
-                <!-- <input  class="fa fa-star" aria-hidden="true" type="radio" value="1" (change)="reviews(rating,data.id)" [(ngModel)]="rating" name="rating">
-                       <ul class="product-list__star-list">
-                          <li>
-                            <a>
-                                <label title="Pretty good" (click)='reviews(rating,data.id)'> <i class="fa fa-star" aria-hidden="true"></i></label>
-          
-                            </a>
-                          </li>
-                          <li>
-                            <a>
-                                <input type="radio" value="2" (change)="reviews(rating,data.id)" [(ngModel)]="rating" name="rating">
-                              <i class="fa fa-star" aria-hidden="true"></i>
-                            </a>
-                          </li>
-                          <li>
-                            <a href="">
-                              <i class="fa fa-star" aria-hidden="true"></i>
-                            </a>
-                          </li>
-                          <li>
-                            <a href="">
-                              <i class="fa fa-star" aria-hidden="true"></i>
-                            </a>
-                          </li>
-                          <li>
-                            <a href="">
-                              <i class="fa fa-star" aria-hidden="true"></i>
-                            </a>
-                          </li>
-                        </ul> -->
-                <!-- <cli-star-rating (click)="reviews(data.id)" [starReadonly]="false" [rating]="rating"></cli-star-rating> -->
-
-                <!-- <img src="{{data.rating_logo}}" /> -->
-
-
-                <!-- <br> <star-rating-comp [size]="'large'" [starType]="'svg'" [rating]="" [(ngModel)]="rating"></star-rating-comp>  -->
 
               </div>
               <div class="col-md-3  col-sm-6 col-xs-12 plan-detail text-center margin-up">
@@ -600,87 +566,7 @@
                         <ul>
                           <li *ngFor="let data of plan_information">{{data}}</li>
                         </ul>
-                        <!-- <div class="well well-sm">
-                                    <div class="row">
-                                      <div class="col-xs-12 col-md-3 text-center">
-                                        <h1 class="rating-num">{{avrage}}</h1>
-                                        <div class="rating">
-                                          <span class="glyphicon glyphicon-star"></span>
-                                          <span class="glyphicon glyphicon-star"></span>
-                                          <span class="glyphicon glyphicon-star"></span>
-                                          <span class="glyphicon glyphicon-star"></span>
-                                          <span class="glyphicon glyphicon-star-empty"></span>
-                                        </div>
-                                        <div>
-                                          <span class="glyphicon glyphicon-user"></span>{{rev}} total
-                                        </div>
-                                      </div>
-                                      <div class="col-xs-12 col-md-9">
-                                        <div class="row rating-desc">
-                                          <div class="col-xs-4 col-md-2 text-right">
-                                            <span class="glyphicon glyphicon-star"></span>5
-                                          </div>
-                                          <div class="col-xs-8 col-md-10">
-                                            <div class="progress progress-striped">
-                                              <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"
-                                                style="width: 80%">
-                                                <span class="sr-only">80%</span>
-                                              </div>
-                                            </div>
-                                          </div>
-          
-                                          <div class="col-xs-4 col-md-2 text-right">
-                                            <span class="glyphicon glyphicon-star"></span>4
-                                          </div>
-                                          <div class="col-xs-8 col-md-10">
-                                            <div class="progress">
-                                              <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"
-                                                style="width: 60%">
-                                                <span class="sr-only">60%</span>
-                                              </div>
-                                            </div>
-                                          </div>
-          
-                                          <div class="col-xs-4 col-md-2 text-right">
-                                            <span class="glyphicon glyphicon-star"></span>3
-                                          </div>
-                                          <div class="col-xs-8 col-md-10">
-                                            <div class="progress">
-                                              <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
-                                                <span class="sr-only">40%</span>
-                                              </div>
-                                            </div>
-                                          </div>
-          
-                                          <div class="col-xs-4 col-md-2 text-right">
-                                            <span class="glyphicon glyphicon-star"></span>2
-                                          </div>
-                                          <div class="col-xs-8 col-md-10">
-                                            <div class="progress">
-                                              <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"
-                                                style="width: 20%">
-                                                <span class="sr-only">20%</span>
-                                              </div>
-                                            </div>
-                                          </div>
-          
-                                          <div class="col-xs-4 col-md-2 text-right">
-                                            <span class="glyphicon glyphicon-star"></span>1
-                                          </div>
-                                          <div class="col-xs-8 col-md-10">
-                                            <div class="progress">
-                                              <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"
-                                                style="width: 15%">
-                                                <span class="sr-only">15%</span>
-                                              </div>
-                                            </div>
-                                          </div>
-          
-                                        </div>
-          
-                                      </div>
-                                    </div>
-                                  </div> -->
+                   
 
                       </div>
                     </div>
@@ -703,38 +589,6 @@
           <!-- <div class="clearfix"></div> -->
 
 
-          <!-- <div class="col-sm-12 col-md-6">
-          <h4>Get your year-pass savings:</h4>
-          <ul>
-          <li>Keep your bills mild when the weather gets wild, and get a low rate in between.*</li>
-          <li>In summer and winter months, see the Season Pass Savings right on your bill.
-          
-          </li>
-          </ul>
-          <h5>Plan Documents</h5>
-          <ul class="list-normal">
-          <li>
-          <a href="{{data.terms_of_service}}" target="_blank">
-          <i class="material-icons">picture_as_pdf</i>
-          Terms of service
-          </a>
-          </li>
-          <li>
-          <a href="#">
-          <i class="material-icons">picture_as_pdf</i>
-          Your rights as a Customer
-          </a>
-          </li>
-          <li>
-          <a href="{{data.fact_sheet}}" target="_blank">
-          <i class="material-icons">picture_as_pdf</i>
-          Fact Sheet
-          </a>
-          </li>
-          </ul>
-          </div> -->
-
-
         </div>
       </div>
       <span>
@@ -751,18 +605,7 @@
     </div>
   </div>
 </div>
-<!-- <div>
-              <div> -->
-<!-- <div id="slidebox">
-                      <h3>Follow us!</h3>
-                      <p>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      </p>
-                      <p class="text-center">
-                          <img src="https://placeimg.com/360/50/any" alt="social_icons"/>
-                      </p>
-                      <button class="btn btn-primary" id="close">No Thanks!</button>
-                  </div> -->
+
 <div class="container">
   <div class="text-center">
     <!-- <h1>Angular 2 - Pagination Example with logic like Google</h1> -->
@@ -798,23 +641,3 @@
 
 
 
-
-<!-- <div class="mat-paginator-page-size">
-            <div class="mat-paginator-page-size-label">{{_intl.itemsPerPageLabel}}</div>
-            <mat-form-field *ngIf="_displayedPageSizeOptions.length > 1" class="mat-paginator-page-size-select">
-              <mat-select [value]="pageSize" [aria-label]="_intl.itemsPerPageLabel" (change)="_changePageSize($event.value)">
-                <mat-option *ngFor="let pageSizeOption of _displayedPageSizeOptions" [value]="pageSizeOption">{{pageSizeOption}}</mat-option>
-              </mat-select>
-            </mat-form-field>
-            <div *ngIf="_displayedPageSizeOptions.length <= 1">{{pageSize}}</div>
-          </div>
-          <div class="mat-paginator-range-label">{{_intl.getRangeLabel(pageIndex, pageSize, length)}}</div>
-          <button mat-icon-button type="button" class="mat-paginator-navigation-previous"
-            (click)="previousPage()" [attr.aria-label]="_intl.previousPageLabel" [matTooltip]="_intl.previousPageLabel" [matTooltipPosition]="'above'"
-            [disabled]="!hasPreviousPage()">
-            <div class="mat-paginator-increment"></div>
-          </button>
-          <button mat-icon-button type="button" class="mat-paginator-navigation-next" (click)="nextPage()" [attr.aria-label]="_intl.nextPageLabel"
-            [matTooltip]="_intl.nextPageLabel" [matTooltipPosition]="'above'" [disabled]="!hasNextPage()">
-            <div class="mat-paginator-decrement"></div>
-          </button> -->
