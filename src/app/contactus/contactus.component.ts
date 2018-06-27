@@ -25,7 +25,8 @@ const PHONE_REGEX = /^[0-9]+$/;
   styleUrls: ['./contactus.component.scss']
 })
 export class ContactusComponent implements OnInit {
-
+//  date = new Date(1992, 3, 15);
+today: number = Date.now();
   state;
   city;
   username;
@@ -72,7 +73,8 @@ export class ContactusComponent implements OnInit {
       'mobno': ['', Validators.compose([Validators.required])],
       'msg': ['', Validators.compose([Validators.required])],
       'email': ['', Validators.compose([Validators.required])],
-      'subject':['', Validators.compose([Validators.required])]
+      'subject':['', Validators.compose([Validators.required])],
+      'date':['', Validators.compose([Validators.required])]
 
       // 'Phone': ['', Validators.compose([Validators.required, Validators.pattern(this.digitsOnly)])],
       // 'country': ['', Validators.compose([Validators.required, Validators.pattern(this.normalPattern)])],
@@ -91,23 +93,23 @@ export class ContactusComponent implements OnInit {
   mobno;
   msg;
   subject;
-  cleardata(){
+//   cleardata(){
    
- this.model.name= null;
- this.model.mobno=null;
- this.model.msg=null;
- this.model.subject=null;
- this.model.email=null;
+//  this.model.name= null;
+//  this.model.mobno=null;
+//  this.model.msg=null;
+//  this.model.subject=null;
+//  this.model.email=null;
 
 
-  }
+//   }
   Contactuserdata() {
     console.log("CHOICE GENIE", this.model);
 
     let headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
     // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-    this.http.post(Config.api + 'contactus/', this.model, { headers: headers })
+    this.http.post('http://192.168.30.193:9000/choice/contactus/', this.model, { headers: headers })
 
 
       .subscribe(Res => {

@@ -152,7 +152,7 @@ export class UserProfileComponent implements OnInit {
 console.log(this.username)
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    this.https.get(Config.api+'users_profile/' + this.username + '/', { headers: headers })
+    this.https.get('http://192.168.30.137:9000/users_profile/' + this.username + '/', { headers: headers })
 
       .subscribe(Res => {
         this.data = Res.json();

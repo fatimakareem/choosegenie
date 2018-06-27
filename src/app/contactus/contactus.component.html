@@ -24,8 +24,23 @@
         <mat-form-field class="example-full-width">
           <input matInput placeholder="Enter Your Phone Number" [formControl]="signupForm.controls['mobno']" required [(ngModel)]="model.mobno">
         </mat-form-field>
+ 
+      
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="Enter Subject" >
+            <input matInput placeholder="date" [formControl]="signupForm.controls['date']" value="{{today | date}}" required [(ngModel)]="model.date">
+  
+          <!-- <input matInput [matDatepicker]="picker" placeholder="Choose a date" [formControl]="signupForm.controls['date']" (click)="picker.open()"
+            (focus)="picker.open()"  [(ngModel)]="model.date" >
+          <mat-datepicker-toggle matSuffix   [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker ></mat-datepicker> -->
+          <!-- <mat-error *ngIf="FormGroup.controls.dateofbirth.value == ''"><strong>Cannot be empty</strong></mat-error> -->
+        </mat-form-field>
+           
+        <!-- <mat-form-field class="example-full-width">
+          <input matInput placeholder="date" [formControl]="signupForm.controls['date']" required [(ngModel)]="model.date">
+        </mat-form-field> -->
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Enter Subject"[formControl]="signupForm.controls['subject']" required [(ngModel)]="model.subject" >
         </mat-form-field>
       </form>
         </div>

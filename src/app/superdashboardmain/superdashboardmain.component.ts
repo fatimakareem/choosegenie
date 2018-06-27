@@ -39,7 +39,7 @@ export class SuperdashboardmainComponent implements OnInit {
   fetchregister() {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    this.https.get(Config.api + 'register_usercount/', { headers: headers })
+    this.https.get('http://192.168.29.193:9000/choice/totalusers/', { headers: headers })
 
       .subscribe(Res => {
         this.data = Res.json();
@@ -51,7 +51,7 @@ export class SuperdashboardmainComponent implements OnInit {
   fetchcompany() {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    this.https.get(Config.api + 'company_usercount/', { headers: headers })
+    this.https.get('http://192.168.29.193:9000/choice/companytitle/', { headers: headers })
 
       .subscribe(Res => {
         this.item = Res.json();

@@ -20,16 +20,11 @@
             <mat-checkbox>
               Stay signed in
             </mat-checkbox>
-<<<<<<< HEAD
             <!-- <re-captcha (resolved)="resolved($event)" siteKey="6Lc4418UAAAAAPxDwXhjAF3a2sdRn2RIoMQxF9D9
-=======
-            <re-captcha (resolved)="resolved($event)" siteKey="6LcVFmAUAAAAAIHeCyF_ahKikxqht4xgcbhn2gkm
-
->>>>>>> d064e1fcc6f7f0a9842b7715e56610f486f4e499
             " style="transform:scale(0.77);-webkit-transform:scale(0.77);transform-origin:0 0;-webkit-transform-origin:0 0;"></re-captcha>
      -->
      <!-- || !recaptcha -->
-            <button type="submit" (click)="onLogin()" [disabled]="!username || !password ">Login</button>
+            <button type="submit" (click)="onLogin()" [disabled]="!username || !password " class="btn-fill">Login</button>
             <a  value="Delete" data-toggle="modal" data-target="#myModal3">Forgot Password?</a>
             <div class="modal fade" id="myModal3" role="dialog">
               <div class="modal-dialog">
