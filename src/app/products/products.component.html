@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+=======
 
 
 
@@ -11,35 +13,12 @@
         </mat-form-field> -->
 
 
+>>>>>>> d064e1fcc6f7f0a9842b7715e56610f486f4e499
 <div class="main-content custom" style="padding-top: 5px; padding-left: 12px;">
   <!-- <div class="container-fluid"> -->
   <div class="row"></div>
   <div class="col-sm-12 product-main" style="padding:0px;">
 
-    <!-- <div class="page-title">
-                  <span>Product Search</span>
-                </div> -->
-    <!-- <li>
-          
-                  <div class="panel-title">
-                    <a>
-                      <h5>Product per Page</h5>
-                    </a>
-                  </div>
-                  <mat-form-field>
-                    <mat-select placeholder="10 PER PAGE" selected="10" (change)="fetchitempages(items)" required [(ngModel)]="items" name="items">
-                      <mat-option value="10" selected="true">10 PER PAGE</mat-option>
-                      <mat-option value="20">20 PER PAGE</mat-option>
-                      <mat-option value="40">40 PER PAGE</mat-option>
-                      <mat-option value="556">SEE ALL</mat-option>
-                    </mat-select>
-                  </mat-form-field>
-          
-                </li> -->
-
-    <!-- </div> -->
-    <!-- <mat-paginator [length]="100" [pageSize]="20" [pageSizeOptions]="[5, 10, 25, 100]" (change)="_changePageSize($event.value)">
-                </mat-paginator> -->
 
 
     <div class="products-area-products">
@@ -67,32 +46,7 @@
                 </button>
               </div>
 
-              <!-- <div class="col-lg-1 col-md-2 col-sm-4 col-xs-12 align padding" style="margin-top: 5px">
-                              <button class="sort-btn " type="button" (click)="Renewable()">
-                                RENEWABLE
-                                <i class="fa fa-sort-down down-icon"></i>
-          
-                              </button>
-          
-                            </div> -->
 
-
-              <!-- <div class="col-lg-1 col-md-2 col-sm-4 col-xs-12 align padding" style="margin-top: 5px">
-                              <button class="sort-btn " type="button" (click)="Price()">
-                                Price KW/h
-                                <i class="fa fa-sort-down down-icon"></i>
-          
-                              </button>
-          
-                            </div> -->
-
-              <!-- <div class="col-lg-1 col-md-2 col-sm-4 col-xs-12 align space-b" style="margin-top: 5px">
-                              <button class="sort-btn " type="button" (click)="company()">
-                                Company
-                                <i class="fa fa-sort-down down-icon"></i>
-          
-                              </button>
-                            </div> -->
 
               <ul class="col-lg-3 col-md-3 col-sm-12 pagination" *ngIf="pager.pages && pager.pages.length">
                 <li [ngClass]="{hide:pager.currentPage === 1}">
@@ -133,15 +87,7 @@
                     <mat-option value="556">SEE ALL</mat-option>
                   </mat-select>
                 </mat-form-field>
-                <!-- <a class="btn  dropdown-toggle" href="https://example.com" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"placeholder="10 PER PAGE" selected="10" (change)="fetchitem(items)" required [(ngModel)]="items" name="items">
-                                      Dropdown link
-                                    </a>
-          
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" >
-                                      <a class="dropdown-item" value="10" selected="true">10 PER PAGE</a>
-                                      <a class="dropdown-item" href="#">Another action</a>
-                                      <a class="dropdown-item" href="#">Something else here</a>
-                                    </div> -->
+
 
 
               </div>
@@ -162,76 +108,26 @@
           </div>
         </div>
 
-        <!-- <div style="height: 50px;"></div> -->
 
-
-        <!-- <div class="col-lg-12">
-                    <div class="custom card col-lg-12" style="float: right;">
-                      <div class="col-sm-12">
-                        <div class="sortBy-bar col-lg-8 col-sm-12">
-                          <div class="product-page-bar col-lg-6">
-          
-                            <label class="col-md-6 product-label">Sort By</label>
-                            <div class="col-md-6" style="padding: 0px">
-                              <mat-form-field style="padding: 0px">
-                                <mat-select (change)="sortby(sort)" required [(ngModel)]="sort" name="sort">
-                                  <mat-option value="Renewable" style="font-size: 20px">Renewable</mat-option>
-                                  <mat-option value="Price" style="font-size: 20px">Price </mat-option>
-                                  <mat-option value="Company" style="font-size: 20px">Company</mat-option>
-                                </mat-select>
-                              </mat-form-field>
-          
-                            </div>
-                          </div>
-          
-          
-          
-                          <div class="product-page-bar col-lg-6">
-                            <label class="col-md-6 product-label">Product per Page</label>
-          
-                            <div class="col-md-6" style="padding: 0px">
-                              <mat-form-field style="padding: 0px">
-                                <mat-select selected="10" (change)="fetchitem(items)" required [(ngModel)]="items" name="items">
-                                  <mat-option value="10" selected="true">10 PER PAGE</mat-option>
-                                  <mat-option value="20">20 PER PAGE</mat-option>
-                                  <mat-option value="40">40 PER PAGE</mat-option>
-                                  <mat-option value="556">SEE ALL</mat-option>
-                                </mat-select>
-                              </mat-form-field>
-          
-                            </div>
-                          </div>
-                          <!-- <div class="col-lg-2 icon-bar">
-                                    <a target="_blank" href="javascript:;" onclick="window.print();" class="print-grid-temp" title="Print plan results">
-                                        <img alt="print" src="http://www.powertochoose.org/Content/images/printer.png" width="16" height="16">
-                                    </a>
-                                    <a target="_blank" href="#" class="export-excel" title="Export results to Excel">
-                                        <img alt="export to excel" src="http://www.powertochoose.org/Content/images/excel.png" width="16" height="16">
-                                    </a>
-                                    <a target="_blank" href="#" class="export-csv" title="Export ALL offers to CSV. Ignores search results and relation to zip code. Only exports the active offers by REP Company">
-                                        <img alt="export to csv" src="http://www.powertochoose.org/Content/images/export_csv.png" width="16" height="16">
-                                    </a>
-                                </div>
-          
-          
-                        </div>
-                      </div>
-                    </div>
-                  </div> -->
       </div>
       <div style="padding: 0px; text-align:center;">
+<<<<<<< HEAD
+        <h1>Most Papulor Plans</h1>
+      </div>
+=======
           <h1>Most Papular Plans</h1>
         </div>
+>>>>>>> d064e1fcc6f7f0a9842b7715e56610f486f4e499
       <div class="autoplay">
         <div class="mustafa" style="width:1100px;margin:20px 10px; border-radius:20px" *ngFor="let data of sg['plan']; let i = index">
           <div class="prod-slide">
             <img src="{{data.profile_logo}}" alt="{{data.title}}" alt="Card image cap" style="width: 90%; height: 85px;" />
-           
+
             <h2 class="view-plan-details" (click)="btnEditClick(data.id,data.title,data.sign_up,data.phone,data.terms_of_service,data.fact_sheet,data.cancelation_fee,data.price_1000_kwh,data.price_500_kwh,data.price_2000_kwh,data.plan_information,data.rating_logo,data.profile_logo,data.profileurl); getreview(data.id); avereview(data.id)"
-                data-toggle="modal" data-target="#myModal2">Plan Information
-              </h2>
-            <h2 class="view-plan-details" (click)="btnDeleteClick(data.id,data.title,data.profileurl,data.profile_logo)"
-                  data-toggle="modal" data-target="#myModal3"> Leave a Review
+              data-toggle="modal" data-target="#myModal2">Plan Information
+            </h2>
+            <h2 class="view-plan-details" (click)="btnDeleteClick(data.id,data.title,data.profileurl,data.profile_logo)" data-toggle="modal"
+              data-target="#myModal3"> Leave a Review
             </h2>
           </div>
 
@@ -245,8 +141,8 @@
 
 
       <div class="col-md-12" style="padding: 0px; text-align:center;">
-          <h1>Plans</h1>
-        </div>
+        <h1>Plans</h1>
+      </div>
       <div class="custom card up-margin" *ngFor="let data of sg['products']; let i = index">
         <div class="row">
 
@@ -381,8 +277,11 @@
                   </div>
                 </div>
 
+<<<<<<< HEAD
+=======
 
 
+>>>>>>> d064e1fcc6f7f0a9842b7715e56610f486f4e499
               </div>
               <div class="col-md-3  col-sm-6 col-xs-12 plan-detail text-center margin-up">
                 <h3 style=" text-align: center">
@@ -417,8 +316,7 @@
                   <b> Plan Details</b>
                 </h3>
 
-                <!-- <div class="holder white"> -->
-                <!--class="product-price"-->
+
                 <div style="text-align:center; padding-top:10px;">
 
 
@@ -453,14 +351,7 @@
                 <a href="Review/{{data.id}}">
                   <label class="view-plan-details" style="padding-bottom: 0px; margin-bottom: 0px;">Reviews</label>
                 </a>
-                <!-- <a href="Review/{{data.id}}"><div  class="rating">
-                              <p >
-                                    <i class="fa fa-star"></i>
-                                    <i  class="fa fa-star"></i>
-                                    <i  class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i  class="fa fa-star-o"></i>
-                                </p></div></a>  -->
+
 
               </div>
               <!-- <div class="col-md-3 col-sm-3 col-xs-7 term top-margin-25">
@@ -566,7 +457,11 @@
                         <ul>
                           <li *ngFor="let data of plan_information">{{data}}</li>
                         </ul>
+<<<<<<< HEAD
+
+=======
                    
+>>>>>>> d064e1fcc6f7f0a9842b7715e56610f486f4e499
 
                       </div>
                     </div>
@@ -586,7 +481,10 @@
               </div>
             </div>
           </div>
+<<<<<<< HEAD
+=======
           <!-- <div class="clearfix"></div> -->
+>>>>>>> d064e1fcc6f7f0a9842b7715e56610f486f4e499
 
 
         </div>
@@ -632,6 +530,9 @@
       </li>
     </ul>
   </div>
+<<<<<<< HEAD
+</div>
+=======
 </div>
 
 
@@ -641,3 +542,4 @@
 
 
 
+>>>>>>> d064e1fcc6f7f0a9842b7715e56610f486f4e499

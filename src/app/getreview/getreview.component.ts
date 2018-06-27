@@ -23,9 +23,12 @@ import swal from 'sweetalert2';
 export class GetreviewComponent implements OnInit {
 rev:any=[];
 id;
+sort;
+
 public customer;
 public zip_code;
 private Sub: Subscription;
+
   constructor(private router: Router,private route: ActivatedRoute,private http: Http) {}
 
   ngOnInit() {

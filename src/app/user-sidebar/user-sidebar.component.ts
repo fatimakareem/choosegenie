@@ -97,6 +97,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
 
 
   }
+<<<<<<< HEAD
   fetchitem(items, page) {
     if (page < 1 || page > this.pager.totalPages) {
       return;
@@ -105,6 +106,38 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
     headers.append('Content-Type', 'application/json')
     this.http.get(Config.api + 'items_perpage/title/asc/' + items + '?page=' + page + '', { headers: headers })
 
+=======
+<<<<<<< HEAD
+  fetchitem(items) {
+=======
+    fetchitem(items,page) {
+      if (page < 1 || page > this.pager.totalPages) {
+        return;
+    }
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json')
+     this.http.get(Config.api + 'items_perpage/title/asc/' + items +'?page='+page +'', { headers: headers })
+    
+        .subscribe(Res => {
+          console.log(Res.json()['results'])
+          this.sg['products'] = Res.json()['results'];
+          this.data.changeProducts(this.sg['products']);
+     
+          console.log(this.sg['products'])
+          for (let prod of this.sg['products']) {
+           
+            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+            prod["price_rate"] = prod["price_rate"].split('..', 3000);
+          }
+          this.pager = this.pagerService.getPager(Res['Total Result'], page, 10);
+       });
+>>>>>>> d064e1fcc6f7f0a9842b7715e56610f486f4e499
+
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json')
+    this.http.get(Config.api + 'items_perpage/title/asc/' + items, { headers: headers })
+
+>>>>>>> 0ae41376519d9fbd93c34cc378174ccb74cf50ef
       .subscribe(Res => {
         console.log(Res.json()['results'])
         this.sg['products'] = Res.json()['results'];
@@ -116,7 +149,10 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
           prod["plan_information"] = prod["plan_information"].split(',,', 3000);
           prod["price_rate"] = prod["price_rate"].split('..', 3000);
         }
+<<<<<<< HEAD
         this.pager = this.pagerService.getPager(Res['Total Result'], page, 10);
+=======
+>>>>>>> 0ae41376519d9fbd93c34cc378174ccb74cf50ef
       });
 
   }
@@ -168,7 +204,11 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
     this.http.get(Config.api + 'companytitle/', { headers: headers })
 
       .subscribe(Res => {
+<<<<<<< HEAD
         this.title = Res.json()['Results'];
+=======
+        this.title = Res.json();
+>>>>>>> 0ae41376519d9fbd93c34cc378174ccb74cf50ef
         this.title = this.title;
         console.log(this.title)
       });
@@ -183,8 +223,18 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
     }
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
+<<<<<<< HEAD
     this.http.get(Config.api + 'company/' + this.zip_code + '/' + this.name.trim() + '?page=' + page + '', { headers: headers })
 
+=======
+<<<<<<< HEAD
+    this.http.get(Config.api + 'company/' + this.zip_code + '/' + this.name.trim(), { headers: headers })
+
+=======
+    this.http.get(Config.api+'company/' + this.zip_code + '/' + this.name.trim() +'?page='+page +'', { headers: headers })
+     
+>>>>>>> d064e1fcc6f7f0a9842b7715e56610f486f4e499
+>>>>>>> 0ae41376519d9fbd93c34cc378174ccb74cf50ef
       .subscribe(Res => {
         console.log("totallllllllllllllllllllllll", Res.json()['Total Pages'])
 
@@ -229,7 +279,11 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
 
+<<<<<<< HEAD
       this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
+=======
+      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+>>>>>>> 0ae41376519d9fbd93c34cc378174ccb74cf50ef
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,

@@ -1554,6 +1554,9 @@ h3 {
   font-weight: 500;
 }
 /* footer css start */
+.input-group-btn .btn{
+  margin: 0 0 5px 0 !important;
+}
 .footer-align{
   text-align: left;
 }
@@ -2976,8 +2979,8 @@ li.pinterest:hover {
   position: relative;
 }
 .com-table {
-  margin: 0 0 30px;
-  /* overflow-x: scroll; */
+  margin: 0 0 80px;
+  overflow-x: scroll;
 }
 
 .appio-center-heading span.bordered-icon {
@@ -4743,6 +4746,9 @@ canvas {
   font-weight: 500;
   line-height: 0.428571 !important;
 }
+.font-style{
+  color: #CC0000;
+}
 /*commercial form css end */
 .forms-text{
   position:relative;
@@ -4859,7 +4865,7 @@ section#boody{
 } */
 .layer-content h2{
   font-size: 28px;
-  color:#000;
+  color:#c00;
   margin: 0px !important;
   padding: 10px;
   height: 100px;
@@ -4870,8 +4876,11 @@ section#boody{
   margin-bottom: 32px;
 }
 .layer-content p{
-color: #646464;
-font-weight: 500;
+  color: #646464;
+  font-weight: 500;
+  height: 100px;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 .layer-content img{
   width: 100%;
@@ -5467,6 +5476,18 @@ background: linear-gradient(to bottom, #eaeaea 0%,#c6c6c6 50%,#999a9b 100%); /* 
 /*End Add New Blog*/
 
 
+
+
+/*Start features-comparison*/
+.custom-padding tr td {
+  padding: 10px !important;
+}
+.custom-padding thead tr th{
+  padding: 15px !important;
+}
+
+/*End features-comparison*/
+
 /*
  * --------------------------------------------------
  * 3. Responsiveness/media queries
@@ -5502,7 +5523,11 @@ background: linear-gradient(to bottom, #eaeaea 0%,#c6c6c6 50%,#999a9b 100%); /* 
   /* X-Large devices (1200px and up) */
 }
 
-
+@media (max-width: 375px) {
+  .appio-center-heading >h2 {
+    font-size: 34px;
+  }
+}
 /* max-width */
 @media (max-width: 320px) {
   .fixed-width{
@@ -5512,14 +5537,44 @@ background: linear-gradient(to bottom, #eaeaea 0%,#c6c6c6 50%,#999a9b 100%); /* 
     font-size: 32px;
   }
 }
-@media (max-width: 575px) {
+@media (max-width: 425px) {
   /* Small devices (575px and down) */
-
-
+  .appio-center-heading p {
+    font-size: 19px;
+    line-height: 27px;
+    text-align: justify !important;
+  }
+  .panel-title {
+    font-size: 13px !important;
+    }
+  .panel-body div {
+    font-size: 15px;
+  }
 }
 
 @media (max-width: 768px) {
   /* Medium devices (767px and down) */
+  /*.about-title {*/
+    /*font-size: 19px !important;*/
+  /*}*/
+  /*.right-about-divs p {*/
+    /*line-height: 19px !important;*/
+  /*}*/
+  /*.left-about-divs p {*/
+    /*line-height: 19px !important;*/
+  /*}*/
+  /*.left-about-divs {*/
+    /*margin-top: 0px !important;*/
+  /*}*/
+  .layer-content p {
+     height: 100px !important;
+  }
+  mat-tab-group .mat-tab-label .title {
+    font-size: 25px !important;
+  }
+  .font-s{
+    font-size: 14px !important;
+  }
   .popupmodel {
     width: 682px !important;
   }
@@ -5591,6 +5646,15 @@ background: linear-gradient(to bottom, #eaeaea 0%,#c6c6c6 50%,#999a9b 100%); /* 
 }
 @media (max-width: 426px) {
   /* Small devices (425px and down) */
+  .align-txt{
+    text-align: justify;
+  }
+  .font-style{
+    font-size: 24px;
+  }
+  .custom-font{
+    font-size: 19px !important;
+  }
   .how-it-works-paragraph{
     text-align: justify;
   }
@@ -5663,7 +5727,7 @@ background: linear-gradient(to bottom, #eaeaea 0%,#c6c6c6 50%,#999a9b 100%); /* 
     padding: 0px;
   }
   .faqs h1{
-    font-size: 30px;
+    font-size: 26px !important;
   }
   .faqs h3{
     font-size: 17px  !important;
@@ -5761,6 +5825,9 @@ background: linear-gradient(to bottom, #eaeaea 0%,#c6c6c6 50%,#999a9b 100%); /* 
 }
 @media (max-width: 1024px) {
   /* Large devices (992px and down) */
+  .layer-content p{
+    height: 136px;
+  }
   .popupmodel{
     width: 100% !important;
     right: 0%;
@@ -6052,3 +6119,4 @@ background: linear-gradient(to bottom, #eaeaea 0%,#c6c6c6 50%,#999a9b 100%); /* 
     right: -1.5%;
   }
 }
+
