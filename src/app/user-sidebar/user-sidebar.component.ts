@@ -97,6 +97,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
 
 
   }
+<<<<<<< HEAD
   fetchitem(items) {
 
     let headers = new Headers();
@@ -107,14 +108,32 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
         console.log(Res.json()['results'])
         this.sg['products'] = Res.json()['results'];
         this.data.changeProducts(this.sg['products']);
+=======
 
-        console.log(this.sg['products'])
-        for (let prod of this.sg['products']) {
+    fetchitem(items,page) {
+      if (page < 1 || page > this.pager.totalPages) {
+        return;
+    }
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json')
+     this.http.get(Config.api + 'items_perpage/title/asc/' + items +'?page='+page +'', { headers: headers })
+    
+        .subscribe(Res => {
+          console.log(Res.json()['results'])
+          this.sg['products'] = Res.json()['results'];
+          this.data.changeProducts(this.sg['products']);
+     
+          console.log(this.sg['products'])
+          for (let prod of this.sg['products']) {
+           
+            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+            prod["price_rate"] = prod["price_rate"].split('..', 3000);
+          }
+          this.pager = this.pagerService.getPager(Res['Total Result'], page, 10);
+       });
+>>>>>>> f9798cdc8bece4d5145da96dcfbb9c59656be146
 
-          prod["plan_information"] = prod["plan_information"].split(',,', 3000);
-          prod["price_rate"] = prod["price_rate"].split('..', 3000);
-        }
-      });
+
 
   }
   months;
@@ -158,14 +177,16 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
   }
 
   companytitle() {
-   
+
     // http://192.168.30.193:9000/choice/companytitle/
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     this.http.get(Config.api + 'companytitle/', { headers: headers })
 
       .subscribe(Res => {
-        this.title = Res.json();
+
+        this.title = Res.json()['Results'];
+
         this.title = this.title;
         console.log(this.title)
       });
@@ -173,17 +194,24 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
   }
   name;
   // 'http://192.168.30.193:9000/choice/company/
-  companydata(name,page) {
-    localStorage.setItem('company',name.trim())
+  companydata(name, page) {
+    localStorage.setItem('company', name.trim())
     if (page < 1 || page > this.pager.totalPages) {
       return;
-  }
+    }
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
+<<<<<<< HEAD
     this.http.get(Config.api+'company/' + this.zip_code + '/' + this.name.trim() +'?page='+page +'', { headers: headers })
      
+=======
+
+    this.http.get(Config.api+'company/' + this.zip_code + '/' + this.name.trim() +'?page='+page +'', { headers: headers })
+     
+
+>>>>>>> f9798cdc8bece4d5145da96dcfbb9c59656be146
       .subscribe(Res => {
-        console.log("totallllllllllllllllllllllll",Res.json()['Total Pages'])
+        console.log("totallllllllllllllllllllllll", Res.json()['Total Pages'])
 
         console.log(Res, 'hhhhhhhhhhhhhhhhhhh')
         this.sg['products'] = Res.json()['Results'];
@@ -201,14 +229,14 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
 
 
   }
-  company;
-  months1 = false;
-  months2 = false;
-  months3 = false;
-  months4 = false;
-  months5 = false;
-  months6 = false;
-  months7 = false;
+ 
+  // months1 = false;
+  // months2 = false;
+  // months3 = false;
+  // months4 = false;
+  // months5 = false;
+  // months6 = false;
+  // months7 = false;
 
   fetchmutimonth(months1, months2, months3, months4, months5, months6, months7) {
 
@@ -226,7 +254,9 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
 
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
+
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -264,7 +294,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code, JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -303,7 +333,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -342,7 +372,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code  , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -381,7 +411,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -420,7 +450,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -459,7 +489,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -498,7 +528,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -536,7 +566,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -574,7 +604,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -612,7 +642,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -650,7 +680,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -688,7 +718,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -726,7 +756,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -764,7 +794,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -802,7 +832,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -840,7 +870,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -878,7 +908,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -916,7 +946,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -954,7 +984,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -992,7 +1022,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -1030,7 +1060,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -1069,7 +1099,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -1105,7 +1135,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -1141,7 +1171,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -1177,7 +1207,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -1213,7 +1243,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -1249,7 +1279,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -1285,7 +1315,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -1321,7 +1351,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -1357,7 +1387,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code  , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -1393,7 +1423,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -1429,7 +1459,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code, JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -1465,7 +1495,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code, JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -1500,7 +1530,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -1535,7 +1565,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code  , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -1570,7 +1600,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -1605,7 +1635,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -1640,7 +1670,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -1675,7 +1705,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -1710,7 +1740,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code  , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -1745,7 +1775,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -1780,7 +1810,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -1815,7 +1845,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -1850,7 +1880,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -1885,7 +1915,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -1920,7 +1950,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -1955,7 +1985,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -1990,7 +2020,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -2025,7 +2055,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code  , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -2060,7 +2090,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -2095,7 +2125,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -2130,7 +2160,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code  , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -2165,7 +2195,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -2200,7 +2230,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -2235,7 +2265,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -2270,7 +2300,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -2305,7 +2335,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -2340,7 +2370,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -2375,7 +2405,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -2410,7 +2440,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -2445,7 +2475,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -2480,7 +2510,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -2515,7 +2545,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -2550,7 +2580,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -2585,7 +2615,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -2620,7 +2650,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -2655,7 +2685,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -2690,7 +2720,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -2725,7 +2755,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -2760,7 +2790,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -2795,7 +2825,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -2830,7 +2860,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -2865,7 +2895,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -2900,7 +2930,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -2935,7 +2965,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -2970,7 +3000,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -3005,7 +3035,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code  , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -3040,7 +3070,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -3075,7 +3105,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -3110,7 +3140,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -3145,7 +3175,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -3180,7 +3210,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -3215,7 +3245,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -3250,7 +3280,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -3285,7 +3315,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -3320,7 +3350,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -3355,7 +3385,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -3390,7 +3420,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -3423,7 +3453,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -3456,7 +3486,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -3489,7 +3519,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -3522,7 +3552,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -3555,7 +3585,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -3588,7 +3618,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -3621,7 +3651,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-      this.http.post(Config.api + 'multimonth/' + this.zip_code + '/', JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code , JSON.stringify({
         "plan_information1": months1,
         "plan_information2": months2,
         "plan_information3": months3,
@@ -3676,9 +3706,9 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
 
       });
   }
-  fixed = false;
-  vari = false;
-  index = false;
+  // fixed = false;
+  // vari = false;
+  // index = false;
   plantype(fixed, vari, index) {
     if (fixed == true) {
       fixed = "Fixed Rate";
@@ -3686,7 +3716,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       console.log(fixed, 'tttttttttttt');
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
-      this.http.post(Config.api + 'plantype/' + this.zip_code, JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code, JSON.stringify({
         "plan_type1": fixed,
         "plan_type2": index,
         "plan_type3": vari,
@@ -3709,7 +3739,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       console.log(index, 'tttttttttttt');
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
-      this.http.post(Config.api + 'plantype/' + this.zip_code, JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code, JSON.stringify({
         "plan_type1": fixed,
         "plan_type2": index,
         "plan_type3": vari,
@@ -3734,7 +3764,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       console.log(vari, 'tttttttttttt');
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
-      this.http.post(Config.api + 'plantype/' + this.zip_code, JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code, JSON.stringify({
         "plan_type1": fixed,
         "plan_type2": index,
         "plan_type3": vari,
@@ -3759,7 +3789,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       console.log(fixed, vari, index, 'tttttttttttt');
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
-      this.http.post(Config.api + 'plantype/' + this.zip_code, JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code, JSON.stringify({
         "plan_type1": fixed,
         "plan_type2": index,
         "plan_type3": vari,
@@ -3785,7 +3815,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       console.log(fixed, vari, 'tttttttttttt');
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
-      this.http.post(Config.api + 'plantype/' + this.zip_code, JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code, JSON.stringify({
         "plan_type1": fixed,
         "plan_type2": index,
         "plan_type3": vari,
@@ -3810,7 +3840,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       console.log(fixed, index, 'tttttttttttt');
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
-      this.http.post(Config.api + 'plantype/' + this.zip_code, JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code, JSON.stringify({
         "plan_type1": fixed,
         "plan_type2": index,
         "plan_type3": vari,
@@ -3835,7 +3865,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
       console.log(vari, index, 'tttttttttttt');
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
-      this.http.post(Config.api + 'plantype/' + this.zip_code, JSON.stringify({
+      this.http.post(Config.api + 'multifilter/' + this.zip_code, JSON.stringify({
         "plan_type1": fixed,
         "plan_type2": index,
         "plan_type3": vari,
@@ -4140,5 +4170,260 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
     };
 
   }
-
+  months1 = "";
+  months2 = "";
+  months3 = "";
+  months4 = "";
+  months5 = "";
+  months7 = "";
+  months6 = "";
+  fixed = "";
+  vari = "";
+  index = "";
+  notprepaid="";
+  prepaid="";
+  planmin="";
+  time="";
+  nottime="";
+  renewablerate="";
+  company="";
+  checked1(event, i) {
+    if(event.target.checked == true){
+    console.log(event.target.checked)
+    this.months1="36 Months";    
 }
+else if(event.target.checked == false){
+    console.log(event.target.checked)
+    this.months1=""; 
+}
+console.log(this.months1)
+}
+checked2(event, i) {
+  if(event.target.checked == true){
+  console.log(event.target.checked)
+  this.months2="24 Months";    
+}
+else if(event.target.checked == false){
+  console.log(event.target.checked)
+  this.months2=""; 
+}
+console.log(this.months2)
+}
+checked3(event, i) {
+  if(event.target.checked == true){
+  console.log(event.target.checked)
+  this.months3="18 Months";    
+}
+else if(event.target.checked == false){
+  console.log(event.target.checked)
+  this.months3=""; 
+}
+console.log(this.months3)
+}
+checked4(event, i) {
+  if(event.target.checked == true){
+  console.log(event.target.checked)
+  this.months4="14 Months";    
+}
+else if(event.target.checked == false){
+  console.log(event.target.checked)
+  this.months4=""; 
+}
+console.log(this.months4)
+}
+checked5(event, i) {
+  if(event.target.checked == true){
+  console.log(event.target.checked)
+  this.months5="12 Months";    
+}
+else if(event.target.checked == false){
+  console.log(event.target.checked)
+  this.months5=""; 
+}
+console.log(this.months5)
+}
+checked6(event, i) {
+  if(event.target.checked == true){
+  console.log(event.target.checked)
+  this.months6="6 Months";    
+}
+else if(event.target.checked == false){
+  console.log(event.target.checked)
+  this.months6=""; 
+}
+console.log(this.months6)
+}
+checked7(event, i) {
+  if(event.target.checked == true){
+  console.log(event.target.checked)
+  this.months7="5 Months";    
+}
+else if(event.target.checked == false){
+  console.log(event.target.checked)
+  this.months7=""; 
+}
+console.log(this.months7)
+}
+checked8(event, i) {
+  if(event.target.checked == true){
+  console.log(event.target.checked)
+  this.fixed = "Fixed Rate";    
+}
+else if(event.target.checked == false){
+  console.log(event.target.checked)
+  this.fixed=""; 
+}
+console.log(this.fixed)
+}
+checked9(event, i) {
+  if(event.target.checked == true){
+  console.log(event.target.checked)
+  this.vari = "Variable (Changing Rate)";    
+}
+else if(event.target.checked == false){
+  console.log(event.target.checked)
+  this.vari=""; 
+}
+console.log(this.vari)
+}
+checked10(event, i) {
+  if(event.target.checked == true){
+  console.log(event.target.checked)
+  this.index = "Indexed (Market Rate)"  
+}
+else if(event.target.checked == false){
+  console.log(event.target.checked)
+  this.index=""; 
+}
+console.log(this.index)
+}
+checked11(event, i) {
+  if(event.target.checked == true){
+  console.log(event.target.checked)
+  this.notprepaid = "prepaid";
+  console.log('jjjjjjjjjjjjjjjjj')
+  console.log(this.notprepaid);
+  // this.prepaid == "";
+}
+else if(event.target.checked == false){
+  console.log(event.target.checked)
+  this.notprepaid=""; 
+}
+console.log(this.notprepaid)
+}
+checked12(event, i) {
+  if(event.target.checked == true){
+  console.log(event.target.checked);
+  this.prepaid = "prepaid";
+  // this.notprepaid == "";
+}
+else if(event.target.checked == false){
+  console.log(event.target.checked)
+   this.prepaid=""; 
+}
+console.log(this.prepaid)
+}
+checked13(event, i) {
+  if(event.target.checked == true){
+  console.log(event.target.checked);
+  this.planmin="NULL";
+   this.planmin == "";
+}
+else if(event.target.checked == false){
+  console.log(event.target.checked)
+  this.planmin=""; 
+}
+console.log(this.planmin)
+}
+checked14(event, i) {
+  if(event.target.checked == true){
+  console.log(event.target.checked);
+  this.time="Time Of Use";
+ 
+}
+else if(event.target.checked == false){
+  console.log(event.target.checked)
+  this.time=""; 
+}
+console.log(this.time)
+}
+checked15(event, i) {
+  if(event.target.checked == true){
+  console.log(event.target.checked);
+  this.nottime="Time Of Use";
+ 
+}
+else if(event.target.checked == false){
+  console.log(event.target.checked)
+  this.nottime=""; 
+}
+console.log(this.nottime)
+}
+checked16(event, i,energy) {
+  if(energy){
+  console.log(energy);
+  this.renewablerate=energy;
+ 
+}
+else if(!energy){
+  console.log()
+  this.renewablerate=""; 
+}
+console.log(this.renewablerate)
+}
+checked17(event,i,comp) {
+  if(comp){
+  console.log(comp);
+  this.company=comp.trim();
+ 
+}
+else if(!comp){
+  console.log()
+  this.company=""; 
+}
+console.log(this.company)
+}
+  search() {
+    
+    console.log(this.months1, this.months2, this.months3, this.months4, this.months5, this.months6, this.months7,this.fixed, this.vari, this.index,this.prepaid,this.notprepaid,this.planmin,this.time,this.nottime, this.renewablerate,this.company)
+    if (this.months1 == "36 Months" || this.months2 == "24 Months" || this.months3 == "18 Months" || this.months4 == "14 Months" || this.months5 == "12 Months" || this.months6 == "6 Months" || this.months7 == "5 Months" || this.fixed == "Fixed Rate" || this.vari == "Variable (Changing Rate)" || this.index == "Indexed (Market Rate)" || this.notprepaid == "Prepaid" ||  this.prepaid == "Prepaid" ||  this.planmin == "NULL" ||  this.time == "Time Of Use" || this.nottime == "Time Of Use" ||  this.renewablerate || this.company) {
+    
+    
+      console.log(this.months1, this.months2, this.months3, this.months4, this.months5, this.months6, this.months7,this.fixed, this.vari, this.index,this.prepaid,this.notprepaid,this.planmin,this.time,this.nottime,this.renewablerate,this.company, 'tttttttttttt');
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      this.http.post(Config.api + 'multifilter/' + this.zip_code, JSON.stringify({
+        "plan_type1": this.fixed,
+        "plan_type2": this.index,
+        "plan_type3": this.vari,
+        "plan_information1": this.months1,
+        "plan_information2": this.months2,
+        "plan_information3": this.months3,
+        "plan_information4": this.months4,
+        "plan_information5": this.months5,
+        "plan_information6": this.months6,
+        "plan_information7": this.months7,
+        "prepaid": this.prepaid,
+        "noprepaid": this.notprepaid,
+        "planmin": this.planmin,
+        "time":this.time,
+        "notime":this.nottime,
+        "renewablerate":this.renewablerate,
+        "company":this.company
+      }
+      ), { headers: headers })
+
+        .subscribe(Res => {
+          console.log(Res)
+          this.sg['products'] = Res.json()['Results'];
+          localStorage.setItem('product',this.sg['products'])
+          this.data.changeProducts(this.sg['products']);
+          for (let prod of this.sg['products']) {
+            prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+            prod["price_rate"] = prod["price_rate"].split('..', 3000);
+          }
+
+        });
+    }
+ 
+}}
