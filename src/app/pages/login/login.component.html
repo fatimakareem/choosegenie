@@ -20,9 +20,7 @@
             <mat-checkbox>
               Stay signed in
             </mat-checkbox>
-            <re-captcha (resolved)="resolved($event)" siteKey="6LcVFmAUAAAAAIHeCyF_ahKikxqht4xgcbhn2gkm
-
-            " style="transform:scale(0.77);-webkit-transform:scale(0.77);transform-origin:0 0;-webkit-transform-origin:0 0;"></re-captcha>
+            <re-captcha (resolved)="resolved($event)" siteKey="6Lc4418UAAAAAPxDwXhjAF3a2sdRn2RIoMQxF9D9" style="transform:scale(0.77);-webkit-transform:scale(0.77);transform-origin:0 0;-webkit-transform-origin:0 0;"></re-captcha>
     
             <button type="submit" (click)="onLogin()" [disabled]="!username || !password || !recaptcha">Login</button>
             <a  value="Delete" data-toggle="modal" data-target="#myModal3">Forgot Password?</a>

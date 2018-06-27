@@ -7,16 +7,16 @@ import {HttpService} from '../serv/http-service';
 export class HomeService {
 public username;
   months:any[];
-  company;
+  product;
   constructor(private http: HttpService) {this.username = localStorage.getItem('username');
-               this.company = localStorage.getItem('company');
+               this.product = localStorage.getItem('product');
 }
 
   searchProducts(id,page) {
     console.log(id)
     let url;
-    if(localStorage.getItem('company')){
-      url =  'company/' + id + '/' + this.company+'?page='+page
+    if(localStorage.getItem('product')){
+      url =  'multifilter/' + id + '/' +'?page='+page
     }else{
       url = 'zipcodedata/' + id +'?page='+page
     }
