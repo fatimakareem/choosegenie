@@ -28,7 +28,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
   cUsage;
   message: string;
   localVar;
-  renewable;
+  renewable='';
   model;
   price;
   energy;
@@ -4154,7 +4154,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
   time="";
   nottime="";
   renewablerate="";
-  company="";
+  com="";
   checked1(event, i) {
     if(event.target.checked == true){
     console.log(event.target.checked)
@@ -4330,34 +4330,34 @@ console.log(this.nottime)
 checked16(event, i,energy) {
   if(energy){
   console.log(energy);
-  this.renewablerate=energy;
+  this.renewable=energy;
  
 }
 else if(!energy){
   console.log()
-  this.renewablerate=""; 
+  this.renewable=""; 
 }
-console.log(this.renewablerate)
+console.log(this.renewable)
 }
 checked17(event,i,comp) {
   if(comp){
   console.log(comp);
-  this.company=comp.trim();
+  this.com=comp.trim();
  
 }
 else if(!comp){
   console.log()
-  this.company=""; 
+  this.com=""; 
 }
-console.log(this.company)
+console.log(this.com)
 }
   search() {
     
-    console.log(this.months1, this.months2, this.months3, this.months4, this.months5, this.months6, this.months7,this.fixed, this.vari, this.index,this.prepaid,this.notprepaid,this.planmin,this.time,this.nottime, this.renewablerate,this.company)
-    if (this.months1 == "36 Months" || this.months2 == "24 Months" || this.months3 == "18 Months" || this.months4 == "14 Months" || this.months5 == "12 Months" || this.months6 == "6 Months" || this.months7 == "5 Months" || this.fixed == "Fixed Rate" || this.vari == "Variable (Changing Rate)" || this.index == "Indexed (Market Rate)" || this.notprepaid == "Prepaid" ||  this.prepaid == "Prepaid" ||  this.planmin == "NULL" ||  this.time == "Time Of Use" || this.nottime == "Time Of Use" ||  this.renewablerate || this.company) {
+    console.log(this.months1, this.months2, this.months3, this.months4, this.months5, this.months6, this.months7,this.fixed, this.vari, this.index,this.prepaid,this.notprepaid,this.planmin,this.time,this.nottime, this.renewable,this.com)
+    if (this.months1 == "36 Months" || this.months2 == "24 Months" || this.months3 == "18 Months" || this.months4 == "14 Months" || this.months5 == "12 Months" || this.months6 == "6 Months" || this.months7 == "5 Months" || this.fixed == "Fixed Rate" || this.vari == "Variable (Changing Rate)" || this.index == "Indexed (Market Rate)" || this.notprepaid == "Prepaid" || this.prepaid == "Prepaid" || this.planmin == "NULL" || this.time == "Time Of Use" || this.nottime == "Time Of Use" || this.renewable || this.com) {
     
     
-      console.log(this.months1, this.months2, this.months3, this.months4, this.months5, this.months6, this.months7,this.fixed, this.vari, this.index,this.prepaid,this.notprepaid,this.planmin,this.time,this.nottime,this.renewablerate,this.company, 'tttttttttttt');
+      console.log(this.months1, this.months2, this.months3, this.months4, this.months5, this.months6, this.months7,this.fixed, this.vari, this.index,this.prepaid,this.notprepaid,this.planmin,this.time,this.nottime,this.renewable,this.com, 'tttttttttttt');
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       this.http.post(Config.api+'multifilter/'+this.zip_code,JSON.stringify({
@@ -4376,8 +4376,8 @@ console.log(this.company)
         "planmin": this.planmin,
         "time":this.time,
         "notime":this.nottime,
-        "renewablerate":this.renewablerate,
-        "company":this.company
+        "renewablerate":this.renewable,
+        "company":this.com,
       }
       ), { headers: headers })
 
