@@ -1,4 +1,4 @@
-<div class="container com-prof-fixed">
+<div class="container com-prof-fixed" style="width: 100%;     padding: 20px 0px;">
     <div class="vander-signup-heading" data-notify="container">
         <i class="material-icons" data-notify="icon">notifications</i>
         <span data-notify="message">The information below is intended for internal use only and will not be shared with other site members. The information
@@ -44,7 +44,7 @@
                         <div class="col-sm-4">
                             <div>
 
-                                <mat-form-field>
+                                <mat-form-field class="margin">
                                     <input matInput placeholder="Contact Name" type="text" value="{{data.Contact_Name}}" #updatedName>
 
 
@@ -55,7 +55,7 @@
                         <div class="col-sm-4">
                             <div>
 
-                                <mat-form-field>
+                                <mat-form-field class="margin">
                                     <input matInput placeholder="Contact Phone" type="text" value="{{data.Contact_Phone}}" #updatedphone>
 
 
@@ -63,11 +63,11 @@
 
                             </div>
                         </div>
-                    
+
                         <div class="col-sm-4">
                             <div>
 
-                                <mat-form-field>
+                                <mat-form-field class="margin">
                                     <input matInput placeholder="Market" type="text" value="{{data.Market}}" #updatedmarket>
 
                                 </mat-form-field>
@@ -77,17 +77,17 @@
                         <div class="col-sm-4">
                             <div>
 
-                                <mat-form-field>
+                                <mat-form-field class="margin">
                                     <input matInput placeholder="Status" type="text" value="{{data.status}}" #updatedstatus>
 
                                 </mat-form-field>
 
                             </div>
                         </div>
-                        <div class="col-sm-4">
+                        <div class="col-sm-4" >
                             <div>
 
-                                <mat-form-field>
+                                <mat-form-field class="margin">
                                     <input matInput placeholder="User" type="text" value="{{data.user}}" #updateduser>
 
                                 </mat-form-field>
@@ -97,10 +97,10 @@
 
                     </div>
 
-                    <div class="form-footer text-right">
+                    <div class="form-footer text-right row">
 
-                        <div class="form-group">
-                            <button type="submit" style="width:100%; border-radius:50px" class="btn btn-lrg btn-rose btn-fill btn-wd" (click)="onRegister(updatedid.value,updatedREP.value,updatedREPid.value,updatedName.value,updatedphone.value,updatedmarket.value,updatedstatus.value,updateduser.value)">Update</button>
+                        <div class="form-group col-lg-6" style="margin: 0 auto;">
+                            <button type="submit" style="width:100%; border-radius:50px" class="btn btn-lrg btn-fill btn-wd" (click)="onRegister(updatedid.value,updatedREP.value,updatedREPid.value,updatedName.value,updatedphone.value,updatedmarket.value,updatedstatus.value,updateduser.value)">Update</button>
                         </div>
                     </div>
                 </div>
@@ -109,4 +109,3 @@
         </div>
     </div>
 </div>
-

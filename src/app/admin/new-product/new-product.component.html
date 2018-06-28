@@ -1,25 +1,30 @@
 <div class="new-product-holder">
+  <div class="page-title">
 
-  <h3 class="text-center">ADD NEW PRODUCT</h3>
-  <hr />
+    <h3 class="text-center choiecegenie-offers wow fadeInLeft">ADD NEW PRODUCT</h3>
+
+  </div>
+
+  <!--<h3 class="text-center">ADD NEW PRODUCT</h3>-->
+  <!--<hr />-->
 
   <div class="row">
     <!-- <form   *ngif="signupForm"> -->
-     
+
     <form method="" action="" (ngSubmit)="onSubmit(f)" #f="ngForm" novalidate>
       <mat-horizontal-stepper [linear]="isLinear">
         <mat-step [stepControl]="signupForm">
-          <div [formGroup]="signupForm">
+          <div [formGroup]="signupForm" style="padding: 10px;">
             <ng-template matStepLabel></ng-template>
-            <div class="card">
-              <div class="card-header card-header-icon" data-background-color="rose">
+            <div class="card" style="padding: 15px;">
+              <div class="card-header card-header-icon" data-background-color="rose" style="margin-top: -35px;">
                 <i class="material-icons">mail_outline</i>
               </div>
               <div class="card-content">
                 <h4 class="card-title"></h4>
                 <div class="row">
                   <div class="col-sm-6">
-                    
+
                     <div class="form-group">
                       <mat-form-field>
                         <input matInput placeholder="Utility Area" required [(ngModel)]="utilityarea" formControlName="utilityarea">
@@ -35,12 +40,12 @@
                   <div class="form-group" hidden="true">
                     <mat-form-field>
                       <!-- <mat-select placeholder="Company Title" (ngModelChange)="check($event)" required [(ngModel)]="model.title"name="title">
-                      
+
                         <mat-option *ngFor="let t of title" [value]="t.title">
                         {{t.title}}
-                      
+
                         </mat-option>
-                      
+
                         </mat-select> -->
                       <input matInput placeholder="Company Name" required [value]="only" name="title" #title>
                     </mat-form-field>
@@ -49,10 +54,10 @@
 
 
                 </div>
-               
+
               </div>
               <div class="text-right">
-                <button mat-button matStepperNext class="btn btn-fill btn-rose">Next</button>
+                <button mat-button matStepperNext class="btn btn-fill">Next</button>
               </div>
             </div>
           </div>
@@ -60,41 +65,41 @@
         </mat-step>
 
         <mat-step [stepControl]="secondFormGroup">
-          <div  [formGroup]="secondFormGroup">
+          <div  [formGroup]="secondFormGroup" style="padding: 10px;">
             <ng-template matStepLabel></ng-template>
             <div class="card">
-              <div class="card-header card-header-icon" data-background-color="rose">
+              <div class="card-header card-header-icon" data-background-color="rose" style="margin-top: -35px;">
                 <i class="material-icons">mail_outline</i>
               </div>
               <div class="card-content">
                 <label class="control-label">
                   <i>
-                    
+
                   </i>
                 </label>
                 <div class="row">
-                    
+
                         <div class="form-group" hidden="true">
                           <mat-form-field>
                             <input matInput placeholder="Profile url" required [value]="prourl" name="profileurl" #profileurl>
                           </mat-form-field>
-                      
-    
+
+
                       </div>
-                 
+
                     <div class="form-group" hidden="true">
                       <mat-form-field>
                         <input matInput placeholder="Profile Logo" required  [value]="prologo" name="profile_logo" #profile_logo>
                       </mat-form-field>
-                  
+
 
                   </div>
-                 
+
                     <div class="form-group" hidden="true">
                       <mat-form-field>
                         <input matInput placeholder="Rating Logo" required  value="{{word.rating_logo}}" name="rating_logo" #rating_logo>
                       </mat-form-field>
-                  
+
                   </div>
                   <br class="clearfix" />
                   <div class="col-sm-6">
@@ -114,7 +119,7 @@
 
                   <div class="col-sm-6">
                       <div class="form-group">
-                          <mat-form-field>
+                          <mat-form-field class="margin">
                             <input matInput placeholder="Cancelation Fee" required [(ngModel)]="cancelation_fee" formControlName="cancelation_fee">
                           </mat-form-field>
                         </div>
@@ -122,49 +127,49 @@
 
                 </div>
                 <div class="text-right">
-                  <button mat-button matStepperPrevious class="btn btn-fill btn-rose">Back</button>
-                  <button mat-button matStepperNext class="btn btn-fill btn-rose">Next</button>
+                  <button mat-button matStepperPrevious class="btn btn-fill">Back</button>
+                  <button mat-button matStepperNext class="btn btn-fill">Next</button>
                 </div>
               </div>
             </div>
           </div>
         </mat-step>
         <mat-step [stepControl]="thirdFormGroup">
-          <div  [formGroup]="thirdFormGroup">
+          <div  [formGroup]="thirdFormGroup" style="padding: 10px;">
             <ng-template matStepLabel></ng-template>
             <div class="card">
-              <div class="card-header card-header-icon" data-background-color="rose">
+              <div class="card-header card-header-icon" data-background-color="rose" style="margin-top: -35px;">
                 <i class="material-icons">mail_outline</i>
               </div>
               <div class="card-content">
 
                 <label class="control-label">
-                  
+
                 </label>
                 <div class="row">
-                 
+
 
                   <br class="clearfix" />
-                 
-                    <div class="form-group" >
+
+                    <div class="form-group col-sm-4" >
                       <mat-form-field>
                         <input matInput placeholder="Terms of Service " [(ngModel)]="terms_of_service"  formControlName="terms_of_service">
                       </mat-form-field>
                     </div>
 
 
-                 
-                  
-                    <div class="form-group" >
+
+
+                    <div class="form-group col-sm-4" >
                       <mat-form-field>
                         <input matInput placeholder="Fact Sheet " [(ngModel)]="fact_sheet"  formControlName="fact_sheet">
                       </mat-form-field>
-                    
+
 
 
                   </div>
                   <br class="clearfix" />
-                  <div class="col-sm-6">
+                  <div class="col-sm-4">
                     <div class="form-group">
                       <mat-form-field>
                         <input matInput placeholder="Contact Number" required [(ngModel)]="phone" formControlName="phone">
@@ -173,13 +178,13 @@
 
 
                   </div>
-                  
+
                     <div class="form-group" hidden="true">
                       <mat-form-field>
                         <input matInput placeholder="Sign up Company" [value]="sign" name="sign_up" #sign_up>
                       </mat-form-field>
                     </div>
-                 
+
                   <!-- <div class="col-sm-6">
                       <div class="form-group">
                         <label class="control-label">Security Question</label>
@@ -197,7 +202,7 @@
                   <br class="clearfix" />
                   <div class="col-sm-6">
                     <div class="form-group">
-                      <mat-form-field>
+                      <mat-form-field class="margin">
                         <input matInput placeholder="minimum_usage_fee" [(ngModel)]="minimum_usage_fee" formControlName="minimum_usage_fee">
                       </mat-form-field>
                     </div>
@@ -208,7 +213,7 @@
                   <br class="clearfix" />
                   <div class="col-sm-6">
                     <div class="form-group">
-                      <mat-form-field>
+                      <mat-form-field class="margin">
                         <input matInput placeholder="Renewable price" [(ngModel)]="renewable" formControlName="renewable">
                       </mat-form-field>
                     </div>
@@ -218,27 +223,27 @@
                   </div>
                 </div>
                 <div class="text-right">
-                  <button mat-button matStepperPrevious class="btn btn-fill btn-rose">Back</button>
-                  <button mat-button matStepperNext class="btn btn-fill btn-rose">Next</button>
+                  <button mat-button matStepperPrevious class="btn btn-fill">Back</button>
+                  <button mat-button matStepperNext class="btn btn-fill">Next</button>
                 </div>
               </div>
             </div>
           </div>
         </mat-step>
         <mat-step [stepControl]="fourthFormGroup">
-          <div [formGroup]="fourthFormGroup">
+          <div [formGroup]="fourthFormGroup" style="padding: 10px;">
             <ng-template matStepLabel></ng-template>
             <div class="card">
-              <div class="card-header card-header-icon" data-background-color="rose">
+              <div class="card-header card-header-icon" data-background-color="rose" style="margin-top: -35px;">
                 <i class="material-icons">mail_outline</i>
               </div>
               <div class="card-content">
                 <h4 class="card-title"></h4>
                 <h3 class="title">
-                 
+
                 </h3>
                 <label class="control-label">
-                 
+
                 </label>
                 <div class="row">
                   <div class="col-sm-6">
@@ -263,7 +268,7 @@
 
                   <div class="col-sm-6">
                     <div class="form-group">
-                      <mat-form-field>
+                      <mat-form-field class="margin">
                         <input matInput placeholder="Price of 1000 KWH" required [(ngModel)]="price_1000_kwh" formControlName="price_1000_kwh">
                       </mat-form-field>
                     </div>
@@ -271,7 +276,7 @@
                   </div>
                   <div class="col-sm-6">
                     <div class="form-group">
-                      <mat-form-field>
+                      <mat-form-field class="margin">
                         <input matInput placeholder="Price of 2000 KWH" required [(ngModel)]="price_2000_kwh" formControlName="price_2000_kwh">
                       </mat-form-field>
                     </div>
@@ -279,8 +284,8 @@
                   </div>
                 </div>
                 <div class="text-right">
-                  <button mat-button matStepperPrevious class="btn btn-fill btn-rose">Back</button>
-                  <button type="submit" mat-button matStepperNext (click)="signupuserdata(utilityarea,title.value,profileurl.value,profile_logo.value,plan_information,price_rate,cancelation_fee,fact_sheet,terms_of_service,phone,sign_up.value,minimum_usage_fee,renewable,spectialterms,price_1000_kwh,price_500_kwh,price_2000_kwh)" class="btn btn-fill btn-rose">Done</button>
+                  <button mat-button matStepperPrevious class="btn btn-fill">Back</button>
+                  <button type="submit" mat-button matStepperNext (click)="signupuserdata(utilityarea,title.value,profileurl.value,profile_logo.value,plan_information,price_rate,cancelation_fee,fact_sheet,terms_of_service,phone,sign_up.value,minimum_usage_fee,renewable,spectialterms,price_1000_kwh,price_500_kwh,price_2000_kwh)" class="btn btn-fill">Done</button>
                 </div>
               </div>
             </div>
@@ -291,6 +296,6 @@
 
 
     </form>
-      
+
   </div>
 </div>

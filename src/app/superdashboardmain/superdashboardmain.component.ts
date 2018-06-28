@@ -33,6 +33,7 @@ export class SuperdashboardmainComponent implements OnInit {
     this.fetchcompany();
     this.fetchinactiveproducts();
     this.fetchactiveproducts();
+    this.fetchcontact();
   }
 
 
@@ -56,6 +57,18 @@ export class SuperdashboardmainComponent implements OnInit {
       .subscribe(Res => {
         this.item = Res.json();
         console.log(this.item);
+      });
+
+  }
+  contact;
+  fetchcontact() {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    this.https.get(Config+'contactfilter/', { headers: headers })
+
+      .subscribe(Res => {
+        this.contact = Res.json();
+        console.log(this.contact);
       });
 
   }

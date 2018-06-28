@@ -27,7 +27,7 @@
  
       
         <mat-form-field class="example-full-width">
-            <input matInput placeholder="date" [formControl]="signupForm.controls['date']" value="{{today | date}}" required [(ngModel)]="model.date">
+            <input matInput placeholder="date" [formControl]="signupForm.controls['date']" value="{{today | date}}"   required [(ngModel)]="model.date">
   
           <!-- <input matInput [matDatepicker]="picker" placeholder="Choose a date" [formControl]="signupForm.controls['date']" (click)="picker.open()"
             (focus)="picker.open()"  [(ngModel)]="model.date" >
