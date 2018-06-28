@@ -4374,7 +4374,7 @@ console.log(this.company)
       console.log(this.months1, this.months2, this.months3, this.months4, this.months5, this.months6, this.months7,this.fixed, this.vari, this.index,this.prepaid,this.notprepaid,this.planmin,this.time,this.nottime,this.renewablerate,this.company, 'tttttttttttt');
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
-      this.http.post(Config.api + 'multifilter/' + this.zip_code, JSON.stringify({
+      this.http.post(Config.api+'multifilter/'+this.zip_code,JSON.stringify({
         "plan_type1": this.fixed,
         "plan_type2": this.index,
         "plan_type3": this.vari,
