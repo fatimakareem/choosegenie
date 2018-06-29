@@ -9,14 +9,15 @@ public username;
   months:any[];
   product;
   constructor(private http: HttpService) {this.username = localStorage.getItem('username');
-               this.product = localStorage.getItem('product');
+               this.product = localStorage.getItem('PRO');
 }
 
   searchProducts(id,page) {
     console.log(id)
     let url;
-    if(localStorage.getItem('product')){
-      url =  'multifilter/' + id + '/' +'?page='+page
+    if(localStorage.getItem('PRO')){
+      // url =  'multifilter/' + id +'?page='+page
+      url = 'zipcodedata/' + id +'?page='+page
     }else{
       url = 'zipcodedata/' + id +'?page='+page
     }
