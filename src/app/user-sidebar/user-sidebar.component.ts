@@ -14,6 +14,7 @@ import { RandomService } from '../random.service';
 import { HomeService } from '../home/home.service';
 import { error } from 'selenium-webdriver';
 //import { SideBarService } from './side-bar.service';
+import swal from 'sweetalert2';
 
 declare const $: any;
 
@@ -160,7 +161,7 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
 
       .subscribe(Res => {
 
-        this.title = Res.json()['Results'];
+        this.title = Res.json();
 
         this.title = this.title;
         console.log(this.title)
@@ -4351,8 +4352,10 @@ else if(!comp){
 }
 console.log(this.com)
 }
-  search() {
-    
+  search(page: number) {
+    if (page < 1 || page > this.pager.totalPages) {
+      return;
+  }
     console.log(this.months1, this.months2, this.months3, this.months4, this.months5, this.months6, this.months7,this.fixed, this.vari, this.index,this.prepaid,this.notprepaid,this.planmin,this.time,this.nottime, this.renewable,this.com)
     if (this.months1 == "36 Months" || this.months2 == "24 Months" || this.months3 == "18 Months" || this.months4 == "14 Months" || this.months5 == "12 Months" || this.months6 == "6 Months" || this.months7 == "5 Months" || this.fixed == "Fixed Rate" || this.vari == "Variable (Changing Rate)" || this.index == "Indexed (Market Rate)" || this.notprepaid == "Prepaid" || this.prepaid == "Prepaid" || this.planmin == "NULL" || this.time == "Time Of Use" || this.nottime == "Time Of Use" || this.renewable || this.com) {
     
@@ -4360,7 +4363,7 @@ console.log(this.com)
       console.log(this.months1, this.months2, this.months3, this.months4, this.months5, this.months6, this.months7,this.fixed, this.vari, this.index,this.prepaid,this.notprepaid,this.planmin,this.time,this.nottime,this.renewable,this.com, 'tttttttttttt');
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
-      this.http.post(Config.api+'multifilter/'+this.zip_code,JSON.stringify({
+      this.http.post(Config.api+'multifilter/'+this.zip_code +'?page='+page,JSON.stringify({
         "plan_type1": this.fixed,
         "plan_type2": this.index,
         "plan_type3": this.vari,
@@ -4370,28 +4373,40 @@ console.log(this.com)
         "plan_information4": this.months4,
         "plan_information5": this.months5,
         "plan_information6": this.months6,
-        "plan_information7": this.months7,
         "prepaid": this.prepaid,
         "noprepaid": this.notprepaid,
         "planmin": this.planmin,
         "time":this.time,
         "notime":this.nottime,
         "renewablerate":this.renewable,
-        "company":this.com,
+        "company":this.com
       }
       ), { headers: headers })
 
         .subscribe(Res => {
           console.log(Res)
+
           this.sg['products'] = Res.json()['Results'];
-          localStorage.setItem('product',this.sg['products'])
+          localStorage.setItem('PRO',Res.json()['Results'])
+          localStorage.setItem('Pages',Res.json()['Total Result'])
           this.data.changeProducts(this.sg['products']);
           for (let prod of this.sg['products']) {
             prod["plan_information"] = prod["plan_information"].split(',,', 3000);
             prod["price_rate"] = prod["price_rate"].split('..', 3000);
           }
+          this.pager = this.pagerService.getPager(Res['Total Result'], page, 10);
 
         });
+    }
+    else{
+      swal({
+        type: 'error',
+        title: 'Please Select any of filter!!!',
+        showConfirmButton: true,
+        timer: 1500
+
+      })
+     
     }
  
 }}
