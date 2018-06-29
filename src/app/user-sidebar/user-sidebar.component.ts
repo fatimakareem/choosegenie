@@ -35,6 +35,8 @@ export class UserSidebarComponent implements OnInit, AfterContentInit {
   energy;
   price_from;
   price_to;
+  i;
+  1;
 
   // min;
   // max;

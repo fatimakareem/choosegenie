@@ -29,10 +29,11 @@ export class SuperdashboardmainComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.fetchregister();
-    this.fetchcompany();
-    this.fetchinactiveproducts();
-    this.fetchactiveproducts();
+    //this.fetchregister();
+    //this.fetchcompany();
+    //this.fetchinactiveproducts();
+   // this.fetchactiveproducts();
+   this.fetchpartner();
     this.fetchcontact();
   }
 
@@ -62,13 +63,29 @@ export class SuperdashboardmainComponent implements OnInit {
   }
   contact;
   fetchcontact() {
+    // alert (this.data);
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    this.https.get(Config+'contactfilter/', { headers: headers })
+    this.https.get(Config.api +'contactfilter/', { headers: headers })
 
       .subscribe(Res => {
-        this.contact = Res.json();
-        console.log(this.contact);
+        this.data = Res.json()['Results'];  
+        // this.contact = Res.json(['Results']);
+        console.log(this.data);
+      });
+
+  }
+  partner;
+  fetchpartner() {
+    // alert (this.data);
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    this.https.get(Config.api +'partnerfilter/', { headers: headers })
+
+      .subscribe(Res => {
+        this.data = Res.json()['Results'];  
+        // this.contact = Res.json(['Results']);
+        console.log(this.data);
       });
 
   }

@@ -1,11 +1,14 @@
-<div class="col-md-12 col-lg-12 col-sm-12  colxs-12" style="
-padding: 2% 2%;
-margin-right: 4%;" >
+<div class="col-md-12 col-lg-12 col-sm-12  colxs-12">
+  <div class="page-title">
 
-    <div class="page-title">
-      <span>User Details </span>
+    <h3 class="text-center choiecegenie-offers wow fadeInLeft"> User Details   </h3>
 
-    </div>
+  </div>
+
+    <!--<div class="page-title">-->
+      <!--<span>User Details </span>-->
+
+    <!--</div>-->
     <div class="ptb-80">
       <div>
         <!-- <div class="text-center appio-center-heading pb-20">
@@ -31,7 +34,7 @@ margin-right: 4%;" >
               </tr>
             </thead>
             <tbody *ngIf="data;else no_data_templ">
-              <tr *ngFor="let item of data.slice().reverse(); let i = index">
+              <tr *ngFor="let item of data.slice().reverse(); let i = index" class="text-center">
                 <td style="font-size: 20px;" hidden="true" >{{item.id}}</td>
                 <td style="font-size: 20px;">{{item.REP_name}}</td>
                 <td style="font-size: 20px;">{{item.REP_certificate_id}}</td>

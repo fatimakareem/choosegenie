@@ -53,7 +53,7 @@
               <div class="col-md-6 col-sm-6 col-xs-6 compare-input">
                 <div class="form-group label-floating ">
                   <mat-form-field>
-                    <input matInput placeholder="Zip Code" [formControl]="zip_code" [(ngModel)]=zipCode #zipcode1 name="zipCode" (focusout)="Checkzipcode(zipcode1.value)"
+                    <input matInput placeholder="Zip Code" [formControl]="zip_code" (keydown)="onKeydown($event)"  [(ngModel)]=zipCode #zipcode1 name="zipCode" (focusout)="Checkzipcode(zipcode1.value)"
                     />
                     <mat-error *ngIf="zip_code.hasError('pattern')">
                       Numbers Only
