@@ -1595,7 +1595,7 @@ padding: 7px 0px 7px 10px !important;
 .newsletter-p{
   color: #7c7c7c;
   font-size: 14px !important;
-  text-align: justify;
+  text-align: left;
   line-height: 18px;
   font-weight: 600 !important;
 }
@@ -1713,7 +1713,7 @@ padding: 7px 0px 7px 10px !important;
   width: 25px;
   text-align: center;
     color: #f80000;
-    margin-right: 15px;
+    margin-right: 5px;
   }
   .list-social {
   font-size: 25px;

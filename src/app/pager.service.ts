@@ -9,19 +9,19 @@ export class PagerService {
      // calculate total pages
     let totalPages = Math.ceil( totalItems/pageSize);
     let startPage: number, endPage: number;
-    if (totalPages <= 5) {
+    if (totalPages <= 3) {
         startPage = 1;
         endPage = totalPages;
     } else {
         if (currentPage <= 3) {
             startPage = 1;
-            endPage = 5;
+            endPage = 3;
         } else if (currentPage + 1 >= totalPages) {
             startPage = totalPages - 4;
             endPage = totalPages;
         } else {
            
-            if((totalPages - (currentPage - 2)) == 5) {
+            if((totalPages - (currentPage - 2)) == 3) {
                startPage = currentPage - 1;
               endPage = currentPage+3;
             } else {

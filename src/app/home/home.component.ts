@@ -48,6 +48,7 @@ export class HomeComponent implements OnInit {
     }
 
 
+    
     onSubmit(f: NgForm) {
       
         localStorage.setItem('zip', this.zipCode);
@@ -66,8 +67,10 @@ export class HomeComponent implements OnInit {
     location = {};
     setPosition(position) {
     }
+    
     ngOnInit() {
-      this.hits();
+      
+     // this.hits();
       $('.slick-date').slick({
         slidesToShow: 3,
         autoplaySpeed: 1500,
@@ -102,17 +105,13 @@ export class HomeComponent implements OnInit {
       });
 
     }
-    hits() {
-      console.log("CHOICE GENIE", this.model.zipcode1    );  
-      let headers = new HttpHeaders();
-      headers.append('Content-Type', 'text/html');
-      this.http.get('http://192.168.30.193:9000/choice/getcounts/30107/', { headers: headers })
-        .subscribe(data => {
-          console.log(data);
-          console.log(data['Total Hits']);
-
-        });
-  }
+    onKeydown(event) {
+      if (event.key === "Enter") {
+        console.log(event);
+        // this.Checkzipcode();
+      }
+    }
+  
 
     Checkzipcode(zipcode1) {
         console.log("CHOICE GENIE", this.model.zipcode1    );   
