@@ -39,7 +39,7 @@
                   </a>
                 </li> -->
                 <li [ngClass]="{hide:pager.currentPage === 1}">
-                  <a (click)="setPage(pager.currentPage - 1)" class="view-plan-details">
+                  <a (click)="setPage(pager.currentPage - 1)" class="view-plan-details" class="btn btn-rose" >
                     <i class="fa fa-angle-left"></i>
                   </a>
                 </li>
@@ -62,7 +62,7 @@
                   <a (click)="setPage(pager.totalPages)" class="view-plan-details">{{pager.totalPages}}</a>
               </li> -->
                 <li [ngClass]="{hide:pager.currentPage === pager.totalPages}">
-                  <a (click)="setPage(pager.currentPage + 1)" class="view-plan-details" type="Next">
+                  <a (click)="setPage(pager.currentPage + 1)" class="view-plan-details"  class="btn btn-rose"type="Next">
                     <i class="fa fa-angle-right"></i>
                   </a>
                 </li>
@@ -511,7 +511,7 @@
     <div *ngFor="let item of pagedItems">{{item.name}}</div>
 
     <!-- pager -->
-    <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+    <!-- <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
         <li [ngClass]="{hide:pager.currentPage === 1}">
             <a (click)="setPage(1)" class="btn btn-rose">First</a>
         </li>
@@ -522,12 +522,7 @@
             <a (click)="setPage(page)" class="btn btn-rose">{{page}}</a>
         </li>
         
-        <!--<li *ngIf="(pager.startPage  + 5) <= pager.totalPages">-->
-        <!--    <a (click)="setPage(pager.currentPage + 5)">...</a>-->
-        <!--</li>-->
-        <!-- <li *ngIf="(pager.startPage  + 5) <= pager.totalPages" >-->
-        <!--    <a (click)="setPage(pager.totalPages)">{{pager.totalPages}}</a>-->
-        <!--</li>-->
+   
         <li *ngIf="(pager.totalPages - pager.startPage) > 5 ">
             <a (click)="setPage(pager.startPage + 5)" >...</a>
         </li>
@@ -541,6 +536,47 @@
         <li [ngClass]="{hide:pager.currentPage === pager.totalPages}">
             <a (click)="setPage(pager.totalPages)" class="btn btn-rose">Last</a>
         </li>
+    </ul> -->
+
+    <ul class=" pagination" *ngIf="pager.pages && pager.pages.length">
+      <!-- <li [ngClass]="{hide:pager.currentPage === 1}">
+        <a (click)="setPage(1)" class="view-plan-details">
+          <i class="fa fa-angle-double-left"></i>
+        </a>
+      </li> -->
+      <li [ngClass]="{hide:pager.currentPage === 1}">
+        <a (click)="setPage(pager.currentPage - 1)" class="view-plan-details" class="btn btn-rose" >
+          <i class="fa fa-angle-left"></i>
+        </a>
+      </li>
+
+     
+      <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+        <a (click)="setPage(page)" class="view-plan-details">{{page}}</a>
+    </li>
+    
+    <!--<li *ngIf="(pager.startPage  + 5) <= pager.totalPages">-->
+    <!--    <a (click)="setPage(pager.currentPage + 5)">...</a>-->
+    <!--</li>-->
+    <!-- <li *ngIf="(pager.startPage  + 5) <= pager.totalPages" >-->
+    <!--    <a (click)="setPage(pager.totalPages)">{{pager.totalPages}}</a>-->
+    <!--</li>-->
+    <li *ngIf="(pager.totalPages - pager.startPage) > 3 ">
+        <a (click)="setPage(pager.startPage + 3)" >...</a>
+    </li>
+     <!-- <li *ngIf="(pager.totalPages - pager.startPage) > 3" >
+        <a (click)="setPage(pager.totalPages)" class="view-plan-details">{{pager.totalPages}}</a>
+    </li> -->
+      <li [ngClass]="{hide:pager.currentPage === pager.totalPages}">
+        <a (click)="setPage(pager.currentPage + 1)" class="view-plan-details"  class="btn btn-rose"type="Next">
+          <i class="fa fa-angle-right"></i>
+        </a>
+      </li>
+      <!-- <li [ngClass]="{hide:pager.currentPage === pager.totalPages}">
+        <a (click)="setPage(pager.totalPages)" class="view-plan-details" type="Last">
+          <i class="fa fa-angle-double-right"></i>
+        </a>
+      </li> -->
     </ul>
 
   </div>
