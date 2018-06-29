@@ -23,6 +23,12 @@
   margin: 0;
   list-style: none;
  }
+.margin-auto{
+  margin: 0 auto;
+}
+.mat-step-header .mat-step-icon{
+  background-color: #c00 !important;
+}
 .margin{
   margin-top: -9px !important;
 }
@@ -783,7 +789,7 @@ background: goldenrod;
     }
     .products-area .card .rate {
       border-right: 1px solid #ccc;
-      border-left: 1px solid #ccc;
+      /*border-left: 1px solid #ccc;*/
       min-height: 65px; }
       .products-area .card .rate small {
         font-size: 18px;
@@ -799,7 +805,7 @@ background: goldenrod;
   .products-area h5 {
     font-weight: 500; }
   .products-area p {
-    margin: 0 0 15px; }
+    margin: 0 0 5px; }
   .products-area strong {
     font-size: 24px;
     line-height: 28px;
@@ -1515,7 +1521,7 @@ h3 {
   position: relative;
 }
 .drop-downs{
-  height: auto;
+    height: auto;
     top: 20px;
     position: absolute;
     min-height: 200px;
@@ -1538,6 +1544,7 @@ h3 {
 }
 .vanders:hover .drop-downs{
   display: block !important;
+  right: -78px;
 }
 .vanders:hover .nav-vanders{
   display: block !important;
@@ -4962,7 +4969,7 @@ background: linear-gradient(to bottom, #ededed 0%,#c1bfbf 100%); /* W3C, IE10+, 
 }
 .plan-detail{
   /* min-height: 205px !important; */
-    border-right: 1px solid #000000;
+    border-right: 1px solid #ccc;
 }
 .sortBy-bar{
   float: right !important;
@@ -5247,10 +5254,10 @@ background: linear-gradient(to bottom, #eaeaea 0%,#c6c6c6 50%,#999a9b 100%); /* 
 
 /*Start Super Sidebar*/
 .super-sidebar-main{
-  background-color:#2f2f2f;
+  background-color:#000000;
   position: fixed;
   width:20%;
-  height: 665px;
+  height: 700px;
   overflow-y: scroll;
 }
 .super-sidebar-list li{

@@ -14,7 +14,7 @@
             <div class="modal fade" id="myModal3" role="dialog">
               <div class="modal-dialog">
                 <div class="modal-content popupmodel">
-               
+
                   <div class="modal-body" style="font-size: 18px;
                                             background: #ffffff;
                                             padding: 20px;
@@ -93,7 +93,7 @@
                           data-dismiss="modal">Inactive</button>
 
                         <button type="button" class="btn btn-rose" data-dismiss="modal">Cancel</button>
-                       
+
                       </div>
                     </form>
 
@@ -136,10 +136,9 @@
               <b>Plan Details</b>
             </h3>
             <div style="text-align:center; padding-top:10px;">
-              <p *ngFor="let item of data.plan_information" class="items-detail" style="line-height: 8px;">
-                {{item}}
+              <p *ngFor="let item of data.plan_information" class="items-detail" style="line-height: 18px;">
+              {{item}}
               </p>
-
             </div>
   </div>
     <div class="modal fade" id="myModal2" role="dialog">
@@ -292,15 +291,15 @@
                           </mat-form-field>
                         </div>
                       </div>
-                     
+
                       <div class=" text-center">
                         <button type="submit" class="btn btn-rose" (click)="editClick(updatedtitle.value,updatedsign_up.value,updatedphone.value,updatedterms_of_service.value,updatedfact_sheet.value,updatedcancelation_fee.value,updatedprice500kwh.value,updatedprice1000kwh.value,updatedprice2000kwh.value,updatedplan_information.value,updatedrating_logo.value,updatedprofile_logo.value,updatedprofileurl.value)"
                           data-dismiss="modal">Update</button>
 
                         <button type="button" class="btn btn-rose" data-dismiss="modal">Cancel</button>
-                     
+
                       </div>
-            
+
                     </form>
                   </div>
                 </div>
@@ -336,7 +335,7 @@
             <h3 class="text-center font">{{data.phone}}</h3>
             <!-- (click)="openDialog(data.id)" -->
             <div class="text-center">
-              <button class="btn btn-rose button-social">
+              <button class="btn btn-fill button-social">
                 <a style="color:white;text-align: center;" href="{{data.profileurl}}" target="_blank">Signup </a>
                 <i class="material-icons">bubble_chart</i>
               </button>
@@ -346,7 +345,7 @@
               <label class="view-plan-details" style="padding-bottom: 0px; margin-bottom: 0px;">Reviews</label>
             </a>
           </div>
-         
+
         </div>
       </div>
     </div>
@@ -424,7 +423,7 @@
 
                       <h4>&nbsp;&nbsp;&nbsp;&nbsp; ---</h4>
                     </ng-template>
-                
+
                   </div>
                 </div>
               </div>

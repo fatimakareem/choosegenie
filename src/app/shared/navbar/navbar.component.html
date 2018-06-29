@@ -1,3 +1,4 @@
+
 <div class="header-home " style="position: fixed; z-index: 9; width: 100%;">
   <nav class="nav-home navbar-transparent">
     <!-- <div class="container container-fluid"> -->
@@ -105,7 +106,7 @@
         </li>
 
 
-       
+
         <li class="">
           <a routerLink="/">
             <i class="material-icons">android</i>
@@ -123,7 +124,7 @@
                 lock_open
               </i>
               <a (click) = "logout()" >logout</a>
-  
+
               <i class="fa fa-caret-down"></i> -->
         <!-- </a> -->
 
@@ -181,8 +182,9 @@
                         </a>
                       </li> -->
               <li>
-                <a>
-                  <input style="cursor: pointer;font-size: 20px; margin-left: 5px;" type="text" [value]="username" readonly>
+                <a style="display: flex;">
+                  <i class="material-icons" style="margin-top: 3px">account_circle</i>
+                  <input style="cursor: pointer;font-size: 20px; margin-left: 0px; border-bottom: none;" type="text" [value]="username" readonly>
                 </a>
               </li>
 

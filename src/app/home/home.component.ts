@@ -4,7 +4,7 @@ import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/fo
 import { HomeService } from "./home.service";
 import { Subscription } from 'rxjs/Subscription';
 import { Http, Response, Headers } from '@angular/http';
-import { applyRedirects } from "@angular/router/src/apply_redirects";
+// import { applyRedirects } from "@angular/router/src/apply_redirects";
 import { Router } from "@angular/router";
 
 import { Config } from "../Config";
