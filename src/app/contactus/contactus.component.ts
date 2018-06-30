@@ -26,7 +26,7 @@ const PHONE_REGEX = /^[0-9]+$/;
 })
 export class ContactusComponent implements OnInit {
 //  date = new Date(1992, 3, 15);
-today: number = Date.now();
+today = Date.now();
   state;
   city;
   username;
@@ -67,6 +67,7 @@ today: number = Date.now();
 
 
   ngOnInit() {
+    // today = Date.now();
     this.signupForm = this.fb.group({
       //['', Validators.compose([Validators.required])],
       'name': ['', Validators.compose([Validators.requiredTrue])],

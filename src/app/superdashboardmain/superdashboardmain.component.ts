@@ -22,14 +22,22 @@ import { DataService } from '../data.service';
 })
 export class SuperdashboardmainComponent implements OnInit {
 
+  results: any = [];
   data: any = [];
+  name;
+  email;
+  subject;
+  // <a>{{item.name}}</a>
+                      // </h4>
+                      // <p>{{item.email}}</p>
+                      // <p>{{item.subject}}</p>
   constructor(private https: Http, public router: Router, private fb: FormBuilder, private http: HttpClient,
     private route: ActivatedRoute, private sg: SimpleGlobal,
     private dialog: MatDialog, private dataa: DataService) {
   }
 
   ngOnInit() {
-    //this.fetchregister();
+  this.fetchregister();
     //this.fetchcompany();
     //this.fetchinactiveproducts();
    // this.fetchactiveproducts();
@@ -41,26 +49,15 @@ export class SuperdashboardmainComponent implements OnInit {
   fetchregister() {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    this.https.get('http://192.168.29.193:9000/choice/totalusers/', { headers: headers })
+    this.https.get('http://192.168.30.253:9000/choice/countuserproductsrep/', { headers: headers })
 
       .subscribe(Res => {
-        this.data = Res.json();
-        console.log(this.data);
+        this.results = Res.json();
+        console.log(this.results);
       });
 
   }
-  item;
-  fetchcompany() {
-    let headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    this.https.get('http://192.168.29.193:9000/choice/companytitle/', { headers: headers })
-
-      .subscribe(Res => {
-        this.item = Res.json();
-        console.log(this.item);
-      });
-
-  }
+   
   contact;
   fetchcontact() {
     // alert (this.data);
@@ -89,28 +86,5 @@ export class SuperdashboardmainComponent implements OnInit {
       });
 
   }
-  inactive;
-  fetchinactiveproducts() {
-    let headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    this.https.get( 'http://192.168.29.193:9000/choice/totalinactive/', { headers: headers })
-
-      .subscribe(Res => {
-        this.inactive = Res.json();
-        console.log(this.inactive);
-      });
-
-  }
-  active;
-  fetchactiveproducts() {
-    let headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    this.https.get( 'http://192.168.29.193:9000/choice/totalactive/', { headers: headers })
-
-      .subscribe(Res => {
-        this.active = Res.json();
-        console.log(this.active);
-      });
-
-  }
+   
 }
