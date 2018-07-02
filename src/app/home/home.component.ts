@@ -107,6 +107,7 @@ export class HomeComponent implements OnInit {
     }
     onKeydown(event) {
       if (event.key === "Enter") {
+        this.router.navigate(['/products/' + this.zipCode]);
         console.log(event);
         // this.Checkzipcode();
       }
