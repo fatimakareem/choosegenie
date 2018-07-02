@@ -25,7 +25,7 @@ public username;
     }
   searchProducts1(id,page) {
     console.log(id)
-   return this.http.get('http://192.168.30.193:9000/choice/deregulated/' + id +'?page='+page +'').map((response: Response) => response.json());
+   return this.http.get(Config.api+'deregulated/' + id +'?page='+page +'').map((response: Response) => response.json());
   }
   inactiveproduct(title,page){
     console.log(title)

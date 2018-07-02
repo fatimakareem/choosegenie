@@ -138,6 +138,9 @@ export class HomeComponent implements OnInit {
     else if(this.zipcodeexist =="Valid Zipcode"){
       this.router.navigate(['/products/' + this.zipCode]);
 }
+else{
+  this.router.navigate(['/product/' + this.zipCode]);
+}
           },
             error => {
               console.log(error);

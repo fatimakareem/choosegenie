@@ -17,6 +17,7 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #cc0000;
 }
+
 .nav-home ul, .interest-area ul, .pw-solutions ul, .choose-criteria ul, .in-your-area a .overlay ul, .sidebar-user ul, .list-normal {
   padding: 0;
   margin: 0;
@@ -674,13 +675,17 @@ background: goldenrod;
     color: #e53935; }
 
 .sidebar-user {
-  padding: 10px 10px 20px;
-  color: #212121; }
+  /*padding: 10px 10px 20px;*/
+  color: #212121;
+  position: fixed !important;
+  overflow-y: scroll;
+  height: 700px;
+}
   .sidebar-user h5 {
     padding: 0px;
     margin: 0;
     font-weight: 600 !important;
-    font-size: 23px;
+    font-size: 19px;
   }
   .sidebar-user ul li {
     display: block;
@@ -716,6 +721,7 @@ background: goldenrod;
   }
   .checkbox-font{
     font-size: 18px !important;
+    color: #000000 !important;
   }
   .sidebar.custom .logo {
     padding: 10px; }
@@ -1478,7 +1484,7 @@ h3 {
   width: 47px;
   border-radius: 100%;
   background: #cc0000 !important;
-  top: 39%;
+  top: 34%;
   left: -4.5%;
   z-index: 1;
   position: absolute;
@@ -1495,7 +1501,7 @@ h3 {
   width: 47px;
   border-radius: 100%;
   background: #cc0000 !important;
-  top: 39%;
+  top: 34%;
   right: -4%;
   z-index: 1;
   position: absolute;
@@ -3309,7 +3315,7 @@ h1, .entry-title-2 {
   text-align: center;
 }
 .content-row {
-  padding: 40px 0;
+  padding: 28px 0;
   width: 100%;
 
 }
@@ -3610,7 +3616,7 @@ h1, .entry-title-2 {
   font-weight: 700 !important;
   text-shadow: 0px 6px 10px #aeaeae;
   color: #414142;
-  margin: 30px 0 46px !important;
+  margin: 0px 0 24px !important;
 }
 .title-02 span {
   font-weight: 500;
@@ -3643,7 +3649,7 @@ h1, .entry-title-2 {
   color: #cc0000;
 }
 .texas-inline{
-  padding: 0px 20px 50px 20px;
+  padding: 0px 20px 23px 20px;
 }
 .texas-sub-heading{
   font-size: 22px;
@@ -4275,7 +4281,7 @@ footer p a:hover { color:#333; border-bottom-color: #333; }
   padding: 0 !important;
   text-align: right;
   height: 34px !important;
-  width:65px  !important;
+  width:51px  !important;
   font-family: FontAwesome, 'Roboto';
   font-size: 26px;
   border: solid 1px #bfbcbc !important;
@@ -4940,17 +4946,29 @@ background: linear-gradient(to bottom, #ededed 0%,#c1bfbf 100%); /* W3C, IE10+, 
 .play-store-inner h4{
   font-size: 30px;
   line-height: 50px;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
 }
 
 .play-store-inner span{
   font-size: 50px;
   color: #c00;
 }
-
+.play-store-img{
+  margin: 0px;
+}
 .play-store-img li{
   display: inline-block;
   padding-right: 10px;
   margin-bottom: 0px;
+  padding: 0px;
+}
+
+.play-store-img li a img{
+  width: 27%;
+}
+.apple-button{
+  height: 81px;
 }
 
 /*End Home*/
@@ -5228,7 +5246,7 @@ background: linear-gradient(to bottom, #eaeaea 0%,#c6c6c6 50%,#999a9b 100%); /* 
   padding-left: 29px !important;
 }
 .sidebar-serch-btn{
-  font-size: 17px !important;
+  font-size: 12px !important;
   border-radius: 50px !important;
 }
 .sidebar-serch-btn i{
@@ -5239,6 +5257,7 @@ background: linear-gradient(to bottom, #eaeaea 0%,#c6c6c6 50%,#999a9b 100%); /* 
   background: #444 !important;
   box-shadow: none !important;
   transition: 1s;
+  text-transform: capitalize;
 }
 
 .mat-option.mat-selected:hover {
@@ -5539,7 +5558,7 @@ background: linear-gradient(to bottom, #eaeaea 0%,#c6c6c6 50%,#999a9b 100%); /* 
     min-height: 366px;
   } */
   .home-columns .home-column-title{
-    font-size: 17px;
+    font-size: 24px;
   }
 }
 
@@ -5563,6 +5582,9 @@ background: linear-gradient(to bottom, #eaeaea 0%,#c6c6c6 50%,#999a9b 100%); /* 
   }
   .choice-saving  h2{
     font-size: 32px;
+  }
+  .apple-button {
+    height: 61px;
   }
 }
 @media (max-width: 425px) {
@@ -5678,6 +5700,14 @@ background: linear-gradient(to bottom, #eaeaea 0%,#c6c6c6 50%,#999a9b 100%); /* 
 }
 @media (max-width: 426px) {
   /* Small devices (425px and down) */
+  .apple-button{
+    height: 68px;
+    display: block;
+    margin: 0 auto;
+  }
+  .play-store-img li a img{
+    width: 47%;
+  }
   .search-bg__title{
     top: 88px;
   }

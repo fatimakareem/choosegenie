@@ -369,13 +369,13 @@ export class ProductComponent implements OnInit {
 
           this.sg['products'] = response['Results'];
 
-          for (let prod of this.sg['products']) {
-              //console.log(prod["plan_information"])
-              //console.log(prod["price_rate"])
-              prod["plan_information"] = prod["plan_information"].split(',,', 3000);
-              prod["price_rate"] = prod["price_rate"].split('..', 3000);
+        //   for (let prod of this.sg['products']) {
+        //       //console.log(prod["plan_information"])
+        //       //console.log(prod["price_rate"])
+        //       prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+        //       prod["price_rate"] = prod["price_rate"].split('..', 3000);
 
-          }
+        //   }
 
        this.data.changeProducts(this.sg['products']);
           this.prod_loaded = true;
