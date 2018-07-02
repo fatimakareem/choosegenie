@@ -17,7 +17,6 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #cc0000;
 }
-
 .nav-home ul, .interest-area ul, .pw-solutions ul, .choose-criteria ul, .in-your-area a .overlay ul, .sidebar-user ul, .list-normal {
   padding: 0;
   margin: 0;
