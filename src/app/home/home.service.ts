@@ -14,14 +14,8 @@ public username;
 
   searchProducts(id,page) {
     console.log(id)
-    let url;
-    if(localStorage.getItem('PRO')){
-      // url =  'multifilter/' + id +'?page='+page
-      url = 'zipcodedata/' + id +'?page='+page
-    }else{
-      url = 'zipcodedata/' + id +'?page='+page
-    }
-   return this.http.get(Config.api+url).map((response: Response) => response.json());
+   
+   return this.http.get(Config.api+'zipcodedata/' + id +'?page='+page).map((response: Response) => response.json());
     }
   searchProducts1(id,page) {
     console.log(id)

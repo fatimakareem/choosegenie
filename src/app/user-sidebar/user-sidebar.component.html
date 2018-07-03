@@ -311,7 +311,7 @@
             </a>
           </div>
           <mat-form-field class="margin-up">
-            <mat-select placeholder="10 PER PAGE" selected="10" (change)="fetchitem(items,1)" required [(ngModel)]="items" name="items">
+            <mat-select placeholder="10 PER PAGE" selected="10" (change)="fetchitem(items)" required [(ngModel)]="items" name="items">
               <mat-option value="10" selected="true">10 PER PAGE</mat-option>
               <mat-option value="20">20 PER PAGE</mat-option>
               <mat-option value="40">40 PER PAGE</mat-option>
@@ -322,7 +322,7 @@
         </li>
         <li>
           <div class="text-center">
-            <button type="button" class="btn btn-rose sidebar-serch-btn" (click)="search()" style="margin: 0px; text-transform: capitalize;">
+            <button type="button" class="btn btn-rose sidebar-serch-btn" (click)="search(1)" style="margin: 0px; text-transform: capitalize;">
               Refresh Result
               <!-- <i class="material-icons" title="Use these filters to set your preferences. Get rid of the plans you don’t want to see and only show those that fit your needs.">search</i> -->
             </button>
