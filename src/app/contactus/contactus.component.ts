@@ -27,6 +27,7 @@ const PHONE_REGEX = /^[0-9]+$/;
 export class ContactusComponent implements OnInit {
 //  date = new Date(1992, 3, 15);
 today = Date.now();
+date;
   state;
   city;
   username;
@@ -36,10 +37,10 @@ today = Date.now();
   model: any = {};
   normalPattern = '[a-zA-Z0-9_.-]+?';
   digitsOnly = '^[0-9,-]+$';
-  email = '^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$';
+  // email = '^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$';
 
   flag = true;
-  date = new FormControl(new Date());
+  // date = new FormControl(new Date());
 
   emailexist: boolean = false;
   usernameFormControl = new FormControl('', [
@@ -68,6 +69,7 @@ today = Date.now();
 
   ngOnInit() {
     // today = Date.now();
+    
     this.signupForm = this.fb.group({
       //['', Validators.compose([Validators.required])],
       'name': ['', Validators.compose([Validators.requiredTrue])],
@@ -75,12 +77,13 @@ today = Date.now();
       'msg': ['', Validators.compose([Validators.required])],
       'email': ['', Validators.compose([Validators.required])],
       'subject':['', Validators.compose([Validators.required])],
-      'date':['', Validators.compose([Validators.required])]
+      // 'date':['', Validators.compose([Validators.required])]
 
       // 'Phone': ['', Validators.compose([Validators.required, Validators.pattern(this.digitsOnly)])],
       // 'country': ['', Validators.compose([Validators.required, Validators.pattern(this.normalPattern)])],
 
     });
+    // this.date=Date.now();
   }
 
   onChange(e) {
@@ -90,10 +93,10 @@ today = Date.now();
     console.log(this.model)
   }
 
-  name;
-  mobno;
-  msg;
-  subject;
+  // name;
+  // mobno;
+  // msg;
+  // subject;
 //   cleardata(){
    
 //  this.model.name= null;
@@ -104,46 +107,54 @@ today = Date.now();
 
 
 //   }
-  Contactuserdata() {
-    console.log("CHOICE GENIE", this.model);
+onSubmit(f) {
+  f.resetForm();
+}
+Contactuserdata(name,mobno,email,msg,date,subject) {
+  console.log(name,mobno,email,msg,date,subject);
+  let headers = new HttpHeaders();
+  headers.append('Content-Type', 'application/json');    
+  this.http.post(Config.api+'contactus/', {
+    "name": name,
+    "mobno":mobno,
+    "email":email,
+    "msg":msg,
+    "date":date,
+    "subject":subject
 
-    let headers = new HttpHeaders();
-    headers.append('Content-Type', 'application/json');
-    // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-    this.http.post(Config.api+'contactus/', this.model, { headers: headers })
+  }, { headers: headers })
+    .subscribe(Res => {
+      console.log(Res);
+      console.log(this.model);
+      swal({
+      text: "Thank you for Successflluy Contact Us ",
+      title: "Choice Genie",
+      type: "success",
+      showConfirmButton: false,
+      timer: 1200,
+      confirmButtonText: "OK",
 
+      })
+      console.log(this.model);
 
-      .subscribe(Res => {
-        console.log(Res);
-        console.log(this.model);
-        swal({
-          text: "Thank you for Successflluy Contact Us !",
-          title: "Choice Genie",
-          type: "success",
-          showConfirmButton: false,
-          timer: 1200,
-          confirmButtonText: "OK",
+    },
 
-        })
-     //   this.name.clear();
+      error => {
+        console.log(error);
   
-        //this.router.navigate(['/pages/login'])
-      },
-      
-        error => {
-          console.log(error);
-          //  this.toastr.error(error, null, {toastLife: 5000});
-          swal(
-            'Invalid',
-            'Please Try Again!',
-            'error'
-          )
-
-        });
+        swal(
+        'Invalid',
+        'Please Try Again!',
+        'error'
+        )
+    
+      });
 
 
 
-  }
+
+
+   }
 
 
 }

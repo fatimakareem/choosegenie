@@ -5,12 +5,12 @@
       <ul>
         <li style="margin-bottom: 0px">
           <!-- <div class="panel-title">
-          <a>
-          <h5>Enter Zip Code
-          <i class="fa fa-info-circle float" aria-hidden="true" title="Enter zipcode."></i>
-          </h5>
-          </a>
-          </div> -->
+  <a>
+  <h5>Enter Zip Code
+  <i class="fa fa-info-circle float" aria-hidden="true" title="Enter zipcode."></i>
+  </h5>
+  </a>
+  </div> -->
           <div class="form-group label-floating custom-style">
 
             <b>
@@ -29,21 +29,21 @@
         </li>
 
         <!-- <li>
-        <div class="panel-title">
-        <a>
-        <h5>Enter Zip Code &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <i class="fa fa-info-circle" aria-hidden="true" title="Enter zipcode."></i>
-        </h5>
-        </a>
-        </div>
-        <div class="form-group label-floating">
-
-        <b>
-        <input type="text" class="form-control" [(ngModel)]="zip_code" name="zipcode" style="font-size: 20px">
-        </b>
-        </div>
-
-        </li> -->
+  <div class="panel-title">
+  <a>
+  <h5>Enter Zip Code &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <i class="fa fa-info-circle" aria-hidden="true" title="Enter zipcode."></i>
+  </h5>
+  </a>
+  </div>
+  <div class="form-group label-floating">
+  
+  <b>
+  <input type="text" class="form-control" [(ngModel)]="zip_code" name="zipcode" style="font-size: 20px">
+  </b>
+  </div>
+  
+  </li> -->
 
 
         <li style="margin-bottom: 0px;">
@@ -80,14 +80,14 @@
 
           <div class="pric-range-box">
             <span>¢</span>
-            <input type="text" class="ng-valid ng-dirty ng-touched" required name="min" [(ngModel)]="min"
-                   style="font-size: 20px;border-radius: 5px;">
+            <input type="text" class="ng-valid ng-dirty ng-touched" required name="min" [(ngModel)]="min" style="font-size: 20px;border-radius: 5px;">
             <span>to</span>
             <span>¢</span>
-            <input type="text" class="ng-valid ng-dirty ng-touched" required name="max" [(ngModel)]="max"
-                   style="font-size:20px;border-radius: 5px;">
+            <input type="text" class="ng-valid ng-dirty ng-touched" required name="max" [(ngModel)]="max" style="font-size:20px;border-radius: 5px;">
 
-            <button class="price-range-submit btn-fill" (click)="pricerate(min,max,price)"> <i class="fa fa-chevron-right" style="color: #ffffff"></i> </button>
+            <button class="price-range-submit btn-fill" (click)="pricerate(min,max,price)">
+              <i class="fa fa-chevron-right" style="color: #ffffff"></i>
+            </button>
 
           </div>
           <hr style="margin-top: 20px !important; background: #000000">
@@ -171,7 +171,7 @@
           </div>
           <div class="radio">
             <label class="checkbox-font">
-              <input type="radio" name="showallplans" id="chckbx" >Show All Plans
+              <input type="radio" name="showallplans" id="chckbx">Show All Plans
             </label>
           </div>
 
@@ -290,7 +290,7 @@
           <!-- <span class="left"></span> -->
           <mat-form-field class="margin-up">
 
-            <mat-select placeholder="Company"(ngModelChange)="checked17($event,i,name)" required [(ngModel)]="name" name="name">
+            <mat-select placeholder="Company" (ngModelChange)="checked17($event,i,name)" required [(ngModel)]="name" name="name">
 
               <mat-option *ngFor="let data of title" [value]="data.title">
                 {{data.title}}
@@ -331,9 +331,9 @@
           </div>
         </li>
         <!-- <li>
-        <h5>Ranging from</h5>
-        <mat-slider thumbLabel min="0" max="100" step="5" value="0"></mat-slider>
-        </li> -->
+  <h5>Ranging from</h5>
+  <mat-slider thumbLabel min="0" max="100" step="5" value="0"></mat-slider>
+  </li> -->
       </ul>
     </nav>
   </div>
@@ -389,12 +389,12 @@
 
                 <ul class="col-lg-3 col-md-3 col-sm-12 pagination" *ngIf="pager.pages && pager.pages.length">
                   <!-- <li [ngClass]="{hide:pager.currentPage === 1}">
-                  <a (click)="setPage(1)" class="view-plan-details">
-                  <i class="fa fa-angle-double-left"></i>
-                  </a>
-                  </li> -->
+  <a (click)="setPage(1)" class="view-plan-details">
+  <i class="fa fa-angle-double-left"></i>
+  </a>
+  </li> -->
                   <li [ngClass]="{hide:pager.currentPage === 1}">
-                    <a (click)="setPage(pager.currentPage - 1)" class="view-plan-details" class="btn btn-rose" >
+                    <a (click)="setPage(pager.currentPage - 1)" class="view-plan-details" class="btn btn-rose">
                       <i class="fa fa-angle-left"></i>
                     </a>
                   </li>
@@ -411,28 +411,29 @@
                   <!--    <a (click)="setPage(pager.totalPages)">{{pager.totalPages}}</a>-->
                   <!--</li>-->
                   <li *ngIf="(pager.totalPages - pager.startPage) > 3 ">
-                    <a (click)="setPage(pager.startPage + 3)" >...</a>
+                    <a (click)="setPage(pager.startPage + 3)">...</a>
                   </li>
                   <!-- <li *ngIf="(pager.totalPages - pager.startPage) > 3" >
-                  <a (click)="setPage(pager.totalPages)" class="view-plan-details">{{pager.totalPages}}</a>
-                  </li> -->
+  <a (click)="setPage(pager.totalPages)" class="view-plan-details">{{pager.totalPages}}</a>
+  </li> -->
                   <li [ngClass]="{hide:pager.currentPage === pager.totalPages}">
-                    <a (click)="setPage(pager.currentPage + 1)" class="view-plan-details" class="btn btn-rose"type="Next">
+                    <a (click)="setPage(pager.currentPage + 1)" class="view-plan-details" class="btn btn-rose" type="Next">
                       <i class="fa fa-angle-right"></i>
                     </a>
                   </li>
                   <!-- <li [ngClass]="{hide:pager.currentPage === pager.totalPages}">
-                  <a (click)="setPage(pager.totalPages)" class="view-plan-details" type="Last">
-                  <i class="fa fa-angle-double-right"></i>
-                  </a>
-                  </li> -->
+  <a (click)="setPage(pager.totalPages)" class="view-plan-details" type="Last">
+  <i class="fa fa-angle-double-right"></i>
+  </a>
+  </li> -->
                 </ul>
 
                 <div class="col-md-2 col-sm-4 col-xs-12 prod-select-list sec-list">
                   <label class="product-label" style="margin: 9px 10px 0px 0px;">View:</label>
                   <mat-form-field>
 
-                    <mat-select class="width-sec" placeholder="" selected="10" (change)="checked18($event,i,items)" required [(ngModel)]="items" name="items">
+                    <mat-select class="width-sec" placeholder="" selected="10" (change)="checked18($event,i,items)" required [(ngModel)]="items"
+                      name="items">
                       <mat-option value="10" selected="true">10 PER PAGE</mat-option>
                       <mat-option value="20">20 PER PAGE</mat-option>
                       <mat-option value="40">40 PER PAGE</mat-option>
@@ -453,7 +454,7 @@
                   <!-- <button id="cmd">Generate PDF</button> -->
                 </div>
                 <!-- <a target="_blank"   onclick="window.print();" class="print-grid-temp" title="Print plan results">
-                <img alt="print" src="/Content/images/printer.png" width="16" height="16"></a> -->
+  <img alt="print" src="/Content/images/printer.png" width="16" height="16"></a> -->
 
               </div>
 
@@ -468,13 +469,14 @@
         <div class="autoplay">
           <div class="mustafa" style="width:1100px;margin:0px 10px; border-radius:20px" *ngFor="let data of sg['plan']; let i = index">
             <div class="prod-slide">
-              <img src="{{data.profile_logo}}" alt="{{data.title}}" alt="Card image cap" style="width: 90%; height: 85px; margin: 0 auto;" />
+              <img src="{{data.profile_logo}}" alt="{{data.title}}" alt="Card image cap" style="width: 90%; height: 85px; margin: 0 auto;"
+              />
 
               <h2 class="view-plan-details" (click)="btnEditClick(data.id,data.title,data.sign_up,data.phone,data.terms_of_service,data.fact_sheet,data.cancelation_fee,data.price_1000_kwh,data.price_500_kwh,data.price_2000_kwh,data.plan_information,data.rating_logo,data.profile_logo,data.profileurl); getreview(data.id); avereview(data.id)"
-                  data-toggle="modal" data-target="#myModal2">Plan Information
+                data-toggle="modal" data-target="#myModal2">Plan Information
               </h2>
               <h2 class="view-plan-details" (click)="btnDeleteClick(data.id,data.title,data.profileurl,data.profile_logo)" data-toggle="modal"
-                  data-target="#myModal3"> Leave a Review
+                data-target="#myModal3"> Leave a Review
               </h2>
             </div>
 
@@ -511,7 +513,7 @@
                   <a href="{{data.profileurl}}" target="_blank" class="display-b margin-top">
 
                     <img src="{{data.profile_logo}}" alt="{{data.title}}" style="width: 90%;
-height: 85px;" />
+  height: 85px;" />
                   </a>
                   <img src="{{data.rating_logo}}" alt="{{data.title}}" class="rating-stars" />
 
@@ -525,7 +527,7 @@ height: 85px;" />
 
 
                     <label class="view-plan-details" style="padding-bottom: 0px; margin-bottom: 0px;" (click)="btnDeleteClick(data.id,data.title,data.profileurl,data.profile_logo)"
-                           data-toggle="modal" data-target="#myModal3"> Leave a Review
+                      data-toggle="modal" data-target="#myModal3"> Leave a Review
                     </label>
                   </a>
                   <div class="modal fade" id="myModal3" role="dialog">
@@ -534,14 +536,14 @@ height: 85px;" />
                       <!-- Modal content-->
                       <div class="modal-content popupmodel">
                         <!-- <div class="modal-header">
-
-
-                        </div> -->
+  
+  
+  </div> -->
                         <div class="modal-body" style="font-size: 18px;
-background: #ffffff;
-padding: 20px;
-margin: 15px;
-position: relative;">
+  background: #ffffff;
+  padding: 20px;
+  margin: 15px;
+  position: relative;">
                           <div class="popup-close-button" data-dismiss="modal">X</div>
                           <div class="row">
                             <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 " style="border-bottom: 1px #4f4f4f solid;">
@@ -558,8 +560,8 @@ position: relative;">
                             <div>
 
                               <h4 class="modal-title" style="text-align: center;
-
-font-size: 30px;">Based on what you've seen so far, how would you rate this Product?</h4>
+  
+  font-size: 30px;">Based on what you've seen so far, how would you rate this Product?</h4>
                               <fieldset class="ratingq move-to-center" style="padding-left:3.5in">
                                 <input type="radio" id="star5q" name="rating" value="5" (click)="get(5)" />
                                 <label class="full" for="star5q" title="Awesome - 5 stars"></label>
@@ -586,16 +588,16 @@ font-size: 30px;">Based on what you've seen so far, how would you rate this Prod
                             </div>
                             <div class="modal-title" style="text-align: center;padding-left:3in">
                               <h3 style="
-
-font-size: 30px;">Why Did You Leaving This Review?</h3>
+  
+  font-size: 30px;">Why Did You Leaving This Review?</h3>
                             </div>
                             <br>
                             <br>
                             <mat-form-field>
-<textarea matInput placeholder="Share your Opinion about the quality of this product." matAutosizeMinRows="10" matAutosizeMaxRows="5"
-          style="height: 40px !important;width:920px !important;" name="comt" [(ngModel)]="comt">
-
-</textarea>
+                              <textarea matInput placeholder="Share your Opinion about the quality of this product." matAutosizeMinRows="10" matAutosizeMaxRows="5"
+                                style="height: 40px !important;width:920px !important;" name="comt" [(ngModel)]="comt">
+  
+  </textarea>
 
                             </mat-form-field>
 
@@ -606,18 +608,17 @@ font-size: 30px;">Why Did You Leaving This Review?</h3>
                         <div class="modal-footer">
 
                           <button type="button" class="btn btn-rose" data-dismiss="modal" style="
-color: white;
-
-width: 20%;
-height: 45px;
-font-size: 18px;">Cancel</button>
+  color: white;
+  
+  width: 20%;
+  height: 45px;
+  font-size: 18px;">Cancel</button>
                           <button type="button" style="
-color: white;
-
-width: 20%;
-height: 45px;
-font-size: 18px;" class="btn btn-rose" (click)="reviews(rating,comt,id)"
-                                  data-dismiss="modal">Done</button>
+  color: white;
+  
+  width: 20%;
+  height: 45px;
+  font-size: 18px;" class="btn btn-rose" (click)="reviews(rating,comt,id)" data-dismiss="modal">Done</button>
 
                         </div>
                       </div>
@@ -650,7 +651,7 @@ font-size: 18px;" class="btn btn-rose" (click)="reviews(rating,comt,id)"
                   </div>
                   <a>
                     <label class="view-plan-details" (click)="btnEditClick(data.id,data.title,data.sign_up,data.phone,data.terms_of_service,data.fact_sheet,data.cancelation_fee,data.price_1000_kwh,data.price_500_kwh,data.price_2000_kwh,data.plan_information,data.rating_logo,data.profile_logo,data.profileurl); getreview(data.id); avereview(data.id)"
-                           data-toggle="modal" data-target="#myModal2" style=" padding-bottom: 0px; margin-bottom: 0px;">Plan Information</label>
+                      data-toggle="modal" data-target="#myModal2" style=" padding-bottom: 0px; margin-bottom: 0px;">Plan Information</label>
                   </a>
                 </div>
 
@@ -699,16 +700,16 @@ font-size: 18px;" class="btn btn-rose" (click)="reviews(rating,comt,id)"
 
                 </div>
                 <!-- <div class="col-md-3 col-sm-3 col-xs-7 term top-margin-25">
-                (click)="signUp(data.product_id)"
-
-
-
-                </div> -->
+  (click)="signUp(data.product_id)"
+  
+  
+  
+  </div> -->
                 <div class="col-sm-12">
                   <!-- <a href="#p-pane-{{i}}" class="view-more collapsed" data-toggle="collapse">
-                  View more
-                  <i class="material-icons">arrow_drop_down</i>
-                  </a> -->
+  View more
+  <i class="material-icons">arrow_drop_down</i>
+  </a> -->
                 </div>
               </div>
             </div>
@@ -720,10 +721,10 @@ font-size: 18px;" class="btn btn-rose" (click)="reviews(rating,comt,id)"
               <div class="modal-content popupmodel">
 
                 <div class="modal-body" style="font-size: 18px;
-background: #ffffff;
-padding: 20px;
-margin: 15px;
-position: relative;">
+  background: #ffffff;
+  padding: 20px;
+  margin: 15px;
+  position: relative;">
                   <div class="popup-close-button" data-dismiss="modal">X</div>
                   <div class="row">
                     <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 " style="border-bottom: 1px #4f4f4f solid;">
@@ -741,39 +742,39 @@ position: relative;">
                       <div class="plan-information__heading">Price Rate</div>
                       <table>
                         <tbody>
-                        <tr class="plan-information__row">
-                          <td class="plan-information__cell">price 1000 kwh</td>
-                          <td class="plan-information__cell plan-information__cell--last ">{{price_1000_kwh}}¢</td>
-                        </tr>
-                        <tr class="plan-information__row">
-                          <td class="plan-information__cell">price 500 kwh</td>
-                          <td class="plan-information__cell plan-information__cell--last ">{{price_500_kwh}}¢</td>
-                        </tr>
-                        <tr class="plan-information__row">
-                          <td class="plan-information__cell">price 2000 kwh</td>
-                          <td class="plan-information__cell plan-information__cell--last ">{{price_2000_kwh}}¢</td>
-                        </tr>
+                          <tr class="plan-information__row">
+                            <td class="plan-information__cell">price 1000 kwh</td>
+                            <td class="plan-information__cell plan-information__cell--last ">{{price_1000_kwh}}¢</td>
+                          </tr>
+                          <tr class="plan-information__row">
+                            <td class="plan-information__cell">price 500 kwh</td>
+                            <td class="plan-information__cell plan-information__cell--last ">{{price_500_kwh}}¢</td>
+                          </tr>
+                          <tr class="plan-information__row">
+                            <td class="plan-information__cell">price 2000 kwh</td>
+                            <td class="plan-information__cell plan-information__cell--last ">{{price_2000_kwh}}¢</td>
+                          </tr>
                         </tbody>
                       </table>
                       <table>
                         <tbody>
 
 
-                        <tr class="plan-information__row plan-information__row--last">
-                          <td class="plan-information__cell">Documents</td>
-                          <td class="plan-information__cell plan-information__cell--last">
-                            <a style="color:rgba(0,0,0, 0.87)" href="{{fact_sheet}}" target="_blank">
-                              <i style="color:#25B7D3" class="material-icons">picture_as_pdf</i>
-                              <a>Fact Sheet</a>
-                              <br>
-                            </a>
-                            <a style="color:rgba(0,0,0, 0.87)" href="{{terms_of_service}}" target="_blank">
-                              <i style="color:#25B7D3" class="material-icons">picture_as_pdf</i>
-                              Terms of service
-                            </a>
+                          <tr class="plan-information__row plan-information__row--last">
+                            <td class="plan-information__cell">Documents</td>
+                            <td class="plan-information__cell plan-information__cell--last">
+                              <a style="color:rgba(0,0,0, 0.87)" href="{{fact_sheet}}" target="_blank">
+                                <i style="color:#25B7D3" class="material-icons">picture_as_pdf</i>
+                                <a>Fact Sheet</a>
+                                <br>
+                              </a>
+                              <a style="color:rgba(0,0,0, 0.87)" href="{{terms_of_service}}" target="_blank">
+                                <i style="color:#25B7D3" class="material-icons">picture_as_pdf</i>
+                                Terms of service
+                              </a>
 
-                          </td>
-                        </tr>
+                            </td>
+                          </tr>
                         </tbody>
                       </table>
                       <div class="plan-description">
@@ -813,9 +814,9 @@ position: relative;">
                     <button class="btn btn-fill">Signup Now</button>
                   </a>
                   <div style="display:inline-block; padding:24px;">
-<span style="font-size:24px; font-weight:600px">OR CALL
-<b> {{phone}} </b>
-</span>
+                    <span style="font-size:24px; font-weight:600px">OR CALL
+                      <b> {{phone}} </b>
+                    </span>
                   </div>
                 </div>
               </div>
@@ -826,15 +827,15 @@ position: relative;">
           </div>
         </div>
         <span>
-<ng-template #no_data_templ>
+          <ng-template #no_data_templ>
 
-<!-- <img src="../../assets/img/no_Record.png" style="width: 250px;height:200px" > -->
-<h1 style="height:1000px;width:1000px;padding:200px">
+            <!-- <img src="../../assets/img/no_Record.png" style="width: 250px;height:200px" > -->
+            <h1 style="height:1000px;width:1000px;padding:200px">
 
-<!-- <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;No Record Found</b> -->
-</h1>
-</ng-template>
-</span>
+              <!-- <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;No Record Found</b> -->
+            </h1>
+          </ng-template>
+        </span>
 
       </div>
     </div>
@@ -844,63 +845,63 @@ position: relative;">
     <div class="text-center">
 
       <!-- <div *ngFor="let item of pagedItems">{{item.name}}</div>
-
-
-      <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
-      <li [ngClass]="{hide:pager.currentPage === 1}">
-      <a (click)="setPage(1)" class="btn btn-rose">First</a>
-      </li>
-      <li [ngClass]="{hide:pager.currentPage === 1}">
-      <a (click)="setPage(pager.currentPage - 1)" class="btn btn-rose">Previous</a>
-      </li>
-      <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
-      <a (click)="setPage(page)" class="btn btn-rose">{{page}}</a>
-      </li>
-      <li [ngClass]="{hide:pager.currentPage === pager.totalPages}">
-      <a (click)="setPage(pager.currentPage + 1)" class="btn btn-rose" type="Next">Next</a>
-      </li>
-      <li [ngClass]="{hide:pager.currentPage === pager.totalPages}">
-      <a (click)="setPage(pager.totalPages)" class="btn btn-rose" type="Last">Last</a>
-      </li>
-      </ul> -->
+  
+  
+  <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+  <li [ngClass]="{hide:pager.currentPage === 1}">
+  <a (click)="setPage(1)" class="btn btn-rose">First</a>
+  </li>
+  <li [ngClass]="{hide:pager.currentPage === 1}">
+  <a (click)="setPage(pager.currentPage - 1)" class="btn btn-rose">Previous</a>
+  </li>
+  <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+  <a (click)="setPage(page)" class="btn btn-rose">{{page}}</a>
+  </li>
+  <li [ngClass]="{hide:pager.currentPage === pager.totalPages}">
+  <a (click)="setPage(pager.currentPage + 1)" class="btn btn-rose" type="Next">Next</a>
+  </li>
+  <li [ngClass]="{hide:pager.currentPage === pager.totalPages}">
+  <a (click)="setPage(pager.totalPages)" class="btn btn-rose" type="Last">Last</a>
+  </li>
+  </ul> -->
       <div *ngFor="let item of pagedItems">{{item.name}}</div>
 
       <!-- pager -->
       <!-- <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
-      <li [ngClass]="{hide:pager.currentPage === 1}">
-      <a (click)="setPage(1)" class="btn btn-rose">First</a>
-      </li>
-      <li [ngClass]="{hide:pager.currentPage === 1}">
-      <a (click)="setPage(pager.currentPage - 1)" class="btn btn-rose">Previous</a>
-      </li>
-      <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
-      <a (click)="setPage(page)" class="btn btn-rose">{{page}}</a>
-      </li>
-
-
-      <li *ngIf="(pager.totalPages - pager.startPage) > 5 ">
-      <a (click)="setPage(pager.startPage + 5)" >...</a>
-      </li>
-      <li *ngIf="(pager.totalPages - pager.startPage) > 5" >
-      <a (click)="setPage(pager.totalPages)" class="btn btn-rose">{{pager.totalPages}}</a>
-      </li>
-
-      <li [ngClass]="{hide:pager.currentPage === pager.totalPages}">
-      <a (click)="setPage(pager.currentPage + 1)" class="btn btn-rose">Next</a>
-      </li>
-      <li [ngClass]="{hide:pager.currentPage === pager.totalPages}">
-      <a (click)="setPage(pager.totalPages)" class="btn btn-rose">Last</a>
-      </li>
-      </ul> -->
+  <li [ngClass]="{hide:pager.currentPage === 1}">
+  <a (click)="setPage(1)" class="btn btn-rose">First</a>
+  </li>
+  <li [ngClass]="{hide:pager.currentPage === 1}">
+  <a (click)="setPage(pager.currentPage - 1)" class="btn btn-rose">Previous</a>
+  </li>
+  <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+  <a (click)="setPage(page)" class="btn btn-rose">{{page}}</a>
+  </li>
+  
+  
+  <li *ngIf="(pager.totalPages - pager.startPage) > 5 ">
+  <a (click)="setPage(pager.startPage + 5)" >...</a>
+  </li>
+  <li *ngIf="(pager.totalPages - pager.startPage) > 5" >
+  <a (click)="setPage(pager.totalPages)" class="btn btn-rose">{{pager.totalPages}}</a>
+  </li>
+  
+  <li [ngClass]="{hide:pager.currentPage === pager.totalPages}">
+  <a (click)="setPage(pager.currentPage + 1)" class="btn btn-rose">Next</a>
+  </li>
+  <li [ngClass]="{hide:pager.currentPage === pager.totalPages}">
+  <a (click)="setPage(pager.totalPages)" class="btn btn-rose">Last</a>
+  </li>
+  </ul> -->
 
       <ul class=" pagination" *ngIf="pager.pages && pager.pages.length">
         <!-- <li [ngClass]="{hide:pager.currentPage === 1}">
-        <a (click)="setPage(1)" class="view-plan-details">
-        <i class="fa fa-angle-double-left"></i>
-        </a>
-        </li> -->
+  <a (click)="setPage(1)" class="view-plan-details">
+  <i class="fa fa-angle-double-left"></i>
+  </a>
+  </li> -->
         <li [ngClass]="{hide:pager.currentPage === 1}">
-          <a (click)="setPage(pager.currentPage - 1)" class="view-plan-details" class="btn btn-rose" >
+          <a (click)="setPage(pager.currentPage - 1)" class="view-plan-details" class="btn btn-rose">
             <i class="fa fa-angle-left"></i>
           </a>
         </li>
@@ -917,21 +918,21 @@ position: relative;">
         <!--    <a (click)="setPage(pager.totalPages)">{{pager.totalPages}}</a>-->
         <!--</li>-->
         <li *ngIf="(pager.totalPages - pager.startPage) > 3 ">
-          <a (click)="setPage(pager.startPage + 3)" >...</a>
+          <a (click)="setPage(pager.startPage + 3)">...</a>
         </li>
         <!-- <li *ngIf="(pager.totalPages - pager.startPage) > 3" >
-        <a (click)="setPage(pager.totalPages)" class="view-plan-details">{{pager.totalPages}}</a>
-        </li> -->
+  <a (click)="setPage(pager.totalPages)" class="view-plan-details">{{pager.totalPages}}</a>
+  </li> -->
         <li [ngClass]="{hide:pager.currentPage === pager.totalPages}">
-          <a (click)="setPage(pager.currentPage + 1)" class="view-plan-details" class="btn btn-rose"type="Next">
+          <a (click)="setPage(pager.currentPage + 1)" class="view-plan-details" class="btn btn-rose" type="Next">
             <i class="fa fa-angle-right"></i>
           </a>
         </li>
         <!-- <li [ngClass]="{hide:pager.currentPage === pager.totalPages}">
-        <a (click)="setPage(pager.totalPages)" class="view-plan-details" type="Last">
-        <i class="fa fa-angle-double-right"></i>
-        </a>
-        </li> -->
+  <a (click)="setPage(pager.totalPages)" class="view-plan-details" type="Last">
+  <i class="fa fa-angle-double-right"></i>
+  </a>
+  </li> -->
       </ul>
 
     </div>

@@ -21,7 +21,7 @@
 
 
     <div class="card-content">
-      <h4 class="card-title card-title-fixed">Registration Form </h4>
+      <h4 class="card-title card-title-fixed"> Vendor Registration Form </h4>
       <ng-template matStepLabel>About</ng-template>
 
 
@@ -41,7 +41,7 @@
         <div class="col-sm-6">
           <div class="form-group margin">
             <mat-form-field>
-              <input matInput placeholder="Rep Name" [formControl]="signupForm.controls['repname']" #repname required [(ngModel)]="model.repname">
+              <input matInput placeholder="REP Name" [formControl]="signupForm.controls['repname']" #repname required [(ngModel)]="model.repname">
               <!-- <mat-error *ngIf="secondFormGroup.controls.lName.value == ''"><strong>Cannot be empty</strong></mat-error>
 <mat-error *ngIf="secondFormGroup.controls.lName.dirty && !secondFormGroup.controls.lName.value"> Special characters not allowed</mat-error> -->
             </mat-form-field>
@@ -51,7 +51,7 @@
         <div class="col-sm-6">
           <div class="form-group margin">
             <mat-form-field>
-              <input matInput placeholder="REP certificate #" [formControl]="signupForm.controls['repid']" #REP_certificate_id1 (ngModelChange)="Checkzipcode(REP_certificate_id1.value)" required [(ngModel)]="model.repid">
+              <input matInput placeholder="REP Certificate #" [formControl]="signupForm.controls['repid']" #REP_certificate_id1 (ngModelChange)="Checkzipcode(REP_certificate_id1.value)" required [(ngModel)]="model.repid">
               <!-- <mat-error *ngIf="secondFormGroup.controls.lName.value == ''"><strong>Cannot be empty</strong></mat-error>
 <mat-error *ngIf="secondFormGroup.controls.lName.dirty && !secondFormGroup.controls.lName.value"> Special characters not allowed</mat-error> -->
             </mat-form-field>
@@ -80,7 +80,7 @@
         <div class="col-sm-6">
           <div class="form-group margin">
             <mat-form-field>
-              <input matInput placeholder="Contact NO." [formControl]="signupForm.controls['contactphone']" required [(ngModel)]="model.contactphone">
+              <input matInput placeholder="Contact No." [formControl]="signupForm.controls['contactphone']" required [(ngModel)]="model.contactphone">
               
             </mat-form-field>
           </div>
@@ -188,7 +188,7 @@
         <div class="col-sm-6">
           <div class="form-group margin">
             <mat-form-field>
-              <input matInput placeholder="Confirm Password" type="password"[type]="hide ? 'password' : 'text'" [formControl]="signupForm.controls['confirmpassword']" [(ngModel)]="model.confirmpassword">
+              <input matInput placeholder="Confirm Password" type="password"[type]="hide ? 'password' : 'text'" [formControl]="signupForm.controls['confirmpassword']" [(ngModel)]="model.confirmpassword" required>
               <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
               <!-- <mat-error *ngIf="secondFormGroup.controls.Confirm_Password.dirty && !secondFormGroup.controls.Confirm_Password.value"> Special characters not allowed</mat-error> -->
               <mat-error *ngIf="(signupForm.controls.confirmpassword.value != signupForm.controls.password.value) || signupForm.controls.confirmpassword.value == ''"><strong>Password must match
@@ -198,7 +198,7 @@
         </div>
         
         <div class="col-lg-6 recaptcha-box">
-          <!-- <blackgeeks-recaptcha></blackgeeks-recaptcha> -->
+          <blackgeeks-recaptcha></blackgeeks-recaptcha>
         </div>
         
         <div class="col-lg-6 form-footer text-right">
