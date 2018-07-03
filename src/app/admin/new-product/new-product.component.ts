@@ -72,8 +72,8 @@ title;
       'cancelation_fee': ['', Validators.compose([Validators.required])],
     });
     this.thirdFormGroup = this.fb.group({
-      'fact_sheet': ['', Validators.compose([Validators.required, Validators.pattern(this.normalPattern)])],
-      'terms_of_service': ['', Validators.compose([Validators.required, Validators.pattern(this.normalPattern)])],
+     // 'fact_sheet': ['', Validators.compose([Validators.required, Validators.pattern(this.normalPattern)])],
+      //'terms_of_service': ['', Validators.compose([Validators.required, Validators.pattern(this.normalPattern)])],
       'phone': ['', Validators.compose([Validators.required])],
       'minimum_usage_fee': ['', Validators.compose([Validators.required])],
       'renewable': ['', Validators.compose([Validators.required, Validators.pattern(this.normalPattern)])],
@@ -120,9 +120,7 @@ console.log(this.tit)
     
     } 
 
-  onSubmit(f) {
-    f.resetForm();
-  }
+ 
   signupuserdata(utilityarea,title,profileurl,profile_logo,plan_information,price_rate,cancelation_fee,fact_sheet,terms_of_service,phone,sign_up,minimum_usage_fee,renewable,specialterms,price_1000_kwh,price_500_kwh,price_2000_kwh) {
     console.log(utilityarea,title,profileurl,profile_logo,plan_information,price_rate,cancelation_fee,fact_sheet,terms_of_service,phone,sign_up,minimum_usage_fee,renewable,specialterms,price_1000_kwh,price_500_kwh,price_2000_kwh);
     let headers = new HttpHeaders();
@@ -173,7 +171,7 @@ console.log(this.tit)
           )
       
         });
-
+      //  window.location.reload();
   }
 
 
