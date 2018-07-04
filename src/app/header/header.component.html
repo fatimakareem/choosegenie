@@ -3,14 +3,14 @@
   <div class="search-holder">
     <div class="container">
       <div class="form-search animated">
-        <input  ngAutoFocus type="text" placeholder="Search with a Zip Code" class="search-input" name="search" [(ngModel)]="query" #search="ngModel" (keydown)="searchuserdata(query)">
-        <button (click)="searchuserdata(query)" style="display: none;">hi</button>
+        <input  ngAutoFocus type="text" placeholder="Search with a Zip Code" class="search-input" name="search" [(ngModel)]="search" #query (ngModelChange)="searchuserdata(query.value)">
+        <button (click)="searchuserdata(query.value)" style="display: none;">hi</button>
       </div>  
-      <div class="hint-box" *ngIf="record">
+      <div class="hint-box" *ngIf="record.zipcode">
           <ul class="list-normal">
-              <li *ngFor="let item of record">
-                <a style="cursor:pointer" (click) = "singlerfp(item.zipcode)">
-                  <i class="material-icons">arrow_forward</i> {{item.zipcode}} </a>
+              <li>
+                <a style="cursor:pointer" (click) = "singlerfp(record.zipcode)">
+                  <i class="material-icons">arrow_forward</i> {{record.zipcode}}   &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{record.country}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  {{record.city}}</a>
               </li>
             </ul>
       </div>
