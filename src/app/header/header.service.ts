@@ -15,8 +15,8 @@ public username;
     
   let headers = new Headers();
   headers.append('Content-Type', 'application/json');
-  return this._http5.post(Config.api + 'search/',
-  {"search":search},
+  // return this._http5.post(Config.api + 'search/',
+  return this._http5.get(Config.api + 'zipcodewith_country_city/'+ search,
   {headers: headers}).map((response: Response) => response.json());
   
   }

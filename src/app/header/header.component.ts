@@ -84,9 +84,9 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/']);
 
   }
-  searchuserdata(val) {
-    console.log(val)
-    this._serv.searchrecord(val).subscribe(data => {
+  searchuserdata(query) {
+    console.log(query)
+    this._serv.searchrecord(query).subscribe(data => {
       this.record = data
       console.log(this.record)
     }, error => {
