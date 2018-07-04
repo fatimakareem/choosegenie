@@ -66,6 +66,7 @@ export class HomeComponent implements OnInit {
         Validators.pattern(this.digitsOnly)
     ]);
     location = {};
+    postalCode;
     setPosition(position) {
         this.location = position.coords;
         // this.Http.get('https://maps.googleapis.com/maps/api/geocode/json?latlng='+position.coords['latitude']+','+position.coords['longitude']+'&sensor=true&key=AIzaSyBHbxM2yDXYy-BUEHhaRJb-cx0Ch91EhT0')
@@ -73,8 +74,11 @@ export class HomeComponent implements OnInit {
         this.Http.get('http://api.geonames.org/findNearbyPostalCodesJSON?lat='+position.coords['latitude']+'&lng='+position.coords['longitude']+'&username=usman.khanbrain &sensor=true&radius=1.5 &maxRows=1')
             
         .subscribe(Res => {
-                console.log(Res.json());
-                this.cord = Res.json();
+          this.cord = Res.json()['postalCodes'][0]['postalCode'];  
+          // this.contact = Res.json(['Results']);
+          console.log(this.cord);
+                // console.log(Res.json());
+                // this.cord = Res.json();
             })
 
         console.log(position.coords);
@@ -119,6 +123,9 @@ export class HomeComponent implements OnInit {
         $('.slider-tagline').hide(10);
         $('.slider-tagline').show(5);
       });
+
+
+      
 
     }
     onKeydown(event) {
