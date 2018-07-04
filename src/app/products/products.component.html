@@ -290,11 +290,7 @@
           <!-- <span class="left"></span> -->
           <mat-form-field class="margin-up">
 
-<<<<<<< HEAD
-            <mat-select placeholder="Company" (ngModelChange)="checked17($event,i,name)" required [(ngModel)]="name" name="name">
-=======
             <mat-select placeholder="Company" (change)="checked17($event,i,name)" required [(ngModel)]="name" name="name">
->>>>>>> 926b9be4428e2ed4826d8c812a5af7899975626b
 
               <mat-option *ngFor="let data of title" [value]="data.title">
                 {{data.title}}

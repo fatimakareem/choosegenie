@@ -120,7 +120,9 @@ console.log(this.tit)
     
     } 
 
- 
+    onSubmit(f) {
+      f.resetForm();
+    }
   signupuserdata(utilityarea,title,profileurl,profile_logo,plan_information,price_rate,cancelation_fee,fact_sheet,terms_of_service,phone,sign_up,minimum_usage_fee,renewable,specialterms,price_1000_kwh,price_500_kwh,price_2000_kwh) {
     console.log(utilityarea,title,profileurl,profile_logo,plan_information,price_rate,cancelation_fee,fact_sheet,terms_of_service,phone,sign_up,minimum_usage_fee,renewable,specialterms,price_1000_kwh,price_500_kwh,price_2000_kwh);
     let headers = new HttpHeaders();

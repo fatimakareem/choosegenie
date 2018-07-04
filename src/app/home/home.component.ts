@@ -57,6 +57,7 @@ export class HomeComponent implements OnInit {
     digitsOnly = '^[0-9,-]+$';
     public results: any;
     public zip;
+    cord;
 
     promo = new FormControl('', [
         Validators.pattern(this.digitsOnly)
@@ -66,11 +67,26 @@ export class HomeComponent implements OnInit {
     ]);
     location = {};
     setPosition(position) {
+        this.location = position.coords;
+        // this.Http.get('https://maps.googleapis.com/maps/api/geocode/json?latlng='+position.coords['latitude']+','+position.coords['longitude']+'&sensor=true&key=AIzaSyBHbxM2yDXYy-BUEHhaRJb-cx0Ch91EhT0')
+        // this.Http.get('https://maps.googleapis.com/maps/api/geocode/json?latlng='+position.coords['latitude']+','+position.coords['longitude']+'&sensor=true&key=AIzaSyBHbxM2yDXYy-BUEHhaRJb-cx0Ch91EhT0')
+        this.Http.get('http://api.geonames.org/findNearbyPostalCodesJSON?lat='+position.coords['latitude']+'&lng='+position.coords['longitude']+'&username=usman.khanbrain &sensor=true&radius=1.5 &maxRows=1')
+            
+        .subscribe(Res => {
+                console.log(Res.json());
+                this.cord = Res.json();
+            })
+
+        console.log(position.coords);
     }
     
     ngOnInit() {
+    // this.setPosition(Position);
       
      // this.hits();
+     if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(this.setPosition.bind(this));
+  };
       $('.slick-date').slick({
         slidesToShow: 3,
         autoplaySpeed: 1500,
