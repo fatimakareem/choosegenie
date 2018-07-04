@@ -105,48 +105,48 @@
 
           <div class="checkbox">
             <label class="checkbox-font">
-              <input type="checkbox" name="months1" [(ngModel)]=months1 (change)="checked1($event,i)">36 Months
+              <input type="checkbox" name="months1" [(ngModel)]=months1 value="months1" (change)="checked1($event,i)">36 Months
             </label>
 
           </div>
           <!-- end ngRepeat: term in filters.terms -->
           <div class="checkbox">
             <label class="checkbox-font">
-              <input type="checkbox" name="months2" [(ngModel)]=months2 (change)="checked2($event,i)">24 Months
+              <input type="checkbox" name="months2" [(ngModel)]=months2 value="months2" (change)="checked2($event,i)">24 Months
             </label>
 
           </div>
           <div class="checkbox">
             <label class="checkbox-font">
-              <input type="checkbox" name="months3" [(ngModel)]=months3 (change)="checked3($event,i)">18 Months
-            </label>
-
-          </div>
-          <!-- end ngRepeat: term in filters.terms -->
-          <div class="checkbox">
-            <label class="checkbox-font">
-              <input type="checkbox" name="months4" [(ngModel)]=months4 (change)="checked4($event,i)">14 Months
-            </label>
-
-          </div>
-
-          <div class="checkbox">
-            <label class="checkbox-font">
-              <input type="checkbox" name="months5" [(ngModel)]=months5 (change)="checked5($event,i)">12 Months
+              <input type="checkbox" name="months3" [(ngModel)]=months3 value="months3" (change)="checked3($event,i)">18 Months
             </label>
 
           </div>
           <!-- end ngRepeat: term in filters.terms -->
           <div class="checkbox">
             <label class="checkbox-font">
-              <input type="checkbox" name="months6" [(ngModel)]=months6 (change)="checked6($event,i)">6 Months
+              <input type="checkbox" name="months4" [(ngModel)]=months4 value="months4" (change)="checked4($event,i)">14 Months
+            </label>
+
+          </div>
+
+          <div class="checkbox">
+            <label class="checkbox-font">
+              <input type="checkbox" name="months5" [(ngModel)]=months5 value="months5" (change)="checked5($event,i)">12 Months
             </label>
 
           </div>
           <!-- end ngRepeat: term in filters.terms -->
           <div class="checkbox">
             <label class="checkbox-font">
-              <input type="checkbox" name="months7" [(ngModel)]=months7 (change)="checked7($event,i)">5 Months
+              <input type="checkbox" name="months6" [(ngModel)]=months6 value="months6" (change)="checked6($event,i)">6 Months
+            </label>
+
+          </div>
+          <!-- end ngRepeat: term in filters.terms -->
+          <div class="checkbox">
+            <label class="checkbox-font">
+              <input type="checkbox" name="months7" [(ngModel)]=months7 value="months7" (change)="checked7($event,i)">5 Months
             </label>
 
 
@@ -166,7 +166,7 @@
           </div>
           <div class="radio">
             <label class="checkbox-font">
-              <input type="radio" name="showallplans" id="chckbx" (change)="checked13($event,i)"> Plans without minimum usage Fee/Credits
+              <input type="radio" name="planmin" id="chckbx" [(ngModel)]=planmin value="planmin" (change)="checked13($event,i)"> Plans without minimum usage Fee/Credits
             </label>
           </div>
           <div class="radio">
@@ -188,19 +188,19 @@
           <div class="checkbox">
             <label class="checkbox-font">
 
-              <input type="checkbox" name="fixed" [(ngModel)]=fixed (change)="checked8($event,i)"> Fixed Rate
+              <input type="checkbox" name="fixed" [(ngModel)]=fixed value="fixed" (change)="checked8($event,i)"> Fixed Rate
 
             </label>
           </div>
           <div class="checkbox">
             <label class="checkbox-font">
-              <input type="checkbox" name="vari (Changing Rate)" [(ngModel)]=vari (change)="checked9($event,i)"> Variable
+              <input type="checkbox" name="vari" [(ngModel)]=vari value="vari" (change)="checked9($event,i)"> Variable
               <small>(changing rate)</small>
             </label>
           </div>
           <div class="checkbox">
             <label class="checkbox-font">
-              <input type="checkbox" name="index (Market Rate)" [(ngModel)]=index (change)="checked10($event,i)"> Indexed
+              <input type="checkbox" [(ngModel)]=market name="market" value="market" (change)="checked10($event,i)"> Indexed
               <small>(market rate)</small>
             </label>
           </div>
@@ -221,12 +221,12 @@
           </div>
           <div class="radio">
             <label class="checkbox-font">
-              <input type="radio" name="prepaid" (change)="checked12($event,i)"> Show only Prepaid Plans
+              <input type="radio" (change)="checked12($event,i)" [(ngModel)]=prepaid name="prepaid" value="prepaid"> Show only Prepaid Plans
             </label>
           </div>
           <div class="radio">
             <label class="checkbox-font">
-              <input type="radio" name="prepaid" (change)="checked11($event,i)"> Do not show Prepaid Plans
+              <input type="radio" [(ngModel)]=notprepaid name="notprepaid" value="notprepaid" (change)="checked11($event,i)"> Do not show Prepaid Plans
             </label>
           </div>
           <hr style="background: #000000">
@@ -246,12 +246,12 @@
           </div>
           <div class="radio">
             <label class="checkbox-font">
-              <input type="radio" name="timeofuseplan" (change)="checked14($event,i)"> Show only Time Of Use Plans
+              <input type="radio" [(ngModel)]=time name="time" value="time" (change)="checked14($event,i)"> Show only Time Of Use Plans
             </label>
           </div>
           <div class="radio">
             <label class="checkbox-font">
-              <input type="radio" name="timeofuseplan" (change)="checked15($event,i)"> Do not show Time Of Use Plans
+              <input type="radio" [(ngModel)]=nottime name="nottime" value="nottime" (change)="checked15($event,i)"> Do not show Time Of Use Plans
             </label>
           </div>
 
@@ -265,7 +265,7 @@
               </h5>
             </a>
           </div>
-          <mat-select placeholder="Renewable" (change)="checked16($event,i,energy)" required [(ngModel)]="energy" name="energy">
+          <mat-select placeholder="Renewable" (change)="checked16($event,i,energy)" value="renewable" required [(ngModel)]="energy" name="energy">
             <mat-option value="100">100% RENEWABLE</mat-option>
             <mat-option value="76,99">76% To 99%</mat-option>
             <mat-option value="51,75">51% To 75%</mat-option>
@@ -290,11 +290,7 @@
           <!-- <span class="left"></span> -->
           <mat-form-field class="margin-up">
 
-<<<<<<< HEAD
-            <mat-select placeholder="Company" (ngModelChange)="checked17($event,i,name)" required [(ngModel)]="name" name="name">
-=======
-            <mat-select placeholder="Company" (change)="checked17($event,i,name)" required [(ngModel)]="name" name="name">
->>>>>>> 926b9be4428e2ed4826d8c812a5af7899975626b
+            <mat-select placeholder="Company" (change)="checked17($event,i,name)" value="name" required [(ngModel)]="name" name="name">
 
               <mat-option *ngFor="let data of title" [value]="data.title">
                 {{data.title}}
@@ -468,10 +464,10 @@
 
         </div>
         <div style="padding: 0px; text-align:center;">
-          <h1 style="margin: 11px; font-size: 45px;">Most Popular Plans</h1>
+          <h1 style="margin: 11px; font-size: 45px;">Most Papular Plans</h1>
         </div>
         <div class="autoplay" *ngIf="sg['plan']">
-          <div class="mustafa" style="width:1100px;margin:0px 10px; border-radius:20px" *ngFor="let data of sg['plan']; let i = index">
+          <div class="mustafa" style="width:1100px;border-radius:20px" *ngFor="let data of sg['plan']; let i = index">
             <div class="prod-slide">
               <img src="{{data.profile_logo}}" alt="{{data.title}}" alt="Card image cap" style="width: 90%; height: 85px; margin: 0 auto;"
               />
@@ -516,8 +512,7 @@
                   <!-- <input type="checkbox" value="{{data.id}}" name="comp"  > -->
                   <a href="{{data.profileurl}}" target="_blank" class="display-b margin-top">
 
-                    <img src="{{data.profile_logo}}" alt="{{data.title}}" style="width: 90%;
-  height: 85px;" />
+                    <img src="{{data.profile_logo}}" alt="{{data.title}}" class="product-icons" />
                   </a>
                   <img src="{{data.rating_logo}}" alt="{{data.title}}" class="rating-stars" />
 
@@ -785,8 +780,8 @@
                         <div class="plan-description__heading">Cancelation Fee</div>
                         <div class="plan-description__content">
 
-                          <h4 *ngIf="data.cancelation_fee;else no_data_temp2">
-                            &nbsp;&nbsp;&nbsp;&nbsp; {{data.cancelation_fee.split(' ',3000)[2]}}
+                          <h4 *ngIf="cancelation;else no_data_temp2">
+                            &nbsp;&nbsp;&nbsp;&nbsp; {{cancelation.split(' ',3000)[2]}}
                           </h4>
 
                           <ng-template #no_data_temp2>

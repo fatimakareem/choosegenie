@@ -48,9 +48,9 @@ export class HomeComponent implements OnInit {
     }
 
 
-    
+
     onSubmit(f: NgForm) {
-      
+
         localStorage.setItem('zip', this.zipCode);
     }
 
@@ -67,12 +67,12 @@ export class HomeComponent implements OnInit {
     location = {};
     setPosition(position) {
     }
-    
+
     ngOnInit() {
-      
+
      // this.hits();
       $('.slick-date').slick({
-        slidesToShow: 3,
+        slidesToShow: 5,
         autoplaySpeed: 1500,
         autoplay: true,
         prevArrow: '<button class="slick-arrow leftArrow btn-slider btn-slider-left"><i class="fa fa-angle-left"></i></button>',
@@ -108,14 +108,15 @@ export class HomeComponent implements OnInit {
     onKeydown(event) {
       if (event.key === "Enter") {
         this.router.navigate(['/products/' + this.zipCode]);
+        localStorage.setItem('zip', this.zipCode);
         console.log(event);
         // this.Checkzipcode();
       }
     }
-  
+
 
     Checkzipcode(zipcode1) {
-        console.log("CHOICE GENIE", this.model.zipcode1    );   
+        console.log("CHOICE GENIE", this.model.zipcode1    );
         let headers = new HttpHeaders();
         headers.append('Content-Type', 'application/json');
         this.http.get(Config.api + 'zipcodecheck/' + zipcode1 , { headers: headers })
@@ -137,6 +138,7 @@ export class HomeComponent implements OnInit {
     }
     else if(this.zipcodeexist =="Valid Zipcode"){
       this.router.navigate(['/products/' + this.zipCode]);
+      localStorage.setItem('zip', this.zipCode);
 }
 else{
   this.router.navigate(['/product/' + this.zipCode]);
@@ -144,10 +146,9 @@ else{
           },
             error => {
               console.log(error);
-              
+
               //   f.resetForm();
             });
       }
-    
-}
 
+}

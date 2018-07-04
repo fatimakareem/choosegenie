@@ -32,6 +32,9 @@
 .margin{
   margin-top: -9px !important;
 }
+.margin-zero{
+  margin: 0px;
+}
 .padding{
   padding-right: 81px;
   padding-left: 40px;
@@ -1483,15 +1486,15 @@ h3 {
   height: 47px;
   width: 47px;
   border-radius: 100%;
-  background: #cc0000 !important;
+  /*background: #cc0000 !important;*/
   top: 34%;
-  left: -4.5%;
+  left: -4.7%;
   z-index: 1;
   position: absolute;
   background: none;
-  border: none;
+  border: 1px solid #000000;
   font-size: 28px;
-  color: #ffffff;
+  color: #000000;
 }
 .btn-slider-left i{
   margin-right: 3px;
@@ -1500,22 +1503,22 @@ h3 {
   height: 47px;
   width: 47px;
   border-radius: 100%;
-  background: #cc0000 !important;
+  /*background: #cc0000 !important;*/
   top: 34%;
   right: -4%;
   z-index: 1;
   position: absolute;
   background: none;
-  border: none;
+  border: 1px solid #000000;
   font-size: 28px;
-  color: #ffffff;
+  color: #000000;
 }
 .btn-slider-right i{
   margin-left: 3px;
 }
-.btn-slider:hover{
-  background: #b00a0a !important;
-}
+/*.btn-slider:hover{*/
+  /*background: #b00a0a !important;*/
+/*}*/
 .bg-slider{
   width: 100% !important;
 }
@@ -3587,6 +3590,15 @@ h1, .entry-title-2 {
   position: relative;
   z-index: 1;
 }
+.content-box-02 {
+  background: #ffffff;
+  /*background:url("../../assets/img/texas.jpg");*/
+  background-position:center;
+  width: 100%;
+  overflow-x: hidden;
+  /*position: relative;*/
+  /*z-index: 1;*/
+}
 .content-box-01::before {
   background-color:rgba(0, 0, 0, 0.66);
   position: absolute;
@@ -3610,6 +3622,15 @@ h1, .entry-title-2 {
   color: #ffffff;
   margin: 0 0 46px !important;
 }
+.title-03 {
+  font-size: 54px !important;
+  line-height: 32px;
+  font-weight: 700 !important;
+  /*text-shadow: 0px 6px 10px #3b171b;*/
+  color: #444;
+  margin: 23px 0 23px !important;
+}
+
 .choiecegenie-offers{
   font-size: 54px !important;
   line-height: 32px;
@@ -3677,6 +3698,9 @@ h1, .entry-title-2 {
 
 .slick-slide img{
   border-radius: 10px;
+  /*border: 1px solid #000000;*/
+  width: 96%;
+  padding: 10px;
 }
 /**Choie And savings end**/
 
@@ -4974,6 +4998,11 @@ background: linear-gradient(to bottom, #ededed 0%,#c1bfbf 100%); /* W3C, IE10+, 
 /*End Home*/
 
 /*Start Products */
+.product-icons{
+  width: 54% !important;
+  /* height: 60px !important; */
+  margin-top: 37px !important;
+}
 .cards-itme{
   padding: 10px 15px 0px 15px !important;
   margin-bottom: 8px !important;
@@ -5075,9 +5104,9 @@ background: linear-gradient(to bottom, #ededed 0%,#c1bfbf 100%); /* W3C, IE10+, 
   align-items: center;
   justify-content: center; */
 }
-.logo-div a img{
-  margin-top: 3px !important;
-}
+/*.logo-div a img{*/
+  /*margin-top: 3px !important;*/
+/*}*/
 .pagination li a{
   z-index: 0 !important;
 }
@@ -5117,7 +5146,9 @@ background: linear-gradient(to bottom, #ededed 0%,#c1bfbf 100%); /* W3C, IE10+, 
     height: 17px;
 }
 .rating-stars{
-  width: 58% !important;
+  width: 37% !important;
+  display: block;
+  margin: 6px auto;
 }
 .signup-btn{
   box-shadow: 1px 1px 8px 2px #ccc !important;
