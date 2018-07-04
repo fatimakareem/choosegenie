@@ -9,29 +9,33 @@
     <div  class="container">
       <div  class="row">
         <div  class=" col-md-12 ">
-          <form  class="form-partnership ng-untouched ng-pristine ng-invalid become" id="partnerform" method="post" name="partnerform" novalidate="">
+          <!-- <form  class="form-partnership ng-untouched ng-pristine ng-invalid become" [formGroup]="signupForm" *ngIf="signupForm"> -->
             <h1  style="color: #fff; font-weight: 700; font-size: 55px">Become a Partner</h1>
             <p  class="lead" style="color: #fff;">Transform your collaborative dimension to a whole new level.</p>
             <div  class="contact_form">
-            <div  id="message"></div>
+          
 
-              <div  class="col-mat-12">
+              <div  class="col-mat-12" >
+                  <form class="form-partnership ng-untouched ng-pristine ng-invalid become" [formGroup]="signupForm" *ngIf="signupForm" > 
                 <mat-form-field>
-                  <input matInput placeholder="Enter Your Name"[formControl]="signupForm.controls['name']"   [(ngModel)]="model.name" >
+                  <input matInput placeholder="Enter Your Name" formControlName="name"   [(ngModel)]="name" >
                 </mat-form-field>
                 <mat-form-field>
-                  <input matInput placeholder="Enter Your Email" [formControl]="signupForm.controls['email']"   [(ngModel)]="model.email">
+                  <input matInput placeholder="Enter Your Email" formControlName="email"   [(ngModel)]="email">
                 </mat-form-field>
                 <mat-form-field>
-                  <input matInput placeholder="Enter Company Name" [formControl]="signupForm.controls['partnername']"   [(ngModel)]="model.partnername">
+                  <input matInput placeholder="Enter Company Name" formControlName="partnername"   [(ngModel)]="partnername">
                 </mat-form-field>
                 <mat-form-field>
-                  <textarea matInput placeholder="How Can We Partner" [formControl]="signupForm.controls['desc']"   [(ngModel)]="model.desc"></textarea>
+                  <textarea matInput placeholder="How Can We Partner" formControlName="desc"   [(ngModel)]="desc"></textarea>
                 </mat-form-field>
-                <button class="btn btn-danger" style="float: right;" (click)="becomeapartnerdata()">Send Messege</button>
+                </form>
+                <input matInput placeholder="date" hidden="true" value="{{today | date: 'yyyy-MM-dd'}}" #date name="date">
+              
+                <button class="btn btn-danger" style="float: right;" (click)="becomeapartnerdata(name, email, partnername, desc, date.value)">Send Messege</button>
               </div>
             </div>
-          </form>
+          <!-- </form> -->
         </div>
       </div>
       <br ><br >
