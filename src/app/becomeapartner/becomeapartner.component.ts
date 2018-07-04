@@ -29,13 +29,18 @@ export class BecomeapartnerComponent implements OnInit {
   confirmpassword;
   signupForm: FormGroup;
   private next: any;
+ name;
+  partnername;
+   desc;
+   email;
+   date;
   model: any = {};
   normalPattern = '[a-zA-Z0-9_.-]+?';
   digitsOnly = '^[0-9,-]+$';
   // email = '^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$';
 
   flag = true;
-  date = new FormControl(new Date());
+  // date = new FormControl(new Date());
   constructor(public router: Router, private fb: FormBuilder, private http: HttpClient, private route: ActivatedRoute, private sg: SimpleGlobal) { }
 
   ngOnInit() {
