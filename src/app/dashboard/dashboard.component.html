@@ -415,8 +415,9 @@
                   <div class="plan-description__heading">Cancelation Fee</div>
                   <div class="plan-description__content">
 
-                    <h4 *ngIf="data.cancelation_fee;else no_data_temp2">
-                      &nbsp;&nbsp;&nbsp;&nbsp; {{cancelation_fee.split(' ',3000)[2]}}
+                    <h4 *ngIf="cancelation_fee;else no_data_temp2">
+                      <!-- &nbsp;&nbsp;&nbsp;&nbsp; {{cancelation_fee.split(' ',3000)[6]}} -->
+                      &nbsp;&nbsp;&nbsp;&nbsp; {{cancelation_fee}}
                     </h4>
 
                     <ng-template #no_data_temp2>

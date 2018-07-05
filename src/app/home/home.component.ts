@@ -85,12 +85,9 @@ export class HomeComponent implements OnInit {
     }
 
     ngOnInit() {
-<<<<<<< HEAD
 
-=======
     // this.setPosition(Position);
       
->>>>>>> dacaf73652e80ea56b99fd0e2cb608d4b4cc769d
      // this.hits();
      if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(this.setPosition.bind(this));
