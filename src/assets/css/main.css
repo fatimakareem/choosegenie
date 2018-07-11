@@ -35,6 +35,9 @@
 .margin-zero{
   margin: 0px;
 }
+.padding-zero{
+  margin: 0px;
+}
 .padding{
   padding-right: 81px;
   padding-left: 40px;
@@ -682,7 +685,7 @@ background: goldenrod;
   color: #212121;
   position: fixed !important;
   overflow-y: scroll;
-  height: 700px;
+  height: 590px;
 }
   .sidebar-user h5 {
     padding: 0px;
@@ -1543,7 +1546,7 @@ h3 {
   background: white;
   padding: 10px 0 !important;
   top: 22px;
-  left: -10px;
+  left: 60px;
   border-radius: 8px;
   min-width: 234px;
   margin-top: 8px !important;
@@ -2743,7 +2746,7 @@ section {
 
 /*Login Form*/
 .login-form-1-img{
-  background-color: #ffffff;
+  background-color: #f4f4f4;
 }
 
 .login-form-1-center{
@@ -2839,6 +2842,7 @@ section {
   font-size: 35px;
   padding: 15px;
   font-weight: 500;
+  margin-top: 10px;
 }
 
 .login-form-1-body button:hover{
@@ -2992,6 +2996,7 @@ li.pinterest:hover {
   font-size: 42px;
   font-weight: 600;
   position: relative;
+  text-shadow: 2px 2px 7px #a6a6a7;
 }
 .com-table {
   margin: 0 0 80px;
@@ -3243,6 +3248,10 @@ li.pinterest:hover {
   font-size:19px;
 }
 .nav-home ul li :hover {
+  color: #e53935;
+  text-decoration: none;
+}
+.nav-home ul li a:hover {
   color: #e53935;
   text-decoration: none;
 }
@@ -3698,9 +3707,16 @@ h1, .entry-title-2 {
 
 .slick-slide img{
   border-radius: 10px;
-  /*border: 1px solid #000000;*/
+  border: 1px solid #000000;
   width: 96%;
   padding: 10px;
+}
+.slick-slide .img1{
+  border-radius: 10px;
+  border:none !important;
+  width: 90% !important;
+  height: 85px;
+  margin: 0 auto;
 }
 /**Choie And savings end**/
 
@@ -5039,7 +5055,7 @@ background: linear-gradient(to bottom, #ededed 0%,#c1bfbf 100%); /* W3C, IE10+, 
     font-size: 16px;
     font-weight: bold;
     margin: 0px;
-    margin-left: 24px;
+    margin-left: 19px;
 }
 .sort-btn:focus{
   color: #c00;
@@ -5269,6 +5285,7 @@ background: linear-gradient(to bottom, #eaeaea 0%,#c6c6c6 50%,#999a9b 100%); /* 
 }
 .mat-form-field-infix{
   border-top: 0px !important;
+  margin-top: -17px;
 }
 .checkbox{
   margin: 0px !important;
@@ -5277,7 +5294,7 @@ background: linear-gradient(to bottom, #eaeaea 0%,#c6c6c6 50%,#999a9b 100%); /* 
   padding-left: 29px !important;
 }
 .sidebar-serch-btn{
-  font-size: 12px !important;
+  font-size: 20px !important;
   border-radius: 50px !important;
 }
 .sidebar-serch-btn i{
@@ -5306,7 +5323,7 @@ background: linear-gradient(to bottom, #eaeaea 0%,#c6c6c6 50%,#999a9b 100%); /* 
   background-color:#000000;
   position: fixed;
   width:20%;
-  height: 700px;
+  height: 595px;
   overflow-y: scroll;
 }
 .super-sidebar-list li{
@@ -5554,6 +5571,12 @@ background: linear-gradient(to bottom, #eaeaea 0%,#c6c6c6 50%,#999a9b 100%); /* 
 /*End Add New Blog*/
 
 
+/*start Blog3*/
+.blog3-read-btn{
+  padding: 13px 19px !important;
+}
+/*end Blog3*/
+
 
 
 /*Start features-comparison*/
@@ -5620,6 +5643,9 @@ background: linear-gradient(to bottom, #eaeaea 0%,#c6c6c6 50%,#999a9b 100%); /* 
 }
 @media (max-width: 425px) {
   /* Small devices (575px and down) */
+  .prod-slide{
+    margin: 0 auto;
+  }
   .appio-center-heading p {
     font-size: 19px;
     line-height: 27px;
@@ -5647,6 +5673,7 @@ background: linear-gradient(to bottom, #eaeaea 0%,#c6c6c6 50%,#999a9b 100%); /* 
   /*.left-about-divs {*/
     /*margin-top: 0px !important;*/
   /*}*/
+
   .terms-container-wrapper{
     padding-left: 20px;
     padding-right: 20px;
@@ -5885,6 +5912,7 @@ background: linear-gradient(to bottom, #eaeaea 0%,#c6c6c6 50%,#999a9b 100%); /* 
   }
   .btn-slider-left {
     top: 37% !important;
+    left: 6px !important;
   }
   .btn-slider-right {
     top: 37% !important;
@@ -5902,6 +5930,12 @@ background: linear-gradient(to bottom, #eaeaea 0%,#c6c6c6 50%,#999a9b 100%); /* 
 }
 @media (max-width: 991px) {
   /* Large devices (992px and down) */
+  .info-box-02__box-02{
+    padding: 8px 0px 24px !important;
+  }
+  .search-icon{
+    float: left;
+  }
   .top-margin{
     margin-top: 0px;
   }
@@ -6218,7 +6252,7 @@ background: linear-gradient(to bottom, #eaeaea 0%,#c6c6c6 50%,#999a9b 100%); /* 
   }
   .btn-slider-right{
     top: 31%;
-    right: -1.5%;
+    right: 1.5% !important;
   }
 }
 
