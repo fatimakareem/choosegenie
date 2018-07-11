@@ -6,7 +6,8 @@ export class PasswordValidation {
        const pass2 = AC.get('pass2').value; // to get value in input tag
         if (pass1 !== pass2) {
             AC.get('pass2').setErrors( {MatchPassword: true} );
-        } else {
+        }
+         else {
             return null;
         }
     }

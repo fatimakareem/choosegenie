@@ -216,7 +216,7 @@
           </div>
           <div class="radio">
             <label class="checkbox-font">
-              <input type="radio" name="prepaid" checked="true" > Show All Plans
+              <input type="radio" name="prepaid" checked="true"> Show All Plans
             </label>
           </div>
           <div class="radio">
@@ -241,7 +241,7 @@
           </div>
           <div class="radio">
             <label class="checkbox-font">
-              <input type="radio" name="timeofuseplan" checked="true" > Show All Plans
+              <input type="radio" name="timeofuseplan" checked="true"> Show All Plans
             </label>
           </div>
           <div class="radio">
@@ -265,7 +265,8 @@
               </h5>
             </a>
           </div>
-          <mat-select placeholder="Renewable" (change)="checked16($event,i,energy)" value="renewable" required [(ngModel)]="energy" name="energy">
+          <mat-select placeholder="Renewable" (change)="checked16($event,i,energy)" value="renewable" required [(ngModel)]="energy"
+            name="energy">
             <mat-option value="100">100% RENEWABLE</mat-option>
             <mat-option value="76,99">76% To 99%</mat-option>
             <mat-option value="51,75">51% To 75%</mat-option>
@@ -324,7 +325,7 @@
         </li>
         <li>
           <div class="text-center">
-            <button type="button" class="btn btn-rose sidebar-serch-btn" (click)="search(1)" style="margin: 0px; text-transform: capitalize;">
+            <button type="button" class="btn btn-rose sidebar-serch-btn" (click)="setPage(1)" style="margin: 0px; text-transform: capitalize;">
               Refresh Result
               <!-- <i class="material-icons" title="Use these filters to set your preferences. Get rid of the plans you don’t want to see and only show those that fit your needs.">search</i> -->
             </button>
@@ -368,17 +369,17 @@
               <div class="product-page-bar">
                 <div class=" col-lg-5 col-md-6 col-sm-5 col-xs-12 align padding">
                   <label class="product-label ">SORT BY:</label>
-                  <button class="sort-btn " type="button" (click)="checked20($event,i)">
+                  <button class="sort-btn " [(ngModel)]=sort name="sort" value="sort" type="button" (click)="checked20($event,i)">
                     RENEWABLE
                     <i class="fa fa-sort-down down-icon"></i>
 
                   </button>
-                  <button class="sort-btn " type="button" (click)="checked21($event,i)">
+                  <button class="sort-btn " [(ngModel)]=sort name="sort" value="sort" type="button" (click)="checked20($event,i)">
                     Price KW/h
                     <i class="fa fa-sort-down down-icon"></i>
 
                   </button>
-                  <button class="sort-btn " type="button" (click)="checked22($event,i)">
+                  <button class="sort-btn " [(ngModel)]=sort name="sort" value="sort" type="button" (click)="checked20($event,i)">
                     Company
                     <i class="fa fa-sort-down down-icon"></i>
 
@@ -445,7 +446,7 @@
 
                 </div>
                 <div class="col-lg-2 col-md-3 col-sm-2 col-xs-12 compare-print">
-                  <button class="print" >
+                  <button class="print">
                     <i class="fa fa-print"></i>
                   </button>
                   <button class="Compare" (click)="Comapreproduct()">Compare</button>
@@ -599,6 +600,8 @@
   </textarea>
 
                             </mat-form-field>
+                            <input matInput placeholder="date" hidden="true" [value]="today | date: 'yyyy-MM-dd'" #date name="date">
+
 
                           </div>
                           <p>Your review will be publicly visible within 1 Second.</p>
@@ -617,7 +620,7 @@
   
   width: 20%;
   height: 45px;
-  font-size: 18px;" class="btn btn-rose" (click)="reviews(rating,comt,id)" data-dismiss="modal">Done</button>
+  font-size: 18px;" class="btn btn-rose" (click)="reviews(rating,comt,id,date.value)" data-dismiss="modal">Done</button>
 
                         </div>
                       </div>
@@ -692,7 +695,7 @@
                     <a style="color:white" href="{{data.profileurl}}" target="_blank">Signup </a>
                     <!-- <i class="material-icons">bubble_chart</i> -->
                   </button>
-                  <a href="Review/{{data.id}}">
+                  <a (click)="submit(data.id,data.title)">
                     <label class="view-plan-details" style="padding-bottom: 0px; margin-bottom: 0px;">Reviews</label>
                   </a>
 
@@ -780,10 +783,12 @@
                         <div class="plan-description__heading">Cancelation Fee</div>
                         <div class="plan-description__content">
 
-                          <h4 *ngIf="cancelation;else no_data_temp2">
+                          <!-- <h4 *ngIf="cancelation;else no_data_temp2">
                             &nbsp;&nbsp;&nbsp;&nbsp; {{cancelation.split(' ',3000)[2]}}
-                          </h4>
-
+                          </h4> -->
+                          <h4 *ngIf="cancelation;else no_data_temp2">
+                              &nbsp;&nbsp;&nbsp;&nbsp; {{cancelation}}
+                            </h4>
                           <ng-template #no_data_temp2>
 
                             <!-- <img src="../../assets/img/no_Record.png" style="width: 250px;height:200px" > -->

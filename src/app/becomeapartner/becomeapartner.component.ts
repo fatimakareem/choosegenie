@@ -103,45 +103,7 @@ export class BecomeapartnerComponent implements OnInit {
 
 
   }
-  // becomeapartnerdata(name,email,partnername,desc,date) {
-  //   //alert('hello');
-  //   console.log(name,email,partnername,desc,date);
-
-  //   let headers = new HttpHeaders();
-
-
-  //   headers.append('Content-Type', 'application/json');
-  //   this.http.post(Config.api + 'becomepartner/',this.model , { headers: headers })
-
-
-  //    .subscribe(Res => {
-  //       console.log(Res);
-  //       console.log(this.model);
-  //       swal({
-  //         text: "Thank you for Successflluy Become a Partner!",
-  //         title: "Choice Genie",
-  //         type: "success",
-  //         showConfirmButton: false,
-  //         timer: 1200,
-  //         confirmButtonText: "OK",
-
-  //       })
-
-  //     },
-  //       error => {
-  //         console.log(error);
-
-  //         swal(
-  //           'Invalid',
-  //           'Please Try Again!',
-  //           'error'
-  //         )
-
-  //       });
-
-
-
-  // }
+ 
 
 
 

@@ -51,7 +51,8 @@ public username;
         "renewablerate":renewable,
         "company":com,
         "itemsperpage":item,
-  
+        "dsc":sort
+
        }), 
       {headers: headers}).map((response: Response) => response.json());
       }

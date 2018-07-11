@@ -102,7 +102,7 @@
                   <div class="modal-footer">
                     <form (ngSubmit)="onSubmit(f)" #f="ngForm">
 
-
+                        <input matInput placeholder="date" hidden="true" [value]="today | date: 'yyyy-MM-dd'" #mydate name="mydate">
                       <input matInput placeholder="Title" readonly name="title" value="{{title}}" [hidden]="true" required #updatedtitle/>
 
                       <input matInput placeholder="Profile url" readonly name="profileurl" value="{{profileurl}}" [hidden]="true" #updatedprofileurl/>
@@ -148,7 +148,7 @@
 
                       <!-- <input matInput placeholder="status" [formControl]="signupForm.controls['status']" required [value]="status" [(ngModel)]="model.status" hidden="true"> -->
                       <div class=" text-center">
-                        <button type="submit" class="btn btn-rose" (click)="activeClick(updatedtitle.value,updatedsign_up.value,updatedphone.value,updatedterms_of_service.value,updatedfact_sheet.value,updatedcancelation_fee.value,updatedprice500kwh.value,updatedprice1000kwh.value,updatedprice2000kwh.value,updatedplan_information.value,updatedrating_logo.value,updatedprofile_logo.value,updatedprofileurl.value,upactive.value)"
+                        <button type="submit" class="btn btn-rose" (click)="activeClick(mydate.value,updatedtitle.value,updatedsign_up.value,updatedphone.value,updatedterms_of_service.value,updatedfact_sheet.value,updatedcancelation_fee.value,updatedprice500kwh.value,updatedprice1000kwh.value,updatedprice2000kwh.value,updatedplan_information.value,updatedrating_logo.value,updatedprofile_logo.value,updatedprofileurl.value,upactive.value)"
                           data-dismiss="modal">active</button>
 
                         <button type="button" class="btn btn-rose" data-dismiss="modal">Cancel</button>

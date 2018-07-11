@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 // import { MdModule } from '../md/md.module';
 import { MaterialModule } from '../app.module';
 
@@ -13,7 +13,7 @@ import { ForgetpasswordRoutes } from './forget_password.routing';
         CommonModule,
         RouterModule.forChild(ForgetpasswordRoutes),
         FormsModule,
-        // MdModule,
+        ReactiveFormsModule,
         MaterialModule
     ],
     declarations: [ForgetpasswordComponent]

@@ -27,18 +27,22 @@ sort;
 
 public customer;
 public zip_code;
+public title;
 private Sub: Subscription;
 
   constructor(private router: Router,private route: ActivatedRoute,private http: Http) {}
 
   ngOnInit() {
+    this.title = localStorage.getItem('company');
     this.customer = localStorage.getItem('custum')
     this.zip_code = localStorage.getItem('zip');
+    this.getreview() 
+    this. totalreview()
+    this. avereview()
      this.route.params.subscribe ( params => {
-        this.getreview(params['id']) 
+       
         this. product(params['id'])
-        this. totalreview(params['id'])
-        this. avereview(params['id'])
+       
         this.hitcount(params['id'])
       });
      
@@ -60,11 +64,11 @@ data:any=[];
 user;
 hit:any=[];
 sortby(sort,id){
-    console.log(sort,id)
+    console.log(sort)
     if(sort=="newest"){
     let headers = new Headers();
     headers.append('Content-Type', 'application/json')
-    this.http.get(Config.api + 'reviewsnewest/'+ id  ,{ headers: headers })
+    this.http.get(Config.api + 'reviewsnewest/'+ this.title  ,{ headers: headers })
 
         .subscribe(Res => {
            console.log(Res);
@@ -75,7 +79,7 @@ sortby(sort,id){
     else if(sort=="oldest"){
         let headers = new Headers();
         headers.append('Content-Type', 'application/json')
-        this.http.get(Config.api + 'reviewsoldest/'+ id  ,{ headers: headers })
+        this.http.get(Config.api + 'reviewsoldest/'+ this.title  ,{ headers: headers })
     
             .subscribe(Res => {
                console.log(Res);
@@ -87,7 +91,7 @@ sortby(sort,id){
 hitcount(id){
     let headers = new Headers();
     headers.append('Content-Type', 'application/json')
-    this.http.get('http://192.168.30.193:9000/choice/counthitsperproduct/'+ id ,{ headers: headers })
+    this.http.get(Config.api + 'counthitsperproduct/'+ id ,{ headers: headers })
 
         .subscribe(Res => {
            console.log(Res);
@@ -99,7 +103,7 @@ profile() {
 
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    this.http.get('http://192.168.30.135:9000/users_profile/' + this.customer + '/', { headers: headers })
+    this.http.get(Config.api + 'users_profile/' + this.customer + '/', { headers: headers })
 
         .subscribe(Res => {
             this.data = Res.json();
@@ -110,11 +114,13 @@ profile() {
 }
   rate:any=[];
   total:any=[];
-  getreview(id) {
-    
+  getreview() {
+    this.title = localStorage.getItem('company');
+    console.log(localStorage.getItem('company'))
+    console.log(this.title,'jjjjjjjjj')
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    this.http.get(Config.api + 'getallreviews/'+ id , { headers: headers })
+    this.http.get(Config.api + 'getallreviews/'+ this.title, { headers: headers })
     .subscribe(Res => {
     this.rev=Res.json()['Results'];
 this.total=Res.json()['Total Result'];
@@ -142,11 +148,11 @@ console.log(this.total)
       
       }
       totalrev:any=[];
-      totalreview(id) {
+      totalreview() {
     
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
-        this.http.get(Config.api + 'totalreviews/'+ id , { headers: headers })
+        this.http.get(Config.api + 'totalreviews/'+ this.title , { headers: headers })
       
         .subscribe(Res => {
         this.totalrev=Res.json()['Total Reviews'];
@@ -160,11 +166,11 @@ console.log(this.total)
        avrage:any=[];
        score:any=[];
        ave:any=[];
-      avereview(id) {
+      avereview() {
     
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
-        this.http.get(Config.api + 'reviewsperproduct/'+id , { headers: headers })
+        this.http.get(Config.api + 'reviewsperproduct/'+this.title , { headers: headers })
       
         .subscribe(Res => {
         this.avrage=Res.json();

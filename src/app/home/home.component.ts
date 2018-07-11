@@ -4,7 +4,6 @@ import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/fo
 import { HomeService } from "./home.service";
 import { Subscription } from 'rxjs/Subscription';
 import { Http, Response, Headers } from '@angular/http';
-// import { applyRedirects } from "@angular/router/src/apply_redirects";
 import { Router } from "@angular/router";
 
 import { Config } from "../Config";
@@ -69,16 +68,13 @@ export class HomeComponent implements OnInit {
     postalCode;
     setPosition(position) {
         this.location = position.coords;
-        // this.Http.get('https://maps.googleapis.com/maps/api/geocode/json?latlng='+position.coords['latitude']+','+position.coords['longitude']+'&sensor=true&key=AIzaSyBHbxM2yDXYy-BUEHhaRJb-cx0Ch91EhT0')
-        // this.Http.get('https://maps.googleapis.com/maps/api/geocode/json?latlng='+position.coords['latitude']+','+position.coords['longitude']+'&sensor=true&key=AIzaSyBHbxM2yDXYy-BUEHhaRJb-cx0Ch91EhT0')
+     
         this.Http.get('http://api.geonames.org/findNearbyPostalCodesJSON?lat='+position.coords['latitude']+'&lng='+position.coords['longitude']+'&username=usman.khanbrain &sensor=true&radius=1.5 &maxRows=1')
             
         .subscribe(Res => {
           this.cord = Res.json()['postalCodes'][0]['postalCode'];  
-          // this.contact = Res.json(['Results']);
           console.log(this.cord);
-                // console.log(Res.json());
-                // this.cord = Res.json();
+            
             })
 
         console.log(position.coords);
@@ -86,9 +82,6 @@ export class HomeComponent implements OnInit {
 
     ngOnInit() {
 
-    // this.setPosition(Position);
-      
-     // this.hits();
      if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(this.setPosition.bind(this));
   };
@@ -134,7 +127,7 @@ export class HomeComponent implements OnInit {
         this.router.navigate(['/products/' + this.zipCode]);
         localStorage.setItem('zip', this.zipCode);
         console.log(event);
-        // this.Checkzipcode();
+     
       }
     }
 
@@ -171,7 +164,7 @@ else{
             error => {
               console.log(error);
 
-              //   f.resetForm();
+          
             });
       }
 

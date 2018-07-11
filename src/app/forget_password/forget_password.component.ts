@@ -10,7 +10,7 @@ import { FormBuilder, Validators, NgControl, RadioControlValueAccessor, FormCont
 import { HttpClient, HttpResponse, HttpHeaders } from "@angular/common/http";
  import swal from 'sweetalert2'; 
 import { MatSelect } from '@angular/material';
-import { PasswordValidation } from './password-validator.component';
+import { PasswordValidation } from './password-validator.component.1';
 
 @Component({
   selector: 'app-forget_password',
@@ -25,9 +25,16 @@ export class ForgetpasswordComponent implements OnInit {
     pass2;
     qurey;
     sub;
-  
+    signupForm: FormGroup;
   ngOnInit() {
-  
+    this.signupForm = this.fb.group({
+      'pass1': ['', Validators.compose([Validators.required])],
+      // 'pass1': ['', Validators.compose([Validators.required])],
+      'pass2': ['', Validators.compose([Validators.required])],
+      
+    },{
+      validator: PasswordValidation.MatchPassword // your validation method
+    });
     this.route.params.subscribe(params => {
 this.qurey=params['qurey']
 

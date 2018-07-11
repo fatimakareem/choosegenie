@@ -28,16 +28,6 @@
 
       <div class="row">
 
-        <!-- <div class="col-sm-6">
-<div class="form-group">
-<label class="control-label">Middle Name</label>
-<mat-form-field>
-<input matInput placeholder="Middle Name" formControlName="mName"  [(ngModel)]="model.middle_name">
-<mat-error *ngIf="secondFormGroup.controls.mName.dirty && !secondFormGroup.controls.mName.value"> Special characters not allowed</mat-error>
-</mat-form-field>
-</div>
-</div> -->
-
         <div class="col-sm-6">
           <div class="form-group margin">
             <mat-form-field>
@@ -85,36 +75,7 @@
             </mat-form-field>
           </div>
         </div>
-        <!-- <br class="clearfix" /> -->
-        <!-- <div class="col-sm-6">
-          <div class="form-group"> -->
-            <!-- <mat-form-field>
-<input matInput placeholder="State" [formControl]="signupForm.controls['state']" required [(ngModel)]="model.state" >
-<mat-error *ngIf="secondFormGroup.controls.State.dirty && !secondFormGroup.controls.State.value"> Special characters not allowed</mat-error>
-</mat-form-field> -->
-<!-- <mat-form-field class="example-full-width">
-  <input type="text" placeholder="State" aria-label="Number" matInput [formControl]="signupForm.controls['state']"[(ngModel)]="model.state" [matAutocomplete]="auto">
-  <mat-autocomplete #auto="matAutocomplete">
-    <mat-option *ngFor="let s of state" [value]="s.state">
-      {{s.state}}
-
-    </mat-option>
-  </mat-autocomplete>
-</mat-form-field> -->
-            <!-- <mat-form-field>
-
-              <mat-select placeholder="state" (ngModelChange)="check($event)" required [formControl]="signupForm.controls['state']" [(ngModel)]="model.state">
-
-                <mat-option *ngFor="let s of state" [value]="s.state">
-                  {{s.state}}
-
-                </mat-option>
-
-              </mat-select>
-            </mat-form-field> -->
-          <!-- </div>
-        </div> -->
-        <!-- <input matInput placeholder="status" [formControl]="signupForm.controls['status']" required [value]="status" [(ngModel)]="model.status" hidden="true"> -->
+     
         <br class="clearfix" />
         <div class="col-sm-6">
           <div class="form-group margin">
@@ -125,36 +86,7 @@
 
           </div>
         </div>
-        <!-- <br class="clearfix" />
-        <div class="col-sm-6">
-          <div class="form-group margin">
-            <mat-form-field>
-                 <mat-select placeholder="Market" (ngModelChange)="check($event)" [(ngModel)]="model.Market" [formControl]="signupForm.controls['Market']" required>
-                <mat-option value="E" style="font-size: 20px">ERCOT</mat-option>
-                <mat-option value="P" style="font-size: 20px">PJM</mat-option>
-
-                <mat-error *ngIf="signupForm.controls.Market.value == ''">
-                  <strong>market be empty</strong>
-                </mat-error>
-              </mat-select>
-             
-             
-                </mat-form-field>
-
-          </div>
-        </div> -->
-        <!-- <br class="clearfix" />
-        <div class="col-sm-6">
-          <div class="form-group">
-            <mat-form-field>
-
-              <input matInput placeholder="Company Title" [formControl]="signupForm.controls['title']"  
-                  required [(ngModel)]="model.title">
-
-            </mat-form-field>
-        
-          </div>
-        </div> -->
+     
         <br class="clearfix" />
         <div class="col-sm-6">
           <div class="form-group margin">
@@ -198,7 +130,7 @@
         </div>
         
         <div class="col-lg-6 recaptcha-box">
-          <blackgeeks-recaptcha></blackgeeks-recaptcha>
+          <!-- <blackgeeks-recaptcha></blackgeeks-recaptcha> -->
         </div>
         
         <div class="col-lg-6 form-footer text-right">

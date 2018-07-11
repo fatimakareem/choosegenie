@@ -51,8 +51,6 @@ export class UserloginComponent implements OnInit {
   public username;
   password;
   hide=true;
- 
-
   constructor(public router: Router, private element: ElementRef, private http: Http, private route: ActivatedRoute,
     private sg: SimpleGlobal, private _nav: Router, private _serv: UserLoginService, private formBuilder: FormBuilder, private https: HttpClient) {
     this.nativeElement = element.nativeElement;
@@ -69,16 +67,10 @@ export class UserloginComponent implements OnInit {
       'has-feedback': this.isFieldValid(form, field)
     };
   }
-
-
   onLogin() {
-    // console.log(this.login);
+   
     if (this.login.valid) {
-      //console.log(this.login.value);
-      // console.log('form submitted');
-      // this._serv.login_authenticate(this.login.value.username,this.login.value.password).subscribe(
-      //   data => {
-          //  console.log("user",data);
+     
           this._serv.isactivated(this.login.value.username).subscribe(
             data => {
           this._serv.login(this.login.value.username, this.login.value.password).subscribe(
@@ -90,17 +82,15 @@ export class UserloginComponent implements OnInit {
                 showConfirmButton: false,
                 timer: 1500
                 });
-              // this.toastr.success('Successfully!', 'Logged in',{toastLife: 5000});
-             // this.router.navigate(['/dashboard/'+ this.username]);
-              // this.router.navigate(['/consumerdashboard']);
+             
               this.router.navigate(['/userprofile']);
-              //userprofile
+             
               localStorage.setItem('custum', this.username);
 
             },
             error => {
               console.log(error);
-             // this.toastr.error(error, null, {toastLife: 5000});
+          
               swal(
                 'Invalid',
                 'Username OR Password',
@@ -110,9 +100,7 @@ export class UserloginComponent implements OnInit {
             });
           },
           error => {
-            // console.log("eer",error);
           
-           //  this.toastr.error(error.status, null, {toastLife: 5000});
            swal(
              'Error',
             'User does not exist Please Check Your email for activation registation',
@@ -120,18 +108,7 @@ export class UserloginComponent implements OnInit {
           )
           }
         );
-       // },
-        // error => {
-        //   // console.log("eer",error);
-
-        //   //  this.toastr.error(error.status, null, {toastLife: 5000});
-        //   swal(
-        //     'Error',
-        //     'User Does not exist',
-        //     'error'
-        //   )
-        // }
-      //);
+      
     }
     else {
       this.validateAllFormFields(this.login);
@@ -139,14 +116,7 @@ export class UserloginComponent implements OnInit {
   }
 
   foremail() {
-    // swal({
-    //   title: 'Enter email address',
-    //   input: 'email',
-    //   inputPlaceholder: 'Enter your email address'
-    // }).then((email) => {
-    //   this.forgetPassword(email)
-
-    // })
+    
   }
   model: any = {};
   forgetpass(Email) {
@@ -157,11 +127,9 @@ export class UserloginComponent implements OnInit {
 
 
     headers.append('Content-Type', 'application/json');
-    // this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
-   // this.https.post(Config.api +'forget_password/' + this.username , JSON.stringify({ "email":Email}), { headers: headers })
+   
     this.https.post(Config.api +'forget_password/' + this.username ,{ "email":Email}, { headers: headers })
    
-      //   // this.http.post(Config.api + 'signup/'+ this.zip_code +'', {"premiseid": this.premiseID +'', {headers: headers})
       .subscribe(Res => {
         this.router.navigate(['/forgetpassword/']);
         console.log(Res);
@@ -179,20 +147,8 @@ export class UserloginComponent implements OnInit {
             'error'
           )
 
-          //     //    this.state = Res[0].state;
-          //     //this.sg['products'] = Res.json()['Results'];
-          //     //this.data.changeProducts(this.sg['products']);
-          //   f.resetForm();
         });
-    //}
-
-    //    this.state = Res[0].state;
-    //this.sg['products'] = Res.json()['Results'];
-    //this.data.changeProducts(this.sg['products']);
-
-
-    //}
-
+    
 
   }
 

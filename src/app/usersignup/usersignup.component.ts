@@ -76,8 +76,8 @@ export class UsersignupComponent implements OnInit {
       {
         validator: PasswordValidation.MatchPassword // your validation method
       });
-    this.captcha.reset();
-    let status = this.captcha.getResponse();
+    // this.captcha.reset();
+    // let status = this.captcha.getResponse();
   }
 
   onChange(e) {

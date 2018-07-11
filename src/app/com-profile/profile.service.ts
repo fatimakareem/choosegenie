@@ -12,7 +12,7 @@ export class ProfileService {
     console.log()
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.put('http://192.168.30.41:9000/upcomprofile/'+ updatedREP +'/' , JSON.stringify({
+    return this.http.put(Config.api + 'upcomprofile/'+ updatedREP +'/' , JSON.stringify({
      
       "id": updatedid,
       "REP_name": updatedREP,

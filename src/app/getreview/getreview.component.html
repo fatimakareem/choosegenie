@@ -231,7 +231,7 @@
         <div class="col-md-6" style="padding: 0px; text-align:right;">
           <label class="product-label">Sort By</label>
         <mat-form-field style="padding: 0px; max-width:200px; margin-left:20px">
-          <mat-select (change)="sortby(sort,pro.id)" required [(ngModel)]="sort" name="sort">
+          <mat-select (change)="sortby(sort)" required [(ngModel)]="sort" name="sort">
             <mat-option value="Top" style="font-size: 20px">Top</mat-option>
             <mat-option value="newest" style="font-size: 20px">Newest </mat-option>
             <mat-option value="oldest" style="font-size: 20px">Oldest</mat-option>

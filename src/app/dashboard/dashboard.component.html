@@ -34,10 +34,20 @@
                         </div>
                       </div>
                       <div>
+                          <!-- <mat-form-field>
+                              <input matInput [matDatepicker]="startPicker" [(ngModel)]="date" placeholder="Choose a start date"/>
+                              <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>               <mat-datepicker #startPicker></mat-datepicker>
+                            </mat-form-field> -->
+                             
+                             <md-input-container class="block" hidden=true>
+                                    <input mdInput placeholder="Title" [ngModel]="date | date:'yyyy-MM-dd'" >
+                                </md-input-container>
+                               
                         <h4 class="modal-title" style="text-align: center;
                                                   color: red;
                                                   font-size: 30px;">Confirmation Alert</h4>
-                        <p>Do you want to Inactive this Product?</p>
+                                                  <input type="date" required name="date" [(ngModel)]="date">
+                        <p>Do you want to Inactive this Product till this date?</p>
                       </div>
 
                     </div>
@@ -45,7 +55,8 @@
                   <div class="modal-footer">
                     <form (ngSubmit)="onSubmit(f)" #f="ngForm">
 
-
+                        <input matInput placeholder="date" hidden="true" [value]="today | date: 'yyyy-MM-dd'" #mydate name="mydate">
+                  
                       <input matInput placeholder="Title" readonly name="title" value="{{title}}" [hidden]="true" required #updatedtitle/>
 
                       <input matInput placeholder="Profile url" readonly name="profileurl" value="{{profileurl}}" [hidden]="true" #updatedprofileurl/>
@@ -89,7 +100,7 @@
                       <input matInput placeholder="Sign Up" name="sign_up" readonly [hidden]="true" value="{{sign_up}}" #updatedsign_up />
 
                       <div class=" text-center">
-                        <button type="submit" class="btn btn-rose" (click)="activeClick(updatedtitle.value,updatedsign_up.value,updatedphone.value,updatedterms_of_service.value,updatedfact_sheet.value,updatedcancelation_fee.value,updatedprice500kwh.value,updatedprice1000kwh.value,updatedprice2000kwh.value,updatedplan_information.value,updatedrating_logo.value,updatedprofile_logo.value,updatedprofileurl.value,upactive.value)"
+                        <button type="submit" class="btn btn-rose" (click)="activeClick(mydate.value,date,updatedtitle.value,updatedsign_up.value,updatedphone.value,updatedterms_of_service.value,updatedfact_sheet.value,updatedcancelation_fee.value,updatedprice500kwh.value,updatedprice1000kwh.value,updatedprice2000kwh.value,updatedplan_information.value,updatedrating_logo.value,updatedprofile_logo.value,updatedprofileurl.value,upactive.value)"
                           data-dismiss="modal">Inactive</button>
 
                         <button type="button" class="btn btn-rose" data-dismiss="modal">Cancel</button>
@@ -165,7 +176,14 @@
                         </a>
                       </div>
                     </div>
+                    <md-input-container class="block" hidden=true>
+                        <input mdInput placeholder="Title" [ngModel]="date | date:'yyyy-MM-dd'" >
+                    </md-input-container>
+<input type="date" required name="date" [(ngModel)]="date" hidden="true">
                     <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+                        <!-- <input matInput placeholder="date" hidden="true" [value]="today | date: 'yyyy-MM-dd'" #mydate name="mydate"> -->
+                       
+<input matInput placeholder="date" hidden="true" [value]="today | date: 'yyyy-MM-dd'" #mydate name="mydate">
 
                        <div class="col-md-6 col-sm-6">
                         <div class="input-group">
@@ -293,7 +311,7 @@
                       </div>
 
                       <div class=" text-center">
-                        <button type="submit" class="btn btn-rose" (click)="editClick(updatedtitle.value,updatedsign_up.value,updatedphone.value,updatedterms_of_service.value,updatedfact_sheet.value,updatedcancelation_fee.value,updatedprice500kwh.value,updatedprice1000kwh.value,updatedprice2000kwh.value,updatedplan_information.value,updatedrating_logo.value,updatedprofile_logo.value,updatedprofileurl.value)"
+                        <button type="submit" class="btn btn-rose" (click)="editClick(mydate.value,date,updatedtitle.value,updatedsign_up.value,updatedphone.value,updatedterms_of_service.value,updatedfact_sheet.value,updatedcancelation_fee.value,updatedprice500kwh.value,updatedprice1000kwh.value,updatedprice2000kwh.value,updatedplan_information.value,updatedrating_logo.value,updatedprofile_logo.value,updatedprofileurl.value)"
                           data-dismiss="modal">Update</button>
 
                         <button type="button" class="btn btn-rose" data-dismiss="modal">Cancel</button>
