@@ -87,6 +87,7 @@ export class HomeComponent implements OnInit {
   };
       $('.slick-date').slick({
         slidesToShow: 5,
+        slidesToScroll: 5,
         autoplaySpeed: 1500,
         autoplay: true,
         prevArrow: '<button class="slick-arrow leftArrow btn-slider btn-slider-left"><i class="fa fa-angle-left"></i></button>',
