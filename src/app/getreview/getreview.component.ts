@@ -63,7 +63,7 @@ private Sub: Subscription;
 data:any=[];
 user;
 hit:any=[];
-sortby(sort,id){
+sortby(sort){
     console.log(sort)
     if(sort=="newest"){
     let headers = new Headers();
