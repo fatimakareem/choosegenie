@@ -171,7 +171,7 @@
           </div>
           <div class="radio">
             <label class="checkbox-font">
-              <input type="radio" name="showallplans" id="chckbx">Show All Plans
+              <input type="radio" name="planmin" id="chckbx" checked="true" (change)="checkedall($event,i)">Show All Plans
             </label>
           </div>
 
@@ -216,7 +216,7 @@
           </div>
           <div class="radio">
             <label class="checkbox-font">
-              <input type="radio" name="prepaid" checked="true"> Show All Plans
+              <input type="radio" name="prepaid" checked="true" (change)="checkedpre($event,i)"> Show All Plans
             </label>
           </div>
           <div class="radio">
@@ -226,7 +226,7 @@
           </div>
           <div class="radio">
             <label class="checkbox-font">
-              <input type="radio" [(ngModel)]=notprepaid name="notprepaid" value="notprepaid" (change)="checked11($event,i)"> Do not show Prepaid Plans
+              <input type="radio" [(ngModel)]=notprepaid name="prepaid" value="notprepaid" (change)="checked11($event,i)"> Do not show Prepaid Plans
             </label>
           </div>
           <hr style="background: #000000">
@@ -241,7 +241,7 @@
           </div>
           <div class="radio">
             <label class="checkbox-font">
-              <input type="radio" name="timeofuseplan" checked="true"> Show All Plans
+              <input type="radio" name="time" checked="true" (change)="checkedtime($event,i)"> Show All Plans
             </label>
           </div>
           <div class="radio">
@@ -251,7 +251,7 @@
           </div>
           <div class="radio">
             <label class="checkbox-font">
-              <input type="radio" [(ngModel)]=nottime name="nottime" value="nottime" (change)="checked15($event,i)"> Do not show Time Of Use Plans
+              <input type="radio" [(ngModel)]=nottime name="time" value="nottime" (change)="checked15($event,i)"> Do not show Time Of Use Plans
             </label>
           </div>
 

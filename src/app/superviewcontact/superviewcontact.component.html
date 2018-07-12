@@ -5,6 +5,8 @@
       <h3 class="text-center choiecegenie-offers wow fadeInLeft"> Contact Details  </h3>
   
     </div>
+    <input type="text" [(ngModel)]=name name="name">
+    <button (click)="search(name)">Search</button>
   <div class="ptb-80" >
   <div class="container-fluid" style="padding: 0px;">
   <!-- <div class="text-center appio-center-heading pb-20">
@@ -13,7 +15,36 @@
   <p class="text-center"> We, the engineers at ChoiceGenie have devised bleeding edge Machine Learning (ML) and proprietary Artificially Intelligent (AI) algorithms to bring you a next generation Artificially Intelligent Comparative Shopping Marketplace for Energy Vendors/Products. Our technology is bleeding edge and was engineered with a singular goal: Save the consumer Time n’ Money. </p>
   </div> -->
   <div class="com-table">
-  
+      <div class="modal fade" id="myModal5" role="dialog">
+          <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content popupmodel">
+              <div class="modal-header">
+
+
+              </div>
+              <div class="modal-body" style="font-size: 18px;
+                        background: #ffffff;
+                        padding: 20px;
+                        margin: 15px;
+                        position: relative;">
+                <div class="popup-close-button" data-dismiss="modal">X</div>
+                <div class="row">
+
+                  <div>
+
+                    <p>{{comt}}</p>
+                  </div>
+
+                </div>
+
+              </div>
+              <div style="display:inline-block; text-align:center;">
+
+              </div>
+            </div>
+          </div>
+        </div>
   <table class="table table-bordered table-striped tablefixed" style="background-color:#ffffff">
     <thead>
     <tr>
@@ -23,8 +54,8 @@
       <th class="text-center">Contact #</th>
       <th class="text-center">Subject</th>
        <th class="text-center">Description</th>
-      <!--<th class="text-center">State</th>
-      <th class="text-center">Email</th>
+      <th class="text-center">Delete</th>
+      <!-- <th class="text-center">Email</th>
       <th class="text-center">Country</th> -->
     </tr>
     </thead>
@@ -34,7 +65,12 @@
       <td style="font-size: 20px;">{{item.name}}</td>
       <td style="font-size: 20px;">{{item.email}}</td>
       <td style="font-size: 20px;">{{item.mobno}}</td>
-      <td style="font-size: 20px;">{{item.msg}}</td>
+      <td style="font-size: 20px;">
+          <label class="view-plan-details" style="padding-bottom: 0px; margin-bottom: 0px;" (click)="btncomtClick(item.msg)"
+          data-toggle="modal" data-target="#myModal5"> View massage
+        </label>
+      </td>
+      <!-- <td style="font-size: 20px;">{{item.msg}}</td> -->
      <td style="font-size: 20px;">{{item.subject}}</td>
      <td style="font-size: 20px;">
        <button  class="btn btn-default" data-target="#myModal3" data-toggle="modal" style=" width: 100%; height: 100%; color: red; background-color: #ffffff !important; " type="submit" value="Delete" (click)="btnDeleteClick(item.id)" >

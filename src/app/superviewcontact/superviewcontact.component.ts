@@ -87,7 +87,7 @@ dataId = '';
 list = 'Hello';
 data;
  
- 
+comt;
 //http://192.168.30.52:9000/choice/contactfilter/
 
 
@@ -116,6 +116,10 @@ deleteClick(id) {
 //   window.location.reload();
 
 }  
+btncomtClick(id) {
+  this.comt = id;
+  console.log('id : ' + this.comt);
+}
 
 premiseIdData(page: number) {
   if (page < 1 || page > this.pager.totalPages) {
@@ -132,5 +136,15 @@ premiseIdData(page: number) {
   });
   // this.pagedItems = this.allItems.slice(this.pager.startIndex, this.pager.endIndex + 1);
 }
+search(name) {
+  let headers = new Headers();
+  headers.append('Content-Type', 'application/json');
+  //   this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
+  this.http.get(Config.api + 'contactussearch/'+ name , { headers: headers }).subscribe(Res => {
+      console.log(Res);
 
+      this.data = Res.json();  
+  });
+  // this.pagedItems = this.allItems.slice(this.pager.startIndex, this.pager.endIndex + 1);
+}
 }
