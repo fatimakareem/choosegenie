@@ -5,7 +5,7 @@
       <div class="form-search animated">
         <input  ngAutoFocus type="text" placeholder="Search with a Zip Code" class="search-input" name="search" [(ngModel)]="search" #query (ngModelChange)="searchuserdata(query.value)">
         <button (click)="searchuserdata(query.value)" style="display: none;">hi</button>
-      </div>  
+      </div>
       <div class="hint-box" *ngIf="record.zipcode">
           <ul class="list-normal">
               <li>
@@ -14,7 +14,7 @@
               </li>
             </ul>
       </div>
-      
+
     </div>
   </div>
 </div>
@@ -154,14 +154,14 @@
         </li>
 
         <li class="info-box-02__box-02">
-          <a href="javascript:void(0)" class="search-block" id="searchIcon">
+          <a href="javascript:void(0)" class="search-block search-icon" id="searchIcon">
             <i class="fa fa-search search-size"></i>
           </a>
         </li>
 
         <li class="">
           <a routerLink="/">
-           
+
             <i class="material-icons">android</i>
           </a>
         </li>
@@ -200,7 +200,7 @@
                   <input style="cursor: pointer;font-size: 20px; margin-left: 5px;" type="text" [value]="customer" readonly>
                 </a>
               </li>
-             
+
               <li>
                 <a (click)="logout()">
                   <i class="material-icons">lock</i>Logout
@@ -213,3 +213,5 @@
     </div>
   </nav>
 </div>
+
+

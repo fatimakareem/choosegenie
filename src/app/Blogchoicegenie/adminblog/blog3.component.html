@@ -3,7 +3,7 @@
   <div class="row">
     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 " *ngFor="let data of data;let i=index">
       <div class="layer-content">
-       
+
         <div class="modal fade" id="myModal2" role="dialog">
           <div class="modal-dialog">
             <!-- Modal content-->
@@ -34,8 +34,8 @@
 
                     <!-- <div class="card-header text-center" data-background-color="rose"style="text-align:center; padding-top:10px;">
                                         <h4 class="card-title">Edit Your product</h4>
-              
-              
+
+
                                       </div> -->
 
                     <div class="col-md-6 col-sm-6">
@@ -197,7 +197,7 @@
                     <!-- <input class="form-control" type="text" > -->
                     <!-- <mat-form-field>
                                         <input matInput placeholder="Zipcode" name="data.zipcode" class="form-control" value="{{data.zipcode}}" #zipcode />
-              
+
                                       </mat-form-field>
                                     </div>
                                   </div> -->
@@ -223,8 +223,8 @@
             <!-- Modal content-->
             <div class="modal-content popupmodel">
               <!-- <div class="modal-header">
-                     
-                     
+
+
                     </div> -->
               <div class="modal-body" style="font-size: 18px;
                     background: #ffffff;
@@ -278,11 +278,11 @@
           <p>{{data.content1 | slice:0:106}}..</p>
           <div>
           <a routerLink="/blog/{{data.heading1}}">
-            <button class="btn btn-rose" type="submit">Read more..</button>
+            <button class="btn btn-fill blog3-read-btn" type="submit">Read more..</button>
             </a>
-            <button class="btn fa fa-trash-o" style="background-color: transparent !important; color: #cc0000 !important" type="submit" value="Delete" (click)="btnDeleteClick(data.id)" data-toggle="modal" data-target="#myModal3">
+            <button class="btn fa fa-trash-o" style="background-color: transparent !important; color: #cc0000 !important; padding: 13px 19px;" type="submit" value="Delete" (click)="btnDeleteClick(data.id)" data-toggle="modal" data-target="#myModal3">
            </button>
-           <button  class="btn fa fa-edit " style="background-color: transparent !important; color: #cc0000 !important" type="submit" value="Edit" type="submit" (click)="btnEditClick(data.id,data.heading1,data.content1,data.Ch_image,data.heading2,data.content2,data.heading3,data.content3,data.heading4,data.content4,data.heading5,data.content5,data.heading6,data.content6)"
+           <button  class="btn fa fa-edit " style="background-color: transparent !important; color: #cc0000 !important; padding: 13px 19px;" type="submit" value="Edit" type="submit" (click)="btnEditClick(data.id,data.heading1,data.content1,data.Ch_image,data.heading2,data.content2,data.heading3,data.content3,data.heading4,data.content4,data.heading5,data.content5,data.heading6,data.content6)"
              data-toggle="modal" data-target="#myModal2">
             </button>
            </div>

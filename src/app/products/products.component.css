@@ -31,11 +31,12 @@
 .prod-slide{
   background: #fff;
   width: 95% !important;
+  border-radius: 10px;
 }
 .prod-slide > h2{
   padding-bottom: 0px;
   margin-bottom: 0px;
-    margin: 10px 0px;
+    margin:0px;
     text-align: center;
 }
 
