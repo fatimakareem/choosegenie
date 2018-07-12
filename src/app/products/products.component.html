@@ -1,6 +1,6 @@
-<div class="row">
+<div class="row" style="width: 100%;">
 
-  <div class="sidebar-user col-sm-2" style=" background: #fff; padding-left: 20px; padding-right: 9px; z-index: 1;">
+  <div class="sidebar sidebar-user col-sm-2" style=" background: #fff; padding-left: 10px; padding-right: 10px; z-index: 1;">
     <nav>
       <ul>
         <li style="margin-bottom: 0px">
@@ -21,7 +21,7 @@
         </li>
         <li>
           <div class="text-center">
-            <button type="button" class="btn btn-rose sidebar-serch-btn" (click)="setPage(1)" style="margin: 0px;">
+            <button type="button" class="btn btn-rose sidebar-serch-btn" (click)="setPage(1)" style="margin: 0px; padding: 5px 0px;">
               Refresh Result
               <!-- <i class="material-icons" title="Use these filters to set your preferences. Get rid of the plans you don’t want to see and only show those that fit your needs.">search</i> -->
             </button>
@@ -314,7 +314,7 @@
             </a>
           </div>
           <mat-form-field class="margin-up">
-              <mat-select class="width-sec" placeholder="" selected="10" (change)="checked18($event,i,items)" value="item" required [(ngModel)]="items"
+            <mat-select class="width-sec" placeholder="" selected="10" (change)="checked18($event,i,items)" value="item" required [(ngModel)]="items"
               name="items">
               <mat-option value="10" selected="true">10 PER PAGE</mat-option>
               <mat-option value="20">20 PER PAGE</mat-option>
@@ -326,7 +326,7 @@
         </li>
         <li>
           <div class="text-center">
-            <button type="button" class="btn btn-rose sidebar-serch-btn" (click)="setPage(1)" style="margin: 0px; text-transform: capitalize;">
+            <button type="button" class="btn btn-rose sidebar-serch-btn" (click)="setPage(1)" style="margin: 0px; text-transform: capitalize; padding: 5px 0px;">
               Refresh Result
               <!-- <i class="material-icons" title="Use these filters to set your preferences. Get rid of the plans you don’t want to see and only show those that fit your needs.">search</i> -->
             </button>
@@ -471,8 +471,7 @@
         <div class="autoplay" *ngIf="sg['plan']">
           <div class="mustafa" style="width:1100px;border-radius:20px" *ngFor="let data of sg['plan']; let i = index">
             <div class="prod-slide">
-              <img src="{{data.profile_logo}}" alt="{{data.title}}" alt="Card image cap" style="width: 90%; height: 85px; margin: 0 auto;"
-              />
+              <img class="img1" src="{{data.profile_logo}}" alt="{{data.title}}" alt="Card image cap" />
 
               <h2 class="view-plan-details" (click)="btnEditClick(data.id,data.title,data.sign_up,data.phone,data.terms_of_service,data.fact_sheet,data.cancelation_fee,data.price_1000_kwh,data.price_500_kwh,data.price_2000_kwh,data.plan_information,data.rating_logo,data.profile_logo,data.profileurl); getreview(data.id); avereview(data.id)"
                 data-toggle="modal" data-target="#myModal2">Plan Information
@@ -788,8 +787,8 @@
                             &nbsp;&nbsp;&nbsp;&nbsp; {{cancelation.split(' ',3000)[2]}}
                           </h4> -->
                           <h4 *ngIf="cancelation;else no_data_temp2">
-                              &nbsp;&nbsp;&nbsp;&nbsp; {{cancelation}}
-                            </h4>
+                            &nbsp;&nbsp;&nbsp;&nbsp; {{cancelation}}
+                          </h4>
                           <ng-template #no_data_temp2>
 
                             <!-- <img src="../../assets/img/no_Record.png" style="width: 250px;height:200px" > -->
@@ -848,6 +847,7 @@
 
   <div class="container">
     <div class="text-center">
+      
 
       <!-- <div *ngFor="let item of pagedItems">{{item.name}}</div>
   

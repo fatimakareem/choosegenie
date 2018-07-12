@@ -685,7 +685,7 @@ background: goldenrod;
   color: #212121;
   position: fixed !important;
   overflow-y: scroll;
-  height: 590px;
+  height: 700px;
 }
   .sidebar-user h5 {
     padding: 0px;
@@ -3711,6 +3711,12 @@ h1, .entry-title-2 {
   width: 96%;
   padding: 10px;
 }
+.slick-slide img1{
+  border:none !important;
+  width: 90% !important;
+   height: 85px;
+   margin: 0 auto;
+}
 .slick-slide .img1{
   border-radius: 10px;
   border:none !important;
@@ -5285,7 +5291,7 @@ background: linear-gradient(to bottom, #eaeaea 0%,#c6c6c6 50%,#999a9b 100%); /* 
 }
 .mat-form-field-infix{
   border-top: 0px !important;
-  margin-top: -17px;
+  margin-top: 0px;
 }
 .checkbox{
   margin: 0px !important;
