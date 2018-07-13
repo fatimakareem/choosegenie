@@ -32,6 +32,12 @@
 .margin{
   margin-top: -9px !important;
 }
+.margin-upper{
+  margin-top: -29px !important;
+}
+.margin-upper1{
+  margin-top: -21px !important;
+}
 .margin-zero{
   margin: 0px;
 }
@@ -3728,7 +3734,7 @@ h1, .entry-title-2 {
 
 /*vanders signup css start*/
 .mat-form-field-can-float.mat-form-field-should-float .mat-form-field-placeholder, .mat-form-field-empty.mat-form-field-placeholder, mat-form-field.mat-form-field {
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 700;
   color: #333;
 }
@@ -3741,7 +3747,7 @@ h1, .entry-title-2 {
   line-height: 25px;
   padding: 15px 25px;
   font-weight: 600;
-  margin-bottom: 40px;
+  margin-bottom: 29px;
   box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(233, 30, 99, 0.4);
 }
 
@@ -4568,7 +4574,7 @@ canvas {
   color: #30a5ff;
 }
 .heading-bottom p {
-  line-hight:24px;
+  line-height: 24px;
 }
 
 .header-bar{
