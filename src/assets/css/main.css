@@ -32,8 +32,17 @@
 .margin{
   margin-top: -9px !important;
 }
+.margin-upper{
+  margin-top: -29px !important;
+}
+.margin-upper1{
+  margin-top: -21px !important;
+}
 .margin-zero{
   margin: 0px;
+}
+.margin-zero1{
+  margin: 0px !important;
 }
 .padding-zero{
   margin: 0px;
@@ -762,12 +771,7 @@ background: goldenrod;
   /* margin: 9px 0px; */
   margin: 30px 0px 0px 0px;
 }
-.products-area {
-  font-size: 15px;
-  line-height: 19px;
-  padding: 1% 2%;
-  width: 79%;
-  float: right;}
+
   .products-area .card-title small {
     color: inherit; }
   .products-area .plan-detail {
@@ -3728,7 +3732,7 @@ h1, .entry-title-2 {
 
 /*vanders signup css start*/
 .mat-form-field-can-float.mat-form-field-should-float .mat-form-field-placeholder, .mat-form-field-empty.mat-form-field-placeholder, mat-form-field.mat-form-field {
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 700;
   color: #333;
 }
@@ -3741,7 +3745,7 @@ h1, .entry-title-2 {
   line-height: 25px;
   padding: 15px 25px;
   font-weight: 600;
-  margin-bottom: 40px;
+  margin-bottom: 29px;
   box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(233, 30, 99, 0.4);
 }
 
@@ -4249,7 +4253,7 @@ footer p a:hover { color:#333; border-bottom-color: #333; }
 }
 .popupmodel {
   /* margin-top: 25%; */
-  width: 1000px !important;
+  width: 800px !important;
   right: 40%;
   background: #ebebeb !important;
 }
@@ -4568,7 +4572,7 @@ canvas {
   color: #30a5ff;
 }
 .heading-bottom p {
-  line-hight:24px;
+  line-height: 24px;
 }
 
 .header-bar{
@@ -4890,7 +4894,7 @@ section#boody{
 .products-area {
   font-size: 15px;
   line-height: 19px;
-  padding: 1% 2%;
+  padding: 1% 0%;
   width: 100%;
   float: left;
 }
@@ -4907,7 +4911,7 @@ section#boody{
 }
 .edit-del-btn:hover{
   color:#cc0000;
-  box-shadow: 0px 0px 5px #ccc;
+  /* box-shadow: 0px 0px 5px #ccc; */
 }
 .price-style {
   display: block;
@@ -5329,7 +5333,7 @@ background: linear-gradient(to bottom, #eaeaea 0%,#c6c6c6 50%,#999a9b 100%); /* 
   background-color:#000000;
   position: fixed;
   width:20%;
-  height: 595px;
+  height: 700px;
   overflow-y: scroll;
 }
 .super-sidebar-list li{
