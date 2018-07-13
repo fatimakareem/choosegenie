@@ -71,9 +71,46 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     rating;
     closeResult: string;
      public username;
+     name;
     obj:any=[];
     editdata: any = [];
+    search(name) {
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        //   this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
+        this.http.get(Config.api + 'vedor_product_search/'+ name , { headers: headers }).subscribe(Res => {
+            console.log(Res);
+      
+            this.sg['products'] = Res.json();  
+            for (let prod of this.sg['products']) {
+                prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+                prod["price_rate"] = prod["price_rate"].split('..', 3000);
+
+            }
+            this.allItems = this.sg['products'];
+        });
+        // this.pagedItems = this.allItems.slice(this.pager.startIndex, this.pager.endIndex + 1);
+      }
     setPage(title,page: number) {
+        if(this.name){
+            let headers = new Headers();
+            headers.append('Content-Type', 'application/json');
+            //   this.http.get(Config.api + 'data_against_zipcode/' + this.zip_code + '', { headers: headers }),
+            this.http.get(Config.api + 'vedor_product_search/'+ this.name  , { headers: headers }).subscribe(Res => {
+                console.log(Res);
+          
+                this.sg['products'] = Res.json();  
+                for (let prod of this.sg['products']) {
+                    prod["plan_information"] = prod["plan_information"].split(',,', 3000);
+                    prod["price_rate"] = prod["price_rate"].split('..', 3000);
+    
+                }
+                this.dataa.changeProducts(this.sg['products']);
+                this.allItems = this.sg['products'];
+                this.pager = this.pagerService.getPager(Res.json()['Total Result'], page, 10);
+            });
+        }
+        else{
         this.title = localStorage.getItem('username');
          console.log("usernameeeeeeeeeeeee",this.title)
 
@@ -97,7 +134,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
             console.log(Response.json()['Total Result']);
              this.pager = this.pagerService.getPager(Response.json()['Total Result'], page, 10);
               });
-      
+            }
     }
     catagoryId = '';
     title='';

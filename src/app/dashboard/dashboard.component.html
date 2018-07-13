@@ -1,4 +1,6 @@
 <div class="products-area" *ngIf="prod_loaded">
+    <input type="text" [(ngModel)]=name name="name">
+    <button (click)="setPage(title,1)">Search</button>
   <div class="card" *ngFor="let data of allItems; let i = index">
     <div class="row">
       <div class="col-sm-12">
