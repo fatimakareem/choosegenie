@@ -55,6 +55,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
         today = Date.now();
 // mydate;
 
+
     pageSizeOptions;
     private allItems: any[];
     pager: any = {};

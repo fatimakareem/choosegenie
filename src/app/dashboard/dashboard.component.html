@@ -46,7 +46,18 @@
                         <h4 class="modal-title" style="text-align: center;
                                                   color: red;
                                                   font-size: 30px;">Confirmation Alert</h4>
-                                                  <input type="date" required name="date" [(ngModel)]="date">
+                                                  <!-- <mat-form-field>
+                                                    <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="date">
+                                                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                                    <mat-datepicker #picker></mat-datepicker>
+                                                  </mat-form-field> -->
+                                                  <input type="date" required name="date" [(ngModel)]="date" style="    padding: 10px 0px; font-size: 20px;">
+
+
+                                              
+
+
+
                         <p>Do you want to Inactive this Product till this date?</p>
                       </div>
 
@@ -121,7 +132,7 @@
 
             <div style="text-align:center;">
               Price 500 kwh
-              <b class="price-style"> {{data.price_500_kwh}}</b>
+              <span class="price-style"> {{data.price_500_kwh}}</span>
 
             </div>
             <div class="add-price grid-element">
@@ -151,7 +162,10 @@
               {{item}}
               </p>
             </div>
-  </div>
+            <a href="Review/{{data.id}}" style="color:white;text-align: center;">
+              <label class="view-plan-details" style="padding-bottom: 0px; margin-bottom: 0px;">Reviews</label>
+            </a>
+          </div>
     <div class="modal fade" id="myModal2" role="dialog">
             <div class="modal-dialog">
               <!-- Modal content-->
@@ -240,7 +254,7 @@
                       </div>
 
                       <div class="col-md-6 col-sm-6">
-                        <div class="input-group">
+                        <div class="input-group margin-zero1">
 
                           <mat-form-field>
                             <input matInput placeholder="price 500 kwh" name="price_500_kwh" value="{{price_500_kwh}}" #updatedprice500kwh/>
@@ -249,7 +263,7 @@
                         </div>
                       </div>
                       <div class="col-md-6 col-sm-6">
-                        <div class="input-group">
+                        <div class="input-group margin-zero1">
 
                           <mat-form-field>
                             <input matInput placeholder="price 1000 kwh" name="price_1000_kwh" value="{{price_1000_kwh}}" #updatedprice1000kwh/>
@@ -258,7 +272,7 @@
                         </div>
                       </div>
                       <div class="col-md-6 col-sm-6">
-                        <div class="input-group">
+                        <div class="input-group margin-zero1">
                           <mat-form-field>
                             <input matInput placeholder="price 2000 kwh" name="price_2000_kwh" value="{{price_2000_kwh}}" #updatedprice2000kwh/>
 
@@ -266,7 +280,7 @@
                         </div>
                       </div>
                       <div class="col-md-6 col-sm-6">
-                        <div class="input-group" hidden=true>
+                        <div class="input-group margin-zero1" hidden=true>
                           <mat-form-field>
                             <input matInput placeholder="Cancelation Fee" readonly name="cancelation_fee" value="{{cancelation_fee}}" #updatedcancelation_fee/>
 
@@ -274,7 +288,7 @@
                         </div>
                       </div>
                       <div class="col-md-6 col-sm-6">
-                        <div class="input-group" hidden=true>
+                        <div class="input-group margin-zero1" hidden=true>
 
                           <mat-form-field>
                             <input matInput placeholder="Fact Sheet" readonly name="fact_sheet" value="{{fact_sheet}}" #updatedfact_sheet/>
@@ -283,7 +297,7 @@
                         </div>
                       </div>
                       <div class="col-md-6 col-sm-6">
-                        <div class="input-group" hidden=true>
+                        <div class="input-group margin-zero1" hidden=true>
 
                           <mat-form-field>
                             <input matInput placeholder="Term of Service" readonly name="terms_of_service" value="{{terms_of_service}}" #updatedterms_of_service
@@ -293,7 +307,7 @@
                         </div>
                       </div>
                       <div class="col-md-6 col-sm-6">
-                        <div class="input-group" hidden=true>
+                        <div class="input-group margin-zero1" hidden=true>
                           <mat-form-field>
                             <input matInput placeholder="Phone No" name="phone" readonly value="{{phone}}" #updatedphone/>
 
@@ -301,7 +315,7 @@
                         </div>
                       </div>
                       <div class="col-md-6 col-sm-6">
-                        <div class="input-group" hidden=true>
+                        <div class="input-group margin-zero1" hidden=true>
 
                           <mat-form-field>
                             <input matInput placeholder="Sign Up" name="sign_up" readonly value="{{sign_up}}" #updatedsign_up />
@@ -310,6 +324,10 @@
                         </div>
                       </div>
 
+
+                      
+                      <div class="col-md-12 col-sm-12">
+                        
                       <div class=" text-center">
                         <button type="submit" class="btn btn-rose" (click)="editClick(mydate.value,date,updatedtitle.value,updatedsign_up.value,updatedphone.value,updatedterms_of_service.value,updatedfact_sheet.value,updatedcancelation_fee.value,updatedprice500kwh.value,updatedprice1000kwh.value,updatedprice2000kwh.value,updatedplan_information.value,updatedrating_logo.value,updatedprofile_logo.value,updatedprofileurl.value)"
                           data-dismiss="modal">Update</button>
@@ -317,6 +335,8 @@
                         <button type="button" class="btn btn-rose" data-dismiss="modal">Cancel</button>
 
                       </div>
+                      </div>
+
 
                     </form>
                   </div>
@@ -337,16 +357,7 @@
 
           <br>
           <div class="col-md-3 col-sm-3 col-xs-7 term text-center">
-            <div class="text-center">
-
-              <button class="fa fa-edit edit-del-btn" type="submit" value="Edit" type="submit" (click)="btnEditClick(data.id,data.title,data.sign_up,data.phone,data.terms_of_service,data.fact_sheet,data.cancelation_fee,data.price_1000_kwh,data.price_500_kwh,data.price_2000_kwh,data.plan_information,data.rating_logo,data.profile_logo,data.profileurl,data.active)"
-                data-toggle="modal" data-target="#myModal2">
-
-              </button>
-              <button class="fa fa-check edit-del-btn"  type="submit" type="submit" (click)="btnactiveClick(data.id,data.title,data.sign_up,data.phone,data.terms_of_service,data.fact_sheet,data.cancelation_fee,data.price_1000_kwh,data.price_500_kwh,data.price_2000_kwh,data.plan_information,data.rating_logo,data.profile_logo,data.profileurl)"
-                data-toggle="modal" data-target="#myModal3">
-              </button>
-            </div>
+            
             <h3 class="text-center">
               <b> Call now</b>
             </h3>
@@ -359,11 +370,23 @@
               </button>
 
             </div>
-            <a href="Review/{{data.id}}" style="color:white;text-align: center;">
-              <label class="view-plan-details" style="padding-bottom: 0px; margin-bottom: 0px;">Reviews</label>
-            </a>
-          </div>
 
+            <div class="text-center">
+
+              <button class="fa fa-edit edit-del-btn" type="submit" value="Edit" type="submit" (click)="btnEditClick(data.id,data.title,data.sign_up,data.phone,data.terms_of_service,data.fact_sheet,data.cancelation_fee,data.price_1000_kwh,data.price_500_kwh,data.price_2000_kwh,data.plan_information,data.rating_logo,data.profile_logo,data.profileurl,data.active)"
+                data-toggle="modal" data-target="#myModal2" style="margin-right: 20px;"><span style="font-size: 19px;"> Edit </span>
+              </button>
+              
+              <button class="fa fa-check edit-del-btn"  type="submit" type="submit" (click)="btnactiveClick(data.id,data.title,data.sign_up,data.phone,data.terms_of_service,data.fact_sheet,data.cancelation_fee,data.price_1000_kwh,data.price_500_kwh,data.price_2000_kwh,data.plan_information,data.rating_logo,data.profile_logo,data.profileurl)"
+                data-toggle="modal" data-target="#myModal3"><span style="font-size: 19px;"> Unactive </span>
+              </button>
+            </div>
+
+            <!-- <a href="Review/{{data.id}}" style="color:white;text-align: center;">
+              <label class="view-plan-details" style="padding-bottom: 0px; margin-bottom: 0px;">Reviews</label>
+            </a> -->
+          </div>
+          
         </div>
       </div>
     </div>
