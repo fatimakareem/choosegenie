@@ -65,13 +65,14 @@
       <td style="font-size: 20px;">{{item.name}}</td>
       <td style="font-size: 20px;">{{item.email}}</td>
       <td style="font-size: 20px;">{{item.mobno}}</td>
+      <td style="font-size: 20px;">{{item.subject}}</td>
       <td style="font-size: 20px;">
           <label class="view-plan-details" style="padding-bottom: 0px; margin-bottom: 0px;" (click)="btncomtClick(item.msg)"
           data-toggle="modal" data-target="#myModal5"> View massage
         </label>
       </td>
       <!-- <td style="font-size: 20px;">{{item.msg}}</td> -->
-     <td style="font-size: 20px;">{{item.subject}}</td>
+     
      <td style="font-size: 20px;">
        <button  class="btn btn-default" data-target="#myModal3" data-toggle="modal" style=" width: 100%; height: 100%; color: red; background-color: #ffffff !important; " type="submit" value="Delete" (click)="btnDeleteClick(item.id)" >
          <i  class="fa fa-times"></i> </button>

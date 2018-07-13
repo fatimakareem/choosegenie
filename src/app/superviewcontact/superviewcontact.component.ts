@@ -79,6 +79,7 @@ prods_loaded = false;
 localVar;
 public products: any;
 closeResult: string;
+name;
  
 modal:any=[];
 editdata: any = [];
